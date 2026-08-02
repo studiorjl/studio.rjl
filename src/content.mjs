@@ -1,0 +1,320 @@
+export const site = {
+  name: "studio rjl",
+  legalName: "studio rjl",
+  domain: "https://studiorjl.com",
+  description:
+    "studio rjl is a multidisciplinary design studio based in Bangalow, Northern NSW, partnering with clients across Australia and internationally.",
+  shortDescription: "Bespoke brands, visual identities and atmospheric places.",
+  locale: "en_AU",
+  pinterestVerification: "2c6a823a3df926847a29a4ec463d549c",
+  googleAnalyticsId: "G-PBJDD7VN3N",
+  googleTagManagerId: "GTM-KPCBCVV8",
+  formEndpoint: "https://formspree.io/f/mzdyagdr",
+  founder: "Rebekah Jane",
+  region: "Australia and international",
+  locality: "Bangalow, Northern NSW, Australia",
+  locationSignal:
+    "based in Bangalow, Northern NSW, partnering with clients across Australia and internationally.",
+  foundingPlace:
+    "studio rjl was formed by the lore and land on Dharug country, and now creates upon Bundjalung land.",
+  sameAs: [
+    "https://share.google/pPbxRDT0wHIKwecAW",
+    "https://www.linkedin.com/company/studio-rjl",
+    "https://www.instagram.com/studio.rjl/",
+    "https://au.pinterest.com/studiorjl/"
+  ],
+  contact: {
+    email: "hello@studiorjl.com",
+    telephone: "",
+    address: "",
+    hours: "By appointment"
+  }
+};
+
+export const navItems = [
+  { label: "about", href: "/#about" },
+  { label: "recent work", href: "/portfolio/" },
+  { label: "book", href: "/booking/" }
+];
+
+export const footerLinks = [
+  { label: "sitemap", href: "/sitemap/" },
+  { label: "privacy", href: "/privacy/" },
+  { label: "terms", href: "/terms/" },
+  { label: "accessibility", href: "/accessibility/" }
+];
+
+export const socialLinks = [
+  { label: "email", href: "mailto:hello@studiorjl.com", icon: "mail" },
+  { label: "instagram", href: "https://www.instagram.com/studio.rjl/", icon: "instagram" },
+  { label: "pinterest", href: "https://au.pinterest.com/studiorjl/", icon: "pinterest" },
+  { label: "linkedin", href: "https://www.linkedin.com/company/studio-rjl", icon: "linkedin" }
+];
+
+export const services = [
+  "branding & visual identity suite design",
+  "brand strategy & creative consulting",
+  "art direction, photography & styling",
+  "social content elevation",
+  "graphic design & drafting",
+  "print & packaging design",
+  "web design & development",
+  "UI / UX design for web / app",
+  "spatial concept design & planning",
+  "interior design & styling",
+  "landscape concept design"
+];
+
+export const primaryServices = services;
+
+export const blogTopics = [
+  "why your business isn't attracting premium clients",
+  "how to know when it's time to rebrand",
+  "squarespace vs shopify for small businesses",
+  "branding for wellness businesses",
+  "branding for landscape designers",
+  "visual identity for boutique accommodation",
+  "branding",
+  "creative direction",
+  "web design",
+  "pinterest strategy",
+  "design for purpose-led businesses"
+];
+
+export const articlePosts = [
+  /*
+  {
+    title: "how to know when it's time to rebrand",
+    slug: "how-to-know-when-its-time-to-rebrand",
+    description: "clear signals that your visual identity is ready for a more strategic, elevated expression.",
+    image: "floral-monogram-brandmark.jpg",
+    imageAlt: "Floral monogram brandmark design by studio rjl",
+    author: "Rebekah Jane",
+    datePublished: "2026-08-01",
+    section: "branding",
+    tags: ["branding", "visual identity", "rebrand"],
+    body: [
+      "Start the article here."
+    ]
+  }
+  */
+];
+
+export const templateProducts = [
+  {
+    title: "brand clarity workbook",
+    description: "a digital workbook for founders refining brand tone, audience, positioning and creative direction.",
+    image: "floral-monogram-brandmark.jpg",
+    alt: "Floral monogram brandmark used as a preview for a studio rjl digital brand workbook",
+    status: "coming soon",
+    purchaseUrl: ""
+  },
+  {
+    title: "pinterest content planner",
+    description: "a quiet planning template for pin titles, descriptions, boards, keywords and campaign rhythm.",
+    image: "studiorjl-florals.jpg",
+    alt: "studio rjl floral campaign image used as a preview for a pinterest content planner template",
+    status: "coming soon",
+    purchaseUrl: ""
+  },
+  {
+    title: "visual identity launch checklist",
+    description: "a practical digital checklist for preparing brand files, website updates, launch content and social assets.",
+    image: "alegienne-brandmark-card.jpg",
+    alt: "Alegienne brandmark card used as a preview for a studio rjl visual identity checklist template",
+    status: "coming soon",
+    purchaseUrl: ""
+  }
+];
+
+export const budgets = [
+  "$2,000 - $5,000",
+  "$5,000 - $10,000",
+  "$10,000 - $20,000",
+  "$20,000+",
+  "i am not sure yet"
+];
+
+export const featuredProjects = [
+  {
+    image: "interior-brandscape-design-warm-light.jpg",
+    alt: "Warm interior brandscape concept with soft light and layered textures"
+  },
+  {
+    image: "floral-monogram-brandmark.jpg",
+    alt: "Floral monogram brandmark design by studio rjl"
+  },
+  {
+    image: "interior-brandscape-design-warm.jpg",
+    alt: "Warm spatial brand concept with interior styling and custom atmosphere"
+  }
+];
+
+export const portfolio = [
+  {
+    image: "interior-brandscape-design-warm-light.jpg",
+    alt: "Interior brandscape design with warm light, textiles and atmospheric styling",
+    categories: ["interior design", "fabric design", "lighting concept design"],
+    tags: ["interiors"]
+  },
+  {
+    image: "flora-h-brandmark.jpg",
+    alt: "Flora H brandmark and visual identity design",
+    categories: ["branding", "visual identity", "bespoke printing"],
+    tags: ["branding", "print"]
+  },
+  {
+    image: "interior-brandscape-design-warm.jpg",
+    alt: "Interior architecture concept with furniture, lighting and pattern design",
+    categories: [
+      "interior architecture",
+      "interior spatial and concept design",
+      "furniture and lighting design",
+      "pattern design"
+    ],
+    tags: ["interiors"]
+  },
+  {
+    image: "elodie-brandmark.jpg",
+    alt: "Elodie brandmark and bespoke visual identity system",
+    categories: ["branding", "visual identity", "bespoke printing"],
+    tags: ["graphic", "branding", "print"]
+  },
+  {
+    image: "elodie-champagne-campaign.jpg",
+    alt: "Elodie champagne campaign creative direction and branded content",
+    categories: ["branding", "visual identity", "campaigns and content"],
+    tags: ["branding", "graphic"]
+  },
+  {
+    image: "elodie-champagne-breakfast.jpg",
+    alt: "Elodie champagne breakfast campaign imagery and art direction",
+    categories: ["branding", "visual identity", "campaigns and content"],
+    tags: ["branding", "graphic"]
+  },
+  {
+    image: "circadia-card-brandmark.png.jpg",
+    alt: "Circadia card brandmark, logo and visual identity design",
+    categories: ["branding", "visual identity", "logo and brandmark"],
+    tags: ["branding", "graphic", "print"]
+  },
+  {
+    image: "studiorjl-florals.jpg",
+    alt: "studio rjl floral campaign content and visual identity styling",
+    categories: ["branding", "visual identity", "campaigns and content"],
+    tags: ["branding", "graphic"]
+  },
+  {
+    image: "alegienne-fall26campaign.jpg",
+    alt: "Alegienne Emerald Collection fall campaign creative direction",
+    categories: ["branding", "visual identity", "campaigns and content"],
+    tags: ["branding", "graphic"]
+  },
+  {
+    image: "florah-sigil.jpg",
+    alt: "Florah floral studio sigil and campaign visual identity",
+    categories: ["branding", "visual identity", "campaigns and content"],
+    tags: ["branding", "graphic"]
+  },
+  {
+    image: "plume-packaging.jpg",
+    alt: "Plume packaging design with print and label system",
+    categories: ["branding", "visual identity", "print and packaging design"],
+    tags: ["branding", "graphic", "print"]
+  },
+  {
+    image: "alegienne-card-signaure.jpg",
+    alt: "Alegienne Spring 26 silk collection brand card and campaign asset",
+    categories: ["branding", "visual identity", "campaigns and content"],
+    tags: ["branding", "graphic"]
+  },
+  {
+    image: "alegienne-spring-campaign1.jpg",
+    alt: "Alegienne spring campaign art direction and fashion visuals",
+    categories: ["branding", "art direction", "campaign design"],
+    tags: ["branding"]
+  },
+  {
+    image: "alegienne-brandmark-card.jpg",
+    alt: "Alegienne brandmark card with logo and visual identity treatment",
+    categories: ["branding", "visual identity", "brandmark", "logo design"],
+    tags: ["branding"]
+  },
+  {
+    image: "alegienne-spring-campaign2.jpg",
+    alt: "Alegienne spring fashion campaign visuals and creative direction",
+    categories: ["fashion design", "campaign visuals", "creative direction"],
+    tags: ["branding"]
+  },
+  {
+    image: "UC-Logo.jpg",
+    alt: "UC logo design and visual identity system",
+    categories: ["branding", "visual identity", "campaigns and content"],
+    tags: ["branding", "graphic"]
+  },
+  {
+    image: "UC-Hero.jpg",
+    alt: "UC hero campaign artwork for brand identity and content",
+    categories: ["branding", "visual identity", "campaigns and content"],
+    tags: ["branding", "graphic"]
+  },
+  {
+    image: "UC-Brandmark.jpg",
+    alt: "UC brandmark design for visual identity and campaign use",
+    categories: ["branding", "visual identity", "campaigns and content"],
+    tags: ["branding", "graphic"]
+  }
+];
+
+export const faqs = [
+  {
+    question: "what does studio rjl do?",
+    answer:
+      "studio rjl is a multidisciplinary design studio in Australia creating bespoke brands, visual identities, art direction, spatial concepts, interiors, print, packaging and digital design for businesses and creators."
+  },
+  {
+    question: "who is studio rjl best suited to work with?",
+    answer:
+      "studio rjl is best suited to founders, creative businesses, hospitality brands, lifestyle brands and interiors-led projects seeking an identity or environment with atmosphere, detail and an elevated sense of whimsy."
+  },
+  {
+    question: "does studio rjl offer both branding and spatial design?",
+    answer:
+      "yes. studio rjl works across brand identity and place-making, bringing visual identity, material mood, interior concept direction, styling and spatial atmosphere into one coherent brand experience."
+  },
+  {
+    question: "how do i enquire about a project?",
+    answer:
+      "use the enquiry form or book a complimentary discovery call. the first conversation is a strategic clarity session: you will walk away with useful brand insights, a clearer next step and no obligation to continue."
+  },
+  {
+    question: "how much does branding cost?",
+    answer:
+      "pricing is tailored to the scope of work after a discovery call, so each proposal reflects the actual needs, pace and depth of the project. payment plans and flexible arrangements are available where they make sense for the collaboration."
+  },
+  {
+    question: "what's included in a visual identity suite?",
+    answer:
+      "a visual identity suite can include a logo system, brandmark, typography, colour palette, art direction, image direction, layout rules, social templates, packaging or print direction and a practical brand guide. the exact inclusions are shaped around the brand's needs."
+  },
+  {
+    question: "do you work remotely?",
+    answer:
+      "yes. studio rjl is based in Bangalow, Northern NSW, and partners with clients across Australia and internationally. remote projects are welcome, and meeting arrangements can be made to align timezones if a booking calendar slot does not fit."
+  },
+  {
+    question: "how long does a project take?",
+    answer:
+      "project timing depends on scope, feedback pace and the number of deliverables. a focused visual identity can move more quickly, while brand, web, packaging or spatial work needs a longer timeline. timing is confirmed in the proposal after the discovery call."
+  },
+  {
+    question: "how does billing and pricing work?",
+    answer:
+      "each proposal is tailored to scope after a discovery call. studio rjl offers payment plans and flexible arrangements where they support the project and collaboration."
+  },
+  {
+    question: "can studio rjl create pinterest-ready and social content assets?",
+    answer:
+      "yes. studio rjl can shape campaign imagery, social content templates, pinterest-ready creative assets and visual systems that extend a brand beyond the website."
+  }
+];
