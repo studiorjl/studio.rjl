@@ -3,7 +3,7 @@ export const site = {
   legalName: "studio rjl",
   domain: "https://studiorjl.com",
   description:
-    "studio rjl is a multidisciplinary design studio based in Bangalow, Northern NSW, partnering with clients across Australia and internationally.",
+    "Studio RJL is a multidisciplinary design studio specialising in creating bespoke branding & visual identity, spatial & interior design.",
   shortDescription: "Bespoke brands, visual identities and atmospheric places.",
   locale: "en_AU",
   pinterestVerification: "2c6a823a3df926847a29a4ec463d549c",
@@ -66,6 +66,31 @@ export const services = [
 ];
 
 export const primaryServices = services;
+
+export const serviceDetails = {
+  "branding & visual identity suite design":
+    "bespoke identity systems for brands seeking recognition, resonance and a visual language with depth. suites can include logo systems, brandmarks, typography, palette, layout direction and brand guidelines.",
+  "brand strategy & creative consulting":
+    "strategic clarity for founders refining their positioning, tone, audience, offer and creative direction before design begins or evolves.",
+  "art direction, photography & styling":
+    "visual direction for imagery, campaigns and content so each frame feels intentional, atmospheric and unmistakably aligned with the brand world.",
+  "social content elevation":
+    "refined templates, campaign concepts and content systems for brands ready to bring more polish and consistency to their digital presence.",
+  "graphic design & drafting":
+    "considered collateral, layouts and drafted visual assets for projects that need precision, restraint and an editorial sense of composition.",
+  "print & packaging design":
+    "print pieces and packaging concepts shaped around tactile detail, shelf presence, materiality and a cohesive customer experience.",
+  "web design & development":
+    "custom website design and development for brands needing an elegant, searchable and conversion-minded digital home.",
+  "UI / UX design for web / app":
+    "clear interface and experience design for digital products, web tools and app concepts that need to feel intuitive, beautiful and easy to move through.",
+  "spatial concept design & planning":
+    "concept-led spatial direction for interiors, venues and brand environments, connecting layout, mood, materials and atmosphere.",
+  "interior design & styling":
+    "interior direction and styling for spaces that need to feel resolved, warm, sensory and aligned with a broader brand experience.",
+  "landscape concept design":
+    "landscape concepts that consider rhythm, planting mood, thresholds and the quiet relationship between place, brand and memory."
+};
 
 export const blogTopics = [
   "why your business isn't attracting premium clients",
@@ -270,7 +295,7 @@ export const faqs = [
   {
     question: "what does studio rjl do?",
     answer:
-      "studio rjl is a multidisciplinary design studio in Australia creating bespoke brands, visual identities, art direction, spatial concepts, interiors, print, packaging and digital design for businesses and creators."
+      "studio rjl is a multidisciplinary design studio creating bespoke branding and visual identity, spatial and interior design, art direction, packaging, web design and creative strategy for businesses seeking atmosphere, clarity and emotional resonance."
   },
   {
     question: "who is studio rjl best suited to work with?",
@@ -280,7 +305,7 @@ export const faqs = [
   {
     question: "does studio rjl offer both branding and spatial design?",
     answer:
-      "yes. studio rjl works across brand identity and place-making, bringing visual identity, material mood, interior concept direction, styling and spatial atmosphere into one coherent brand experience."
+      "yes. studio rjl works across brand identity and place-making, bringing visual identity, material mood, interior direction, styling and spatial atmosphere into one coherent brand experience."
   },
   {
     question: "how do i enquire about a project?",
@@ -290,7 +315,7 @@ export const faqs = [
   {
     question: "how much does branding cost?",
     answer:
-      "pricing is tailored to the scope of work after a discovery call, so each proposal reflects the actual needs, pace and depth of the project. payment plans and flexible arrangements are available where they make sense for the collaboration."
+      "branding costs are tailored to scope after a discovery call. each proposal reflects the deliverables, strategy, timeline and depth required, with payment plans and flexible arrangements available where they support the collaboration."
   },
   {
     question: "what's included in a visual identity suite?",
@@ -310,7 +335,7 @@ export const faqs = [
   {
     question: "how does billing and pricing work?",
     answer:
-      "each proposal is tailored to scope after a discovery call. studio rjl offers payment plans and flexible arrangements where they support the project and collaboration."
+      "projects are usually booked with a deposit and staged payments. the exact structure is confirmed in your proposal, and flexible payment arrangements can be discussed during the discovery call."
   },
   {
     question: "can studio rjl create pinterest-ready and social content assets?",

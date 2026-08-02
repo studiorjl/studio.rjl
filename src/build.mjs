@@ -10,6 +10,7 @@ import {
   navItems,
   portfolio,
   primaryServices,
+  serviceDetails,
   socialLinks,
   services,
   site,
@@ -711,13 +712,14 @@ function servicesPage() {
       <p class="subline">a quiet map of the ways studio rjl can shape the visual, spatial and sensory life of a brand.</p>
     </header>
     <section class="services-grid" aria-label="creative services">
-      ${services.map((service) => `<article class="service-item"><h2>${escapeHtml(service)}</h2><p>considered creative direction for brands seeking atmosphere, clarity and a visual world with depth.</p></article>`).join("")}
+      ${services.map((service) => `<article class="service-item"><h2>${escapeHtml(service)}</h2><p>${escapeHtml(serviceDetails[service])}</p></article>`).join("")}
     </section>
   `;
 
   return layout({
     title: "creative services",
-    description: `studio rjl creative services include ${services.join(", ")}.`,
+    description:
+      "studio rjl creative services include bespoke branding, visual identity, spatial design, interior styling, web design, packaging and creative strategy.",
     pathname: "/services/",
     body,
     extraSchema: [
