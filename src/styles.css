@@ -718,15 +718,28 @@ footer {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(280px, 1.2fr) repeat(2, minmax(180px, 0.8fr));
-  column-gap: clamp(64px, 7vw, 104px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(36px, 5vw, 80px);
   row-gap: 36px;
   max-width: 1120px;
   margin: 0 auto;
 }
 
+.footer-block {
+  width: min(100%, 300px);
+  text-align: left;
+}
+
+.footer-block:first-child {
+  justify-self: start;
+}
+
 .footer-block:nth-child(2) {
-  padding-left: clamp(18px, 3vw, 48px);
+  justify-self: center;
+}
+
+.footer-block:nth-child(3) {
+  justify-self: end;
 }
 
 .footer-block:nth-child(2).visible {
@@ -1010,8 +1023,12 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .footer-block:nth-child(2) {
-    padding-left: 0;
+  .footer-block,
+  .footer-block:first-child,
+  .footer-block:nth-child(2),
+  .footer-block:nth-child(3) {
+    width: 100%;
+    justify-self: stretch;
   }
 
   .booking-frame {
