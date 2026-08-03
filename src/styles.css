@@ -302,6 +302,13 @@ p {
   opacity: 0.72;
 }
 
+.services-intro {
+  max-width: 84ch;
+  font-family: "Courier New", monospace;
+  line-height: 1.85;
+  text-align: center;
+}
+
 main section,
 .page-header {
   padding: 120px 10%;
@@ -616,6 +623,15 @@ select {
   padding: 28px;
 }
 
+.service-list {
+  max-width: 920px;
+}
+
+.faq-item.service-item {
+  background: var(--pale-ivory);
+  padding: 0;
+}
+
 .sitemap-list {
   display: grid;
   gap: 14px;
@@ -707,6 +723,10 @@ footer {
   row-gap: 36px;
   max-width: 1120px;
   margin: 0 auto;
+}
+
+.footer-block:nth-child(2) {
+  padding-left: clamp(18px, 3vw, 48px);
 }
 
 .footer-block:nth-child(2).visible {
@@ -988,6 +1008,10 @@ footer {
 
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-block:nth-child(2) {
+    padding-left: 0;
   }
 
   .booking-frame {

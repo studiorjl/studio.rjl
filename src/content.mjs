@@ -60,6 +60,7 @@ export const services = [
   "print & packaging design",
   "web design & development",
   "UI / UX design for web / app",
+  "digital atmosphere & brand world translation",
   "spatial concept design & planning",
   "interior design & styling",
   "landscape concept design"
@@ -69,7 +70,7 @@ export const primaryServices = services;
 
 export const serviceDetails = {
   "branding & visual identity suite design":
-    "bespoke identity systems for brands seeking recognition, resonance and a visual language with depth. suites can include logo systems, brandmarks, typography, palette, layout direction and brand guidelines.",
+    "bespoke identity systems for brands seeking recognition, resonance and a visual language with depth. a visual identity suite may include a primary logo, secondary logo, brandmarks, submarks, typography, colour palette, image direction, layout rules, social templates, print collateral direction and a practical brand guide for delivery.",
   "brand strategy & creative consulting":
     "strategic clarity for founders refining their positioning, tone, audience, offer and creative direction before design begins or evolves.",
   "art direction, photography & styling":
@@ -84,12 +85,14 @@ export const serviceDetails = {
     "custom website design and development for brands needing an elegant, searchable and conversion-minded digital home.",
   "UI / UX design for web / app":
     "clear interface and experience design for digital products, web tools and app concepts that need to feel intuitive, beautiful and easy to move through.",
+  "digital atmosphere & brand world translation":
+    "creative direction for translating a physical space, sensory brand world or in-person experience into an online presence that still feels atmospheric, immersive and alive.",
   "spatial concept design & planning":
     "concept-led spatial direction for interiors, venues and brand environments, connecting layout, mood, materials and atmosphere.",
   "interior design & styling":
     "interior direction and styling for spaces that need to feel resolved, warm, sensory and aligned with a broader brand experience.",
   "landscape concept design":
-    "landscape concepts that consider rhythm, planting mood, thresholds and the quiet relationship between place, brand and memory."
+    "landscape concepts that consider rhythm, planting mood, thresholds and the relationship between place, brand and memory."
 };
 
 export const blogTopics = [
@@ -136,7 +139,7 @@ export const templateProducts = [
   },
   {
     title: "pinterest content planner",
-    description: "a quiet planning template for pin titles, descriptions, boards, keywords and campaign rhythm.",
+    description: "planning template for pinterest success; pin titles, descriptions, boards, keywords, campaign tips & rhythm.",
     image: "studiorjl-florals.jpg",
     alt: "studio rjl floral campaign image used as a preview for a pinterest content planner template",
     status: "coming soon",
@@ -320,7 +323,12 @@ export const faqs = [
   {
     question: "what's included in a visual identity suite?",
     answer:
-      "a visual identity suite can include a logo system, brandmark, typography, colour palette, art direction, image direction, layout rules, social templates, packaging or print direction and a practical brand guide. the exact inclusions are shaped around the brand's needs."
+      "a visual identity suite can include a primary logo, secondary logo, brandmarks, submarks, typography, colour palette, art direction, image direction, layout rules, social templates, packaging or print direction, launch collateral and a practical brand guide. the exact inclusions are shaped around the brand's needs."
+  },
+  {
+    question: "can studio rjl translate a physical space into an online brand world?",
+    answer:
+      "yes. studio rjl can help bridge the gap between physical worlds and digital presence, shaping websites, content, imagery and art direction so an online experience carries the same atmosphere, texture and feeling as the place or brand in real life."
   },
   {
     question: "do you work remotely?",

@@ -709,10 +709,15 @@ function servicesPage() {
   const body = `
     <header class="page-header">
       <h1>creative services</h1>
-      <p class="subline">a quiet map of the ways studio rjl can shape the visual, spatial and sensory life of a brand.</p>
+      <p class="subline services-intro">studio rjl specialises and delights in creating atmosphere and resonance. We work both creatively and strategically in branding & design to translate the essence, instinct, atmosphere, and physical presence of creators and businesses into cohesive brand identities, interiors, and digital experiences — blending intuitive, sensory-led creative direction with clear strategy and thorough, hands-on execution.<br><br><i>Our creative services are diverse and can be tailored to any project...</i></p>
     </header>
-    <section class="services-grid" aria-label="creative services">
-      ${services.map((service) => `<article class="service-item"><h2>${escapeHtml(service)}</h2><p>${escapeHtml(serviceDetails[service])}</p></article>`).join("")}
+    <section class="faq-list service-list" aria-label="creative services">
+      ${services.map((service) => `
+        <details class="faq-item service-item">
+          <summary>${escapeHtml(service)}</summary>
+          <p>${escapeHtml(serviceDetails[service])}</p>
+        </details>
+      `).join("")}
     </section>
   `;
 
@@ -736,7 +741,7 @@ function shopPage() {
   const body = `
     <header class="page-header">
       <h1>shop</h1>
-      <p class="subline">digital templates and quiet tools for brand clarity, content planning and creative direction.</p>
+      <p class="subline">digital templates & tools for brand clarity, content planning and creative direction.</p>
     </header>
     <section class="shop-grid" aria-label="studio rjl digital templates">
       ${templateProducts
@@ -763,7 +768,7 @@ function shopPage() {
   return layout({
     title: "shop",
     description:
-      "studio rjl digital templates for brand clarity, pinterest content planning, visual identity launches and creative direction.",
+      "studio rjl digital templates and tools for brand clarity, content planning and creative direction.",
     pathname: "/shop/",
     body,
     extraSchema: [
