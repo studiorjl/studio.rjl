@@ -709,7 +709,7 @@ function servicesPage() {
   const body = `
     <header class="page-header">
       <h1>creative services</h1>
-      <p class="subline services-intro">studio rjl specialises and delights in creating atmosphere and resonance. We work both creatively and strategically in branding & design to translate the essence, instinct, atmosphere, and physical presence of creators and businesses into cohesive brand identities, interiors, and digital experiences — blending intuitive, sensory-led creative direction with clear strategy and thorough, hands-on execution.<br><br><i>Our creative services are diverse and can be tailored to any project...</i></p>
+      <p class="subline services-intro">studio rjl specialises and delights in creating atmosphere and resonance. We work both creatively and strategically in branding & design to translate the essence, instinct, atmosphere, and physical presence of creators and businesses into cohesive brand identities, interiors, and digital experiences — blending intuitive, sensory-led creative direction with clear strategy and thorough, hands-on execution.<br><br><i>Our creative services are diverse and can be tailored to any project...</i><br><i>peruse our creative services below</i></p>
     </header>
     <section class="faq-list service-list" aria-label="creative services">
       ${services.map((service) => `

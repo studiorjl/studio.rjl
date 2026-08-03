@@ -54,13 +54,13 @@ export const socialLinks = [
 export const services = [
   "branding & visual identity suite design",
   "brand strategy & creative consulting",
+  "digital atmosphere creation & curation",
   "art direction, photography & styling",
-  "social content elevation",
   "graphic design & drafting",
   "print & packaging design",
+  "social content creation & elevation",
   "web design & development",
   "UI / UX design for web / app",
-  "digital atmosphere & brand world translation",
   "spatial concept design & planning",
   "interior design & styling",
   "landscape concept design"
@@ -73,20 +73,20 @@ export const serviceDetails = {
     "bespoke identity systems for brands seeking recognition, resonance and a visual language with depth. a visual identity suite may include a primary logo, secondary logo, brandmarks, submarks, typography, colour palette, image direction, layout rules, social templates, print collateral direction and a practical brand guide for delivery.",
   "brand strategy & creative consulting":
     "strategic clarity for founders refining their positioning, tone, audience, offer and creative direction before design begins or evolves.",
+  "digital atmosphere creation & curation":
+    "creative direction for bridging physical worlds and online presence, translating sensory atmosphere into strategically deployed creative optimised for today's evolving digital landscape.",
   "art direction, photography & styling":
     "visual direction for imagery, campaigns and content so each frame feels intentional, atmospheric and unmistakably aligned with the brand world.",
-  "social content elevation":
-    "refined templates, campaign concepts and content systems for brands ready to bring more polish and consistency to their digital presence.",
   "graphic design & drafting":
     "considered collateral, layouts and drafted visual assets for projects that need precision, restraint and an editorial sense of composition.",
   "print & packaging design":
     "print pieces and packaging concepts shaped around tactile detail, shelf presence, materiality and a cohesive customer experience.",
+  "social content creation & elevation":
+    "refined content concepts, templates and visual systems for brands ready to bring more polish, consistency and strategic intention to their digital presence.",
   "web design & development":
     "custom website design and development for brands needing an elegant, searchable and conversion-minded digital home.",
   "UI / UX design for web / app":
     "clear interface and experience design for digital products, web tools and app concepts that need to feel intuitive, beautiful and easy to move through.",
-  "digital atmosphere & brand world translation":
-    "creative direction for translating a physical space, sensory brand world or in-person experience into an online presence that still feels atmospheric, immersive and alive.",
   "spatial concept design & planning":
     "concept-led spatial direction for interiors, venues and brand environments, connecting layout, mood, materials and atmosphere.",
   "interior design & styling":
@@ -328,7 +328,7 @@ export const faqs = [
   {
     question: "can studio rjl translate a physical space into an online brand world?",
     answer:
-      "yes. studio rjl can help bridge the gap between physical worlds and digital presence, shaping websites, content, imagery and art direction so an online experience carries the same atmosphere, texture and feeling as the place or brand in real life."
+      "yes. studio rjl can help bridge the gap between physical worlds and digital presence, shaping websites, content, imagery and art direction so an online experience carries the same atmosphere, texture and feeling as the place or brand in real life, while delivering strategically deployed creative optimised for today's evolving digital landscape."
   },
   {
     question: "do you work remotely?",
