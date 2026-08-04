@@ -718,15 +718,15 @@ footer {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: clamp(36px, 5vw, 80px);
+  grid-template-columns: minmax(260px, 300px) minmax(180px, 1fr) minmax(180px, 300px);
+  column-gap: clamp(40px, 6vw, 92px);
   row-gap: 36px;
   max-width: 1120px;
   margin: 0 auto;
 }
 
 .footer-block {
-  width: min(100%, 300px);
+  width: 100%;
   text-align: left;
 }
 
@@ -735,6 +735,8 @@ footer {
 }
 
 .footer-block:nth-child(2) {
+  width: max-content;
+  max-width: 260px;
   justify-self: center;
 }
 
