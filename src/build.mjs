@@ -144,7 +144,7 @@ function shopSchema() {
     "@type": "CollectionPage",
     name: "studio rjl template shop",
     url: canonical("/shop/"),
-    description: "digital templates and creative resources by studio rjl",
+    description: "digital templates & tools for brand clarity, content planning and creative direction.",
     hasPart: templateProducts.map((product) => ({
       "@type": "Product",
       name: product.title,
