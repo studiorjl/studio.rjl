@@ -309,6 +309,10 @@ p {
   text-align: center;
 }
 
+.coming-soon {
+  font-family: "Courier New", monospace;
+}
+
 main section,
 .page-header {
   padding: 120px 10%;

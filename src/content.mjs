@@ -53,10 +53,10 @@ export const socialLinks = [
 
 export const services = [
   "branding & visual identity suite design",
-  "brand strategy & creative consulting",
-  "digital atmosphere creation & curation",
+  "strategic product release, launch or campaign",
+  "digital audit; curation & creation",
   "art direction, photography & styling",
-  "graphic design & drafting",
+  "graphic design",
   "print & packaging design",
   "social content creation & elevation",
   "web design & development",
@@ -71,14 +71,14 @@ export const primaryServices = services;
 export const serviceDetails = {
   "branding & visual identity suite design":
     "bespoke identity systems for brands seeking recognition, resonance and a visual language with depth. a visual identity suite may include a primary logo, secondary logo, brandmarks, submarks, typography, colour palette, image direction, layout rules, social templates, print collateral direction and a practical brand guide for delivery.",
-  "brand strategy & creative consulting":
-    "strategic clarity for founders refining their positioning, tone, audience, offer and creative direction before design begins or evolves.",
-  "digital atmosphere creation & curation":
-    "creative direction for bridging physical worlds and online presence, translating sensory atmosphere into strategically deployed creative optimised for today's evolving digital landscape.",
+  "strategic product release, launch or campaign":
+    "strategic creative direction for product releases, launches and campaigns, shaping positioning, rollout rhythm, visual language and the story a brand needs to carry into market.",
+  "digital audit; curation & creation":
+    "digital audit, curation and creative direction for bridging physical worlds and online presence, translating sensory atmosphere into strategically deployed creative optimised for today's evolving digital landscape.",
   "art direction, photography & styling":
     "visual direction for imagery, campaigns and content so each frame feels intentional, atmospheric and unmistakably aligned with the brand world.",
-  "graphic design & drafting":
-    "considered collateral, layouts and drafted visual assets for projects that need precision, restraint and an editorial sense of composition.",
+  "graphic design":
+    "considered collateral, layouts and visual assets for projects that need precision, restraint and an editorial sense of composition.",
   "print & packaging design":
     "print pieces and packaging concepts shaped around tactile detail, shelf presence, materiality and a cohesive customer experience.",
   "social content creation & elevation":

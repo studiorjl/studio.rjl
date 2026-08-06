@@ -782,21 +782,11 @@ function shopPage() {
 }
 
 function blogPage() {
-  const articleLinks = articlePosts.length
-    ? `<section class="services-grid" aria-label="published articles">
-        ${articlePosts.map((post) => `<article class="service-item"><h2>${escapeHtml(post.title)}</h2><p>${escapeHtml(post.description)}</p><a class="read-more" href="/blog/${post.slug}/">read more...</a></article>`).join("")}
-      </section>`
-    : "";
-
   const body = `
     <header class="page-header">
       <h1>blog</h1>
-      <p>studio notes, case studies and project reflections will live here soon.</p>
+      <p class="coming-soon">coming soon</p>
     </header>
-    ${articleLinks}
-    <section class="services-grid" aria-label="planned blog topics">
-      ${blogTopics.map((topic) => `<article class="service-item"><h2>${escapeHtml(topic)}</h2><p>a future article exploring ${escapeHtml(topic)} through a studio rjl lens.</p></article>`).join("")}
-    </section>
   `;
 
   return layout({
