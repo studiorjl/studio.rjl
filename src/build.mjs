@@ -4,9 +4,11 @@ import {
   articlePosts,
   budgets,
   blogTopics,
+  designPartners,
   faqs,
   featuredProjects,
   footerLinks,
+  navDropdownItems,
   navItems,
   portfolio,
   primaryServices,
@@ -344,6 +346,12 @@ function nav() {
       <button class="menu-toggle" type="button" aria-label="Open menu" data-menu-toggle>☰</button>
       <div class="nav-links" data-nav-links>
         ${navItems.map((item) => `<a href="${item.href}">${escapeHtml(item.label)}</a>`).join("")}
+        <details class="nav-dropdown">
+          <summary>more</summary>
+          <div class="nav-dropdown-menu">
+            ${navDropdownItems.map((item) => `<a href="${item.href}">${escapeHtml(item.label)}</a>`).join("")}
+          </div>
+        </details>
         <button class="enquiry-button" type="button" data-enquiry-toggle>inquire</button>
       </div>
     </nav>
@@ -372,7 +380,6 @@ function footer() {
       <div class="footer-grid">
         <div class="footer-block reveal">
           <div class="footer-title">studio rjl</div>
-          <p>&copy; always, studio rjl.</p>
           <p>${escapeHtml(site.locationSignal)}</p>
           <p>${escapeHtml(site.foundingPlace)}</p>
           <p>We pay our deepest respects to the traditional custodians of this land, past, present and emergent, and to the enduring wisdom of this place that continues to teach, inform and inspire our work.</p>
@@ -382,6 +389,12 @@ function footer() {
           <div class="social-links" aria-label="contact links">
             ${socialLinks.map((link) => `<a href="${link.href}" aria-label="contact studio rjl via ${escapeHtml(link.label)}"><span class="social-icon">${icon(link.icon)}</span>${escapeHtml(link.label === "email" ? site.contact.email : link.label)}</a>`).join("")}
           </div>
+          <div class="footer-subsection">
+            <div class="footer-title">design partners</div>
+            <div class="footer-links">
+              ${designPartners.map((link) => `<a href="${link.href}">${escapeHtml(link.label)}</a>`).join("")}
+            </div>
+          </div>
         </div>
         <div class="footer-block reveal">
           <div class="footer-title">studio notes</div>
@@ -390,6 +403,7 @@ function footer() {
           </div>
         </div>
       </div>
+      <div class="footer-base reveal">&copy; always, studio rjl.</div>
     </footer>
   `;
 }
@@ -577,6 +591,38 @@ function homePage() {
         <h2 id="discovery-heading">begin with a discovery call</h2>
         <p>for brands & placemakers seeking a resonant and authentic atmosphere; immersive, kindred and alive.</p>
         <a class="button" href="/booking/">book a free discovery call</a>
+      </div>
+    </section>
+    <section class="home-info-panels" aria-label="studio rjl services and frequently asked questions">
+      <div class="home-panel-wrap">
+        <details class="home-panel service-panel">
+          <summary>
+            <span>creative services</span>
+            <em>peruse our creative services</em>
+          </summary>
+          <p>studio rjl creates bespoke branding, visual identity, digital experiences, art direction and spatial design for brands seeking atmosphere, clarity and resonance.</p>
+          <ul>
+            ${services.map((service) => `<li>${escapeHtml(service)}</li>`).join("")}
+          </ul>
+          <a class="studio-link" href="/services/">view creative services...</a>
+        </details>
+        <details class="home-panel">
+          <summary>
+            <span>FAQ</span>
+          </summary>
+          ${faqs
+            .slice(0, 4)
+            .map(
+              (item) => `
+                <div class="home-faq-item">
+                  <h3>${escapeHtml(item.question)}</h3>
+                  <p>${escapeHtml(item.answer)}</p>
+                </div>
+              `
+            )
+            .join("")}
+          <a class="studio-link" href="/faq/">read the full FAQ...</a>
+        </details>
       </div>
     </section>
   `;

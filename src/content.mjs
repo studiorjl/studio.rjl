@@ -37,6 +37,11 @@ export const navItems = [
   { label: "book", href: "/booking/" }
 ];
 
+export const navDropdownItems = [
+  { label: "creative services", href: "/services/" },
+  { label: "FAQ", href: "/faq/" }
+];
+
 export const footerLinks = [
   { label: "sitemap", href: "/sitemap/" },
   { label: "privacy", href: "/privacy/" },
@@ -49,6 +54,10 @@ export const socialLinks = [
   { label: "instagram", href: "https://www.instagram.com/studio.rjl/", icon: "instagram" },
   { label: "pinterest", href: "https://au.pinterest.com/studiorjl/", icon: "pinterest" },
   { label: "linkedin", href: "https://www.linkedin.com/company/studio-rjl", icon: "linkedin" }
+];
+
+export const designPartners = [
+  { label: "galah.design", href: "https://galah.design" }
 ];
 
 export const services = [
