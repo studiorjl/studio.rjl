@@ -5,6 +5,7 @@ import {
   budgets,
   blogTopics,
   designPartners,
+  editorialPosts,
   faqs,
   featuredProjects,
   footerLinks,
@@ -180,8 +181,34 @@ function blogSchema() {
   };
 }
 
-function articleSchema(post) {
-  const url = canonical(`/blog/${post.slug}/`);
+function editorialSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "studio rjl editorial",
+    url: canonical("/editorial/"),
+    description:
+      "studio rjl editorial case studies across branding, creative direction, campaign atmosphere and digital brand worlds.",
+    hasPart: editorialPosts.map((post) => ({
+      "@type": "Article",
+      headline: post.title,
+      url: canonical(`/editorial/${post.slug}/`),
+      image: absoluteAsset(post.image),
+      author: {
+        "@type": "Person",
+        name: post.author || site.founder
+      },
+      publisher: {
+        "@type": "Organization",
+        name: site.name,
+        url: site.domain
+      }
+    }))
+  };
+}
+
+function articleSchema(post, pathname = `/blog/${post.slug}/`) {
+  const url = canonical(pathname);
   const imageUrl = absoluteAsset(post.image);
 
   return {
@@ -189,7 +216,7 @@ function articleSchema(post) {
     "@type": "Article",
     headline: post.title,
     name: post.title,
-    description: post.description,
+    description: post.pinDescription || post.description,
     url,
     image: {
       "@type": "ImageObject",
@@ -421,9 +448,9 @@ function enquiryPanel() {
           <label>email*<input type="email" name="email" required></label>
           <label>phone<input type="tel" name="phone"></label>
           <label>location<input type="text" name="location"></label>
-          <label>budget*
-            <select name="budget" required>
-              <option value="">select a budget range</option>
+          <label>range
+            <select name="range">
+              <option value="">select a range</option>
               ${budgets.map((budget) => `<option value="${escapeHtml(budget)}">${escapeHtml(budget)}</option>`).join("")}
             </select>
           </label>
@@ -537,6 +564,50 @@ function articlePage(post) {
         { name: "home", href: "/" },
         { name: "blog", href: "/blog/" },
         { name: post.title, href: `/blog/${post.slug}/` }
+      ])
+    ]
+  });
+}
+
+function editorialArticlePage(post) {
+  const paragraphs = post.body?.length
+    ? post.body.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")
+    : `<p>${escapeHtml(post.description)}</p>`;
+
+  const body = `
+    <article class="article-page editorial-article">
+      <header class="page-header editorial-article-header">
+        <p class="eyebrow">${escapeHtml(post.section || "case study")}</p>
+        <h1>${escapeHtml(post.title)}</h1>
+        <p class="subline">${escapeHtml(post.description)}</p>
+        <img class="article-hero reveal" src="${asset(post.image)}" alt="${escapeHtml(post.imageAlt)}" loading="eager">
+      </header>
+      <section class="article-body">
+        ${paragraphs}
+        <button class="button article-enquiry-button" type="button" data-enquiry-toggle>let's collaborate</button>
+      </section>
+    </article>
+  `;
+
+  return layout({
+    title: post.pinTitle || post.title,
+    description: post.pinDescription || post.description,
+    pathname: `/editorial/${post.slug}/`,
+    image: asset(post.image),
+    imageAlt: post.imageAlt,
+    type: "article",
+    author: post.author || site.founder,
+    publishedTime: post.datePublished,
+    modifiedTime: post.dateModified || post.datePublished,
+    section: post.section || "case study",
+    tags: post.tags || [],
+    body,
+    extraSchema: [
+      articleSchema(post, `/editorial/${post.slug}/`),
+      breadcrumbSchema([
+        { name: "home", href: "/" },
+        { name: "editorial", href: "/editorial/" },
+        { name: post.title, href: `/editorial/${post.slug}/` }
       ])
     ]
   });
@@ -685,6 +756,51 @@ function portfolioPage() {
       breadcrumbSchema([
         { name: "home", href: "/" },
         { name: "recent works", href: "/portfolio/" }
+      ])
+    ]
+  });
+}
+
+function editorialPage() {
+  const body = `
+    <header class="editorial-header">
+      <h1 class="editorial-title" data-type-text="EDITORIAL" data-type-speed="24" data-type-cursor="pilcrow" data-type-linger="860"></h1>
+      <div class="editorial-rule" aria-hidden="true"></div>
+    </header>
+    <section class="editorial-section" aria-label="studio rjl editorial case studies">
+      <div class="editorial-strip-wrap">
+        <div class="editorial-strip" aria-label="editorial articles">
+          ${editorialPosts
+            .map(
+              (post) => `
+                <article class="editorial-card">
+                  <a href="/editorial/${post.slug}/">
+                    <div class="editorial-frame">
+                      <img src="${asset(post.image)}" alt="${escapeHtml(post.imageAlt)}" loading="lazy">
+                    </div>
+                    <h2>${escapeHtml(post.title)}</h2>
+                  </a>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+        <span class="editorial-scroll-cue" aria-hidden="true">→</span>
+      </div>
+    </section>
+  `;
+
+  return layout({
+    title: "editorial",
+    description:
+      "studio rjl editorial case studies exploring branding, visual identity, creative direction, campaign atmosphere and digital brand worlds.",
+    pathname: "/editorial/",
+    body,
+    extraSchema: [
+      editorialSchema(),
+      breadcrumbSchema([
+        { name: "home", href: "/" },
+        { name: "editorial", href: "/editorial/" }
       ])
     ]
   });
@@ -863,6 +979,7 @@ function sitemapPage() {
   const links = [
     { label: "home", href: "/" },
     { label: "recent work", href: "/portfolio/" },
+    { label: "editorial", href: "/editorial/" },
     { label: "creative services", href: "/services/" },
     { label: "shop", href: "/shop/" },
     { label: "FAQ", href: "/faq/" },
@@ -882,6 +999,8 @@ function sitemapPage() {
 const pages = [
   ["index.html", homePage()],
   ["portfolio/index.html", portfolioPage()],
+  ["editorial/index.html", editorialPage()],
+  ...editorialPosts.map((post) => [`editorial/${post.slug}/index.html`, editorialArticlePage(post)]),
   ["services/index.html", servicesPage()],
   ["shop/index.html", shopPage()],
   ["faq/index.html", faqPage()],
@@ -941,25 +1060,31 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", "/services/", "/shop/", "/faq/", "/booking/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", "/editorial/", "/services/", "/shop/", "/faq/", "/booking/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
+      .concat(editorialPosts.map((post) => `/editorial/${post.slug}/`))
       .concat(articlePosts.map((post) => `/blog/${post.slug}/`))
       .map((url) => `  <url><loc>${canonical(url)}</loc></url>`)
       .join("\n")}\n</urlset>\n`
   );
+  const feedPosts = [
+    ...editorialPosts.map((post) => ({ ...post, feedPath: `/editorial/${post.slug}/` })),
+    ...articlePosts.map((post) => ({ ...post, feedPath: `/blog/${post.slug}/` }))
+  ];
+
   await writeFile(
     path.join(dist, "feed.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">\n  <channel>\n    <title>${escapeXml(site.name)}</title>\n    <link>${site.domain}</link>\n    <description>${escapeXml(site.description)}</description>\n    <language>en-AU</language>\n    <image>\n      <url>${absoluteAsset("RJL_green_transparent.png")}</url>\n      <title>${escapeXml(site.name)}</title>\n      <link>${site.domain}</link>\n    </image>\n${articlePosts
+    `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">\n  <channel>\n    <title>${escapeXml(site.name)}</title>\n    <link>${site.domain}</link>\n    <description>${escapeXml(site.description)}</description>\n    <language>en-AU</language>\n    <image>\n      <url>${absoluteAsset("RJL_green_transparent.png")}</url>\n      <title>${escapeXml(site.name)}</title>\n      <link>${site.domain}</link>\n    </image>\n${feedPosts
       .map((post) => {
-        const url = canonical(`/blog/${post.slug}/`);
+        const url = canonical(post.feedPath);
         const imageUrl = absoluteAsset(post.image);
         const imageType = mimeTypeFor(post.image);
-        return `    <item>\n      <title>${escapeXml(post.title)}</title>\n      <link>${url}</link>\n      <guid isPermaLink="true">${url}</guid>\n      <description>${escapeXml(post.description)}</description>\n      <pubDate>${new Date(post.datePublished).toUTCString()}</pubDate>\n      <author>${escapeXml(site.contact.email)} (${escapeXml(post.author || site.founder)})</author>\n      <media:content url="${imageUrl}" medium="image" type="${imageType}">\n        <media:title>${escapeXml(post.imageAlt)}</media:title>\n      </media:content>\n      <enclosure url="${imageUrl}" type="${imageType}" />\n    </item>`;
+        return `    <item>\n      <title>${escapeXml(post.pinTitle || post.title)}</title>\n      <link>${url}</link>\n      <guid isPermaLink="true">${url}</guid>\n      <description>${escapeXml(post.pinDescription || post.description)}</description>\n      <pubDate>${new Date(post.datePublished).toUTCString()}</pubDate>\n      <author>${escapeXml(site.contact.email)} (${escapeXml(post.author || site.founder)})</author>\n      <media:content url="${imageUrl}" medium="image" type="${imageType}">\n        <media:title>${escapeXml(post.imageAlt)}</media:title>\n      </media:content>\n      <enclosure url="${imageUrl}" type="${imageType}" />\n    </item>`;
       })
       .join("\n")}\n  </channel>\n</rss>\n`
   );
   await writeFile(
     path.join(dist, "llms.txt"),
-    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
+    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
   );
   await writeFile(path.join(dist, "CNAME"), "studiorjl.com\n");
 }

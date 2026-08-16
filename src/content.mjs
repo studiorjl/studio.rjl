@@ -34,6 +34,7 @@ export const site = {
 export const navItems = [
   { label: "about", href: "/#about" },
   { label: "recent work", href: "/portfolio/" },
+  { label: "editorial", href: "/editorial/" },
   { label: "book", href: "/booking/" }
 ];
 
@@ -137,6 +138,28 @@ export const articlePosts = [
   */
 ];
 
+export const editorialPosts = [
+  {
+    title: "Alegienne",
+    slug: "alegienne",
+    description:
+      "a studio rjl case study in visual identity, campaign atmosphere and digital brand world development for Alegienne.",
+    image: "alegienne-fall26campaign.jpg",
+    imageAlt:
+      "Alegienne campaign image featuring gold jewellery and an emerald green car, art directed for a studio rjl case study",
+    author: "Rebekah Jane",
+    datePublished: "2026-08-16",
+    section: "case study",
+    tags: ["branding", "visual identity", "creative direction", "campaign", "Alegienne"],
+    pinTitle: "Alegienne brand identity and campaign case study by studio rjl",
+    pinDescription:
+      "A studio rjl editorial case study exploring visual identity, campaign atmosphere and digital brand world creation for Alegienne.",
+    body: [
+      "Alegienne; moods, blooms & tea."
+    ]
+  }
+];
+
 export const templateProducts = [
   {
     title: "brand clarity workbook",
@@ -165,10 +188,9 @@ export const templateProducts = [
 ];
 
 export const budgets = [
+  "under $2000 (smaller projects)",
   "$2,000 - $5,000",
   "$5,000 - $10,000",
-  "$10,000 - $20,000",
-  "$20,000+",
   "i am not sure yet"
 ];
 

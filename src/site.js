@@ -1,6 +1,6 @@
 const navToggle = document.querySelector("[data-menu-toggle]");
 const navLinks = document.querySelector("[data-nav-links]");
-const enquiryToggle = document.querySelector("[data-enquiry-toggle]");
+const enquiryToggles = document.querySelectorAll("[data-enquiry-toggle]");
 const enquiryPanel = document.querySelector("[data-enquiry-panel]");
 const enquiryClose = document.querySelector("[data-enquiry-close]");
 const form = document.querySelector("[data-enquiry-form]");
@@ -39,8 +39,11 @@ if (cursor) {
 function typeText(element, text, speed = 48) {
   return new Promise((resolve) => {
     let index = 0;
+    const cursorType = element.dataset.typeCursor;
+    const linger = Number(element.dataset.typeLinger) || 0;
     element.textContent = "";
     element.classList.add("typing");
+    if (cursorType === "pilcrow") element.classList.add("typing-pilcrow");
 
     function tick() {
       if (index < text.length) {
@@ -49,8 +52,10 @@ function typeText(element, text, speed = 48) {
         const pause = text.charAt(index - 1) === "," ? 120 : speed + Math.floor(Math.random() * 22);
         window.setTimeout(tick, pause);
       } else {
-        element.classList.remove("typing");
-        resolve();
+        window.setTimeout(() => {
+          element.classList.remove("typing", "typing-pilcrow");
+          resolve();
+        }, linger);
       }
     }
 
@@ -73,7 +78,7 @@ const sequentialGroups = document.querySelectorAll("main section, .page-header, 
 
 sequentialGroups.forEach((group) => {
   const elements = group.querySelectorAll(
-    "h1, h2, h3, p, details, iframe, select, .button, .project-card, .portfolio-card, .service-item, .shop-card, .about-image, .sitemap-list a"
+    "h1, h2, h3, p, details, iframe, select, .button, .project-card, .portfolio-card, .editorial-card, .service-item, .shop-card, .about-image, .sitemap-list a"
   );
   let delayIndex = 0;
 
@@ -110,11 +115,11 @@ if (navToggle && navLinks) {
   });
 }
 
-if (enquiryToggle && enquiryPanel) {
-  enquiryToggle.addEventListener("click", () => {
+if (enquiryToggles.length && enquiryPanel) {
+  enquiryToggles.forEach((enquiryToggle) => enquiryToggle.addEventListener("click", () => {
     enquiryPanel.classList.add("active");
     navLinks?.classList.remove("active");
-  });
+  }));
 }
 
 if (enquiryClose && enquiryPanel) {
@@ -124,8 +129,9 @@ if (enquiryClose && enquiryPanel) {
 }
 
 document.addEventListener("click", (event) => {
-  if (!enquiryPanel || !enquiryToggle) return;
-  if (enquiryPanel.contains(event.target) || enquiryToggle.contains(event.target)) return;
+  if (!enquiryPanel) return;
+  const clickedToggle = [...enquiryToggles].some((enquiryToggle) => enquiryToggle.contains(event.target));
+  if (enquiryPanel.contains(event.target) || clickedToggle) return;
   enquiryPanel.classList.remove("active");
 });
 
