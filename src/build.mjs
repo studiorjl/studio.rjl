@@ -576,6 +576,10 @@ function editorialArticlePage(post) {
 
   const body = `
     <article class="article-page editorial-article">
+      <header class="editorial-header editorial-article-masthead">
+        <a class="editorial-title editorial-title-link" href="/editorial/">EDITORIAL</a>
+        <div class="editorial-rule" aria-hidden="true"></div>
+      </header>
       <header class="page-header editorial-article-header">
         <p class="eyebrow">${escapeHtml(post.section || "case study")}</p>
         <h1>${escapeHtml(post.title)}</h1>
