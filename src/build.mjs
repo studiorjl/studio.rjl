@@ -166,21 +166,6 @@ function shopSchema() {
   };
 }
 
-function blogSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    name: "studio rjl blog",
-    url: canonical("/blog/"),
-    about: blogTopics,
-    publisher: {
-      "@type": "Organization",
-      name: site.name,
-      url: site.domain
-    }
-  };
-}
-
 function editorialSchema() {
   return {
     "@context": "https://schema.org",
@@ -204,6 +189,21 @@ function editorialSchema() {
         url: site.domain
       }
     }))
+  };
+}
+
+function blogSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "studio rjl blog",
+    url: canonical("/blog/"),
+    about: blogTopics,
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
+      url: site.domain
+    }
   };
 }
 
@@ -340,7 +340,7 @@ function head({
     <meta name="twitter:image" content="${imageUrl}">
     <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
     <meta name="p:domain_verify" content="${site.pinterestVerification}">
-    <link rel="alternate" type="application/rss+xml" title="studio rjl blog feed" href="${canonical("/feed.xml")}">
+    <link rel="alternate" type="application/rss+xml" title="studio rjl editorial feed" href="${canonical("/feed.xml")}">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="preload" as="image" href="/assets/RJL_green_transparent.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -530,6 +530,19 @@ function articlePage(post) {
   const paragraphs = post.body?.length
     ? post.body.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")
     : `<p>${escapeHtml(post.description)}</p>`;
+  const gallery = post.gallery?.length
+    ? `<section class="article-gallery" aria-label="${escapeHtml(post.title)} project imagery">
+        ${post.gallery
+          .map(
+            (item) => `
+              <figure class="article-gallery-item">
+                <img src="${asset(item.image)}" alt="${escapeHtml(item.alt)}" loading="lazy">
+              </figure>
+            `
+          )
+          .join("")}
+      </section>`
+    : "";
 
   const body = `
     <article class="article-page">
@@ -542,13 +555,14 @@ function articlePage(post) {
       <section class="article-body">
         ${paragraphs}
       </section>
+      ${gallery}
     </article>
   `;
 
   return layout({
     title: post.title,
     description: post.description,
-    pathname: `/blog/${post.slug}/`,
+    pathname: `/editorial/${post.slug}/`,
     image: asset(post.image),
     imageAlt: post.imageAlt,
     type: "article",
@@ -562,8 +576,8 @@ function articlePage(post) {
       articleSchema(post),
       breadcrumbSchema([
         { name: "home", href: "/" },
-        { name: "blog", href: "/blog/" },
-        { name: post.title, href: `/blog/${post.slug}/` }
+        { name: "editorial", href: "/editorial/" },
+        { name: post.title, href: `/editorial/${post.slug}/` }
       ])
     ]
   });
@@ -573,6 +587,19 @@ function editorialArticlePage(post) {
   const paragraphs = post.body?.length
     ? post.body.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")
     : `<p>${escapeHtml(post.description)}</p>`;
+  const gallery = post.gallery?.length
+    ? `<section class="article-gallery" aria-label="${escapeHtml(post.title)} project imagery">
+        ${post.gallery
+          .map(
+            (item) => `
+              <figure class="article-gallery-item">
+                <img src="${asset(item.image)}" alt="${escapeHtml(item.alt)}" loading="lazy">
+              </figure>
+            `
+          )
+          .join("")}
+      </section>`
+    : "";
 
   const body = `
     <article class="article-page editorial-article">
@@ -590,6 +617,7 @@ function editorialArticlePage(post) {
         ${paragraphs}
         <button class="button article-enquiry-button" type="button" data-enquiry-toggle>let's collaborate</button>
       </section>
+      ${gallery}
     </article>
   `;
 
@@ -988,7 +1016,7 @@ function sitemapPage() {
     { label: "shop", href: "/shop/" },
     { label: "FAQ", href: "/faq/" },
     { label: "bookings", href: "/booking/" },
-    { label: "blog", href: "/blog/" },
+    { label: "editorial", href: "/editorial/" },
     ...footerLinks
   ];
 
@@ -1009,10 +1037,7 @@ const pages = [
   ["shop/index.html", shopPage()],
   ["faq/index.html", faqPage()],
   ["booking/index.html", bookingPage()],
-  [
-    "blog/index.html",
-    blogPage()
-  ],
+  ["blog/index.html", blogPage()],
   ...articlePosts.map((post) => [`blog/${post.slug}/index.html`, articlePage(post)]),
   [
     "project-archive/index.html",

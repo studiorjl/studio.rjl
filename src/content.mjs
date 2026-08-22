@@ -119,26 +119,52 @@ export const blogTopics = [
   "design for purpose-led businesses"
 ];
 
-export const articlePosts = [
-  /*
-  {
-    title: "how to know when it's time to rebrand",
-    slug: "how-to-know-when-its-time-to-rebrand",
-    description: "clear signals that your visual identity is ready for a more strategic, elevated expression.",
-    image: "floral-monogram-brandmark.jpg",
-    imageAlt: "Floral monogram brandmark design by studio rjl",
-    author: "Rebekah Jane",
-    datePublished: "2026-08-01",
-    section: "branding",
-    tags: ["branding", "visual identity", "rebrand"],
-    body: [
-      "Start the article here."
-    ]
-  }
-  */
-];
+export const articlePosts = [];
 
 export const editorialPosts = [
+  {
+    title: "Rogue",
+    slug: "rogue",
+    description:
+      "a brand identity case study for Rogue, an editorial visual world of cards, emblems, leopard print, gold type and tactile restraint.",
+    image: "rogue-cover.jpg",
+    imageAlt: "Rogue cover artwork with illustrated rider emblem and refined wordmark on a dark textured field",
+    author: "Rebekah Jane",
+    datePublished: "2026-08-22",
+    section: "case study",
+    tags: ["branding", "visual identity", "editorial", "print design"],
+    pinTitle: "Rogue brand identity and print case study by studio rjl",
+    pinDescription:
+      "A studio rjl editorial case study for Rogue, exploring cards, emblems, leopard texture, gold type and tactile brand world design.",
+    body: [
+      "Rogue began as a study in instinct: a visual identity with a little danger in its posture, balanced by the quiet discipline of fine paper, embossed detail and a restrained typographic system.",
+      "The mark centres on a heroine in motion, set against a spotted horse and a rose-tipped arrow. It gives the identity a sense of pursuit and ritual, while the custom wordmark keeps the world elegant, spare and memorable.",
+      "Across the card studies, the system moves between gold, blind embossing, leopard texture and soft neutral stock. Each application was designed to feel collectible rather than disposable: part calling card, part keepsake, part tiny piece of theatre.",
+      "The result is a tactile brand world for Rogue that feels cinematic, feminine and unruly without losing its polish."
+    ],
+    gallery: [
+      {
+        image: "rogue-cards-emblem-gold-leopard.jpg",
+        alt: "Rogue business cards with gold emblem artwork and blind embossed reverse on a leopard textured background"
+      },
+      {
+        image: "rogue-emblem-catprint.jpg",
+        alt: "Rogue emblem and wordmark on a pale animal print inspired textured background"
+      },
+      {
+        image: "rogue-cards-horizontal-gold-studiorjl.jpg",
+        alt: "Rogue horizontal business cards with gold wordmark and blind embossed reverse"
+      },
+      {
+        image: "rogue-card-model.jpg",
+        alt: "Model holding a Rogue card in black lace gloves with red lip styling"
+      },
+      {
+        image: "rogue-marketing-cards.jpg",
+        alt: "Two Rogue embossed vertical cards on a dark textured background"
+      }
+    ]
+  },
   {
     title: "Alegienne",
     slug: "alegienne",
