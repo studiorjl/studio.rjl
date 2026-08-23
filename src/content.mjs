@@ -126,42 +126,69 @@ export const editorialPosts = [
     title: "Rogue",
     slug: "rogue",
     description:
-      "a brand identity case study for Rogue, an editorial visual world of cards, emblems, leopard print, gold type and tactile restraint.",
+      "a brand identity case study for Rogue, an editorial visual world of cards, emblems, leopard print, gold type and elegant curation.",
     image: "rogue-cover.jpg",
-    imageAlt: "Rogue cover artwork with illustrated rider emblem and refined wordmark on a dark textured field",
+    imageWidth: 1500,
+    imageHeight: 2055,
+    imageAlt:
+      "Rogue cover artwork with an illustrated heroine riding a leopard-spotted horse above a refined wordmark on a dark textured field",
     author: "Rebekah Jane",
     datePublished: "2026-08-22",
     section: "case study",
     tags: ["branding", "visual identity", "editorial", "print design"],
     pinTitle: "Rogue brand identity and print case study by studio rjl",
     pinDescription:
-      "A studio rjl editorial case study for Rogue, exploring cards, emblems, leopard texture, gold type and tactile brand world design.",
+      "A studio rjl editorial case study for Rogue, exploring a heroine emblem, leopard-spotted horse, gold embossing, letterpress cards and cinematic agency brand world design.",
     body: [
-      "Rogue began as a study in instinct: a visual identity with a little danger in its posture, balanced by the quiet discipline of fine paper, embossed detail and a restrained typographic system.",
-      "The mark centres on a heroine in motion, set against a spotted horse and a rose-tipped arrow. It gives the identity a sense of pursuit and ritual, while the custom wordmark keeps the world elegant, spare and memorable.",
-      "Across the card studies, the system moves between gold, blind embossing, leopard texture and soft neutral stock. Each application was designed to feel collectible rather than disposable: part calling card, part keepsake, part tiny piece of theatre.",
-      "The result is a tactile brand world for Rogue that feels cinematic, feminine and unruly without losing its polish."
+      "Rogue began as an instinctual case study, a visual identity based on going rogue.",
+      "A bold courageous danger in this posture, balanced by discipline and elegant curation.",
+      "We created this visual identity centered on a heroine in motion, riding a leopard-spotted horse, drawing a rose arrow through her archer's bow. The style we curated is truly a nod to the enduring quality of heritage labels, the brands that have carved a legacy in fashion & accessories. Every great thing established has to go a little rogue to shoot your shot, especially if that is more flowers. And especially if your horse has leopard spots.",
+      "We absolutely loved creating the visual identity for this agency; a perfect mix of mythology and for a whimsical unorthodox approach to marketing and advertising.",
+      "Rogue features a bespoke designed wordmark logo delivered for digital & print mediums; gold embossing, bespoke letterpress printing on unbleached paper cardstock. We chose a bold dark colour palette paired with an elegant typographic system, custom illustrations and textures of dark marble & leopard, of course.",
+      "Rogue agency feels cinematic, daring and unruly. Exactly the kind of marketing you actually want to see."
     ],
     gallery: [
       {
         image: "rogue-cards-emblem-gold-leopard.jpg",
-        alt: "Rogue business cards with gold emblem artwork and blind embossed reverse on a leopard textured background"
+        width: 1500,
+        height: 2055,
+        alt:
+          "Rogue letterpress business cards with gold heroine emblem artwork, blind embossed reverse and leopard textured campaign backdrop"
       },
       {
         image: "rogue-emblem-catprint.jpg",
-        alt: "Rogue emblem and wordmark on a pale animal print inspired textured background"
+        width: 1400,
+        height: 1919,
+        alt:
+          "Rogue heroine emblem and elegant serif wordmark set over a pale leopard print inspired texture"
+      },
+      {
+        image: "rogue-car-ad.jpg",
+        width: 1400,
+        height: 2086,
+        alt:
+          "Rogue campaign artwork of a woman in sunglasses, lace headscarf and gloves driving a vintage car with cinematic advertising styling"
       },
       {
         image: "rogue-cards-horizontal-gold-studiorjl.jpg",
-        alt: "Rogue horizontal business cards with gold wordmark and blind embossed reverse"
+        width: 1500,
+        height: 2055,
+        alt:
+          "Rogue horizontal card suite with gold embossed wordmark, unbleached paper stock and blind letterpress reverse"
       },
       {
         image: "rogue-card-model.jpg",
-        alt: "Model holding a Rogue card in black lace gloves with red lip styling"
+        width: 1400,
+        height: 1949,
+        alt:
+          "Rogue brand card held over the eyes by a model in black lace gloves, gold hoops and red lip styling"
       },
       {
         image: "rogue-marketing-cards.jpg",
-        alt: "Two Rogue embossed vertical cards on a dark textured background"
+        width: 1500,
+        height: 2121,
+        alt:
+          "Two vertical Rogue embossed cards on a dark marble textured surface, showing the elegant curation of the print system"
       }
     ]
   },

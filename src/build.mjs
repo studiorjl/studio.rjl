@@ -39,6 +39,8 @@ const escapeXml = (value = "") =>
 const asset = (filename) => `/assets/${filename}`;
 const canonical = (pathname) => new URL(pathname, site.domain).toString();
 const absoluteAsset = (filename) => new URL(asset(filename), site.domain).toString();
+const imageDimensionAttrs = (image = {}) =>
+  image.width && image.height ? ` width="${Number(image.width)}" height="${Number(image.height)}"` : "";
 const mimeTypeFor = (filename = "") => {
   const extension = path.extname(filename).toLowerCase();
   if (extension === ".png") return "image/png";
@@ -536,7 +538,7 @@ function articlePage(post) {
           .map(
             (item) => `
               <figure class="article-gallery-item">
-                <img src="${asset(item.image)}" alt="${escapeHtml(item.alt)}" loading="lazy">
+                <img src="${asset(item.image)}" alt="${escapeHtml(item.alt)}"${imageDimensionAttrs(item)} loading="lazy" decoding="async">
               </figure>
             `
           )
@@ -550,7 +552,7 @@ function articlePage(post) {
         <p class="eyebrow">${escapeHtml(post.section || "studio notes")}</p>
         <h1>${escapeHtml(post.title)}</h1>
         <p class="subline">${escapeHtml(post.description)}</p>
-        <img class="article-hero reveal" src="${asset(post.image)}" alt="${escapeHtml(post.imageAlt)}" loading="eager">
+        <img class="article-hero reveal" src="${asset(post.image)}" alt="${escapeHtml(post.imageAlt)}"${imageDimensionAttrs({ width: post.imageWidth, height: post.imageHeight })} loading="eager" decoding="async" fetchpriority="high">
       </header>
       <section class="article-body">
         ${paragraphs}
@@ -593,7 +595,7 @@ function editorialArticlePage(post) {
           .map(
             (item) => `
               <figure class="article-gallery-item">
-                <img src="${asset(item.image)}" alt="${escapeHtml(item.alt)}" loading="lazy">
+                <img src="${asset(item.image)}" alt="${escapeHtml(item.alt)}"${imageDimensionAttrs(item)} loading="lazy" decoding="async">
               </figure>
             `
           )
@@ -611,7 +613,7 @@ function editorialArticlePage(post) {
         <p class="eyebrow">${escapeHtml(post.section || "case study")}</p>
         <h1>${escapeHtml(post.title)}</h1>
         <p class="subline">${escapeHtml(post.description)}</p>
-        <img class="article-hero reveal" src="${asset(post.image)}" alt="${escapeHtml(post.imageAlt)}" loading="eager">
+        <img class="article-hero reveal" src="${asset(post.image)}" alt="${escapeHtml(post.imageAlt)}"${imageDimensionAttrs({ width: post.imageWidth, height: post.imageHeight })} loading="eager" decoding="async" fetchpriority="high">
       </header>
       <section class="article-body">
         ${paragraphs}
