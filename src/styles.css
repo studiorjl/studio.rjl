@@ -229,9 +229,10 @@ img {
   text-align: center;
 }
 
-.hero-mark {
-  width: min(240px, 58vw);
-  margin-bottom: 22px;
+.hero-tile {
+  display: block;
+  width: min(520px, 78vw);
+  margin: 0 auto 18px;
 }
 
 .signature,
@@ -1075,6 +1076,17 @@ main section.faq-list {
 
 .home-faq-item p {
   margin-bottom: 18px;
+}
+
+.home-closing-mark {
+  background: var(--ivory);
+  padding-top: 8px;
+  padding-bottom: 82px;
+  text-align: center;
+}
+
+.home-closing-mark img {
+  width: min(460px, 78vw);
 }
 
 footer {

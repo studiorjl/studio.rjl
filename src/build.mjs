@@ -302,6 +302,7 @@ function head({
   pathname,
   image = "/assets/RJL_green_transparent.png",
   imageAlt = site.description,
+  preloadImage = "/assets/RJL_green_transparent.png",
   type = "website",
   author = site.founder,
   publishedTime = "",
@@ -346,7 +347,7 @@ function head({
     <meta name="p:domain_verify" content="${site.pinterestVerification}">
     <link rel="alternate" type="application/rss+xml" title="studio rjl editorial feed" href="${canonical("/feed.xml")}">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
-    <link rel="preload" as="image" href="/assets/RJL_green_transparent.png">
+    <link rel="preload" as="image" href="${preloadImage}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -490,6 +491,7 @@ function layout({
   body,
   image,
   imageAlt,
+  preloadImage,
   type,
   author,
   publishedTime,
@@ -508,6 +510,7 @@ function layout({
       pathname,
       image,
       imageAlt,
+      preloadImage,
       type,
       author,
       publishedTime,
@@ -653,7 +656,18 @@ function homePage() {
   const body = `
     <section class="hero">
       <div>
-        <img class="hero-mark arrive" src="${asset("RJL_green_transparent.png")}" alt="studio rjl monogram" width="480" height="480">
+        <img
+          class="hero-tile arrive"
+          src="${asset("studiorjl-tile-hero-640.png")}"
+          srcset="${asset("studiorjl-tile-hero-640.png")} 640w, ${asset("studiorjl-tile-hero-960.png")} 960w"
+          sizes="(max-width: 720px) 78vw, 520px"
+          alt="studio rjl metallic monogram tile"
+          width="640"
+          height="898"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        >
         <div class="signature arrive arrive-delay-1">design studio</div>
         <h1 class="sr-only">studio rjl</h1>
         <div class="hero-copy" data-typing-group>
@@ -732,12 +746,18 @@ function homePage() {
         </details>
       </div>
     </section>
+    <section class="home-closing-mark" aria-label="studio rjl monogram">
+      <img class="reveal" src="${asset("RJL_green_transparent.png")}" alt="studio rjl green monogram" width="2052" height="1185" loading="lazy" decoding="async">
+    </section>
   `;
 
   return layout({
     title: site.name,
     description: site.description,
     pathname: "/",
+    image: "/assets/studiorjl-tile-hero-960.png",
+    imageAlt: "studio rjl metallic monogram tile",
+    preloadImage: "/assets/studiorjl-tile-hero-960.png",
     body,
     extraSchema: [breadcrumbSchema([{ name: "home", href: "/" }])]
   });
