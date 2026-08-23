@@ -624,6 +624,11 @@ main section.image-section {
   pointer-events: none;
 }
 
+.portfolio-frame a {
+  display: block;
+  text-decoration: none;
+}
+
 .portfolio-card:hover img {
   transform: scale(1.03);
 }

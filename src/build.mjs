@@ -133,8 +133,10 @@ function portfolioSchema() {
     hasPart: portfolio.map((project) => ({
       "@type": "ImageObject",
       contentUrl: canonical(asset(project.image)),
+      url: project.href ? canonical(project.href) : canonical("/portfolio/"),
       caption: project.alt,
       description: project.categories.join(", "),
+      keywords: [...(project.categories || []), ...(project.tags || [])],
       creator: {
         "@type": "Organization",
         name: site.name
@@ -765,12 +767,16 @@ function portfolioPage() {
           (project) => `
             <article class="portfolio-card" data-tags="${project.tags.join(" ")}">
               <div class="portfolio-frame">
-                <img class="reveal" src="${asset(project.image)}" alt="${escapeHtml(project.alt)}" loading="lazy">
+                ${
+                  project.href
+                    ? `<a href="${project.href}" aria-label="View ${escapeHtml(project.alt)} case study"><img class="reveal" src="${asset(project.image)}" alt="${escapeHtml(project.alt)}" loading="lazy"></a>`
+                    : `<img class="reveal" src="${asset(project.image)}" alt="${escapeHtml(project.alt)}" loading="lazy">`
+                }
               </div>
               <div class="meta">
                 <span class="category">filed under</span>
                 ${project.categories.map((category) => `<span class="tag">${escapeHtml(category)}</span>`).join("")}
-                <a class="read-more is-hidden" href="/project-archive/">read more...</a>
+                <a class="read-more${project.href ? "" : " is-hidden"}" href="${project.href || "/project-archive/"}">read more...</a>
               </div>
             </article>
           `

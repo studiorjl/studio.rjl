@@ -126,7 +126,7 @@ export const editorialPosts = [
     title: "Rogue",
     slug: "rogue",
     description:
-      "a brand identity case study for Rogue, an editorial visual world of cards, emblems, leopard print, gold type and elegant curation.",
+      "a brand identity case study for Rogue; a daring marketing agency. Studio RJL created an editorial visual world and visual identity to match their fiercely creative, often romantic and frankly rogue approach to marketing.",
     image: "rogue-cover.jpg",
     imageWidth: 1500,
     imageHeight: 2055,
@@ -328,6 +328,84 @@ export const featuredProjects = [
 ];
 
 export const portfolio = [
+  {
+    image: "rogue-cover.jpg",
+    alt: "Rogue marketing agency visual identity case study with heroine emblem and bespoke wordmark by studio rjl",
+    categories: [
+      "brand designer Byron Bay",
+      "marketing agency branding",
+      "visual identity",
+      "editorial art direction",
+      "print design"
+    ],
+    tags: ["branding", "graphic", "print"],
+    href: "/editorial/rogue/"
+  },
+  {
+    image: "rogue-cards-emblem-gold-leopard.jpg",
+    alt: "Rogue gold embossed business card and leopard print brand collateral by studio rjl",
+    categories: [
+      "brand identity design",
+      "business card design",
+      "gold embossing",
+      "letterpress printing",
+      "creative direction"
+    ],
+    tags: ["branding", "graphic", "print"],
+    href: "/editorial/rogue/"
+  },
+  {
+    image: "rogue-car-ad.jpg",
+    alt: "Rogue campaign artwork for a daring marketing agency with cinematic fashion inspired art direction",
+    categories: [
+      "campaign art direction",
+      "marketing agency identity",
+      "visual storytelling",
+      "brand world",
+      "editorial design"
+    ],
+    tags: ["branding", "graphic"],
+    href: "/editorial/rogue/"
+  },
+  {
+    image: "florah-floral-design-studio.jpg",
+    alt: "Florah floral design studio visual identity and botanical brandscape by studio rjl",
+    categories: [
+      "brand designer Byron Bay",
+      "floral studio branding",
+      "visual identity",
+      "boutique business branding",
+      "Byron Hinterland"
+    ],
+    tags: ["branding", "graphic", "print"],
+    href: "/editorial/florah/"
+  },
+  {
+    image: "florah-floral-studio-branding-studiorjl-portrait.jpg",
+    alt: "Florah floral studio branding portrait with bespoke wordmark and romantic botanical identity",
+    categories: [
+      "florist branding",
+      "bespoke wordmark",
+      "brand identity design",
+      "creative direction",
+      "print and packaging"
+    ],
+    tags: ["branding", "graphic", "print"],
+    href: "/editorial/florah/"
+  },
+  {
+    image: "florah-bouquet-2.jpg",
+    alt: "Florah seasonal bouquet brand artwork with moody floral art direction by studio rjl",
+    categories: [
+      "floral design studio",
+      "campaign imagery",
+      "brand atmosphere",
+      "visual identity",
+      "Northern NSW branding"
+    ],
+    tags: ["branding", "graphic"],
+    href: "/editorial/florah/"
+  },
   {
     image: "interior-brandscape-design-warm-light.jpg",
     alt: "Interior brandscape design with warm light, textiles and atmospheric styling",
