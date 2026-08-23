@@ -1086,7 +1086,13 @@ main section.faq-list {
 }
 
 .home-closing-mark img {
-  width: min(345px, 58vw);
+  width: min(259px, 44vw);
+}
+
+@media (min-width: 721px) {
+  .hero-tile {
+    width: 293px;
+  }
 }
 
 footer {

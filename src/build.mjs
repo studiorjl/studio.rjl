@@ -660,7 +660,7 @@ function homePage() {
           class="hero-tile arrive"
           src="${asset("studiorjl-tile-hero-640.png")}"
           srcset="${asset("studiorjl-tile-hero-640.png")} 640w, ${asset("studiorjl-tile-hero-960.png")} 960w"
-          sizes="(max-width: 720px) 58vw, 390px"
+          sizes="(max-width: 720px) 58vw, 293px"
           alt="studio rjl metallic monogram tile"
           width="640"
           height="898"
