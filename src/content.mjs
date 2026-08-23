@@ -193,6 +193,71 @@ export const editorialPosts = [
     ]
   },
   {
+    title: "Florah",
+    slug: "florah",
+    description:
+      "A boutique & seasonal floral design studio based in the Byron Hinterland of Northern NSW.",
+    image: "florah-floral-design-studio.jpg",
+    imageWidth: 1500,
+    imageHeight: 2000,
+    imageAlt:
+      "Florah floral design studio brand artwork with botanical texture and a moody Studio RJL visual identity treatment",
+    author: "Rebekah Jane",
+    datePublished: "2026-08-23",
+    section: "case study",
+    tags: ["branding", "visual identity", "floral design", "print design", "Florah"],
+    pinTitle: "Florah floral studio brand identity case study by studio rjl",
+    pinDescription:
+      "A studio rjl editorial case study for Florah, a boutique seasonal floral design studio in the Byron Hinterland with a moody visual identity, floral emblem, print and packaging system.",
+    body: [
+      "Florah a seasonal floral design studio based in the Byron Hinterland. Studio RJL crafted a bespoke brandscape to translate the beauty and romance of their floral arrangements into a palpable & moody atmosphere for their online storefront, visual identity, print & packaging. Featuring a bespoke typographic wordmark, floral emblem & rich vintage style print & packaging textures in a dark moody colour palette."
+    ],
+    gallery: [
+      {
+        image: "florah-floral-studio-branding-studiorjl-portrait-dark-alt.jpg",
+        width: 1400,
+        height: 1815,
+        alt:
+          "Florah portrait brand artwork with a dark floral studio identity treatment, antique botanical mood and Studio RJL styling"
+      },
+      {
+        image: "florah-floral-studio-branding-studiorjl-portrait.jpg",
+        width: 1400,
+        height: 2026,
+        alt:
+          "Florah floral studio branding portrait with bespoke wordmark, romantic botanical arrangement and seasonal floral identity"
+      },
+      {
+        image: "florah-bouquet-2.jpg",
+        width: 1500,
+        height: 2000,
+        alt:
+          "Florah seasonal bouquet artwork with moody floral textures and romantic print-inspired composition"
+      },
+      {
+        image: "florah-floral-studio-branding-studiorjl-portrait-dark.jpg",
+        width: 1400,
+        height: 1815,
+        alt:
+          "Florah dark portrait brand composition with rich plum tones, floral emblem and atmospheric studio identity styling"
+      },
+      {
+        image: "florah-floral-design-studio-bouquet.jpg",
+        width: 1500,
+        height: 1991,
+        alt:
+          "Florah floral design studio bouquet artwork with vintage packaging texture and moody botanical art direction"
+      },
+      {
+        image: "florah-floral-studio-branding-studiorjl-portrait-antique-plum-mono.jpg",
+        width: 1400,
+        height: 1815,
+        alt:
+          "Florah antique plum monochrome brand portrait with bespoke floral studio identity and heritage print mood"
+      }
+    ]
+  },
+  {
     title: "Alegienne",
     slug: "alegienne",
     description:
