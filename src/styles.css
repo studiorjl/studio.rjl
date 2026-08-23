@@ -231,7 +231,7 @@ img {
 
 .hero-tile {
   display: block;
-  width: min(520px, 78vw);
+  width: min(390px, 58vw);
   margin: 0 auto 18px;
 }
 
@@ -1086,7 +1086,7 @@ main section.faq-list {
 }
 
 .home-closing-mark img {
-  width: min(460px, 78vw);
+  width: min(345px, 58vw);
 }
 
 footer {
