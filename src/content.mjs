@@ -35,12 +35,12 @@ export const navItems = [
   { label: "about", href: "/#about" },
   { label: "recent work", href: "/portfolio/" },
   { label: "editorial", href: "/editorial/" },
-  { label: "book", href: "/booking/" }
 ];
 
 export const navDropdownItems = [
   { label: "creative services", href: "/services/" },
-  { label: "FAQ", href: "/faq/" }
+  { label: "FAQ", href: "/faq/" } 
+  { label: "book a call", href: "/booking/" }
 ];
 
 export const footerLinks = [
@@ -126,7 +126,7 @@ export const editorialPosts = [
     title: "Rogue",
     slug: "rogue",
     description:
-      "a brand identity case study for Rogue; a daring marketing agency. Studio RJL created an editorial visual world and visual identity to match their fiercely creative, often romantic and frankly rogue approach to marketing.",
+      "a brand identity case study for Rogue; a daring marketing agency. Studio RJL created an editorial visual world and visual identity to match a fiercely creative, often romantic and frankly rogue approach to marketing.",
     image: "rogue-cover.jpg",
     imageWidth: 1500,
     imageHeight: 2055,
@@ -210,7 +210,7 @@ export const editorialPosts = [
     pinDescription:
       "A studio rjl editorial case study for Florah, a boutique seasonal floral design studio in the Byron Hinterland with a moody visual identity, floral emblem, print and packaging system.",
     body: [
-      "Florah a seasonal floral design studio based in the Byron Hinterland. Studio RJL crafted a bespoke brandscape to translate the beauty and romance of their floral arrangements into a palpable & moody atmosphere for their online storefront, visual identity, print & packaging. Featuring a bespoke typographic wordmark, floral emblem & rich vintage style print & packaging textures in a dark moody colour palette."
+      "Florah a seasonal floral design studio based in seasons and cycles. Studio RJL crafted a bespoke brandscape to translate the beauty and romance of their floral arrangements into a palpable & moody atmosphere for their online storefront, visual identity, print & packaging. Featuring a bespoke typographic wordmark, floral emblem & rich vintage style print & packaging textures in a dark moody colour palette."
     ],
     gallery: [
       {
@@ -332,13 +332,12 @@ export const portfolio = [
     image: "rogue-cover.jpg",
     alt: "Rogue marketing agency visual identity case study with heroine emblem and bespoke wordmark by studio rjl",
     categories: [
-      "brand designer Byron Bay",
-      "marketing agency branding",
+      "brand design",
       "visual identity",
       "editorial art direction",
       "print design"
     ],
-    tags: ["branding", "graphic", "print"],
+    tags: ["branding", "graphic design", "print"],
     href: "/editorial/rogue/"
   },
   {
@@ -346,9 +345,9 @@ export const portfolio = [
     alt: "Rogue campaign artwork for a daring marketing agency with cinematic fashion inspired art direction",
     categories: [
       "campaign art direction",
-      "marketing agency identity",
+      "branding",
       "visual storytelling",
-      "brand world",
+      "fashion & editorial branding",
       "editorial design"
     ],
     tags: ["branding", "graphic"],
@@ -371,7 +370,7 @@ export const portfolio = [
     image: "florah-floral-design-studio.jpg",
     alt: "Florah floral design studio visual identity and botanical brandscape by studio rjl",
     categories: [
-      "brand designer Byron Bay",
+      "brand design - Byron Bay",
       "floral studio branding",
       "visual identity",
       "boutique business branding",
@@ -414,7 +413,7 @@ export const portfolio = [
   },
   {
     image: "flora-h-brandmark.jpg",
-    alt: "Flora H brandmark and visual identity design",
+    alt: "Florah brandmark and visual identity design",
     categories: ["branding", "visual identity", "bespoke printing"],
     tags: ["branding", "print"]
   },
