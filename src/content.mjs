@@ -78,6 +78,17 @@ export const services = [
 
 export const primaryServices = services;
 
+// trimmed set for the enquiry form only — keeps the form frictionless;
+// the full list above remains the base reference for the services page, home panel and llms.txt
+export const enquiryServices = [
+  "branding & visual identity",
+  "interior design & styling",
+  "web design & development",
+  "print & packaging design",
+  "art direction, photography & styling",
+  "something else / i'm not sure yet"
+];
+
 export const serviceDetails = {
   "branding & visual identity suite design":
     "bespoke identity systems for brands seeking recognition, resonance and a visual language with depth. a visual identity suite may include a primary logo, secondary logo, brandmarks, submarks, typography, colour palette, image direction, layout rules, social templates, print collateral direction and a practical brand guide for delivery.",
