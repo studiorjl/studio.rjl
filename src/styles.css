@@ -1346,6 +1346,24 @@ footer {
   opacity: 1;
 }
 
+.enquiry-services {
+  margin-top: 20px;
+}
+
+.enquiry-services summary {
+  padding: 14px 18px;
+  font-size: 20px;
+}
+
+.enquiry-services summary em {
+  opacity: 0.76;
+}
+
+.enquiry-services .service-options {
+  margin: 0 18px 18px;
+  max-width: none;
+}
+
 .enquiry-inner .button {
   margin-top: 28px;
   font-family: "Courier New", monospace;
