@@ -454,6 +454,20 @@ function enquiryPanel() {
           <label>email*<input type="email" name="email" required></label>
           <label>phone<input type="tel" name="phone"></label>
           <label>location<input type="text" name="location"></label>
+          <details class="home-panel enquiry-services">
+            <summary>
+              <span>creative services</span>
+              <em>select all that apply</em>
+            </summary>
+            <div class="service-options">
+              ${enquiryServices
+                .map(
+                  (service) =>
+                    `<label><input type="checkbox" name="service[]" value="${escapeHtml(service)}"> ${escapeHtml(service)}</label>`
+                )
+                .join("")}
+            </div>
+          </details>
           <label>range
             <select name="range">
               <option value="">select a range</option>
@@ -463,20 +477,6 @@ function enquiryPanel() {
           <div hidden>
             <label>website<input type="text" name="website" autocomplete="off" tabindex="-1"></label>
           </div>
-          <details class="home-panel enquiry-services">
-            <summary>
-              <span>creative services</span>
-              <em>select all that apply</em>
-            </summary>
-            <div class="service-options">
-              ${services
-                .map(
-                  (service) =>
-                    `<label><input type="checkbox" name="service[]" value="${escapeHtml(service)}"> ${escapeHtml(service)}</label>`
-                )
-                .join("")}
-            </div>
-          </details>
           <label>message<textarea name="message" rows="4" placeholder="tell us a little bit about your project..."></textarea></label>
           <input type="hidden" name="_subject" value="new studio rjl enquiry">
           <button class="button" type="submit">send</button>
