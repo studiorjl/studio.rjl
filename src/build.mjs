@@ -393,23 +393,33 @@ function nav() {
 
 function icon(name) {
   if (name === "mail") {
-    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h16v10H4z"/><path d="m4 8 8 6 8-6"/><path d="M12 17.2s-3.2-1.7-3.2-3.7c0-1 .7-1.7 1.6-1.7.7 0 1.2.4 1.6 1 .4-.6.9-1 1.6-1 .9 0 1.6.7 1.6 1.7 0 2-3.2 3.7-3.2 3.7z"/></svg>`;
+    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h16v10H4z"/><path d="m4 8 8 6 8-6"/><path class="glyph" d="M12 17.2s-3.2-1.7-3.2-3.7c0-1 .7-1.7 1.6-1.7.7 0 1.2.4 1.6 1 .4-.6.9-1 1.6-1 .9 0 1.6.7 1.6 1.7 0 2-3.2 3.7-3.2 3.7z"/></svg>`;
   }
 
   if (name === "instagram") {
-    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle cx="12" cy="12" r="3.2"/><circle cx="16.4" cy="7.8" r="0.8"/></svg>`;
+    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle class="glyph" cx="12" cy="12" r="3.2"/><circle cx="16.4" cy="7.8" r="0.8"/></svg>`;
   }
 
   if (name === "linkedin") {
-    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 10v8"/><path d="M6.5 6.5v.1"/><path d="M11 18v-8"/><path d="M11 13.4c0-2 1.2-3.4 3.1-3.4 1.8 0 3 1.2 3 3.4V18"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg>`;
+    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><path class="glyph" d="M6.5 10v8"/><path class="glyph" d="M6.5 6.5v.1"/><path class="glyph" d="M11 18v-8"/><path class="glyph" d="M11 13.4c0-2 1.2-3.4 3.1-3.4 1.8 0 3 1.2 3 3.4V18"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg>`;
   }
 
-  return `<svg class="social-svg social-svg-pinterest" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.6 20c.5-1.7 1-3.4 1.5-5.1.4.7 1.2 1.1 2.1 1.1 2.7 0 4.7-2.5 4.7-5.8 0-3.1-2.6-5.7-6.5-5.7-4.8 0-7.3 3.2-7.3 6.5 0 1.7.8 3.5 2.1 4.1.2.1.3 0 .4-.2l.3-1.3c.1-.2 0-.3-.1-.5-.4-.5-.7-1.1-.7-1.9 0-2.5 1.9-4.8 5-4.8 2.7 0 4.4 1.7 4.4 4.1 0 2.8-1.4 4.8-3.3 4.8-1 0-1.8-.9-1.5-1.9.3-1.2.9-2.5.9-3.4 0-.8-.4-1.4-1.3-1.4-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5c-.3 1.3-.3 2.7-.2 3.7.7-.9 1.7-2.2 2.2-3.2z"/></svg>`;
+  if (name === "galah") {
+    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><path class="glyph" d="M7 6.5C7.5 4.5 9.5 3.2 11.8 3.4C13.8 3.6 15.2 5 15.4 7C15.7 9.6 15.2 12 14 14C13.6 15 13.4 16.2 13.6 17.4L16.4 21.2L13 18.4C11.8 16.9 10.8 15.4 10.3 13.7C9.7 11.9 9.6 9.9 10 8.2C10.2 7.4 9.6 6.7 8.7 6.5L7 6.5Z"/><path d="M11 3.6C11.3 2.5 12.1 1.6 13.2 1.2"/><path d="M12.3 3.8C12.8 2.9 13.6 2.3 14.6 2"/><path d="M7 6.5c-1 .3-1.3 1.4-.6 2.2"/><path d="M11.9 8.9C13.2 9.7 13.8 11.2 13.5 12.8"/><circle cx="9.6" cy="5.9" r="0.55"/></svg>`;
+  }
+
+  return `<svg class="social-svg social-svg-pinterest" viewBox="0 0 24 24" aria-hidden="true"><path class="glyph" d="M11.6 20c.5-1.7 1-3.4 1.5-5.1.4.7 1.2 1.1 2.1 1.1 2.7 0 4.7-2.5 4.7-5.8 0-3.1-2.6-5.7-6.5-5.7-4.8 0-7.3 3.2-7.3 6.5 0 1.7.8 3.5 2.1 4.1.2.1.3 0 .4-.2l.3-1.3c.1-.2 0-.3-.1-.5-.4-.5-.7-1.1-.7-1.9 0-2.5 1.9-4.8 5-4.8 2.7 0 4.4 1.7 4.4 4.1 0 2.8-1.4 4.8-3.3 4.8-1 0-1.8-.9-1.5-1.9.3-1.2.9-2.5.9-3.4 0-.8-.4-1.4-1.3-1.4-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5c-.3 1.3-.3 2.7-.2 3.7.7-.9 1.7-2.2 2.2-3.2z"/></svg>`;
 }
 
 function footer() {
   return `
     <footer>
+      <style>
+        .social-svg .glyph { transition: fill 0.2s ease, stroke 0.2s ease; }
+        .social-links a:hover .social-svg .glyph { fill: var(--deep-green); stroke: var(--deep-green); stroke-width: 2; }
+        .footer-links a:hover .social-icon { background: var(--ivory); border-color: var(--gold); color: var(--gold); }
+        .footer-links a:hover .social-svg .glyph { fill: var(--deep-green); stroke: var(--deep-green); }
+      </style>
       <div class="footer-grid">
         <div class="footer-block reveal">
           <div class="footer-title">studio rjl</div>
@@ -425,7 +435,7 @@ function footer() {
           <div class="footer-subsection">
             <div class="footer-title">design partners</div>
             <div class="footer-links">
-              ${designPartners.map((link) => `<a href="${link.href}">${link.icon ? `<img src="${link.icon}" alt="" width="12" height="12" style="vertical-align:middle;margin-right:6px;border-radius:2px;opacity:0.9">` : ""}${escapeHtml(link.label)}</a>`).join("")}
+              ${designPartners.map((link) => `<a href="${link.href}">${link.icon ? `<span class="social-icon">${icon(link.icon)}</span>` : ""}${escapeHtml(link.label)}</a>`).join("")}
             </div>
           </div>
         </div>
