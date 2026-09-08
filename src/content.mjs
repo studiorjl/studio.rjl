@@ -58,7 +58,7 @@ export const socialLinks = [
 ];
 
 export const designPartners = [
-  { label: "galah.design", href: "https://galah.design", icon: "/assets/galah-icon.png" }
+  { label: "galah.design", href: "https://galah.design", icon: "galah" }
 ];
 
 export const services = [
