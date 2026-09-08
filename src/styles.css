@@ -1347,7 +1347,7 @@ footer {
 }
 
 .enquiry-services {
-  margin-top: 18px;
+  margin-top: 8px;
   background: var(--field);
   color: var(--green);
 }
@@ -1365,10 +1365,9 @@ footer {
   outline-color: var(--green);
 }
 
-.enquiry-services summary em {
-  font-family: "Courier New", monospace;
-  font-size: 11px;
-  opacity: 0.76;
+.enquiry-services summary .enquiry-placeholder {
+  color: rgba(76, 59, 21, 0.44);
+  font-style: italic;
 }
 
 .enquiry-services .service-options {
