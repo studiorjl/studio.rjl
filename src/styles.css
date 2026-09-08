@@ -1347,20 +1347,32 @@ footer {
 }
 
 .enquiry-services {
-  margin-top: 20px;
+  margin-top: 18px;
+  background: var(--field);
+  color: var(--green);
 }
 
 .enquiry-services summary {
-  padding: 14px 18px;
-  font-size: 20px;
+  padding: 11px 12px;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--green);
+  outline: 1px solid transparent;
+  outline-offset: 0;
+}
+
+.enquiry-services summary:focus-visible {
+  outline-color: var(--green);
 }
 
 .enquiry-services summary em {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
   opacity: 0.76;
 }
 
 .enquiry-services .service-options {
-  margin: 0 18px 18px;
+  margin: 0 12px 12px;
   max-width: none;
 }
 
