@@ -16,6 +16,7 @@ import {
   serviceDetails,
   socialLinks,
   services,
+  enquiryServices,
   site,
   templateProducts
 } from "./content.mjs";
