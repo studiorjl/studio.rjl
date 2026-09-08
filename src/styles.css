@@ -1368,10 +1368,11 @@ footer {
 .enquiry-services summary .enquiry-placeholder {
   color: rgba(76, 59, 21, 0.44);
   font-style: italic;
+  font-size: 12px;
 }
 
 .enquiry-services .service-options {
-  margin: 0 12px 12px;
+  margin: 4px 14px 16px;
   max-width: none;
 }
 
@@ -1550,4 +1551,41 @@ footer {
   .cursor {
     display: none;
   }
+}
+
+.enquiry-inner label {
+  position: relative;
+}
+
+.enquiry-error {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 5px);
+  z-index: 5;
+  background: var(--deep-green);
+  color: var(--ivory);
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  padding: 9px 12px 9px 33px;
+  border-radius: 2px;
+  box-shadow: 0 4px 14px rgba(63, 49, 18, 0.28);
+  white-space: nowrap;
+}
+
+.enquiry-error::before {
+  content: "!";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  color: var(--deep-green);
+  font-size: 11px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  border-radius: 2px;
 }
