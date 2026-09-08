@@ -425,7 +425,7 @@ function footer() {
           <div class="footer-subsection">
             <div class="footer-title">design partners</div>
             <div class="footer-links">
-              ${designPartners.map((link) => `<a href="${link.href}">${escapeHtml(link.label)}</a>`).join("")}
+              ${designPartners.map((link) => `<a href="${link.href}">${link.icon ? `<img src="${link.icon}" alt="" width="12" height="12" style="vertical-align:middle;margin-right:6px;border-radius:2px;opacity:0.9">` : ""}${escapeHtml(link.label)}</a>`).join("")}
             </div>
           </div>
         </div>
@@ -436,7 +436,7 @@ function footer() {
           </div>
         </div>
       </div>
-      <div class="footer-base reveal">&copy; always, studio rjl. all rights reserved.</div>
+      <div class="footer-base reveal">&copy; always, studio rjl.<br><br>all rights reserved.</div>
     </footer>
   `;
 }
