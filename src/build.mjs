@@ -454,10 +454,10 @@ function enquiryPanel() {
           <label>email*<input type="email" name="email" required></label>
           <label>phone<input type="tel" name="phone"></label>
           <label>location<input type="text" name="location"></label>
+          <label>creative services</label>
           <details class="home-panel enquiry-services">
             <summary>
-              <span>creative services</span>
-              <em>select all that apply</em>
+              <span class="enquiry-placeholder" data-placeholder="select all that apply">select all that apply</span>
             </summary>
             <div class="service-options">
               ${enquiryServices
@@ -468,12 +468,20 @@ function enquiryPanel() {
                 .join("")}
             </div>
           </details>
-          <label>range
-            <select name="range">
-              <option value="">select a range</option>
-              ${budgets.map((budget) => `<option value="${escapeHtml(budget)}">${escapeHtml(budget)}</option>`).join("")}
-            </select>
-          </label>
+          <label>range</label>
+          <details class="home-panel enquiry-services enquiry-range">
+            <summary>
+              <span class="enquiry-placeholder" data-placeholder="select a range">select a range</span>
+            </summary>
+            <div class="service-options">
+              ${budgets
+                .map(
+                  (budget) =>
+                    `<label><input type="radio" name="range" value="${escapeHtml(budget)}"> ${escapeHtml(budget)}</label>`
+                )
+                .join("")}
+            </div>
+          </details>
           <div hidden>
             <label>website<input type="text" name="website" autocomplete="off" tabindex="-1"></label>
           </div>
@@ -485,6 +493,23 @@ function enquiryPanel() {
           <h2>thank you!</h2>
           <p>your message has been sent.<br>we will be in touch very soon!</p>
         </div>
+        <script>
+          (function () {
+            document.querySelectorAll(".enquiry-services .service-options input").forEach(function (input) {
+              input.addEventListener("change", function () {
+                var details = input.closest("details");
+                var ph = details.querySelector(".enquiry-placeholder");
+                if (!ph) return;
+                if (input.type === "radio") {
+                  if (input.checked) ph.textContent = input.value;
+                } else {
+                  var n = details.querySelectorAll(".service-options input:checked").length;
+                  ph.textContent = n ? n + " selected" : ph.getAttribute("data-placeholder");
+                }
+              });
+            });
+          })();
+        </script>
       </div>
     </aside>
   `;
