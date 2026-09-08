@@ -462,15 +462,20 @@ function enquiryPanel() {
           <div hidden>
             <label>website<input type="text" name="website" autocomplete="off" tabindex="-1"></label>
           </div>
-          <div class="service-options">
-            <p>creative services</p>
-            ${services
-              .map(
-                (service) =>
-                  `<label><input type="checkbox" name="service[]" value="${escapeHtml(service)}"> ${escapeHtml(service)}</label>`
-              )
-              .join("")}
-          </div>
+          <details class="home-panel enquiry-services">
+            <summary>
+              <span>creative services</span>
+              <em>select all that apply</em>
+            </summary>
+            <div class="service-options">
+              ${services
+                .map(
+                  (service) =>
+                    `<label><input type="checkbox" name="service[]" value="${escapeHtml(service)}"> ${escapeHtml(service)}</label>`
+                )
+                .join("")}
+            </div>
+          </details>
           <label>message<textarea name="message" rows="4" placeholder="tell us a little bit about your project..."></textarea></label>
           <input type="hidden" name="_subject" value="new studio rjl enquiry">
           <button class="button" type="submit">send</button>
