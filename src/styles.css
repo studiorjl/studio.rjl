@@ -1371,8 +1371,12 @@ footer {
   font-size: 12px;
 }
 
+.enquiry-services[open] {
+  padding-bottom: 24px;
+}
+
 .enquiry-services .service-options {
-  margin: 8px 16px 22px;
+  margin: 8px 16px 0;
   max-width: none;
 }
 
