@@ -508,6 +508,22 @@ function enquiryPanel() {
                 }
               });
             });
+            document.querySelectorAll("[data-enquiry-form] input[required]").forEach(function (el) {
+              el.addEventListener("invalid", function (e) {
+                e.preventDefault();
+                var wrap = el.parentElement;
+                var oldErr = wrap.querySelector(".enquiry-error");
+                if (oldErr) oldErr.remove();
+                var div = document.createElement("div");
+                div.className = "enquiry-error";
+                div.textContent = el.type === "email" && el.value ? "please enter a valid email address" : "please fill in this field";
+                wrap.appendChild(div);
+              });
+              el.addEventListener("input", function () {
+                var oldErr = el.parentElement.querySelector(".enquiry-error");
+                if (oldErr) oldErr.remove();
+              });
+            });
           })();
         </script>
       </div>
