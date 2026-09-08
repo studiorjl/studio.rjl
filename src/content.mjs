@@ -39,7 +39,7 @@ export const navItems = [
 
 export const navDropdownItems = [
   { label: "creative services", href: "/services/" },
-  { label: "FAQ", href: "/faq/" } 
+  { label: "FAQ", href: "/faq/" },
   { label: "book a call", href: "/booking/" }
 ];
 
