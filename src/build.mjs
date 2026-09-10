@@ -1202,6 +1202,75 @@ function plainPage({ title, pathname, body }) {
   });
 }
 
+function confirmPage() {
+  // transactional page for booking-confirmation emails: reads ?t= and ?step=,
+  // confirms against the booking service, and renders the message on studio soil.
+  // kept out of the sitemap and marked noindex — it is a private landing moment.
+  return `<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booking confirmation - studio rjl</title>
+    <meta name="description" content="confirm your studio rjl brand strategy call.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+      :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); display: grid; place-items: center; padding: 48px 24px; }
+      a { color: var(--green); text-decoration: none; }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "Cormorant Infant", Georgia, serif; font-size: 20px; letter-spacing: 0.08em; }
+      .wrap { max-width: 560px; text-align: center; }
+      h1 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-size: 34px; letter-spacing: 0.02em; margin: 0 0 26px; }
+      #message { font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; line-height: 1.9; }
+      #message p { margin: 0 0 16px; }
+      #message a { text-decoration: underline; text-underline-offset: 3px; }
+      .footnote { margin-top: 40px; font-family: "Courier New", monospace; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
+    </style>
+  </head>
+  <body>
+    <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
+    <div class="wrap">
+      <h1 id="confirm-title">confirming&hellip;</h1>
+      <div id="message"><p>one moment while we confirm your call.</p></div>
+      <p class="footnote"><a href="/">studiorjl.com</a></p>
+    </div>
+    <noscript>
+      <div class="wrap">
+        <h1>almost there</h1>
+        <div id="message"><p>please enable javascript to confirm your call, or write to <a href="mailto:hello@studiorjl.com">hello@studiorjl.com</a>.</p></div>
+      </div>
+    </noscript>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var t = params.get("t");
+        var step = params.get("step") === "2" ? "2" : "1";
+        var title = document.getElementById("confirm-title");
+        var message = document.getElementById("message");
+        if (!t) {
+          title.textContent = "hmm \u2014 this link seems incomplete";
+          message.innerHTML = "<p>the link may have been clipped in your email \u2014 try it again, or write to <a href='mailto:hello@studiorjl.com'>hello@studiorjl.com</a>.</p>";
+          return;
+        }
+        var url = "https://rjl-publisher-insights-agent-a07f3048.base44.app/functions/confirmBookingCall?format=json&step=" + step + "&t=" + encodeURIComponent(t);
+        fetch(url).then(function (res) { return res.json(); }).then(function (data) {
+          title.textContent = data.title;
+          message.innerHTML = data.message_html;
+        }).catch(function () {
+          title.textContent = "hmm \u2014 something went sideways";
+          message.innerHTML = "<p>we couldn't reach the confirmation just now. try the link again in a moment, or write to <a href='mailto:hello@studiorjl.com'>hello@studiorjl.com</a>.</p>";
+        });
+      })();
+    </script>
+  </body>
+</html>`;
+}
+
 function sitemapPage() {
   const links = [
     { label: "home", href: "/" },
@@ -1225,6 +1294,7 @@ function sitemapPage() {
 
 const pages = [
   ["index.html", homePage()],
+  ["confirm/index.html", confirmPage()],
   ["portfolio/index.html", portfolioPage()],
   ...portfolioCategories.map((category) => [`portfolio/${category.slug}/index.html`, portfolioPage(category)]),
   ["editorial/index.html", editorialPage()],
