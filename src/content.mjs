@@ -89,6 +89,7 @@ export const offers = [
       "afterpay is available at checkout.",
       "as the brandscape is bespoke and tailored to you, payments are non-refundable."
     ],
+    ctaNote: "after checkout, Rebekah will be in touch to book your 60-minute brand discovery call.",
     ctaLabel: "purchase your tailored brandscape",
     ctaHref: "https://checkout.square.site/merchant/MLFCQXGC88A9W/checkout/PGCW2YLND2DCBIH44MXK2GPK?src=sheet",
     enquireLabel: "questions first? enquire via email",

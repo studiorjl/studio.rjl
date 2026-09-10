@@ -588,6 +588,13 @@ main section.image-section {
   text-underline-offset: 3px;
 }
 
+.offer-cta-note {
+  margin-top: 20px;
+  font-size: 0.85em;
+  font-style: italic;
+  opacity: 0.75;
+}
+
 .offer-notes {
   font-size: 0.85em;
   font-style: italic;
