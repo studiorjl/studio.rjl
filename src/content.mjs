@@ -84,10 +84,15 @@ export const offers = [
       "due to the nature of this offer, its turnaround and delivery, no revisions are offered.",
       "studio rjl designs intuitively — slight variants will often be available in your palette, so you can implement the most aligned version of the design direction.",
       "full payment is due prior to delivery of any files.",
-      "a 60-minute brand discovery call, or answering the questionnaire, is required for the design and delivery of your tailored brandscape."
+      "a 60-minute brand discovery call, or answering the questionnaire, is required for the design and delivery of your tailored brandscape.",
+      "gst is included in the price.",
+      "afterpay is available at checkout.",
+      "as the brandscape is bespoke and tailored to you, payments are non-refundable."
     ],
-    ctaLabel: "enquire about a brandscape",
-    ctaHref: "mailto:hello@studiorjl.com?subject=brandscape%20starter%20kit"
+    ctaLabel: "purchase your tailored brandscape",
+    ctaHref: "https://checkout.square.site/merchant/MLFCQXGC88A9W/checkout/PGCW2YLND2DCBIH44MXK2GPK?src=sheet",
+    enquireLabel: "questions first? enquire via email",
+    enquireHref: "mailto:hello@studiorjl.com?subject=tailored%20brandscape%20starter%20kit"
   },
   {
     title: "bespoke brandscape",

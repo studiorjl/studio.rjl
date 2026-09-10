@@ -1021,6 +1021,7 @@ function offerPage(offer) {
       </ul>` : ""}
       <p class="offer-price-line">${escapeHtml(offer.priceLine)}</p>
       <a class="button" href="${offer.ctaHref}">${escapeHtml(offer.ctaLabel)}</a>
+      ${offer.enquireLabel ? `<a class="offer-enquire" href="${offer.enquireHref}">${escapeHtml(offer.enquireLabel)}</a>` : ""}
     </section>
   `;
 

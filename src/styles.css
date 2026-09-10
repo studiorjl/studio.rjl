@@ -578,6 +578,16 @@ main section.image-section {
   padding-left: 18px;
 }
 
+.offer-enquire {
+  display: block;
+  margin-top: 18px;
+  font-size: 0.85em;
+  font-style: italic;
+  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .offer-notes {
   font-size: 0.85em;
   font-style: italic;
