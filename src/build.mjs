@@ -965,8 +965,8 @@ function offersPage() {
                     <div class="editorial-frame">
                       <img src="${asset(offer.image)}" alt="${escapeHtml(offer.imageAlt)}" loading="lazy">
                     </div>
-                    <p class="offer-card-price">${escapeHtml(offer.priceLine)}</p>
                     <h2>${escapeHtml(offer.title)}</h2>
+                    <p class="offer-card-price">${escapeHtml(offer.priceLine)}</p>
                   </a>
                 </article>
               `

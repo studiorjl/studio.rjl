@@ -63,7 +63,7 @@ export const designPartners = [
 
 export const offers = [
   {
-    title: "brandscape starter kit",
+    title: "tailored brandscape starter kit",
     slug: "brandscape-starter-kit",
     eyebrow: "a studio rjl offer",
     priceLine: "$550.00 (AUD)",
@@ -92,13 +92,13 @@ export const offers = [
   {
     title: "bespoke brandscape",
     slug: "bespoke-brandscape",
-    eyebrow: "the next tier",
-    priceLine: "from $5,000 (AUD)",
-    tagline: "a complete, bespoke brandscape — crafted for places with soul.",
+    eyebrow: "a studio rjl offer",
+    priceLine: "from $5,500 (AUD)",
+    tagline: "a complete, bespoke brandscape — crafted for brands and places with soul.",
     image: "interior-brandscape-design-warm-light.jpg",
     imageAlt: "warm interior brandscape concept by studio rjl with layered textures and soft light",
     summary: [
-      "the full studio rjl treatment — a bespoke brandscape that shapes the tone, texture and gesture of your brand across identity, print, packaging, digital and place. every element designed and curated for you, from strategy through to launch."
+      "a bespoke and uniquely tailored brandscape that truly elevates you — shaping the tone, texture and gesture of your brand across identity, print, packaging, digital and place. every element designed and curated for you, from strategy through to launch."
     ],
     steps: [],
     includes: [],
