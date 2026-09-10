@@ -70,8 +70,9 @@ export const offers = [
     tagline: "for makers, healers and small founders who want a brand that looks professional from day one — a real brand identity at the founding level, not a template.",
     image: "alegienne-brandmark-card.jpg",
     imageAlt: "alegienne apothecary brandmark card, styled on a textured surface",
-    summary:
-      "one 90-minute strategy session, then seven days later the bones of your brand arrive: a logo and a sub-mark ready for socials, a complete colour palette with codes, a font pairing, custom vectors, a texture library and a mock-up guide — a strong, professional brand identity that can carry a new venture from day one.",
+    summary: [
+      "one 90-minute strategy session, then seven days later the bones of your brand arrive: a logo and a sub-mark ready for socials, a complete colour palette with codes, a font pairing, custom vectors, a texture library and a mock-up guide — a strong, professional brand identity that can carry a new venture from day one."
+    ],
     steps: [
       {
         title: "book your session",
@@ -103,17 +104,25 @@ export const offers = [
     title: "brandscape starter kit",
     slug: "brandscape-starter-kit",
     eyebrow: "a studio rjl offer",
-    priceLine: "tailored to scope",
+    priceLine: "$550.00 (AUD)",
     tagline: "a tailored brandscape ready to load across digital and print.",
     image: "interior-brandscape-design-warm.jpg",
     imageAlt: "warm interior brandscape concept by studio rjl with layered textures and soft light",
-    summary:
+    summary: [
       "a brandscape includes a comprehensive palette of elements which make up your brand tone, look and feel.",
+      "this offer delivers a thoughtfully curated, tailored brandscape that empowers you to keep building your brand with exquisite direction, positioning and visual foundations that will bring elevation and cohesion to your digital and physical presence when implemented following our recommendations."
+    ],
     steps: [],
     includes: [
       "logo — brandmark, submark (delivered as a range of png & svg file types)",
       "palette — colours, font pairings, 3 textures and 3 images; art direction and curation",
-      "brandscape guide — able to be implemented into your chosen ai integrations and platforms"
+      "brandscape guide — designed specifically for you to import into Canva, Adobe or Figma"
+    ],
+    notes: [
+      "due to the nature of this offer, its turnaround and delivery, no revisions are offered.",
+      "studio rjl designs intuitively — slight variants will often be available in your palette, so you can implement the most aligned version of the design direction.",
+      "full payment is due prior to delivery of any files.",
+      "a 60-minute brand discovery call, or answering the questionnaire, is required for the design and delivery of your tailored brandscape."
     ],
     ctaLabel: "enquire about a brandscape",
     ctaHref: "mailto:hello@studiorjl.com?subject=brandscape%20starter%20kit"

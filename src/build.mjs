@@ -1004,7 +1004,7 @@ function offerPage(offer) {
       <div class="offer-hero-frame editorial-frame">
         <img src="${asset(offer.image)}" alt="${escapeHtml(offer.imageAlt)}" loading="lazy">
       </div>
-      <p>${escapeHtml(offer.summary)}</p>
+      ${offer.summary.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("\n      ")}
       ${offer.steps.length
         ? `<h2>how it works</h2>
       ${offer.steps
@@ -1015,6 +1015,10 @@ function offerPage(offer) {
       <ul>
         ${offer.includes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
       </ul>
+      ${offer.notes?.length ? `<h2>the details</h2>
+      <ul class="offer-notes">
+        ${offer.notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}
+      </ul>` : ""}
       <p class="offer-price-line">${escapeHtml(offer.priceLine)}</p>
       <a class="button" href="${offer.ctaHref}">${escapeHtml(offer.ctaLabel)}</a>
     </section>
