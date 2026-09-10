@@ -98,6 +98,25 @@ export const offers = [
     availability: "three spots a month while capacity lasts",
     ctaLabel: "inquire about a spot",
     ctaHref: "mailto:hello@studiorjl.com?subject=branding%20palette%20in%20a%20week"
+  },
+  {
+    title: "brandscape starter kit",
+    slug: "brandscape-starter-kit",
+    eyebrow: "a studio rjl offer",
+    priceLine: "tailored to scope",
+    tagline: "a tailored brandscape ready to load across digital and print.",
+    image: "interior-brandscape-design-warm.jpg",
+    imageAlt: "warm interior brandscape concept by studio rjl with layered textures and soft light",
+    summary:
+      "a brandscape includes a comprehensive palette of elements which make up your brand tone, look and feel.",
+    steps: [],
+    includes: [
+      "logo — brandmark, submark (delivered as a range of png & svg file types)",
+      "palette — colours, font pairings, 3 textures and 3 images; art direction and curation",
+      "brandscape guide — able to be implemented into your chosen ai integrations and platforms"
+    ],
+    ctaLabel: "enquire about a brandscape",
+    ctaHref: "mailto:hello@studiorjl.com?subject=brandscape%20starter%20kit"
   }
 ];
 
@@ -358,7 +377,8 @@ export const templateProducts = [
 
 export const budgets = [
   "$5,000 - $10,000",
-  "$10,000+",
+  "$10,000 - $20,000",
+  "$20,000 - $30,000",
   "I am not sure yet"
 ];
 

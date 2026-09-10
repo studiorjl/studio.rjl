@@ -1005,10 +1005,12 @@ function offerPage(offer) {
         <img src="${asset(offer.image)}" alt="${escapeHtml(offer.imageAlt)}" loading="lazy">
       </div>
       <p>${escapeHtml(offer.summary)}</p>
-      <h2>how it works</h2>
+      ${offer.steps.length
+        ? `<h2>how it works</h2>
       ${offer.steps
         .map((step, index) => `<p><strong>${index + 1}. ${escapeHtml(step.title)}</strong> — ${escapeHtml(step.text)}</p>`)
-        .join("")}
+        .join("")}`
+        : ""}
       <h2>what arrives</h2>
       <ul>
         ${offer.includes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
