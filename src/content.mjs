@@ -126,7 +126,7 @@ export const enquiryServices = [
   "web design & development",
   "print & packaging design",
   "art direction, photography & styling",
-  "something else / i'm not sure yet"
+  "something else / I'm not sure yet"
 ];
 
 export const serviceDetails = {
@@ -359,7 +359,7 @@ export const templateProducts = [
 export const budgets = [
   "$5,000 - $10,000",
   "$10,000+",
-  "i am not sure yet"
+  "I am not sure yet"
 ];
 
 export const featuredProjects = [
@@ -587,7 +587,7 @@ export const faqs = [
       "yes. studio rjl works across brand identity and place-making, bringing visual identity, material mood, interior direction, styling and spatial atmosphere into one coherent brand experience."
   },
   {
-    question: "how do i enquire about a project?",
+    question: "how do I enquire about a project?",
     answer:
       "use the enquiry form or book a complimentary discovery call. the first conversation is a strategic clarity session: you will walk away with useful brand insights, a clearer next step and no obligation to continue."
   },

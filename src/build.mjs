@@ -1075,7 +1075,6 @@ function bookingPage() {
       <h1>bookings</h1>
       <p>a complimentary brand strategy call — free, honest, with no obligation to continue.</p>
       <p>bring your brand, your project, or the idea you keep circling back to. you will receive an honest appraisal of where your brand stands, and clear direction on where it could go next — insight that is yours to keep, either way.</p>
-      <p>it is also a chance for both of us to feel out whether we are a good collaborative fit. if the fit is right, we can talk about what working together would look like; if it isn't, you will still leave with clarity, direction and a warm goodbye.</p>
       <iframe class="booking-frame" title="studio rjl booking calendar" src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0MBxtDccYFfgN_GFlpT0uKReKg6tT77itlql8P3FYlpj9yTO84euJmikEFJSvAJy88fNNJgT3t"></iframe>
     </header>
   `;
