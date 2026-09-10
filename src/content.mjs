@@ -39,6 +39,7 @@ export const navItems = [
 
 export const navDropdownItems = [
   { label: "creative services", href: "/services/" },
+  { label: "offers", href: "/offers/" },
   { label: "FAQ", href: "/faq/" },
   { label: "book a call", href: "/booking/" }
 ];
@@ -59,6 +60,44 @@ export const socialLinks = [
 
 export const designPartners = [
   { label: "galah.design", href: "https://galah.design", icon: "galah" }
+];
+
+export const offers = [
+  {
+    title: "branding palette in a week",
+    slug: "branding-palette-in-a-week",
+    eyebrow: "a studio rjl offer",
+    priceLine: "$500 · three spots a month",
+    tagline: "for makers, healers and small founders who want a brand that feels like a place, not a template.",
+    image: "alegienne-brandmark-card.jpg",
+    imageAlt: "alegienne apothecary brandmark card, styled on a textured surface",
+    summary:
+      "one 90-minute strategy session, then seven days later the bones of your brand arrive: a complete colour palette with codes, a font pairing, custom vectors, a texture library and a mock-up guide — everything you need to carry your brand beautifully while it grows.",
+    steps: [
+      {
+        title: "book your session",
+        text: "tell me about your work, your people and the place you are making."
+      },
+      {
+        title: "the strategy session",
+        text: "ninety minutes together — an honest appraisal of where your brand stands, and clear direction on where it wants to go."
+      },
+      {
+        title: "seven days later",
+        text: "your palette pack arrives, ready to use — colours, type, vectors, textures and a guide for putting them to work."
+      }
+    ],
+    includes: [
+      "a complete colour palette with codes",
+      "a font pairing, chosen for your voice",
+      "custom vectors",
+      "a texture library",
+      "a mock-up guide"
+    ],
+    availability: "three spots a month while capacity lasts",
+    ctaLabel: "inquire about a spot",
+    ctaHref: "mailto:hello@studiorjl.com?subject=branding%20palette%20in%20a%20week"
+  }
 ];
 
 export const services = [

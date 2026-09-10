@@ -556,6 +556,60 @@ main section.image-section {
   white-space: nowrap;
 }
 
+.offer-card-price {
+  margin: 14px 0 6px;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+
+.offer-card h2 {
+  margin-top: 6px;
+}
+
+.offer-hero-frame {
+  margin: 8px 0 18px;
+}
+
+.offer-body ul {
+  margin: 0 0 18px;
+  padding-left: 18px;
+}
+
+.offer-price-line {
+  margin: 26px 0 18px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.portfolio-filter {
+  margin-top: 12px;
+  max-width: 340px;
+  background: var(--field);
+  color: var(--green);
+}
+
+.portfolio-filter summary {
+  padding: 11px 12px;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--green);
+  cursor: pointer;
+}
+
+.portfolio-filter summary .filter-placeholder {
+  color: rgba(76, 59, 21, 0.44);
+  font-family: "Courier New", monospace;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.portfolio-filter .service-options {
+  margin: 8px 16px 24px;
+}
+
 .editorial-scroll-cue {
   position: absolute;
   top: 50%;
@@ -1216,6 +1270,18 @@ footer {
 
 .social-svg path:last-child {
   fill: none;
+}
+
+/* galah.design favicon letterform: solid mark, current colour, deep green on hover */
+.social-svg path.mark-solid {
+  fill: currentColor;
+  stroke: none;
+}
+
+.social-links a:hover .social-svg path.mark-solid,
+.footer-links a:hover .social-svg path.mark-solid {
+  fill: var(--deep-green);
+  stroke: none;
 }
 
 .enquiry-panel {

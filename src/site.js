@@ -5,7 +5,6 @@ const enquiryPanel = document.querySelector("[data-enquiry-panel]");
 const enquiryClose = document.querySelector("[data-enquiry-close]");
 const form = document.querySelector("[data-enquiry-form]");
 const thankYou = document.querySelector("[data-thank-you]");
-const filter = document.querySelector("[data-filter]");
 const cards = document.querySelectorAll("[data-tags]");
 const cursor = document.querySelector(".cursor");
 const typingTargets = document.querySelectorAll("[data-type-text]");
@@ -154,11 +153,17 @@ if (form && thankYou) {
   });
 }
 
-if (filter) {
-  filter.addEventListener("change", () => {
-    const value = filter.value;
-    cards.forEach((card) => {
-      card.hidden = value !== "all" && !card.dataset.tags.split(" ").includes(value);
+const filterPanel = document.querySelector("[data-filter-panel]");
+if (filterPanel) {
+  const filterLabel = filterPanel.querySelector("[data-filter-label]");
+  filterPanel.querySelectorAll(".service-options input").forEach((input) => {
+    input.addEventListener("change", () => {
+      const value = input.value;
+      if (filterLabel) filterLabel.textContent = input.dataset.label || value;
+      filterPanel.removeAttribute("open");
+      cards.forEach((card) => {
+        card.hidden = value !== "all" && !card.dataset.tags.split(" ").includes(value);
+      });
     });
   });
 }

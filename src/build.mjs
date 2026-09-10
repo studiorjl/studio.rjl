@@ -11,6 +11,7 @@ import {
   footerLinks,
   navDropdownItems,
   navItems,
+  offers,
   portfolio,
   primaryServices,
   serviceDetails,
@@ -405,7 +406,7 @@ function icon(name) {
   }
 
   if (name === "galah") {
-    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><path class="glyph" d="M7 6.5C7.5 4.5 9.5 3.2 11.8 3.4C13.8 3.6 15.2 5 15.4 7C15.7 9.6 15.2 12 14 14C13.6 15 13.4 16.2 13.6 17.4L16.4 21.2L13 18.4C11.8 16.9 10.8 15.4 10.3 13.7C9.7 11.9 9.6 9.9 10 8.2C10.2 7.4 9.6 6.7 8.7 6.5L7 6.5Z"/><path d="M11 3.6C11.3 2.5 12.1 1.6 13.2 1.2"/><path d="M12.3 3.8C12.8 2.9 13.6 2.3 14.6 2"/><path d="M7 6.5c-1 .3-1.3 1.4-.6 2.2"/><path d="M11.9 8.9C13.2 9.7 13.8 11.2 13.5 12.8"/><circle cx="9.6" cy="5.9" r="0.55"/></svg>`;
+    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><path class="mark-solid" fill-rule="evenodd" d="M12.2 6.2 L13.4 6.2 L14.4 6.2 L15.2 6.3 L15.8 6.3 L16.1 6.4 L16.5 6.5 L16.9 6.6 L17.4 6.7 L17.8 6.8 L18.2 7.0 L18.6 7.2 L18.8 7.3 L19.1 7.5 L19.3 7.7 L19.4 7.8 L19.5 7.8 L19.6 7.8 L19.7 7.9 L19.9 8.0 L20.1 8.2 L20.4 8.5 L20.6 8.7 L20.8 9.0 L20.9 9.3 L21.1 9.6 L21.2 9.8 L21.2 10.1 L21.3 10.4 L21.3 10.6 L21.1 10.8 L20.6 11.0 L19.8 11.0 L18.8 11.0 L18.0 11.0 L17.4 10.9 L16.9 10.7 L16.7 10.4 L16.4 10.2 L16.1 10.1 L15.7 9.9 L15.3 9.8 L14.7 9.7 L13.9 9.6 L12.8 9.6 L11.5 9.6 L10.4 9.6 L9.5 9.7 L8.9 9.8 L8.5 9.9 L8.2 10.0 L7.8 10.2 L7.6 10.4 L7.3 10.6 L7.1 10.8 L7.0 11.0 L6.9 11.1 L6.8 11.3 L6.8 11.5 L6.7 11.7 L6.7 12.0 L6.7 12.3 L6.7 12.5 L6.8 12.7 L6.8 12.9 L6.9 13.0 L6.9 13.1 L7.0 13.3 L7.1 13.4 L7.3 13.5 L7.4 13.6 L7.6 13.7 L7.8 13.9 L8.0 14.0 L8.3 14.1 L8.7 14.2 L9.0 14.3 L9.4 14.4 L10.1 14.4 L10.9 14.5 L12.0 14.5 L13.2 14.5 L14.3 14.5 L15.2 14.4 L15.8 14.4 L16.3 14.3 L16.7 14.2 L17.1 14.1 L17.4 14.0 L17.6 13.9 L17.4 13.8 L16.9 13.7 L16.1 13.7 L15.0 13.7 L14.1 13.6 L13.5 13.3 L13.2 13.0 L13.2 12.5 L13.7 12.1 L14.8 11.9 L16.3 11.8 L18.4 11.8 L19.9 12.1 L21.0 12.9 L21.5 14.0 L21.5 15.4 L21.3 16.5 L20.9 17.3 L20.4 17.6 L19.6 17.6 L19.1 17.5 L18.7 17.2 L18.6 16.7 L18.6 16.1 L18.6 15.8 L18.4 15.7 L18.1 15.8 L17.8 16.1 L17.4 16.4 L17.0 16.7 L16.6 16.9 L16.3 17.1 L15.8 17.3 L15.2 17.5 L14.6 17.6 L13.8 17.8 L13.0 17.9 L12.1 17.9 L11.3 17.9 L10.4 17.9 L9.6 17.9 L8.9 17.8 L8.3 17.8 L7.8 17.6 L7.3 17.6 L6.8 17.4 L6.5 17.3 L6.1 17.1 L5.9 17.0 L5.7 17.0 L5.5 16.9 L5.4 16.9 L5.2 16.8 L5.0 16.7 L4.7 16.4 L4.2 16.1 L3.9 15.8 L3.7 15.6 L3.6 15.5 L3.6 15.4 L3.6 15.4 L3.5 15.3 L3.5 15.3 L3.4 15.2 L3.3 15.1 L3.2 15.0 L3.1 14.8 L3.0 14.7 L2.9 14.4 L2.8 14.2 L2.8 13.9 L2.6 13.5 L2.6 13.1 L2.6 12.6 L2.6 12.1 L2.6 11.5 L2.7 11.0 L2.8 10.5 L3.0 10.0 L3.2 9.5 L3.4 9.1 L3.6 8.7 L3.8 8.4 L4.1 8.2 L4.3 8.0 L4.4 7.9 L4.5 7.8 L4.6 7.8 L4.7 7.8 L4.8 7.7 L5.0 7.5 L5.3 7.3 L5.6 7.2 L5.9 7.0 L6.4 6.8 L6.8 6.7 L7.4 6.6 L8.0 6.5 L8.6 6.3 L9.3 6.2 L10.1 6.2 L11.1 6.2 Z"/></svg>`;
   }
 
   return `<svg class="social-svg social-svg-pinterest" viewBox="0 0 24 24" aria-hidden="true"><path class="glyph" d="M11.6 20c.5-1.7 1-3.4 1.5-5.1.4.7 1.2 1.1 2.1 1.1 2.7 0 4.7-2.5 4.7-5.8 0-3.1-2.6-5.7-6.5-5.7-4.8 0-7.3 3.2-7.3 6.5 0 1.7.8 3.5 2.1 4.1.2.1.3 0 .4-.2l.3-1.3c.1-.2 0-.3-.1-.5-.4-.5-.7-1.1-.7-1.9 0-2.5 1.9-4.8 5-4.8 2.7 0 4.4 1.7 4.4 4.1 0 2.8-1.4 4.8-3.3 4.8-1 0-1.8-.9-1.5-1.9.3-1.2.9-2.5.9-3.4 0-.8-.4-1.4-1.3-1.4-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5c-.3 1.3-.3 2.7-.2 3.7.7-.9 1.7-2.2 2.2-3.2z"/></svg>`;
@@ -826,16 +827,19 @@ function portfolioPage() {
       <h1>recent works</h1>
       <p class="subline portfolio-subline" data-type-text="an unfolding collection of spaces, identities and atmospheres." data-type-speed="32"></p>
       <div class="filter-row">
-        <label>
-          <span class="eyebrow">filter by project type</span><br>
-          <select data-filter>
-            <option value="all">all projects</option>
-            <option value="branding">branding and visual identity</option>
-            <option value="graphic">graphic design</option>
-            <option value="print">print, packaging and labels</option>
-            <option value="interiors">interior design and architecture</option>
-          </select>
-        </label>
+        <span class="eyebrow">filter by project type</span>
+        <details class="home-panel portfolio-filter" data-filter-panel>
+          <summary>
+            <span class="filter-placeholder" data-filter-label>all projects</span>
+          </summary>
+          <div class="service-options">
+            <label><input type="radio" name="filter" value="all" data-label="all projects" checked> all projects</label>
+            <label><input type="radio" name="filter" value="branding" data-label="branding and visual identity"> branding and visual identity</label>
+            <label><input type="radio" name="filter" value="graphic" data-label="graphic design"> graphic design</label>
+            <label><input type="radio" name="filter" value="print" data-label="print, packaging and labels"> print, packaging and labels</label>
+            <label><input type="radio" name="filter" value="interiors" data-label="interior design and architecture"> interior design and architecture</label>
+          </div>
+        </details>
       </div>
     </header>
     <section class="portfolio-grid image-section">
@@ -923,6 +927,91 @@ function editorialPage() {
   });
 }
 
+function offersPage() {
+  const body = `
+    <header class="editorial-header">
+      <h1 class="editorial-title" data-type-text="OFFERS" data-type-speed="24" data-type-cursor="pilcrow" data-type-linger="860"></h1>
+      <div class="editorial-rule" aria-hidden="true"></div>
+    </header>
+    <section class="editorial-section" aria-label="studio rjl offers">
+      <div class="editorial-strip-wrap">
+        <div class="editorial-strip" aria-label="studio rjl offers">
+          ${offers
+            .map(
+              (offer) => `
+                <article class="editorial-card offer-card">
+                  <a href="/offers/${offer.slug}/">
+                    <div class="editorial-frame">
+                      <img src="${asset(offer.image)}" alt="${escapeHtml(offer.imageAlt)}" loading="lazy">
+                    </div>
+                    <p class="offer-card-price">${escapeHtml(offer.priceLine)}</p>
+                    <h2>${escapeHtml(offer.title)}</h2>
+                  </a>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+        <span class="editorial-scroll-cue" aria-hidden="true">→</span>
+      </div>
+    </section>
+  `;
+
+  return layout({
+    title: "offers",
+    description:
+      "focused, fixed-scope studio rjl offers — starting with branding palette in a week: a strategy session, then a complete brand palette delivered in seven days.",
+    pathname: "/offers/",
+    body,
+    extraSchema: [
+      breadcrumbSchema([
+        { name: "home", href: "/" },
+        { name: "offers", href: "/offers/" }
+      ])
+    ]
+  });
+}
+
+function offerPage(offer) {
+  const body = `
+    <header class="page-header">
+      <p class="subline">${escapeHtml(offer.eyebrow)}</p>
+      <h1>${escapeHtml(offer.title)}</h1>
+      <p class="subline">${escapeHtml(offer.tagline)}</p>
+    </header>
+    <section class="article-body offer-body">
+      <div class="offer-hero-frame editorial-frame">
+        <img src="${asset(offer.image)}" alt="${escapeHtml(offer.imageAlt)}" loading="lazy">
+      </div>
+      <p>${escapeHtml(offer.summary)}</p>
+      <h2>how it works</h2>
+      ${offer.steps
+        .map((step, index) => `<p><strong>${index + 1}. ${escapeHtml(step.title)}</strong> — ${escapeHtml(step.text)}</p>`)
+        .join("")}
+      <h2>what arrives</h2>
+      <ul>
+        ${offer.includes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+      </ul>
+      <p class="offer-price-line">${escapeHtml(offer.priceLine)}</p>
+      <a class="button" href="${offer.ctaHref}">${escapeHtml(offer.ctaLabel)}</a>
+    </section>
+  `;
+
+  return layout({
+    title: offer.title,
+    description: `${offer.title} — ${offer.tagline}`,
+    pathname: `/offers/${offer.slug}/`,
+    body,
+    extraSchema: [
+      breadcrumbSchema([
+        { name: "home", href: "/" },
+        { name: "offers", href: "/offers/" },
+        { name: offer.title, href: `/offers/${offer.slug}/` }
+      ])
+    ]
+  });
+}
+
 function faqPage() {
   const body = `
     <header class="page-header">
@@ -963,8 +1052,9 @@ function bookingPage() {
   const body = `
     <header class="page-header">
       <h1>bookings</h1>
-      <p>a complimentary 20 minute strategic clarity session to explore your brand, project or idea.</p>
-      <p>we will walk through where you are, what your brand needs most and whether we are aligned to collaborate. you will leave with useful branding insights, a clearer next step and no obligation to continue.</p>
+      <p>a complimentary brand strategy call — free, honest, with no obligation to continue.</p>
+      <p>bring your brand, your project, or the idea you keep circling back to. you will receive an honest appraisal of where your brand stands, and clear direction on where it could go next — insight that is yours to keep, either way.</p>
+      <p>it is also a chance for both of us to feel out whether we are a good collaborative fit. if the fit is right, we can talk about what working together would look like; if it isn't, you will still leave with clarity, direction and a warm goodbye.</p>
       <iframe class="booking-frame" title="studio rjl booking calendar" src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0MBxtDccYFfgN_GFlpT0uKReKg6tT77itlql8P3FYlpj9yTO84euJmikEFJSvAJy88fNNJgT3t"></iframe>
     </header>
   `;
@@ -972,7 +1062,7 @@ function bookingPage() {
   return layout({
     title: "bookings",
     description:
-      "book a complimentary studio rjl discovery call to discuss branding, visual identity, interiors, spatial concept design or creative direction.",
+      "book a complimentary studio rjl brand strategy call — an honest appraisal and clear direction for your brand, with no obligation to continue.",
     pathname: "/booking/",
     body,
     extraSchema: [
@@ -1099,9 +1189,9 @@ function sitemapPage() {
     { label: "editorial", href: "/editorial/" },
     { label: "creative services", href: "/services/" },
     { label: "shop", href: "/shop/" },
+    { label: "offers", href: "/offers/" },
     { label: "FAQ", href: "/faq/" },
     { label: "bookings", href: "/booking/" },
-    { label: "editorial", href: "/editorial/" },
     ...footerLinks
   ];
 
@@ -1118,6 +1208,8 @@ const pages = [
   ["portfolio/index.html", portfolioPage()],
   ["editorial/index.html", editorialPage()],
   ...editorialPosts.map((post) => [`editorial/${post.slug}/index.html`, editorialArticlePage(post)]),
+  ["offers/index.html", offersPage()],
+  ...offers.map((offer) => [`offers/${offer.slug}/index.html`, offerPage(offer)]),
   ["services/index.html", servicesPage()],
   ["shop/index.html", shopPage()],
   ["faq/index.html", faqPage()],
@@ -1174,7 +1266,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", "/editorial/", "/services/", "/shop/", "/faq/", "/booking/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", "/editorial/", "/services/", "/shop/", "/offers/", ...offers.map((offer) => `/offers/${offer.slug}/`), "/faq/", "/booking/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
       .concat(editorialPosts.map((post) => `/editorial/${post.slug}/`))
       .concat(articlePosts.map((post) => `/blog/${post.slug}/`))
       .map((url) => `  <url><loc>${canonical(url)}</loc></url>`)
@@ -1198,7 +1290,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "llms.txt"),
-    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
+    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- offers: ${canonical("/offers/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
   );
   await writeFile(path.join(dist, "CNAME"), "studiorjl.com\n");
 }
