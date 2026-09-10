@@ -585,8 +585,9 @@ main section.image-section {
 }
 
 .portfolio-filter {
-  margin-top: 12px;
-  max-width: 340px;
+  margin: 12px auto 0;
+  width: min(250px, 100%);
+  text-align: left;
   background: var(--field);
   color: var(--green);
 }
@@ -776,6 +777,7 @@ main section.image-section {
 
 .filter-row {
   margin-top: 42px;
+  text-align: center;
 }
 
 .filter-row select {

@@ -821,11 +821,22 @@ function homePage() {
   });
 }
 
-function portfolioPage() {
+export const portfolioCategories = [
+  { slug: "branding", tag: "branding", label: "branding and visual identity" },
+  { slug: "graphic", tag: "graphic", label: "graphic design" },
+  { slug: "print", tag: "print", label: "print, packaging and labels" },
+  { slug: "interiordesign", tag: "interiors", label: "interior design and architecture" }
+];
+
+function portfolioPage(category) {
+  const projects = category ? portfolio.filter((project) => project.tags.includes(category.tag)) : portfolio;
+  const subline = category
+    ? `filed under — ${category.label}`
+    : "an unfolding collection of spaces, identities and atmospheres.";
   const body = `
     <header class="page-header">
       <h1>recent works</h1>
-      <p class="subline portfolio-subline" data-type-text="an unfolding collection of spaces, identities and atmospheres." data-type-speed="32"></p>
+      <p class="subline portfolio-subline" data-type-text="${escapeHtml(subline)}" data-type-speed="32"></p>
       <div class="filter-row">
         <span class="eyebrow">filter by project type</span>
         <details class="home-panel portfolio-filter" data-filter-panel>
@@ -833,17 +844,18 @@ function portfolioPage() {
             <span class="filter-placeholder" data-filter-label>all projects</span>
           </summary>
           <div class="service-options">
-            <label><input type="radio" name="filter" value="all" data-label="all projects" checked> all projects</label>
-            <label><input type="radio" name="filter" value="branding" data-label="branding and visual identity"> branding and visual identity</label>
-            <label><input type="radio" name="filter" value="graphic" data-label="graphic design"> graphic design</label>
-            <label><input type="radio" name="filter" value="print" data-label="print, packaging and labels"> print, packaging and labels</label>
-            <label><input type="radio" name="filter" value="interiors" data-label="interior design and architecture"> interior design and architecture</label>
+            ${portfolioCategories
+              .map(
+                (c) =>
+                  `<label><input type="checkbox" name="filter" value="${c.tag}" data-label="${escapeHtml(c.label)}"${category && category.tag === c.tag ? " checked" : ""}> ${escapeHtml(c.label)}</label>`
+              )
+              .join("")}
           </div>
         </details>
       </div>
     </header>
     <section class="portfolio-grid image-section">
-      ${portfolio
+      ${projects
         .map(
           (project) => `
             <article class="portfolio-card" data-tags="${project.tags.join(" ")}">
@@ -867,17 +879,26 @@ function portfolioPage() {
   `;
 
   return layout({
-    title: "recent works",
-    description:
-      "selected studio rjl work across brand identity, graphic design, interiors, print, packaging, campaign content and spatial concept design.",
-    pathname: "/portfolio/",
+    title: category ? `recent works — ${category.label}` : "recent works",
+    description: category
+      ? `selected studio rjl ${category.label} work — a focused collection from an unfolding body of projects.`
+      : "selected studio rjl work across brand identity, graphic design, interiors, print, packaging, campaign content and spatial concept design.",
+    pathname: category ? `/portfolio/${category.slug}/` : "/portfolio/",
     body,
     extraSchema: [
       portfolioSchema(),
-      breadcrumbSchema([
-        { name: "home", href: "/" },
-        { name: "recent works", href: "/portfolio/" }
-      ])
+      breadcrumbSchema(
+        category
+          ? [
+              { name: "home", href: "/" },
+              { name: "recent works", href: "/portfolio/" },
+              { name: category.label, href: `/portfolio/${category.slug}/` }
+            ]
+          : [
+              { name: "home", href: "/" },
+              { name: "recent works", href: "/portfolio/" }
+            ]
+      )
     ]
   });
 }
@@ -1206,6 +1227,7 @@ function sitemapPage() {
 const pages = [
   ["index.html", homePage()],
   ["portfolio/index.html", portfolioPage()],
+  ...portfolioCategories.map((category) => [`portfolio/${category.slug}/index.html`, portfolioPage(category)]),
   ["editorial/index.html", editorialPage()],
   ...editorialPosts.map((post) => [`editorial/${post.slug}/index.html`, editorialArticlePage(post)]),
   ["offers/index.html", offersPage()],
@@ -1266,7 +1288,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", "/editorial/", "/services/", "/shop/", "/offers/", ...offers.map((offer) => `/offers/${offer.slug}/`), "/faq/", "/booking/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", ...portfolioCategories.map((category) => `/portfolio/${category.slug}/`), "/editorial/", "/services/", "/shop/", "/offers/", ...offers.map((offer) => `/offers/${offer.slug}/`), "/faq/", "/booking/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
       .concat(editorialPosts.map((post) => `/editorial/${post.slug}/`))
       .concat(articlePosts.map((post) => `/blog/${post.slug}/`))
       .map((url) => `  <url><loc>${canonical(url)}</loc></url>`)

@@ -39,7 +39,6 @@ export const navItems = [
 
 export const navDropdownItems = [
   { label: "creative services", href: "/services/" },
-  { label: "offers", href: "/offers/" },
   { label: "FAQ", href: "/faq/" },
   { label: "book a call", href: "/booking/" }
 ];
@@ -68,11 +67,11 @@ export const offers = [
     slug: "branding-palette-in-a-week",
     eyebrow: "a studio rjl offer",
     priceLine: "$500 · three spots a month",
-    tagline: "for makers, healers and small founders who want a brand that feels like a place, not a template.",
+    tagline: "for makers, healers and small founders who want a brand that looks professional from day one — a real brand identity at the founding level, not a template.",
     image: "alegienne-brandmark-card.jpg",
     imageAlt: "alegienne apothecary brandmark card, styled on a textured surface",
     summary:
-      "one 90-minute strategy session, then seven days later the bones of your brand arrive: a complete colour palette with codes, a font pairing, custom vectors, a texture library and a mock-up guide — everything you need to carry your brand beautifully while it grows.",
+      "one 90-minute strategy session, then seven days later the bones of your brand arrive: a logo and a sub-mark ready for socials, a complete colour palette with codes, a font pairing, custom vectors, a texture library and a mock-up guide — a strong, professional brand identity that can carry a new venture from day one.",
     steps: [
       {
         title: "book your session",
@@ -84,10 +83,12 @@ export const offers = [
       },
       {
         title: "seven days later",
-        text: "your palette pack arrives, ready to use — colours, type, vectors, textures and a guide for putting them to work."
+        text: "your brand pack arrives, ready to use — logo, sub-mark, colours, type, vectors, textures and a guide for putting them to work."
       }
     ],
     includes: [
+      "a logo — your primary mark",
+      "a sub-mark, sized and ready for socials",
       "a complete colour palette with codes",
       "a font pairing, chosen for your voice",
       "custom vectors",

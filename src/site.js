@@ -156,14 +156,27 @@ if (form && thankYou) {
 const filterPanel = document.querySelector("[data-filter-panel]");
 if (filterPanel) {
   const filterLabel = filterPanel.querySelector("[data-filter-label]");
-  filterPanel.querySelectorAll(".service-options input").forEach((input) => {
+  const filterInputs = [...filterPanel.querySelectorAll(".service-options input")];
+  const applyFilter = () => {
+    const selected = filterInputs.filter((input) => input.checked);
+    if (filterLabel) {
+      if (!selected.length) filterLabel.textContent = "all projects";
+      else if (selected.length === 1) filterLabel.textContent = selected[0].dataset.label || selected[0].value;
+      else filterLabel.textContent = `${selected.length} selected`;
+    }
+    const values = selected.map((input) => input.value);
+    cards.forEach((card) => {
+      const tags = card.dataset.tags.split(" ");
+      card.hidden = values.length > 0 && !values.some((value) => tags.includes(value));
+    });
+  };
+  filterInputs.forEach((input) => {
     input.addEventListener("change", () => {
-      const value = input.value;
-      if (filterLabel) filterLabel.textContent = input.dataset.label || value;
-      filterPanel.removeAttribute("open");
-      cards.forEach((card) => {
-        card.hidden = value !== "all" && !card.dataset.tags.split(" ").includes(value);
-      });
+      applyFilter();
+      if (input.checked && filterInputs.filter((i) => i.checked).length === filterInputs.length) {
+        filterInputs.forEach((i) => (i.checked = false));
+        applyFilter();
+      }
     });
   });
 }
