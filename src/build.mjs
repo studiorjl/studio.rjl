@@ -1279,6 +1279,112 @@ function confirmPage() {
 </html>`;
 }
 
+function questionnairePage() {
+  // questionnaire landing for tailored-brandscape buyers: arrives via the welcome
+  // email link (name/email prefilled), answers POST to the studio service and land
+  // in Rebekah's inbox. noindex + out of the sitemap — a private landing moment.
+  const QUESTIONS = [
+    ["q1", "tell me about your work — what are you making, and for whom?"],
+    ["q2", "your brand as it stands: what do you love about it, and what's quietly not working?"],
+    ["q3", "three words for the feeling your brand should carry."],
+    ["q4", "whose world do you admire? (brands, places, makers — links welcome.)"],
+    ["q5", "any must-keeps — an existing logo, fonts, colours you're attached to?"],
+    ["q6", "where will the brandscape live first? (web, print, packaging, socials.)"],
+    ["q7", "anything else at all."]
+  ];
+  const fields = QUESTIONS.map(([id, label]) => `
+      <label class="q-label" for="${id}">${label}</label>
+      <textarea class="q-input" id="${id}" rows="4" placeholder="&nbsp;"></textarea>`).join("");
+  return `<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the questionnaire - studio rjl</title>
+    <meta name="description" content="your tailored brandscape begins here — tell Rebekah about your work, your brand and the feeling it should carry.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+      :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); padding: 64px 24px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
+      a { color: var(--green); }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "Cormorant Infant", Georgia, serif; font-size: 20px; letter-spacing: 0.08em; text-decoration: none; }
+      .wrap { max-width: 620px; margin: 0 auto; }
+      h1 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-size: 36px; letter-spacing: 0.02em; margin: 0 0 18px; }
+      .intro { font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; line-height: 1.8; margin: 0 0 36px; }
+      .q-label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; margin: 30px 0 8px; color: var(--deep-green); }
+      .q-input { display: block; width: 100%; padding: 12px 14px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.7; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; resize: vertical; }
+      .q-input:focus { outline: 1px solid var(--deep-green); }
+      .meta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+      .meta-label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; margin: 0 0 8px; color: var(--deep-green); }
+      .send { margin: 38px 0 0; background: var(--deep-green); color: var(--ivory); padding: 15px 34px; border: 0; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
+      .send:disabled { opacity: 0.5; cursor: wait; }
+      .footnote { margin-top: 40px; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
+      #done { display: none; text-align: center; padding: 32px 0 8px; }
+      #done h1 { margin-bottom: 10px; }
+      @media (max-width: 560px) { .meta-row { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
+    <div class="wrap">
+      <div id="form-wrap">
+        <h1>the questionnaire</h1>
+        <p class="intro">a few questions so I can see your work through your eyes — as much or as little as you like. rambling is welcome; the more soul, the better.</p>
+        <form id="questionnaire">
+          <div class="meta-row">
+            <div><label class="meta-label" for="cname">your name</label><input class="q-input" id="cname" rows="1" style="resize:none;"></div>
+            <div><label class="meta-label" for="cemail">your email</label><input class="q-input" id="cemail" type="email" rows="1" style="resize:none;"></div>
+          </div>${fields}
+          <button class="send" id="send" type="submit">send my answers</button>
+        </form>
+        <p class="footnote">prefer to talk instead? just reply to the welcome email — or <a href="/">wander home to studiorjl.com</a>.</p>
+      </div>
+      <div id="done">
+        <h1>thank you</h1>
+        <p class="intro">your answers are on their way to Rebekah — keep an eye on your inbox for your booking link.</p>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get("name")) document.getElementById("cname").value = params.get("name");
+        if (params.get("email")) document.getElementById("cemail").value = params.get("email");
+        document.getElementById("questionnaire").addEventListener("submit", function (e) {
+          e.preventDefault();
+          var btn = document.getElementById("send");
+          btn.disabled = true; btn.textContent = "sending…";
+          var payload = {
+            name: document.getElementById("cname").value.trim(),
+            email: document.getElementById("cemail").value.trim(),
+            answers: {}
+          };
+          ${JSON.stringify(QUESTIONS).replace(/\n/g, " ")}.forEach(function (pair) {
+            payload.answers[pair[0]] = document.getElementById(pair[0]).value.trim();
+          });
+          fetch("https://rjl-publisher-insights-agent-a07f3048.base44.app/functions/submitQuestionnaire?format=json", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          }).then(function (res) { return res.json(); }).then(function (data) {
+            if (data.ok) {
+              document.getElementById("form-wrap").style.display = "none";
+              document.getElementById("done").style.display = "block";
+            } else { throw new Error("not ok"); }
+          }).catch(function () {
+            btn.disabled = false; btn.textContent = "try again — or just reply to the welcome email";
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>`;
+}
+
 function sitemapPage() {
   const links = [
     { label: "home", href: "/" },
@@ -1303,6 +1409,7 @@ function sitemapPage() {
 const pages = [
   ["index.html", homePage()],
   ["confirm/index.html", confirmPage()],
+  ["questionnaire/index.html", questionnairePage()],
   ["portfolio/index.html", portfolioPage()],
   ...portfolioCategories.map((category) => [`portfolio/${category.slug}/index.html`, portfolioPage(category)]),
   ["editorial/index.html", editorialPage()],
