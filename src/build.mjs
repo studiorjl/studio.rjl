@@ -981,7 +981,7 @@ function offersPage() {
   return layout({
     title: "offers",
     description:
-      "focused, fixed-scope studio rjl offers — starting with branding palette in a week: a strategy session, then a complete brand palette delivered in seven days.",
+      "studio rjl offers — the brandscape starter kit, and bespoke brandscapes from $5,000 (AUD).",
     pathname: "/offers/",
     body,
     extraSchema: [
@@ -1011,10 +1011,10 @@ function offerPage(offer) {
         .map((step, index) => `<p><strong>${index + 1}. ${escapeHtml(step.title)}</strong> — ${escapeHtml(step.text)}</p>`)
         .join("")}`
         : ""}
-      <h2>what arrives</h2>
+      ${offer.includes.length ? `<h2>what arrives</h2>
       <ul>
         ${offer.includes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
-      </ul>
+      </ul>` : ""}
       ${offer.notes?.length ? `<h2>the details</h2>
       <ul class="offer-notes">
         ${offer.notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}

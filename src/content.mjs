@@ -63,44 +63,6 @@ export const designPartners = [
 
 export const offers = [
   {
-    title: "branding palette in a week",
-    slug: "branding-palette-in-a-week",
-    eyebrow: "a studio rjl offer",
-    priceLine: "$500 · three spots a month",
-    tagline: "for makers, healers and small founders who want a brand that looks professional from day one — a real brand identity at the founding level, not a template.",
-    image: "alegienne-brandmark-card.jpg",
-    imageAlt: "alegienne apothecary brandmark card, styled on a textured surface",
-    summary: [
-      "one 90-minute strategy session, then seven days later the bones of your brand arrive: a logo and a sub-mark ready for socials, a complete colour palette with codes, a font pairing, custom vectors, a texture library and a mock-up guide — a strong, professional brand identity that can carry a new venture from day one."
-    ],
-    steps: [
-      {
-        title: "book your session",
-        text: "tell me about your work, your people and the place you are making."
-      },
-      {
-        title: "the strategy session",
-        text: "ninety minutes together — an honest appraisal of where your brand stands, and clear direction on where it wants to go."
-      },
-      {
-        title: "seven days later",
-        text: "your brand pack arrives, ready to use — logo, sub-mark, colours, type, vectors, textures and a guide for putting them to work."
-      }
-    ],
-    includes: [
-      "a logo — your primary mark",
-      "a sub-mark, sized and ready for socials",
-      "a complete colour palette with codes",
-      "a font pairing, chosen for your voice",
-      "custom vectors",
-      "a texture library",
-      "a mock-up guide"
-    ],
-    availability: "three spots a month while capacity lasts",
-    ctaLabel: "inquire about a spot",
-    ctaHref: "mailto:hello@studiorjl.com?subject=branding%20palette%20in%20a%20week"
-  },
-  {
     title: "brandscape starter kit",
     slug: "brandscape-starter-kit",
     eyebrow: "a studio rjl offer",
@@ -126,6 +88,25 @@ export const offers = [
     ],
     ctaLabel: "enquire about a brandscape",
     ctaHref: "mailto:hello@studiorjl.com?subject=brandscape%20starter%20kit"
+  },
+  {
+    title: "bespoke brandscape",
+    slug: "bespoke-brandscape",
+    eyebrow: "the next tier",
+    priceLine: "from $5,000 (AUD)",
+    tagline: "a complete, bespoke brandscape — crafted for places with soul.",
+    image: "interior-brandscape-design-warm-light.jpg",
+    imageAlt: "warm interior brandscape concept by studio rjl with layered textures and soft light",
+    summary: [
+      "the full studio rjl treatment — a bespoke brandscape that shapes the tone, texture and gesture of your brand across identity, print, packaging, digital and place. every element designed and curated for you, from strategy through to launch."
+    ],
+    steps: [],
+    includes: [],
+    notes: [
+      "each bespoke brandscape is scoped individually — timeline, deliverables and investment are confirmed in your proposal after a discovery call."
+    ],
+    ctaLabel: "enquire about a bespoke brandscape",
+    ctaHref: "mailto:hello@studiorjl.com?subject=bespoke%20brandscape"
   }
 ];
 
