@@ -230,10 +230,10 @@ export const editorialPosts = [
       },
       {
         image: "rogue-car-ad.jpg",
-        width: 1400,
-        height: 2086,
+        width: 687,
+        height: 1024,
         alt:
-          "Rogue campaign artwork of a woman in sunglasses, lace headscarf and gloves driving a vintage car with cinematic advertising styling"
+          "Rogue campaign artwork of a woman in sunglasses, leopard print headscarf and lace gloves driving a vintage car with cinematic advertising styling"
       },
       {
         image: "rogue-cards-horizontal-gold-studiorjl.jpg",
@@ -408,7 +408,7 @@ export const portfolio = [
   },
   {
     image: "rogue-car-ad.jpg",
-    alt: "Rogue campaign artwork for a daring marketing agency with cinematic fashion inspired art direction",
+    alt: "Rogue campaign artwork of a woman in sunglasses, leopard print headscarf and lace gloves driving a vintage car",
     categories: [
       "campaign art direction",
       "branding",
