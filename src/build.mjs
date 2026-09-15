@@ -13,6 +13,8 @@ import {
   navItems,
   offers,
   portfolio,
+  propertyPortfolioImages,
+  propertyPortfolioNotes,
   primaryServices,
   serviceDetails,
   socialLinks,
@@ -311,6 +313,7 @@ function head({
   modifiedTime = "",
   section = "",
   tags = [],
+  robots = "index, follow, max-image-preview:large",
   extraSchema = []
 }) {
   const pageTitle = title === site.name ? site.name : `${title} - ${site.name}`;
@@ -324,7 +327,7 @@ function head({
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${escapeHtml(pageTitle)}</title>
     <meta name="description" content="${escapeHtml(description)}">
-    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="robots" content="${robots}">
     <link rel="canonical" href="${url}">
     <meta property="og:title" content="${escapeHtml(pageTitle)}">
     <meta property="og:description" content="${escapeHtml(description)}">
@@ -556,6 +559,7 @@ function layout({
   modifiedTime,
   section,
   tags,
+  robots,
   extraSchema = []
 }) {
   const url = canonical(pathname);
@@ -575,6 +579,7 @@ function layout({
       modifiedTime,
       section,
       tags,
+      robots,
       extraSchema
     })}
   </head>
@@ -900,6 +905,63 @@ function portfolioPage(category) {
             ]
       )
     ]
+  });
+}
+
+// private property pitch portfolio — lives at /portfolio/property/ and is shared
+// by url with property clients only. deliberately unlinked (no nav, portfolio
+// or sitemap entry) and marked noindex. images are the architecture + interiors
+// placeholders until the real project set arrives; notes are placeholder copy
+// Rebekah will replace — one text block sits under every three images.
+function propertyPortfolioPage() {
+  const cards = propertyPortfolioImages.map(
+    (item) => `
+      <article class="portfolio-card">
+        <div class="portfolio-frame">
+          <img class="reveal" src="${asset(item.image)}" alt="${escapeHtml(item.alt)}" loading="lazy">
+        </div>
+        ${
+          item.categories?.length
+            ? `<div class="meta"><span class="category">filed under</span>${item.categories.map((c) => `<span class="tag">${escapeHtml(c)}</span>`).join("")}</div>`
+            : ""
+        }
+      </article>
+    `
+  );
+
+  const rows = [];
+  for (let i = 0; i < cards.length; i += 3) {
+    rows.push(cards.slice(i, i + 3).join(""));
+  }
+
+  const sections = rows
+    .map(
+      (row, i) => `
+        <section class="portfolio-grid image-section">${row}</section>
+        ${
+          propertyPortfolioNotes[i]
+            ? `<div class="article-body property-note">${propertyPortfolioNotes[i].paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join("")}</div>`
+            : ""
+        }
+      `
+    )
+    .join("");
+
+  const body = `
+    <header class="page-header">
+      <h1>property</h1>
+      <p class="subline portfolio-subline" data-type-text="an unfolding collection of places, spaces and atmospheres." data-type-speed="32"></p>
+    </header>
+    ${sections}
+  `;
+
+  return layout({
+    title: "property",
+    description:
+      "a private studio rjl portfolio for property partners — spatial brandscapes, interiors and atmospheric placemaking for developments, venues and places with soul.",
+    pathname: "/portfolio/property/",
+    robots: "noindex, nofollow",
+    body
   });
 }
 
@@ -1412,6 +1474,7 @@ const pages = [
   ["questionnaire/index.html", questionnairePage()],
   ["portfolio/index.html", portfolioPage()],
   ...portfolioCategories.map((category) => [`portfolio/${category.slug}/index.html`, portfolioPage(category)]),
+  ["portfolio/property/index.html", propertyPortfolioPage()],
   ["editorial/index.html", editorialPage()],
   ...editorialPosts.map((post) => [`editorial/${post.slug}/index.html`, editorialArticlePage(post)]),
   ["offers/index.html", offersPage()],

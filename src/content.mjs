@@ -586,6 +586,81 @@ export const portfolio = [
   }
 ];
 
+// private property portfolio — served at /portfolio/property/ for pitch clients.
+// deliberately unlinked (no nav, portfolio or sitemap entry; page is noindex).
+// images are the architecture + interiors placeholders until the real project set
+// arrives — swap the entries below when it does. one note sits under every three
+// images on the page; the notes are placeholder copy for Rebekah to replace.
+export const propertyPortfolioImages = [
+  {
+    image: "interior-brandscape-design-warm.jpg",
+    alt: "Interior architecture concept with furniture, lighting and pattern design",
+    categories: ["interior architecture", "spatial concept design"]
+  },
+  {
+    image: "interior-brandscape-design-warm-light.jpg",
+    alt: "Interior brandscape design with warm light, textiles and atmospheric styling",
+    categories: ["interior design", "materiality"]
+  },
+  {
+    image: "interior-brandscape-design-warm.jpg",
+    alt: "Spatial concept design with furniture, lighting and pattern detail",
+    categories: ["furniture and lighting design", "spatial concept design"]
+  },
+  {
+    image: "interior-brandscape-design-warm-light.jpg",
+    alt: "Atmospheric interior styling with warm light and textiles",
+    categories: ["interior design", "atmosphere"]
+  },
+  {
+    image: "interior-brandscape-design-warm.jpg",
+    alt: "Interior brandscape concept with pattern and material direction",
+    categories: ["pattern design", "interior architecture"]
+  },
+  {
+    image: "interior-brandscape-design-warm-light.jpg",
+    alt: "Warm-lit interior brandscape styling and textile detail",
+    categories: ["interior design", "fabric design"]
+  },
+  {
+    image: "interior-brandscape-design-warm.jpg",
+    alt: "Spatial and furniture concept for an atmospheric interior",
+    categories: ["spatial concept design", "furniture and lighting design"]
+  },
+  {
+    image: "interior-brandscape-design-warm-light.jpg",
+    alt: "Interior brandscape with warm light and layered textures",
+    categories: ["interior design", "lighting concept design"]
+  },
+  {
+    image: "interior-brandscape-design-warm.jpg",
+    alt: "Interior architecture concept with pattern, furniture and lighting",
+    categories: ["interior architecture", "materiality"]
+  }
+];
+
+// placeholder notes in the studio voice — replace with your own words when ready.
+export const propertyPortfolioNotes = [
+  {
+    paragraphs: [
+      "every place begins with a feeling. studio rjl shapes spatial identities for developments, venues and places that want soul — atmosphere before ornament, story before styling.",
+      "this is a placeholder note. replace it with your words, and the page will carry them exactly as they are."
+    ]
+  },
+  {
+    paragraphs: [
+      "from material and palette to light, texture and gesture — a brandscape gives a place a name for its own feeling, before a single wall is styled.",
+      "this is a placeholder note. replace it with your words, and the page will carry them exactly as they are."
+    ]
+  },
+  {
+    paragraphs: [
+      "if you are building something with atmosphere, I would love to hear about it — enquire via the form below, or write to hello@studiorjl.com.",
+      "this is a placeholder note. replace it with your words, and the page will carry them exactly as they are."
+    ]
+  }
+];
+
 export const faqs = [
   {
     question: "what does studio rjl do?",

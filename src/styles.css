@@ -610,7 +610,7 @@ main section.image-section {
 
 .portfolio-filter {
   margin: 12px auto 0;
-  width: min(250px, 100%);
+  width: min(360px, 100%);
   text-align: left;
   background: var(--field);
   color: var(--green);
@@ -624,6 +624,20 @@ main section.image-section {
   cursor: pointer;
 }
 
+.property-note {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 10%;
+  text-align: center;
+}
+
+.property-note p {
+  max-width: 68ch;
+  margin: 0 auto 22px;
+  font-size: 12px;
+  text-wrap: pretty;
+}
+
 .portfolio-filter summary .filter-placeholder {
   color: rgba(76, 59, 21, 0.44);
   font-family: "Courier New", monospace;
@@ -633,6 +647,11 @@ main section.image-section {
 
 .portfolio-filter .service-options {
   margin: 8px 16px 24px;
+}
+
+.portfolio-filter .service-options label {
+  font-size: 11px;
+  white-space: nowrap;
 }
 
 .editorial-scroll-cue {
