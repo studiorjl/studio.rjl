@@ -356,7 +356,7 @@ function head({
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles.css?v=2">
     ${site.googleAnalyticsId ? analytics() : ""}
     ${jsonLd(organizationSchema())}
     ${jsonLd(websiteSchema())}
@@ -590,7 +590,7 @@ function layout({
     ${type === "article" ? articleRichPinMarkup({ title, description, url, author: author || site.founder }) : ""}
     ${footer()}
     ${enquiryPanel()}
-    <script src="/site.js" type="module"></script>
+    <script src="/site.js?v=2" type="module"></script>
   </body>
 </html>`;
 }
