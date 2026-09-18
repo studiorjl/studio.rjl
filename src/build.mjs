@@ -1320,6 +1320,7 @@ function confirmPage() {
         var params = new URLSearchParams(window.location.search);
         var t = params.get("t");
         var step = params.get("step") === "2" ? "2" : "1";
+        var cancel = params.get("cancel") === "1" ? "&cancel=1" : "";
         var title = document.getElementById("confirm-title");
         var message = document.getElementById("message");
         if (!t) {
@@ -1327,7 +1328,7 @@ function confirmPage() {
           message.innerHTML = "<p>the link may have been clipped in your email \u2014 try it again, or write to <a href='mailto:hello@studiorjl.com'>hello@studiorjl.com</a>.</p>";
           return;
         }
-        var url = "https://rjl-publisher-insights-agent-a07f3048.base44.app/functions/confirmBookingCall?format=json&step=" + step + "&t=" + encodeURIComponent(t);
+        var url = "https://rjl-publisher-insights-agent-a07f3048.base44.app/functions/confirmBookingCall?format=json&step=" + step + cancel + "&t=" + encodeURIComponent(t);
         fetch(url).then(function (res) { return res.json(); }).then(function (data) {
           title.textContent = data.title;
           message.innerHTML = data.message_html;

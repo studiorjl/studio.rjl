@@ -76,13 +76,13 @@ export const offers = [
     ],
     steps: [],
     includes: [
-      "logo Ã¢ÂÂ brandmark, submark (delivered as a range of png & svg file types)",
-      "palette Ã¢ÂÂ colours, font pairings, 3 textures and 3 images; art direction and curation",
-      "brandscape guide Ã¢ÂÂ designed specifically for you to import into Canva, Adobe or Figma"
+      "logo — brandmark, submark (delivered as a range of png & svg file types)",
+      "palette — colours, font pairings, 3 textures and 3 images; art direction and curation",
+      "brandscape guide — designed specifically for you to import into Canva, Adobe or Figma"
     ],
     notes: [
       "due to the nature of this offer, its turnaround and delivery, no revisions are offered.",
-      "studio rjl designs intuitively Ã¢ÂÂ slight variants will often be available in your palette, so you can implement the most aligned version of the design direction.",
+      "studio rjl designs intuitively — slight variants will often be available in your palette, so you can implement the most aligned version of the design direction.",
       "full payment is due prior to delivery of any files.",
       "a 60-minute brand discovery call, or answering the questionnaire, is required for the design and delivery of your tailored brandscape.",
       "gst is included in the price.",
@@ -100,16 +100,16 @@ export const offers = [
     slug: "bespoke-brandscape",
     eyebrow: "a studio rjl offer",
     priceLine: "from $5,500 (AUD)",
-    tagline: "a complete, bespoke brandscape Ã¢ÂÂ crafted for brands and places with soul.",
+    tagline: "a complete, bespoke brandscape — crafted for brands and places with soul.",
     image: "interior-brandscape-design-warm-light.jpg",
     imageAlt: "warm interior brandscape concept by studio rjl with layered textures and soft light",
     summary: [
-      "a bespoke and uniquely tailored brandscape that truly elevates you Ã¢ÂÂ shaping the tone, texture and gesture of your brand across identity, print, packaging, digital and place. every element designed and curated for you, from strategy through to launch."
+      "a bespoke and uniquely tailored brandscape that truly elevates you — shaping the tone, texture and gesture of your brand across identity, print, packaging, digital and place. every element designed and curated for you, from strategy through to launch."
     ],
     steps: [],
     includes: [],
     notes: [
-      "each bespoke brandscape is scoped individually Ã¢ÂÂ timeline, deliverables and investment are confirmed in your proposal after a discovery call."
+      "each bespoke brandscape is scoped individually — timeline, deliverables and investment are confirmed in your proposal after a discovery call."
     ],
     ctaLabel: "enquire about a bespoke brandscape",
     ctaHref: "mailto:hello@studiorjl.com?subject=bespoke%20brandscape"
@@ -133,7 +133,7 @@ export const services = [
 
 export const primaryServices = services;
 
-// trimmed set for the enquiry form only Ã¢ÂÂ keeps the form frictionless;
+// trimmed set for the enquiry form only — keeps the form frictionless;
 // the full list above remains the base reference for the services page, home panel and llms.txt
 export const enquiryServices = [
   "branding & visual identity",
@@ -586,10 +586,10 @@ export const portfolio = [
   }
 ];
 
-// private property portfolio Ã¢ÂÂ served at /portfolio/property/ for pitch clients.
+// private property portfolio — served at /portfolio/property/ for pitch clients.
 // deliberately unlinked (no nav, portfolio or sitemap entry; page is noindex).
 // images are the architecture + interiors placeholders until the real project set
-// arrives Ã¢ÂÂ swap the entries below when it does. one note sits under every three
+// arrives — swap the entries below when it does. one note sits under every three
 // images on the page; the notes are placeholder copy for Rebekah to replace.
 export const propertyPortfolioImages = [
   {
@@ -639,23 +639,23 @@ export const propertyPortfolioImages = [
   }
 ];
 
-// placeholder notes in the studio voice Ã¢ÂÂ replace with your own words when ready.
+// placeholder notes in the studio voice — replace with your own words when ready.
 export const propertyPortfolioNotes = [
   {
     paragraphs: [
-      "every place begins with a feeling. studio rjl shapes spatial identities for developments, venues and places that want soul Ã¢ÂÂ atmosphere before ornament, story before styling.",
+      "every place begins with a feeling. studio rjl shapes spatial identities for developments, venues and places that want soul — atmosphere before ornament, story before styling.",
       "this is a placeholder note. replace it with your words, and the page will carry them exactly as they are."
     ]
   },
   {
     paragraphs: [
-      "from material and palette to light, texture and gesture Ã¢ÂÂ a brandscape gives a place a name for its own feeling, before a single wall is styled.",
+      "from material and palette to light, texture and gesture — a brandscape gives a place a name for its own feeling, before a single wall is styled.",
       "this is a placeholder note. replace it with your words, and the page will carry them exactly as they are."
     ]
   },
   {
     paragraphs: [
-      "if you are building something with atmosphere, I would love to hear about it Ã¢ÂÂ enquire via the form below, or write to hello@studiorjl.com.",
+      "if you are building something with atmosphere, I would love to hear about it — enquire via the form below, or write to hello@studiorjl.com.",
       "this is a placeholder note. replace it with your words, and the page will carry them exactly as they are."
     ]
   }
