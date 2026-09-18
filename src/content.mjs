@@ -9,7 +9,6 @@ export const site = {
   pinterestVerification: "2c6a823a3df926847a29a4ec463d549c",
   googleAnalyticsId: "G-PBJDD7VN3N",
   googleTagManagerId: "GTM-KPCBCVV8",
-  formEndpoint: "https://formspree.io/f/mzdyagdr",
   founder: "Rebekah Jane",
   region: "Australia and international",
   locality: "Bangalow, Northern NSW, Australia",

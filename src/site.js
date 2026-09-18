@@ -138,17 +138,37 @@ if (form && thankYou) {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: new FormData(form),
-      headers: { Accept: "application/json" }
-    });
+    const data = new FormData(form);
+    const payload = {
+      name: data.get("name"),
+      company: data.get("company"),
+      email: data.get("email"),
+      phone: data.get("phone"),
+      location: data.get("location"),
+      services: data.getAll("service[]"),
+      range: data.get("range"),
+      website: data.get("website"),
+      message: data.get("message")
+    };
 
-    if (response.ok) {
-      form.hidden = true;
-      thankYou.classList.add("visible");
-    } else {
-      window.alert("Something went wrong. Please try again.");
+    try {
+      const response = await fetch(
+        "https://rjl-publisher-insights-agent-a07f3048.base44.app/functions/submitEnquiry",
+        {
+          method: "POST",
+          body: JSON.stringify(payload),
+          headers: { "Content-Type": "application/json", Accept: "application/json" }
+        }
+      );
+      const result = await response.json().catch(() => ({}));
+      if (response.ok && result.ok) {
+        form.hidden = true;
+        thankYou.classList.add("visible");
+      } else {
+        window.alert("hmm — something went sideways. please try again, or write to hello@studiorjl.com.");
+      }
+    } catch (error) {
+      window.alert("hmm — something went sideways. please try again, or write to hello@studiorjl.com.");
     }
   });
 }
