@@ -464,6 +464,7 @@ function footer() {
           </div>
         </div>
         <div class="footer-block reveal" aria-label="client portal">
+          <div class="footer-title">client portal</div>
           <a class="client-login" href="/client/"><span class="social-icon">${icon("person")}</span>client log in</a>
         </div>
         <div class="footer-block reveal">
@@ -1185,8 +1186,8 @@ function contactPage() {
       <button class="contact-option" type="button" data-enquiry-toggle data-enquiry-bloom>
         <span class="social-icon">${icon("bloom")}</span>
         <span>
-          <span class="contact-option-title">inquire to work with us</span>
-          <span class="contact-option-sub">tell us about your brand, your place, your project — and we will be in touch.</span>
+          <span class="contact-option-title">inquire</span>
+          <span class="contact-option-sub">fill out the form to work with us<br>tell us about your brand, your place, your project — and we will be in touch.</span>
         </span>
       </button>
     </section>
