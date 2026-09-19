@@ -1447,6 +1447,421 @@ function questionnairePage() {
 </html>`;
 }
 
+
+// ---------------------------------------------------------------------------
+// studio rjl client portal — login page (/client/)
+// standalone page (no site.js, no right-click blocking): the client signs in
+// with their email + password; a session token is stored and they are taken
+// through to /client/portal/. "your brand awaits…" is the reveal moment.
+function clientLoginPage() {
+  return `<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>client portal - studio rjl</title>
+    <meta name="description" content="the studio rjl client portal — sign in to your private brand home.">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+      :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "Cormorant Infant", Georgia, serif; font-size: 20px; letter-spacing: 0.08em; text-decoration: none; color: var(--green); }
+      .wrap { width: 100%; max-width: 420px; text-align: center; }
+      .presents { font-family: "Cormorant Infant", Georgia, serif; font-size: 15px; letter-spacing: 0.28em; color: var(--deep-green); margin: 0 0 26px; }
+      h1 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-style: italic; font-size: 44px; letter-spacing: 0.02em; margin: 0 0 18px; color: var(--deep-green); }
+      .intro { font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; line-height: 1.8; margin: 0 0 34px; }
+      .field { text-align: left; margin-bottom: 16px; }
+      .label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; margin: 0 0 6px; color: var(--deep-green); }
+      .input { display: block; width: 100%; padding: 12px 14px; font-family: "Courier New", monospace; font-size: 14px; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; }
+      .input:focus { outline: 1px solid var(--deep-green); }
+      .enter { margin: 26px 0 0; width: 100%; background: var(--deep-green); color: var(--ivory); padding: 15px 34px; border: 0; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
+      .enter:disabled { opacity: 0.5; cursor: wait; }
+      #err { display: none; margin: 18px 0 0; font-size: 13px; color: #7a2d2d; }
+      .footnote { margin-top: 44px; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
+      .footnote a { color: var(--green); }
+    </style>
+  </head>
+  <body>
+    <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
+    <div class="wrap">
+      <p class="presents">studio rjl presents</p>
+      <h1>your brand awaits…</h1>
+      <p class="intro">everything lives in your own private client portal — sign in to step inside.</p>
+      <form id="login" autocomplete="on">
+        <div class="field">
+          <label class="label" for="email">username</label>
+          <input class="input" id="email" type="email" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label class="label" for="password">password</label>
+          <input class="input" id="password" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="enter" id="enter" type="submit">enter</button>
+        <p id="err">hmm — that username or password isn't recognised. try again, or email <a href="mailto:hello@studiorjl.com" style="color:#7a2d2d;">hello@studiorjl.com</a>.</p>
+      </form>
+      <p class="footnote">private to you · <a href="https://studiorjl.com">studiorjl.com</a></p>
+    </div>
+    <script>
+      (function () {
+        var API = "https://rjl-publisher-insights-agent-a07f3048.base44.app/functions";
+        document.getElementById("login").addEventListener("submit", function (e) {
+          e.preventDefault();
+          var btn = document.getElementById("enter");
+          btn.disabled = true; btn.textContent = "opening…";
+          fetch(API + "/portalLogin", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: document.getElementById("email").value.trim(),
+              password: document.getElementById("password").value
+            })
+          }).then(function (r) { return r.json(); }).then(function (d) {
+            if (d.ok) {
+              try { sessionStorage.setItem("rjl_portal_token", d.token); } catch (err) {}
+              location.href = "/client/portal/";
+            } else {
+              btn.disabled = false; btn.textContent = "enter";
+              document.getElementById("err").style.display = "block";
+            }
+          }).catch(function () {
+            btn.disabled = false; btn.textContent = "enter";
+            document.getElementById("err").style.display = "block";
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>`;
+}
+
+
+// ---------------------------------------------------------------------------
+// studio rjl client portal — the portal itself (/client/portal/)
+// standalone page (no site.js, right-click and saving enabled on purpose —
+// these are the client's own brand assets). the page renders nothing until a
+// valid session token returns the client's curated content from the studio
+// backend; no token, no content ever reaches the browser.
+function clientPortalPage() {
+  return `<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>your brandscape - studio rjl client portal</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+      :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
+      a { color: var(--green); }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "Cormorant Infant", Georgia, serif; font-size: 20px; letter-spacing: 0.08em; text-decoration: none; z-index: 10; }
+      .logout { position: fixed; top: 30px; right: 32px; font-size: 12px; letter-spacing: 0.06em; text-decoration: none; opacity: 0.6; z-index: 10; }
+      .wrap { max-width: 880px; margin: 0 auto; padding: 72px 24px 96px; }
+      #loading { text-align: center; padding: 120px 0; font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 20px; }
+      .hero { text-align: center; margin-bottom: 20px; }
+      .presents { font-family: "Cormorant Infant", Georgia, serif; font-size: 14px; letter-spacing: 0.28em; color: var(--deep-green); margin: 0 0 20px; }
+      .brand { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-size: 54px; letter-spacing: 0.02em; margin: 0 0 10px; color: var(--deep-green); line-height: 1.1; }
+      .hero-sub { font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 20px; margin: 0 0 8px; }
+      .hero-line { font-size: 13px; opacity: 0.7; margin: 0; }
+      .chips { text-align: center; margin: 30px 0 8px; line-height: 2.4; }
+      .chips a { display: inline-block; font-size: 12px; letter-spacing: 0.05em; text-decoration: none; padding: 3px 12px; margin: 0 3px; border: 1px solid rgba(76,59,21,0.3); border-radius: 999px; background: var(--pale-ivory); }
+      .chips a:hover { background: var(--deep-green); color: var(--ivory); }
+      section { margin-top: 56px; scroll-margin-top: 24px; }
+      h2 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 400; font-size: 30px; color: var(--deep-green); margin: 0 0 6px; }
+      .section-line { font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 17px; margin: 0 0 22px; opacity: 0.8; }
+      .empty { font-style: italic; opacity: 0.55; font-size: 13px; padding: 26px 22px; text-align: center; background: var(--pale-ivory); border: 1px dashed rgba(76,59,21,0.3); }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 18px; }
+      .card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 14px; }
+      .swatch { height: 96px; margin: -14px -14px 12px; border-bottom: 1px solid rgba(76,59,21,0.25); }
+      .card-title { font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; color: var(--deep-green); margin: 0 0 4px; }
+      .meta { font-size: 12px; opacity: 0.75; word-break: break-word; white-space: pre-wrap; }
+      .asset { width: 100%; display: block; background: #fff; }
+      .copy { margin-top: 10px; background: var(--deep-green); color: var(--ivory); border: 0; padding: 6px 16px; font-family: "Courier New", monospace; font-size: 11px; letter-spacing: 0.08em; cursor: pointer; }
+      .copy:hover { opacity: 0.85; }
+      .row-list { display: flex; flex-direction: column; gap: 12px; }
+      .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 14px 18px; }
+      .row .meta { flex: 1; }
+      .open-link { font-size: 13px; text-decoration: underline; white-space: nowrap; }
+      .prompt-card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 18px; margin-bottom: 14px; }
+      .prompt-text { white-space: pre-wrap; font-size: 13px; margin: 8px 0 12px; }
+      .q-label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; margin: 26px 0 8px; color: var(--deep-green); }
+      .q-input { display: block; width: 100%; padding: 12px 14px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.7; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; resize: vertical; }
+      .q-input:focus { outline: 1px solid var(--deep-green); }
+      .save { margin-top: 28px; background: var(--deep-green); color: var(--ivory); padding: 13px 30px; border: 0; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
+      .save:disabled { opacity: 0.5; cursor: wait; }
+      #note-saved { display: none; margin-left: 12px; font-style: italic; opacity: 0.7; }
+      #q-done { display: none; text-align: center; padding: 20px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 21px; }
+      .footnote { margin-top: 72px; text-align: center; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
+    </style>
+  </head>
+  <body>
+    <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
+    <a class="logout" href="/client/" id="logout">sign out</a>
+    <div class="wrap">
+      <div id="loading">opening your brandscape…</div>
+      <div id="app" style="display:none;">
+        <div class="hero">
+          <p class="presents">studio rjl presents</p>
+          <h1 class="brand" id="brand"></h1>
+          <p class="hero-sub">your brand awaits…</p>
+          <p class="hero-line" id="greet"></p>
+        </div>
+        <nav class="chips" aria-label="portal sections">
+          <a href="#colours">colours</a><a href="#typography">typography</a><a href="#imagery">imagery</a><a href="#textures">textures</a><a href="#templates">templates</a><a href="#lockups">lock-ups</a><a href="#prompts">prompt library</a><a href="#questionnaire">questionnaire</a><a href="#notes">notes</a>
+        </nav>
+        <section id="colours">
+          <h2>colours</h2>
+          <p class="section-line">the palette of your brandscape — click to copy any code.</p>
+          <div class="grid" id="colours-grid"></div>
+        </section>
+        <section id="typography">
+          <h2>typography</h2>
+          <p class="section-line">your typefaces and pairings.</p>
+          <div class="row-list" id="type-list"></div>
+        </section>
+        <section id="imagery">
+          <h2>imagery</h2>
+          <p class="section-line">curated imagery for your brand — yours to take, right-click freely.</p>
+          <div class="grid" id="images-grid"></div>
+        </section>
+        <section id="textures">
+          <h2>textures</h2>
+          <p class="section-line">the tactile layer of your brandscape.</p>
+          <div class="grid" id="textures-grid"></div>
+        </section>
+        <section id="templates">
+          <h2>templates</h2>
+          <p class="section-line">ready-made layouts carrying your brand into the world.</p>
+          <div class="row-list" id="templates-list"></div>
+        </section>
+        <section id="lockups">
+          <h2>brand lock-ups</h2>
+          <p class="section-line">examples of your mark at work — signatures, pairings and compositions.</p>
+          <div class="grid" id="lockups-grid"></div>
+        </section>
+        <section id="prompts">
+          <h2>prompt library</h2>
+          <p class="section-line">words to conjure your brand with — copy any prompt and make it yours.</p>
+          <div id="prompts-list"></div>
+        </section>
+        <section id="questionnaire">
+          <h2>the questionnaire</h2>
+          <p class="section-line">a few questions so Rebekah can see your work through your eyes — rambling welcome.</p>
+          <div id="q-wrap">
+            <form id="qform">
+              <label class="q-label" for="q1">tell me about your work — what are you making, and for whom?</label>
+              <textarea class="q-input" id="q1" rows="4"></textarea>
+              <label class="q-label" for="q2">your brand as it stands: what do you love about it, and what's quietly not working?</label>
+              <textarea class="q-input" id="q2" rows="4"></textarea>
+              <label class="q-label" for="q3">three words for the feeling your brand should carry.</label>
+              <textarea class="q-input" id="q3" rows="2"></textarea>
+              <label class="q-label" for="q4">whose world do you admire? (brands, places, makers — links welcome.)</label>
+              <textarea class="q-input" id="q4" rows="4"></textarea>
+              <label class="q-label" for="q5">any must-keeps — an existing logo, fonts, colours you're attached to?</label>
+              <textarea class="q-input" id="q5" rows="4"></textarea>
+              <label class="q-label" for="q6">where will the brandscape live first? (web, print, packaging, socials.)</label>
+              <textarea class="q-input" id="q6" rows="4"></textarea>
+              <label class="q-label" for="q7">anything else at all.</label>
+              <textarea class="q-input" id="q7" rows="4"></textarea>
+              <button class="save" id="q-send" type="submit">send my answers</button>
+            </form>
+          </div>
+          <p id="q-done">thank you — your answers are with Rebekah. ✨</p>
+        </section>
+        <section id="notes">
+          <h2>notes</h2>
+          <p class="section-line">a quiet page for your thoughts — anything saved here is kept for your project.</p>
+          <textarea class="q-input" id="note" rows="8" placeholder="scribbles, sparks, things not to forget…"></textarea>
+          <button class="save" id="note-save" type="button">save note</button>
+          <span id="note-saved">saved ✨</span>
+        </section>
+        <p class="footnote">your brandscape, curated with love by <a href="https://studiorjl.com">studio rjl</a> · these assets are yours to gather — right-click away.</p>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var API = "https://rjl-publisher-insights-agent-a07f3048.base44.app/functions";
+        var token = "";
+        try { token = sessionStorage.getItem("rjl_portal_token") || ""; } catch (e) {}
+        if (!token) { location.replace("/client/"); return; }
+
+        function esc(s) {
+          return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text; document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); } catch (err) {}
+          document.body.removeChild(ta);
+        }
+        function copyText(btn, text) {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () {
+              btn.textContent = "copied ✨";
+              setTimeout(function () { btn.textContent = "copy"; }, 1800);
+            }).catch(function () { fallbackCopy(text); btn.textContent = "copied ✨"; setTimeout(function () { btn.textContent = "copy"; }, 1800); });
+          } else {
+            fallbackCopy(text); btn.textContent = "copied ✨";
+            setTimeout(function () { btn.textContent = "copy"; }, 1800);
+          }
+        }
+        function empty(id) {
+          var el = document.getElementById(id);
+          if (el) el.innerHTML = '<p class="empty">still in the studio — being made for you with love. this will appear here soon.</p>';
+        }
+        function post(path, payload) {
+          return fetch(API + "/" + path, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          }).then(function (r) { return r.json(); });
+        }
+
+        post("portalGet", { token: token }).then(function (d) {
+          if (!d.ok) { location.replace("/client/"); return; }
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("app").style.display = "block";
+          document.getElementById("brand").textContent = d.brand_name || "your brandscape";
+          document.getElementById("greet").textContent = "welcome, " + (d.client_name || "friend") + " — everything lives here, all in one place, always yours.";
+          document.getElementById("logout").addEventListener("click", function (e) {
+            e.preventDefault();
+            try { sessionStorage.removeItem("rjl_portal_token"); } catch (err) {}
+            location.href = "/client/";
+          });
+
+          var byType = {};
+          (d.content || []).forEach(function (item) {
+            if (item.type === "client_note") return;
+            (byType[item.type] = byType[item.type] || []).push(item);
+          });
+          var noteItem = (d.content || []).filter(function (item) { return item.type === "client_note"; })[0];
+
+          // colours
+          var cg = document.getElementById("colours-grid");
+          if ((byType.colour || []).length === 0) { empty("colours-grid"); } else {
+            byType.colour.forEach(function (c) {
+              var card = document.createElement("div");
+              card.className = "card";
+              var hex = (c.meta || "").trim();
+              card.innerHTML = '<div class="swatch" style="background:' + esc(hex) + '"></div>' +
+                '<p class="card-title">' + esc(c.title || hex) + '</p>' +
+                '<p class="meta">' + esc(hex) + '</p>';
+              var btn = document.createElement("button");
+              btn.className = "copy"; btn.type = "button"; btn.textContent = "copy";
+              btn.addEventListener("click", function () { copyText(btn, hex); });
+              card.appendChild(btn);
+              cg.appendChild(card);
+            });
+          }
+
+          // typography
+          var tl = document.getElementById("type-list");
+          if ((byType.typography || []).length === 0) { empty("type-list"); } else {
+            byType.typography.forEach(function (t) {
+              var row = document.createElement("div");
+              row.className = "row";
+              row.innerHTML = '<div><p class="card-title" style="margin:0;">' + esc(t.title) + '</p><p class="meta">' + esc(t.meta) + '</p></div>';
+              var btn = document.createElement("button");
+              btn.className = "copy"; btn.type = "button"; btn.textContent = "copy";
+              btn.addEventListener("click", function () { copyText(btn, t.meta || t.title); });
+              row.appendChild(btn);
+              tl.appendChild(row);
+            });
+          }
+
+          // imagery + textures + lock-ups (image grids)
+          [["image", "images-grid"], ["texture", "textures-grid"], ["lockup", "lockups-grid"]].forEach(function (pair) {
+            var grid = document.getElementById(pair[1]);
+            var items = byType[pair[0]] || [];
+            if (items.length === 0) { empty(pair[1]); return; }
+            items.forEach(function (it) {
+              var card = document.createElement("div");
+              card.className = "card";
+              card.innerHTML = (it.url ? '<img class="asset" src="' + esc(it.url) + '" alt="' + esc(it.title || "brand asset") + '" loading="lazy">' : "") +
+                '<p class="card-title">' + esc(it.title) + '</p>' +
+                (it.meta ? '<p class="meta">' + esc(it.meta) + '</p>' : "");
+              grid.appendChild(card);
+            });
+          });
+
+          // templates
+          var tpl = document.getElementById("templates-list");
+          if ((byType.template || []).length === 0) { empty("templates-list"); } else {
+            byType.template.forEach(function (t) {
+              var row = document.createElement("div");
+              row.className = "row";
+              row.innerHTML = '<div><p class="card-title" style="margin:0;">' + esc(t.title) + '</p><p class="meta">' + esc(t.meta) + '</p></div>';
+              if (t.url) {
+                var a = document.createElement("a");
+                a.className = "open-link"; a.href = t.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "open ↗";
+                row.appendChild(a);
+              }
+              tpl.appendChild(row);
+            });
+          }
+
+          // prompts
+          var pl = document.getElementById("prompts-list");
+          if ((byType.prompt || []).length === 0) { empty("prompts-list"); } else {
+            byType.prompt.forEach(function (p) {
+              var card = document.createElement("div");
+              card.className = "prompt-card";
+              card.innerHTML = '<p class="card-title" style="margin:0 0 8px;">' + esc(p.title) + '</p><p class="prompt-text">' + esc(p.meta) + '</p>';
+              var btn = document.createElement("button");
+              btn.className = "copy"; btn.type = "button"; btn.textContent = "copy prompt";
+              btn.addEventListener("click", function () { copyText(btn, p.meta || p.title); });
+              card.appendChild(btn);
+              pl.appendChild(card);
+            });
+          }
+
+          // notes
+          if (noteItem && noteItem.meta) document.getElementById("note").value = noteItem.meta;
+          document.getElementById("note-save").addEventListener("click", function () {
+            var btn = document.getElementById("note-save");
+            btn.disabled = true; btn.textContent = "saving…";
+            post("portalSaveNote", { token: token, text: document.getElementById("note").value }).then(function (r) {
+              btn.disabled = false; btn.textContent = "save note";
+              if (r.ok) {
+                document.getElementById("note-saved").style.display = "inline";
+                setTimeout(function () { document.getElementById("note-saved").style.display = "none"; }, 2200);
+              }
+            });
+          });
+
+          // questionnaire
+          document.getElementById("qform").addEventListener("submit", function (e) {
+            e.preventDefault();
+            var btn = document.getElementById("q-send");
+            btn.disabled = true; btn.textContent = "sending…";
+            var answers = {};
+            ["q1", "q2", "q3", "q4", "q5", "q6", "q7"].forEach(function (id) {
+              answers[id] = document.getElementById(id).value.trim();
+            });
+            post("submitClientQuestionnaire", { token: token, answers: answers }).then(function (r) {
+              if (r.ok) {
+                document.getElementById("q-wrap").style.display = "none";
+                document.getElementById("q-done").style.display = "block";
+              } else {
+                btn.disabled = false; btn.textContent = "send my answers";
+              }
+            });
+          });
+        }).catch(function () { location.replace("/client/"); });
+      })();
+    </script>
+  </body>
+</html>`;
+}
+
 function sitemapPage() {
   const links = [
     { label: "home", href: "/" },
@@ -1454,7 +1869,6 @@ function sitemapPage() {
     { label: "editorial", href: "/editorial/" },
     { label: "creative services", href: "/services/" },
     { label: "shop", href: "/shop/" },
-    { label: "offers", href: "/offers/" },
     { label: "FAQ", href: "/faq/" },
     { label: "bookings", href: "/booking/" },
     ...footerLinks
@@ -1472,6 +1886,8 @@ const pages = [
   ["index.html", homePage()],
   ["confirm/index.html", confirmPage()],
   ["questionnaire/index.html", questionnairePage()],
+  ["client/index.html", clientLoginPage()],
+  ["client/portal/index.html", clientPortalPage()],
   ["portfolio/index.html", portfolioPage()],
   ...portfolioCategories.map((category) => [`portfolio/${category.slug}/index.html`, portfolioPage(category)]),
   ["portfolio/property/index.html", propertyPortfolioPage()],
@@ -1535,7 +1951,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", ...portfolioCategories.map((category) => `/portfolio/${category.slug}/`), "/editorial/", "/services/", "/shop/", "/offers/", ...offers.map((offer) => `/offers/${offer.slug}/`), "/faq/", "/booking/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", ...portfolioCategories.map((category) => `/portfolio/${category.slug}/`), "/editorial/", "/services/", "/shop/", "/faq/", "/booking/", "/client/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
       .concat(editorialPosts.map((post) => `/editorial/${post.slug}/`))
       .concat(articlePosts.map((post) => `/blog/${post.slug}/`))
       .map((url) => `  <url><loc>${canonical(url)}</loc></url>`)
@@ -1559,7 +1975,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "llms.txt"),
-    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- offers: ${canonical("/offers/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
+    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
   );
   await writeFile(path.join(dist, "CNAME"), "studiorjl.com\n");
 }
