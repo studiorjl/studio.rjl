@@ -424,6 +424,10 @@ function icon(name) {
     return `<svg class="social-svg bloom-svg" viewBox="0 0 24 24" aria-hidden="true"><g class="bulb"><path class="glyph" d="M12 3.2c-2.9 0-5.2 2.3-5.2 5.2 0 1.7.8 3.2 2.1 4.1v1.9c0 .5.4.9.9.9h4.4c.5 0 .9-.4.9-.9v-1.9c1.3-.9 2.1-2.4 2.1-4.1 0-2.9-2.3-5.2-5.2-5.2z"/><path class="glyph" d="M9.6 17.6h4.8M10.2 19.8h3.6"/></g><g class="flower"><circle class="glyph" cx="12" cy="6.6" r="2.3"/><circle class="glyph" cx="16.1" cy="9.6" r="2.3"/><circle class="glyph" cx="14.5" cy="14.4" r="2.3"/><circle class="glyph" cx="9.5" cy="14.4" r="2.3"/><circle class="glyph" cx="7.9" cy="9.6" r="2.3"/><circle class="glyph" cx="12" cy="11" r="1.4"/></g></svg>`;
   }
 
+  if (name === "collab") {
+    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><circle class="glyph" cx="9.5" cy="12" r="5.2"/><circle class="glyph" cx="14.5" cy="12" r="5.2"/></svg>`;
+  }
+
   return `<svg class="social-svg social-svg-pinterest" viewBox="0 0 24 24" aria-hidden="true"><path class="glyph" d="M11.6 20c.5-1.7 1-3.4 1.5-5.1.4.7 1.2 1.1 2.1 1.1 2.7 0 4.7-2.5 4.7-5.8 0-3.1-2.6-5.7-6.5-5.7-4.8 0-7.3 3.2-7.3 6.5 0 1.7.8 3.5 2.1 4.1.2.1.3 0 .4-.2l.3-1.3c.1-.2 0-.3-.1-.5-.4-.5-.7-1.1-.7-1.9 0-2.5 1.9-4.8 5-4.8 2.7 0 4.4 1.7 4.4 4.1 0 2.8-1.4 4.8-3.3 4.8-1 0-1.8-.9-1.5-1.9.3-1.2.9-2.5.9-3.4 0-.8-.4-1.4-1.3-1.4-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5c-.3 1.3-.3 2.7-.2 3.7.7-.9 1.7-2.2 2.2-3.2z"/></svg>`;
 }
 
@@ -1166,7 +1170,7 @@ function contactPage() {
   const body = `
     <header class="page-header">
       <h1>contact</h1>
-      <p>three ways to reach the studio — whichever suits you best.</p>
+      <p>all the ways to reach the studio — whichever suits you best.</p>
     </header>
     <section class="contact-options" aria-label="ways to contact studio rjl">
       <a class="contact-option" href="mailto:${site.contact.email}">
@@ -1190,13 +1194,20 @@ function contactPage() {
           <span class="contact-option-sub">fill out the form to work with us<br>tell us about your brand, your place, your project — and we will be in touch.</span>
         </span>
       </button>
+      <a class="contact-option" href="mailto:collaborations@studiorjl.com">
+        <span class="social-icon">${icon("collab")}</span>
+        <span>
+          <span class="contact-option-title">collaborate</span>
+          <span class="contact-option-sub">interested in a creative partnership with your brand or business? Get in touch with us here.</span>
+        </span>
+      </a>
     </section>
   `;
 
   return layout({
     title: "contact",
     description:
-      "contact studio rjl — email hello@studiorjl.com, book a complimentary brand strategy call, or enquire to work with us on your brandscape.",
+      "contact studio rjl — email hello@studiorjl.com, book a complimentary brand strategy call, enquire to work with us, or reach out about creative partnerships and collaborations.",
     pathname: "/contact/",
     body,
     extraSchema: [
@@ -1206,7 +1217,7 @@ function contactPage() {
         name: "contact studio rjl",
         url: canonical("/contact/"),
         description:
-          "three ways to reach studio rjl: email the studio, book a complimentary brand strategy call, or enquire to work with us.",
+          "ways to reach studio rjl: email the studio, book a complimentary brand strategy call, enquire to work with us, or explore a creative partnership.",
         mainEntity: {
           "@type": "ProfessionalService",
           name: site.name,
@@ -1226,6 +1237,13 @@ function contactPage() {
               "@type": "ContactPoint",
               contactType: "appointments",
               url: canonical("/booking/"),
+              availableLanguage: "English",
+              areaServed: site.region
+            },
+            {
+              "@type": "ContactPoint",
+              contactType: "collaborations",
+              email: "collaborations@studiorjl.com",
               availableLanguage: "English",
               areaServed: site.region
             }
@@ -2348,7 +2366,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "llms.txt"),
-    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- contact: ${canonical("/contact/")}\n- client portal: ${canonical("/client/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
+    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- contact: ${canonical("/contact/")}\n- client portal: ${canonical("/client/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n- collaborations: collaborations@studiorjl.com\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
   );
   await writeFile(path.join(dist, "CNAME"), "studiorjl.com\n");
 }
