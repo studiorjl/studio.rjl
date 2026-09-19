@@ -34,12 +34,12 @@ export const navItems = [
   { label: "about", href: "/#about" },
   { label: "recent work", href: "/portfolio/" },
   { label: "editorial", href: "/editorial/" },
+  { label: "book a call", href: "/booking/" }
 ];
 
 export const navDropdownItems = [
   { label: "creative services", href: "/services/" },
-  { label: "FAQ", href: "/faq/" },
-  { label: "book a call", href: "/booking/" }
+  { label: "FAQ", href: "/faq/" }
 ];
 
 export const footerLinks = [
