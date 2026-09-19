@@ -1710,7 +1710,7 @@ footer {
 
 /* ---- contact + client log in footer sections (20 Sept 2026) ---- */
 .footer-title-link {
-  color: inherit;
+  color: #d6c299;
   text-decoration: none;
 }
 
@@ -1823,6 +1823,7 @@ footer {
 .contact-option-sub {
   display: block;
   margin-top: 5px;
+  font-family: "Courier New", monospace;
   font-size: 12.5px;
   letter-spacing: 0.04em;
   opacity: 0.78;
