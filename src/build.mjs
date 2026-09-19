@@ -590,7 +590,7 @@ function layout({
     ${type === "article" ? articleRichPinMarkup({ title, description, url, author: author || site.founder }) : ""}
     ${footer()}
     ${enquiryPanel()}
-    <script src="/site.js?v=2" type="module"></script>
+    <script src="/site.js?v=3" type="module"></script>
   </body>
 </html>`;
 }
