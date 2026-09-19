@@ -114,24 +114,62 @@ if (navToggle && navLinks) {
   });
 }
 
+// ---- GA4: enquiry + booking behaviour events ----
+function track(name, params) {
+  if (typeof gtag === "function") gtag("event", name, params || {});
+}
+
+let enquiryOpenedAt = null;
+let budgetTracked = false;
+
+function enquirySeconds() {
+  return enquiryOpenedAt ? Math.round((Date.now() - enquiryOpenedAt) / 1000) : 0;
+}
+
+function stopEnquiryTimer() {
+  const seconds = enquirySeconds();
+  enquiryOpenedAt = null;
+  return seconds;
+}
+
+function closeEnquiryPanel(method) {
+  if (!enquiryPanel.classList.contains("active")) return;
+  enquiryPanel.classList.remove("active");
+  if (enquiryOpenedAt) {
+    track("enquiry_panel_close", { close_method: method, enquiry_panel_seconds: stopEnquiryTimer() });
+  }
+}
+
 if (enquiryToggles.length && enquiryPanel) {
   enquiryToggles.forEach((enquiryToggle) => enquiryToggle.addEventListener("click", () => {
     enquiryPanel.classList.add("active");
     navLinks?.classList.remove("active");
+    if (!enquiryOpenedAt) {
+      enquiryOpenedAt = Date.now();
+      budgetTracked = false;
+      track("enquiry_panel_open");
+    }
   }));
 }
 
-if (enquiryClose && enquiryPanel) {
-  enquiryClose.addEventListener("click", () => {
-    enquiryPanel.classList.remove("active");
+// budget "range" field — first interaction per panel open
+document.querySelectorAll('[data-enquiry-form] input[name="range"]').forEach((input) => {
+  input.addEventListener("change", () => {
+    if (!input.checked || budgetTracked) return;
+    budgetTracked = true;
+    track("enquiry_budget_selected", { budget_option_selected: input.value });
   });
+});
+
+if (enquiryClose && enquiryPanel) {
+  enquiryClose.addEventListener("click", () => closeEnquiryPanel("close_button"));
 }
 
 document.addEventListener("click", (event) => {
   if (!enquiryPanel) return;
   const clickedToggle = [...enquiryToggles].some((enquiryToggle) => enquiryToggle.contains(event.target));
   if (enquiryPanel.contains(event.target) || clickedToggle) return;
-  enquiryPanel.classList.remove("active");
+  closeEnquiryPanel("outside_click");
 });
 
 if (form && thankYou) {
@@ -161,6 +199,12 @@ if (form && thankYou) {
         }
       );
       const result = await response.json().catch(() => ({}));
+      const submitParams = {
+        submit_status: response.ok && result.ok ? "success" : "error",
+        budget_option_selected: data.get("range") || "not selected",
+        enquiry_panel_seconds: stopEnquiryTimer()
+      };
+      track("enquiry_form_submit", submitParams);
       if (response.ok && result.ok) {
         form.hidden = true;
         thankYou.classList.add("visible");
@@ -168,6 +212,11 @@ if (form && thankYou) {
         window.alert("hmm — something went sideways. please try again, or write to hello@studiorjl.com.");
       }
     } catch (error) {
+      track("enquiry_form_submit", {
+        submit_status: "error",
+        budget_option_selected: data.get("range") || "not selected",
+        enquiry_panel_seconds: stopEnquiryTimer()
+      });
       window.alert("hmm — something went sideways. please try again, or write to hello@studiorjl.com.");
     }
   });
@@ -198,5 +247,45 @@ if (filterPanel) {
         applyFilter();
       }
     });
+  });
+}
+
+
+// ---- GA4: bookings page behaviour ----
+const bookingFrame = document.querySelector(".booking-frame");
+if (bookingFrame) {
+  const loadedAt = Date.now();
+  let calendarSeen = false;
+  let dwellSent = false;
+
+  if ("IntersectionObserver" in window) {
+    const calendarObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !calendarSeen) {
+            calendarSeen = true;
+            track("bookings_calendar_view", {
+              seconds_since_page_load: Math.round((Date.now() - loadedAt) / 1000)
+            });
+            calendarObserver.disconnect();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    calendarObserver.observe(bookingFrame);
+  }
+
+  const sendDwell = () => {
+    if (dwellSent) return;
+    dwellSent = true;
+    track("bookings_page_leave", {
+      bookings_page_seconds: Math.round((Date.now() - loadedAt) / 1000),
+      saw_calendar: calendarSeen
+    });
+  };
+  window.addEventListener("pagehide", sendDwell);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") sendDwell();
   });
 }
