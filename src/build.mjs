@@ -412,6 +412,18 @@ function icon(name) {
     return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><path class="mark-solid" fill-rule="evenodd" d="M12.2 6.2 L13.4 6.2 L14.4 6.2 L15.2 6.3 L15.8 6.3 L16.1 6.4 L16.5 6.5 L16.9 6.6 L17.4 6.7 L17.8 6.8 L18.2 7.0 L18.6 7.2 L18.8 7.3 L19.1 7.5 L19.3 7.7 L19.4 7.8 L19.5 7.8 L19.6 7.8 L19.7 7.9 L19.9 8.0 L20.1 8.2 L20.4 8.5 L20.6 8.7 L20.8 9.0 L20.9 9.3 L21.1 9.6 L21.2 9.8 L21.2 10.1 L21.3 10.4 L21.3 10.6 L21.1 10.8 L20.6 11.0 L19.8 11.0 L18.8 11.0 L18.0 11.0 L17.4 10.9 L16.9 10.7 L16.7 10.4 L16.4 10.2 L16.1 10.1 L15.7 9.9 L15.3 9.8 L14.7 9.7 L13.9 9.6 L12.8 9.6 L11.5 9.6 L10.4 9.6 L9.5 9.7 L8.9 9.8 L8.5 9.9 L8.2 10.0 L7.8 10.2 L7.6 10.4 L7.3 10.6 L7.1 10.8 L7.0 11.0 L6.9 11.1 L6.8 11.3 L6.8 11.5 L6.7 11.7 L6.7 12.0 L6.7 12.3 L6.7 12.5 L6.8 12.7 L6.8 12.9 L6.9 13.0 L6.9 13.1 L7.0 13.3 L7.1 13.4 L7.3 13.5 L7.4 13.6 L7.6 13.7 L7.8 13.9 L8.0 14.0 L8.3 14.1 L8.7 14.2 L9.0 14.3 L9.4 14.4 L10.1 14.4 L10.9 14.5 L12.0 14.5 L13.2 14.5 L14.3 14.5 L15.2 14.4 L15.8 14.4 L16.3 14.3 L16.7 14.2 L17.1 14.1 L17.4 14.0 L17.6 13.9 L17.4 13.8 L16.9 13.7 L16.1 13.7 L15.0 13.7 L14.1 13.6 L13.5 13.3 L13.2 13.0 L13.2 12.5 L13.7 12.1 L14.8 11.9 L16.3 11.8 L18.4 11.8 L19.9 12.1 L21.0 12.9 L21.5 14.0 L21.5 15.4 L21.3 16.5 L20.9 17.3 L20.4 17.6 L19.6 17.6 L19.1 17.5 L18.7 17.2 L18.6 16.7 L18.6 16.1 L18.6 15.8 L18.4 15.7 L18.1 15.8 L17.8 16.1 L17.4 16.4 L17.0 16.7 L16.6 16.9 L16.3 17.1 L15.8 17.3 L15.2 17.5 L14.6 17.6 L13.8 17.8 L13.0 17.9 L12.1 17.9 L11.3 17.9 L10.4 17.9 L9.6 17.9 L8.9 17.8 L8.3 17.8 L7.8 17.6 L7.3 17.6 L6.8 17.4 L6.5 17.3 L6.1 17.1 L5.9 17.0 L5.7 17.0 L5.5 16.9 L5.4 16.9 L5.2 16.8 L5.0 16.7 L4.7 16.4 L4.2 16.1 L3.9 15.8 L3.7 15.6 L3.6 15.5 L3.6 15.4 L3.6 15.4 L3.5 15.3 L3.5 15.3 L3.4 15.2 L3.3 15.1 L3.2 15.0 L3.1 14.8 L3.0 14.7 L2.9 14.4 L2.8 14.2 L2.8 13.9 L2.6 13.5 L2.6 13.1 L2.6 12.6 L2.6 12.1 L2.6 11.5 L2.7 11.0 L2.8 10.5 L3.0 10.0 L3.2 9.5 L3.4 9.1 L3.6 8.7 L3.8 8.4 L4.1 8.2 L4.3 8.0 L4.4 7.9 L4.5 7.8 L4.6 7.8 L4.7 7.8 L4.8 7.7 L5.0 7.5 L5.3 7.3 L5.6 7.2 L5.9 7.0 L6.4 6.8 L6.8 6.7 L7.4 6.6 L8.0 6.5 L8.6 6.3 L9.3 6.2 L10.1 6.2 L11.1 6.2 Z"/></svg>`;
   }
 
+  if (name === "person") {
+    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><circle class="glyph" cx="12" cy="8" r="3.4"/><path class="glyph" d="M5.5 19c1-3.8 3.6-5.6 6.5-5.6s5.5 1.8 6.5 5.6"/></svg>`;
+  }
+
+  if (name === "phone") {
+    return `<svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><path class="glyph" d="M6.8 3.8c.6 0 1.1.4 1.3 1l.8 2.4c.2.6 0 1.2-.5 1.6l-1.2.9a11.4 11.4 0 0 0 5 5l.9-1.2c.4-.5 1-.7 1.6-.5l2.4.8c.6.2 1 .7 1 1.3v2.2c0 .8-.7 1.5-1.5 1.4C10.4 17.9 6 13.5 5.4 7.3c-.1-.8.6-1.5 1.4-1.5z"/></svg>`;
+  }
+
+  if (name === "bloom") {
+    return `<svg class="social-svg bloom-svg" viewBox="0 0 24 24" aria-hidden="true"><g class="bulb"><path class="glyph" d="M12 3.2c-2.9 0-5.2 2.3-5.2 5.2 0 1.7.8 3.2 2.1 4.1v1.9c0 .5.4.9.9.9h4.4c.5 0 .9-.4.9-.9v-1.9c1.3-.9 2.1-2.4 2.1-4.1 0-2.9-2.3-5.2-5.2-5.2z"/><path class="glyph" d="M9.6 17.6h4.8M10.2 19.8h3.6"/></g><g class="flower"><circle class="glyph" cx="12" cy="6.6" r="2.3"/><circle class="glyph" cx="16.1" cy="9.6" r="2.3"/><circle class="glyph" cx="14.5" cy="14.4" r="2.3"/><circle class="glyph" cx="9.5" cy="14.4" r="2.3"/><circle class="glyph" cx="7.9" cy="9.6" r="2.3"/><circle class="glyph" cx="12" cy="11" r="1.4"/></g></svg>`;
+  }
+
   return `<svg class="social-svg social-svg-pinterest" viewBox="0 0 24 24" aria-hidden="true"><path class="glyph" d="M11.6 20c.5-1.7 1-3.4 1.5-5.1.4.7 1.2 1.1 2.1 1.1 2.7 0 4.7-2.5 4.7-5.8 0-3.1-2.6-5.7-6.5-5.7-4.8 0-7.3 3.2-7.3 6.5 0 1.7.8 3.5 2.1 4.1.2.1.3 0 .4-.2l.3-1.3c.1-.2 0-.3-.1-.5-.4-.5-.7-1.1-.7-1.9 0-2.5 1.9-4.8 5-4.8 2.7 0 4.4 1.7 4.4 4.1 0 2.8-1.4 4.8-3.3 4.8-1 0-1.8-.9-1.5-1.9.3-1.2.9-2.5.9-3.4 0-.8-.4-1.4-1.3-1.4-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5c-.3 1.3-.3 2.7-.2 3.7.7-.9 1.7-2.2 2.2-3.2z"/></svg>`;
 }
 
@@ -432,9 +444,17 @@ function footer() {
           <p>We pay our deepest respects to the traditional custodians of this land, past, present and emergent, and to the enduring wisdom of this place that continues to teach, inform and inspire our work.</p>
         </div>
         <div class="footer-block reveal" aria-label="contact">
+          <a class="footer-title footer-title-link" href="/contact/">contact</a>
+          <div class="social-links" aria-label="contact studio rjl">
+            <a href="mailto:${site.contact.email}" aria-label="email studio rjl at ${escapeHtml(site.contact.email)}"><span class="social-icon">${icon("mail")}</span>${escapeHtml(site.contact.email)}</a>
+            <a href="/booking/" aria-label="book a complimentary brand strategy call with studio rjl"><span class="social-icon">${icon("phone")}</span>book a call</a>
+            <button class="footer-enquiry" type="button" data-enquiry-toggle data-enquiry-bloom aria-label="inquire to work with studio rjl"><span class="social-icon">${icon("bloom")}</span>inquire to work with us</button>
+          </div>
+        </div>
+        <div class="footer-block reveal" aria-label="connect">
           <div class="footer-title">connect</div>
-          <div class="social-links" aria-label="contact links">
-            ${socialLinks.map((link) => `<a href="${link.href}" aria-label="contact studio rjl via ${escapeHtml(link.label)}"><span class="social-icon">${icon(link.icon)}</span>${escapeHtml(link.label === "email" ? site.contact.email : link.label)}</a>`).join("")}
+          <div class="social-links" aria-label="studio rjl socials">
+            ${socialLinks.map((link) => `<a href="${link.href}" aria-label="follow studio rjl on ${escapeHtml(link.label)}"><span class="social-icon">${icon(link.icon)}</span>${escapeHtml(link.label)}</a>`).join("")}
           </div>
           <div class="footer-subsection">
             <div class="footer-title">design partners</div>
@@ -442,6 +462,9 @@ function footer() {
               ${designPartners.map((link) => `<a href="${link.href}">${link.icon ? `<span class="social-icon">${icon(link.icon)}</span>` : ""}${escapeHtml(link.label)}</a>`).join("")}
             </div>
           </div>
+        </div>
+        <div class="footer-block reveal" aria-label="client portal">
+          <a class="client-login" href="/client/"><span class="social-icon">${icon("person")}</span>client log in</a>
         </div>
         <div class="footer-block reveal">
           <div class="footer-title">studio notes</div>
@@ -590,7 +613,7 @@ function layout({
     ${type === "article" ? articleRichPinMarkup({ title, description, url, author: author || site.founder }) : ""}
     ${footer()}
     ${enquiryPanel()}
-    <script src="/site.js?v=3" type="module"></script>
+    <script src="/site.js?v=4" type="module"></script>
   </body>
 </html>`;
 }
@@ -1133,6 +1156,84 @@ function faqPage() {
       breadcrumbSchema([
         { name: "home", href: "/" },
         { name: "faq", href: "/faq/" }
+      ])
+    ]
+  });
+}
+
+function contactPage() {
+  const body = `
+    <header class="page-header">
+      <h1>contact</h1>
+      <p>three ways to reach the studio — whichever suits you best.</p>
+    </header>
+    <section class="contact-options" aria-label="ways to contact studio rjl">
+      <a class="contact-option" href="mailto:${site.contact.email}">
+        <span class="social-icon">${icon("mail")}</span>
+        <span>
+          <span class="contact-option-title">email the studio</span>
+          <span class="contact-option-sub">${escapeHtml(site.contact.email)} — for every kind of question, big or small. We reply personally.</span>
+        </span>
+      </a>
+      <a class="contact-option" href="/booking/">
+        <span class="social-icon">${icon("phone")}</span>
+        <span>
+          <span class="contact-option-title">book a call</span>
+          <span class="contact-option-sub">a complimentary brand strategy call — free, honest, with no obligation to continue.</span>
+        </span>
+      </a>
+      <button class="contact-option" type="button" data-enquiry-toggle data-enquiry-bloom>
+        <span class="social-icon">${icon("bloom")}</span>
+        <span>
+          <span class="contact-option-title">inquire to work with us</span>
+          <span class="contact-option-sub">tell us about your brand, your place, your project — and we will be in touch.</span>
+        </span>
+      </button>
+    </section>
+  `;
+
+  return layout({
+    title: "contact",
+    description:
+      "contact studio rjl — email hello@studiorjl.com, book a complimentary brand strategy call, or enquire to work with us on your brandscape.",
+    pathname: "/contact/",
+    body,
+    extraSchema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        name: "contact studio rjl",
+        url: canonical("/contact/"),
+        description:
+          "three ways to reach studio rjl: email the studio, book a complimentary brand strategy call, or enquire to work with us.",
+        mainEntity: {
+          "@type": "ProfessionalService",
+          name: site.name,
+          url: site.domain,
+          email: site.contact.email,
+          areaServed: site.region,
+          sameAs: site.sameAs,
+          contactPoint: [
+            {
+              "@type": "ContactPoint",
+              contactType: "enquiries",
+              email: site.contact.email,
+              availableLanguage: "English",
+              areaServed: site.region
+            },
+            {
+              "@type": "ContactPoint",
+              contactType: "appointments",
+              url: canonical("/booking/"),
+              availableLanguage: "English",
+              areaServed: site.region
+            }
+          ]
+        }
+      },
+      breadcrumbSchema([
+        { name: "home", href: "/" },
+        { name: "contact", href: "/contact/" }
       ])
     ]
   });
@@ -2139,6 +2240,8 @@ function sitemapPage() {
     { label: "shop", href: "/shop/" },
     { label: "FAQ", href: "/faq/" },
     { label: "bookings", href: "/booking/" },
+    { label: "contact", href: "/contact/" },
+    { label: "client log in", href: "/client/" },
     ...footerLinks
   ];
 
@@ -2167,6 +2270,7 @@ const pages = [
   ["shop/index.html", shopPage()],
   ["faq/index.html", faqPage()],
   ["booking/index.html", bookingPage()],
+  ["contact/index.html", contactPage()],
   ["blog/index.html", blogPage()],
   ...articlePosts.map((post) => [`blog/${post.slug}/index.html`, articlePage(post)]),
   [
@@ -2219,7 +2323,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", ...portfolioCategories.map((category) => `/portfolio/${category.slug}/`), "/editorial/", "/services/", "/shop/", "/faq/", "/booking/", "/client/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", ...portfolioCategories.map((category) => `/portfolio/${category.slug}/`), "/editorial/", "/services/", "/shop/", "/faq/", "/booking/", "/contact/", "/client/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
       .concat(editorialPosts.map((post) => `/editorial/${post.slug}/`))
       .concat(articlePosts.map((post) => `/blog/${post.slug}/`))
       .map((url) => `  <url><loc>${canonical(url)}</loc></url>`)
@@ -2243,7 +2347,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "llms.txt"),
-    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
+    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- contact: ${canonical("/contact/")}\n- client portal: ${canonical("/client/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
   );
   await writeFile(path.join(dist, "CNAME"), "studiorjl.com\n");
 }
