@@ -135,6 +135,7 @@ function stopEnquiryTimer() {
 function closeEnquiryPanel(method) {
   if (!enquiryPanel.classList.contains("active")) return;
   enquiryPanel.classList.remove("active");
+  document.querySelectorAll("[data-enquiry-bloom]").forEach((element) => element.classList.remove("bloomed"));
   if (enquiryOpenedAt) {
     track("enquiry_panel_close", { close_method: method, enquiry_panel_seconds: stopEnquiryTimer() });
   }
@@ -143,6 +144,7 @@ function closeEnquiryPanel(method) {
 if (enquiryToggles.length && enquiryPanel) {
   enquiryToggles.forEach((enquiryToggle) => enquiryToggle.addEventListener("click", () => {
     enquiryPanel.classList.add("active");
+    if (enquiryToggle.hasAttribute("data-enquiry-bloom")) enquiryToggle.classList.add("bloomed");
     navLinks?.classList.remove("active");
     if (!enquiryOpenedAt) {
       enquiryOpenedAt = Date.now();
