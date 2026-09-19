@@ -1469,7 +1469,7 @@ function clientLoginPage() {
       :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
       * { box-sizing: border-box; }
       body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
-      .mark { position: fixed; top: 28px; left: 32px; font-family: "Cormorant Infant", Georgia, serif; font-size: 20px; letter-spacing: 0.08em; text-decoration: none; color: var(--green); }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; color: var(--green); }
       .wrap { width: 100%; max-width: 420px; text-align: center; }
       .presents { font-family: "Cormorant Infant", Georgia, serif; font-size: 15px; letter-spacing: 0.28em; color: var(--deep-green); margin: 0 0 26px; }
       h1 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-style: italic; font-size: 44px; letter-spacing: 0.02em; margin: 0 0 18px; color: var(--deep-green); }
@@ -1488,9 +1488,7 @@ function clientLoginPage() {
   <body>
     <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
     <div class="wrap">
-      <p class="presents">studio rjl presents</p>
-      <h1>your brand awaits…</h1>
-      <p class="intro">everything lives in your own private client portal — sign in to step inside.</p>
+      <h1 class="intro" style="font-style:normal;font-size:22px;line-height:1.7;">everything lives in your own private client portal —<br>sign in to step inside.</h1>
       <form id="login" autocomplete="on">
         <div class="field">
           <label class="label" for="email">username</label>
@@ -1562,7 +1560,7 @@ function clientPortalPage() {
       * { box-sizing: border-box; }
       body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
       a { color: var(--green); }
-      .mark { position: fixed; top: 28px; left: 32px; font-family: "Cormorant Infant", Georgia, serif; font-size: 20px; letter-spacing: 0.08em; text-decoration: none; z-index: 10; }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; z-index: 10; }
       .logout { position: fixed; top: 30px; right: 32px; font-size: 12px; letter-spacing: 0.06em; text-decoration: none; opacity: 0.6; z-index: 10; }
       .wrap { max-width: 880px; margin: 0 auto; padding: 72px 24px 96px; }
       #loading { text-align: center; padding: 120px 0; font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 20px; }
@@ -1609,9 +1607,7 @@ function clientPortalPage() {
       <div id="loading">opening your brandscape…</div>
       <div id="app" style="display:none;">
         <div class="hero">
-          <p class="presents">studio rjl presents</p>
           <h1 class="brand" id="brand"></h1>
-          <p class="hero-sub">your brand awaits…</p>
           <p class="hero-line" id="greet"></p>
         </div>
         <nav class="chips" aria-label="portal sections">
