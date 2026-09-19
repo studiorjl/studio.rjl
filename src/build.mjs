@@ -2242,7 +2242,7 @@ function sitemapPage() {
     { label: "FAQ", href: "/faq/" },
     { label: "bookings", href: "/booking/" },
     { label: "contact", href: "/contact/" },
-    { label: "client log in", href: "/client/" },
+    { label: "client portal", href: "/client/" },
     ...footerLinks
   ];
 
