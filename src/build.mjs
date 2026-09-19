@@ -1474,11 +1474,11 @@ function clientLoginPage() {
       .presents { font-family: "Cormorant Infant", Georgia, serif; font-size: 15px; letter-spacing: 0.28em; color: var(--deep-green); margin: 0 0 26px; }
       h1 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-style: italic; font-size: 44px; letter-spacing: 0.02em; margin: 0 0 18px; color: var(--deep-green); }
       .intro { font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; line-height: 1.8; margin: 0 0 34px; }
-      .field { text-align: left; margin-bottom: 16px; }
+      .field { text-align: left; margin-bottom: 24px; }
       .label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; margin: 0 0 6px; color: var(--deep-green); }
       .input { display: block; width: 100%; padding: 12px 14px; font-family: "Courier New", monospace; font-size: 14px; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; }
       .input:focus { outline: 1px solid var(--deep-green); }
-      .enter { margin: 26px 0 0; width: 100%; background: var(--deep-green); color: var(--ivory); padding: 15px 34px; border: 0; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
+      .enter { margin: 40px 0 0; width: 100%; background: var(--deep-green); color: var(--ivory); padding: 15px 34px; border: 0; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
       .enter:disabled { opacity: 0.5; cursor: wait; }
       #err { display: none; margin: 18px 0 0; font-size: 13px; color: #7a2d2d; }
       .footnote { margin-top: 44px; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
@@ -1488,7 +1488,8 @@ function clientLoginPage() {
   <body>
     <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
     <div class="wrap">
-      <h1 class="intro" style="font-style:normal;font-size:22px;line-height:1.7;">everything lives in your own private client portal —<br>sign in to step inside.</h1>
+      <h1>client portal</h1>
+      <p class="intro">everything lives in your own private client portal — sign in to step inside.</p>
       <form id="login" autocomplete="on">
         <div class="field">
           <label class="label" for="email">username</label>
@@ -1560,18 +1561,25 @@ function clientPortalPage() {
       * { box-sizing: border-box; }
       body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
       a { color: var(--green); }
-      .mark { position: fixed; top: 28px; left: 32px; font-family: "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; z-index: 10; }
-      .logout { position: fixed; top: 30px; right: 32px; font-size: 12px; letter-spacing: 0.06em; text-decoration: none; opacity: 0.6; z-index: 10; }
-      .wrap { max-width: 880px; margin: 0 auto; padding: 72px 24px 96px; }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; z-index: 30; }
+      .menu-btn { position: fixed; top: 24px; right: 32px; z-index: 30; background: var(--deep-green); color: var(--ivory); border: 0; padding: 10px 22px; font-family: "Courier New", monospace; font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
+      .menu-btn:hover { opacity: 0.85; }
+      .menu-panel { position: fixed; top: 66px; right: 32px; z-index: 29; width: 248px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); box-shadow: 0 10px 30px rgba(76,59,21,0.18); padding: 10px 0 6px; display: none; }
+      .menu-panel.open { display: block; }
+      .menu-item { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 10px 22px; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--green); cursor: pointer; }
+      .menu-item:hover { background: var(--deep-green); color: var(--ivory); }
+      .menu-item.active { font-weight: bold; }
+      .menu-divider { height: 1px; background: rgba(76,59,21,0.2); margin: 8px 22px; }
+      .wrap { max-width: 880px; margin: 0 auto; padding: 96px 24px 96px; }
       #loading { text-align: center; padding: 120px 0; font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 20px; }
-      .hero { text-align: center; margin-bottom: 20px; }
-      .presents { font-family: "Cormorant Infant", Georgia, serif; font-size: 14px; letter-spacing: 0.28em; color: var(--deep-green); margin: 0 0 20px; }
+      .hero { text-align: center; margin-bottom: 10px; }
       .brand { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-size: 54px; letter-spacing: 0.02em; margin: 0 0 10px; color: var(--deep-green); line-height: 1.1; }
-      .hero-sub { font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 20px; margin: 0 0 8px; }
       .hero-line { font-size: 13px; opacity: 0.7; margin: 0; }
       .chips { text-align: center; margin: 30px 0 8px; line-height: 2.4; }
       .chips a { display: inline-block; font-size: 12px; letter-spacing: 0.05em; text-decoration: none; padding: 3px 12px; margin: 0 3px; border: 1px solid rgba(76,59,21,0.3); border-radius: 999px; background: var(--pale-ivory); }
       .chips a:hover { background: var(--deep-green); color: var(--ivory); }
+      .view { display: none; }
+      .view.on { display: block; }
       section { margin-top: 56px; scroll-margin-top: 24px; }
       h2 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 400; font-size: 30px; color: var(--deep-green); margin: 0 0 6px; }
       .section-line { font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 17px; margin: 0 0 22px; opacity: 0.8; }
@@ -1582,6 +1590,12 @@ function clientPortalPage() {
       .card-title { font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; color: var(--deep-green); margin: 0 0 4px; }
       .meta { font-size: 12px; opacity: 0.75; word-break: break-word; white-space: pre-wrap; }
       .asset { width: 100%; display: block; background: #fff; }
+      .logo-hero { background: #fff; border: 1px solid rgba(76,59,21,0.25); padding: 34px; text-align: center; margin-bottom: 14px; }
+      .logo-hero img { max-width: 100%; max-height: 220px; display: block; margin: 0 auto; }
+      .variants { text-align: center; margin: 0 0 18px; line-height: 2.2; }
+      .variant { display: inline-block; font-family: "Courier New", monospace; font-size: 12px; letter-spacing: 0.05em; padding: 4px 16px; margin: 0 3px; border: 1px solid rgba(76,59,21,0.3); border-radius: 999px; background: var(--pale-ivory); color: var(--green); cursor: pointer; }
+      .variant:hover { background: var(--deep-green); color: var(--ivory); }
+      .variant.active { background: var(--deep-green); color: var(--ivory); }
       .copy { margin-top: 10px; background: var(--deep-green); color: var(--ivory); border: 0; padding: 6px 16px; font-family: "Courier New", monospace; font-size: 11px; letter-spacing: 0.08em; cursor: pointer; }
       .copy:hover { opacity: 0.85; }
       .row-list { display: flex; flex-direction: column; gap: 12px; }
@@ -1590,112 +1604,198 @@ function clientPortalPage() {
       .open-link { font-size: 13px; text-decoration: underline; white-space: nowrap; }
       .prompt-card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 18px; margin-bottom: 14px; }
       .prompt-text { white-space: pre-wrap; font-size: 13px; margin: 8px 0 12px; }
-      .q-label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; margin: 26px 0 8px; color: var(--deep-green); }
+      .q-label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; margin: 28px 0 8px; color: var(--deep-green); }
       .q-input { display: block; width: 100%; padding: 12px 14px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.7; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; resize: vertical; }
       .q-input:focus { outline: 1px solid var(--deep-green); }
-      .save { margin-top: 28px; background: var(--deep-green); color: var(--ivory); padding: 13px 30px; border: 0; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
+      .save { margin-top: 34px; background: var(--deep-green); color: var(--ivory); padding: 13px 30px; border: 0; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
       .save:disabled { opacity: 0.5; cursor: wait; }
+      .up-zone { background: var(--pale-ivory); border: 1px dashed rgba(76,59,21,0.35); padding: 34px 24px; text-align: center; }
+      .up-note { font-size: 12px; opacity: 0.7; margin: 8px 0 0; }
+      .up-row { display: flex; align-items: center; gap: 16px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 12px 16px; margin-bottom: 10px; }
+      .up-thumb { width: 54px; height: 54px; object-fit: cover; border: 1px solid rgba(76,59,21,0.25); background: #fff; flex: none; }
+      .up-thumb.doc { display: flex; align-items: center; justify-content: center; font-size: 18px; background: #fff; }
+      .drive-box { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 22px 26px; margin-bottom: 22px; text-align: center; }
+      .drive-btn { display: inline-block; margin-top: 12px; background: var(--deep-green); color: var(--ivory); padding: 12px 26px; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; text-decoration: none; }
+      .drive-btn:hover { opacity: 0.85; }
       #note-saved { display: none; margin-left: 12px; font-style: italic; opacity: 0.7; }
       #q-done { display: none; text-align: center; padding: 20px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 21px; }
+      #up-msg { display: none; text-align: center; font-size: 13px; margin: 14px 0 0; font-style: italic; }
       .footnote { margin-top: 72px; text-align: center; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
+      .footnote a { color: var(--green); }
+      @media (max-width: 640px) { .menu-btn { right: 16px; } .menu-panel { right: 16px; } .mark { left: 16px; } }
     </style>
   </head>
   <body>
     <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
-    <a class="logout" href="/client/" id="logout">sign out</a>
+    <button class="menu-btn" id="menu-btn" aria-haspopup="true" aria-expanded="false">menu ▾</button>
+    <nav class="menu-panel" id="menu-panel" aria-label="portal sections">
+      <button class="menu-item active" data-view="brandscape">brandscape</button>
+      <button class="menu-item" data-view="questionnaire">questionnaire</button>
+      <button class="menu-item" data-view="uploads">client upload portal</button>
+      <button class="menu-item" data-view="contract">contract</button>
+      <button class="menu-item" data-view="invoices">invoices &amp; payments</button>
+      <button class="menu-item" data-view="library">library</button>
+      <button class="menu-item" data-view="notes">notes</button>
+      <div class="menu-divider"></div>
+      <button class="menu-item" id="menu-signout">sign out</button>
+    </nav>
     <div class="wrap">
       <div id="loading">opening your brandscape…</div>
       <div id="app" style="display:none;">
-        <div class="hero">
-          <h1 class="brand" id="brand"></h1>
-          <p class="hero-line" id="greet"></p>
-        </div>
-        <nav class="chips" aria-label="portal sections">
-          <a href="#colours">colours</a><a href="#typography">typography</a><a href="#imagery">imagery</a><a href="#textures">textures</a><a href="#templates">templates</a><a href="#lockups">lock-ups</a><a href="#prompts">prompt library</a><a href="#questionnaire">questionnaire</a><a href="#notes">notes</a>
-        </nav>
-        <section id="colours">
-          <h2>colours</h2>
-          <p class="section-line">the palette of your brandscape — click to copy any code.</p>
-          <div class="grid" id="colours-grid"></div>
-        </section>
-        <section id="typography">
-          <h2>typography</h2>
-          <p class="section-line">your typefaces and pairings.</p>
-          <div class="row-list" id="type-list"></div>
-        </section>
-        <section id="imagery">
-          <h2>imagery</h2>
-          <p class="section-line">curated imagery for your brand — yours to take, right-click freely.</p>
-          <div class="grid" id="images-grid"></div>
-        </section>
-        <section id="textures">
-          <h2>textures</h2>
-          <p class="section-line">the tactile layer of your brandscape.</p>
-          <div class="grid" id="textures-grid"></div>
-        </section>
-        <section id="templates">
-          <h2>templates</h2>
-          <p class="section-line">ready-made layouts carrying your brand into the world.</p>
-          <div class="row-list" id="templates-list"></div>
-        </section>
-        <section id="lockups">
-          <h2>brand lock-ups</h2>
-          <p class="section-line">examples of your mark at work — signatures, pairings and compositions.</p>
-          <div class="grid" id="lockups-grid"></div>
-        </section>
-        <section id="prompts">
-          <h2>prompt library</h2>
-          <p class="section-line">words to conjure your brand with — copy any prompt and make it yours.</p>
-          <div id="prompts-list"></div>
-        </section>
-        <section id="questionnaire">
-          <h2>the questionnaire</h2>
-          <p class="section-line">a few questions so Rebekah can see your work through your eyes — rambling welcome.</p>
-          <div id="q-wrap">
-            <form id="qform">
-              <label class="q-label" for="q1">tell me about your work — what are you making, and for whom?</label>
-              <textarea class="q-input" id="q1" rows="4"></textarea>
-              <label class="q-label" for="q2">your brand as it stands: what do you love about it, and what's quietly not working?</label>
-              <textarea class="q-input" id="q2" rows="4"></textarea>
-              <label class="q-label" for="q3">three words for the feeling your brand should carry.</label>
-              <textarea class="q-input" id="q3" rows="2"></textarea>
-              <label class="q-label" for="q4">whose world do you admire? (brands, places, makers — links welcome.)</label>
-              <textarea class="q-input" id="q4" rows="4"></textarea>
-              <label class="q-label" for="q5">any must-keeps — an existing logo, fonts, colours you're attached to?</label>
-              <textarea class="q-input" id="q5" rows="4"></textarea>
-              <label class="q-label" for="q6">where will the brandscape live first? (web, print, packaging, socials.)</label>
-              <textarea class="q-input" id="q6" rows="4"></textarea>
-              <label class="q-label" for="q7">anything else at all.</label>
-              <textarea class="q-input" id="q7" rows="4"></textarea>
-              <button class="save" id="q-send" type="submit">send my answers</button>
-            </form>
+        <div class="view on" id="view-brandscape">
+          <div class="hero">
+            <h1 class="brand" id="brand"></h1>
+            <p class="hero-line" id="greet"></p>
           </div>
-          <p id="q-done">thank you — your answers are with Rebekah. ✨</p>
-        </section>
-        <section id="notes">
-          <h2>notes</h2>
-          <p class="section-line">a quiet page for your thoughts — anything saved here is kept for your project.</p>
-          <textarea class="q-input" id="note" rows="8" placeholder="scribbles, sparks, things not to forget…"></textarea>
-          <button class="save" id="note-save" type="button">save note</button>
-          <span id="note-saved">saved ✨</span>
-        </section>
-        <p class="footnote">your brandscape, curated with love by <a href="https://studiorjl.com">studio rjl</a> · these assets are yours to gather — right-click away.</p>
+          <nav class="chips" aria-label="brandscape sections">
+            <a href="#logo">logo</a><a href="#profile-logos">profile logos</a><a href="#colours">colours</a><a href="#typography">typography</a><a href="#imagery">imagery</a><a href="#textures">textures</a><a href="#templates">templates</a><a href="#lockups">lock-ups</a><a href="#prompts">prompt library</a>
+          </nav>
+          <section id="logo">
+            <h2>logo</h2>
+            <p class="section-line">your mark in all its versions — yours to take, right-click freely.</p>
+            <div class="variants" id="logo-toggle"></div>
+            <div id="logo-stage"></div>
+          </section>
+          <section id="profile-logos">
+            <h2>profile logos</h2>
+            <p class="section-line">squared-up marks for profile pictures and socials.</p>
+            <div class="grid" id="profile-grid"></div>
+          </section>
+          <section id="colours">
+            <h2>colours</h2>
+            <p class="section-line">the palette of your brandscape — click to copy any code.</p>
+            <div class="grid" id="colours-grid"></div>
+          </section>
+          <section id="typography">
+            <h2>typography</h2>
+            <p class="section-line">your typefaces and pairings.</p>
+            <div class="row-list" id="type-list"></div>
+          </section>
+          <section id="imagery">
+            <h2>imagery</h2>
+            <p class="section-line">curated imagery for your brand — yours to take, right-click freely.</p>
+            <div class="grid" id="images-grid"></div>
+          </section>
+          <section id="textures">
+            <h2>textures</h2>
+            <p class="section-line">the tactile layer of your brandscape.</p>
+            <div class="grid" id="textures-grid"></div>
+          </section>
+          <section id="templates">
+            <h2>templates</h2>
+            <p class="section-line">ready-made layouts carrying your brand into the world.</p>
+            <div class="row-list" id="templates-list"></div>
+          </section>
+          <section id="lockups">
+            <h2>brand lock-ups</h2>
+            <p class="section-line">examples of your mark at work — signatures, pairings and compositions.</p>
+            <div class="grid" id="lockups-grid"></div>
+          </section>
+          <section id="prompts">
+            <h2>prompt library</h2>
+            <p class="section-line">words to conjure your brand with — copy any prompt and make it yours.</p>
+            <div id="prompts-list"></div>
+          </section>
+        </div>
+        <div class="view" id="view-questionnaire">
+          <section style="margin-top:0;">
+            <h2>questionnaire — brand information</h2>
+            <p class="section-line">a few questions so Rebekah can see your work through your eyes — rambling welcome.</p>
+            <div id="q-wrap">
+              <form id="qform">
+                <label class="q-label" for="q1">tell me about your work — what are you making, and for whom?</label>
+                <textarea class="q-input" id="q1" rows="4"></textarea>
+                <label class="q-label" for="q2">your brand as it stands: what do you love about it, and what's quietly not working?</label>
+                <textarea class="q-input" id="q2" rows="4"></textarea>
+                <label class="q-label" for="q3">three words for the feeling your brand should carry.</label>
+                <textarea class="q-input" id="q3" rows="2"></textarea>
+                <label class="q-label" for="q4">whose world do you admire? (brands, places, makers — links welcome.)</label>
+                <textarea class="q-input" id="q4" rows="4"></textarea>
+                <label class="q-label" for="q5">any must-keeps — an existing logo, fonts, colours you're attached to?</label>
+                <textarea class="q-input" id="q5" rows="4"></textarea>
+                <label class="q-label" for="q6">where will the brandscape live first? (web, print, packaging, socials.)</label>
+                <textarea class="q-input" id="q6" rows="4"></textarea>
+                <label class="q-label" for="q7">anything else at all.</label>
+                <textarea class="q-input" id="q7" rows="4"></textarea>
+                <button class="save" id="q-send" type="submit">send my answers</button>
+              </form>
+            </div>
+            <p id="q-done">thank you — your answers are with Rebekah. ✨</p>
+          </section>
+        </div>
+        <div class="view" id="view-uploads">
+          <section style="margin-top:0;">
+            <h2>client upload portal</h2>
+            <p class="section-line">share your inspiration — images, briefs, brand files. everything you add here is kept for your project.</p>
+            <div class="drive-box" id="drive-box" style="display:none;">
+              <p style="margin:0;">bigger files? drop them straight into the studio's google drive —</p>
+              <a class="drive-btn" id="drive-link" href="#" target="_blank" rel="noopener">upload to google drive ↗</a>
+            </div>
+            <div class="up-zone">
+              <input type="file" id="up-input" multiple style="display:none;">
+              <button class="copy" style="margin-top:0; padding: 12px 30px; font-size: 13px;" id="up-choose" type="button">choose files</button>
+              <p class="up-note">up to 10 MB each — images and documents.</p>
+            </div>
+            <p id="up-msg"></p>
+            <div id="up-list" style="margin-top:26px;"></div>
+          </section>
+        </div>
+        <div class="view" id="view-contract">
+          <section style="margin-top:0;">
+            <h2>contract</h2>
+            <p class="section-line">your agreement lives here — ready to read and sign when the time comes.</p>
+            <p class="empty">your contract will appear here when it's ready. Rebekah will walk you through it personally.</p>
+          </section>
+        </div>
+        <div class="view" id="view-invoices">
+          <section style="margin-top:0;">
+            <h2>invoices &amp; payments</h2>
+            <p class="section-line">your project account — clear and kept current.</p>
+            <p class="empty">invoices and progress payments will be tracked here — downloadable invoices, and a clear picture of where your project stands.</p>
+          </section>
+        </div>
+        <div class="view" id="view-library">
+          <section style="margin-top:0;">
+            <h2>library</h2>
+            <p class="section-line">every image of your brandscape, gathered in one place.</p>
+            <div class="grid" id="library-grid"></div>
+          </section>
+        </div>
+        <div class="view" id="view-notes">
+          <section style="margin-top:0;">
+            <h2>notes</h2>
+            <p class="section-line">a quiet page for your thoughts — anything saved here is kept for your project.</p>
+            <textarea class="q-input" id="note" rows="8" placeholder="scribbles, sparks, things not to forget…"></textarea>
+            <div>
+              <button class="save" id="note-save" type="button">save note</button>
+              <span id="note-saved">saved ✓</span>
+            </div>
+          </section>
+        </div>
+        <p class="footnote" id="footnote"></p>
       </div>
     </div>
     <script>
       (function () {
         var API = "https://rjl-publisher-insights-agent-a07f3048.base44.app/functions";
         var token = "";
-        try { token = sessionStorage.getItem("rjl_portal_token") || ""; } catch (e) {}
+        try { token = sessionStorage.getItem("rjl_portal_token") || ""; } catch (err) {}
         if (!token) { location.replace("/client/"); return; }
 
         function esc(s) {
-          return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        }
+        function post(path, payload) {
+          return fetch(API + "/" + path, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          }).then(function (r) { return r.json(); });
         }
         function fallbackCopy(text) {
           var ta = document.createElement("textarea");
           ta.value = text; document.body.appendChild(ta); ta.select();
-          try { document.execCommand("copy"); } catch (err) {}
+          try { document.execCommand("copy"); } catch (e) {}
           document.body.removeChild(ta);
         }
         function copyText(btn, text) {
@@ -1713,12 +1813,141 @@ function clientPortalPage() {
           var el = document.getElementById(id);
           if (el) el.innerHTML = '<p class="empty">still in the studio — being made for you with love. this will appear here soon.</p>';
         }
-        function post(path, payload) {
-          return fetch(API + "/" + path, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          }).then(function (r) { return r.json(); });
+        function imageCard(it) {
+          var card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = (it.url ? '<img class="asset" src="' + esc(it.url) + '" alt="' + esc(it.title || "brand asset") + '" loading="lazy">' : "") +
+            '<p class="card-title">' + esc(it.title) + '</p>' +
+            (it.meta ? '<p class="meta">' + esc(it.meta) + '</p>' : "");
+          return card;
+        }
+        function fillGrid(gridId, items) {
+          var grid = document.getElementById(gridId);
+          if (!grid) return;
+          if (!items || items.length === 0) { empty(gridId); return; }
+          items.forEach(function (it) { grid.appendChild(imageCard(it)); });
+        }
+        function fmtBytes(n) {
+          n = Number(n || 0);
+          if (n >= 1048576) return (n / 1048576).toFixed(1) + " MB";
+          if (n >= 1024) return Math.round(n / 1024) + " KB";
+          return n + " B";
+        }
+        var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        function fmtDate(ms) {
+          var d = new Date(Number(ms));
+          return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear();
+        }
+
+        // ---- side panel menu
+        var panel = document.getElementById("menu-panel");
+        var menuBtn = document.getElementById("menu-btn");
+        function closeMenu() {
+          panel.classList.remove("open");
+          menuBtn.setAttribute("aria-expanded", "false");
+        }
+        menuBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var open = panel.classList.toggle("open");
+          menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        document.addEventListener("click", function (e) {
+          if (!panel.contains(e.target)) closeMenu();
+        });
+        function showView(name) {
+          var views = document.querySelectorAll(".view");
+          for (var i = 0; i < views.length; i++) views[i].classList.remove("on");
+          var el = document.getElementById("view-" + name);
+          if (el) el.classList.add("on");
+          var btns = document.querySelectorAll(".menu-item[data-view]");
+          for (var j = 0; j < btns.length; j++) btns[j].classList.toggle("active", btns[j].getAttribute("data-view") === name);
+          closeMenu();
+          window.scrollTo(0, 0);
+        }
+        var menuItems = document.querySelectorAll(".menu-item[data-view]");
+        for (var k = 0; k < menuItems.length; k++) {
+          menuItems[k].addEventListener("click", function () { showView(this.getAttribute("data-view")); });
+        }
+        document.getElementById("menu-signout").addEventListener("click", function () {
+          try { sessionStorage.removeItem("rjl_portal_token"); } catch (err) {}
+          location.href = "/client/";
+        });
+
+        var byType = {};
+        var uploads = [];
+        var logoVariants = [["logo", "logo"], ["monogram", "monogram"], ["brandmark", "brand mark"], ["wordmark", "word mark"]];
+        var currentVariant = "logo";
+
+        function renderLogo() {
+          var stage = document.getElementById("logo-stage");
+          var toggle = document.getElementById("logo-toggle");
+          toggle.innerHTML = "";
+          logoVariants.forEach(function (v) {
+            var b = document.createElement("button");
+            b.className = "variant" + (v[0] === currentVariant ? " active" : "");
+            b.type = "button"; b.textContent = v[1];
+            b.addEventListener("click", function () { currentVariant = v[0]; renderLogo(); });
+            toggle.appendChild(b);
+          });
+          stage.innerHTML = "";
+          var items = byType[currentVariant] || [];
+          if (items.length === 0) {
+            stage.innerHTML = '<p class="empty">still in the studio — being made for you with love. this will appear here soon.</p>';
+            return;
+          }
+          if (items.length === 1) {
+            var hero = document.createElement("div");
+            hero.className = "logo-hero";
+            hero.innerHTML = (items[0].url ? '<img src="' + esc(items[0].url) + '" alt="' + esc(items[0].title || "logo") + '">' : "") +
+              (items[0].title ? '<p class="card-title" style="margin:10px 0 0;">' + esc(items[0].title) + '</p>' : "") +
+              (items[0].meta ? '<p class="meta">' + esc(items[0].meta) + '</p>' : "");
+            var dl = document.createElement("a");
+            dl.className = "copy"; dl.style.display = "inline-block"; dl.style.textDecoration = "none";
+            dl.href = items[0].url || "#"; dl.setAttribute("download", ""); dl.textContent = "download";
+            hero.appendChild(dl);
+            stage.appendChild(hero);
+          } else {
+            var grid = document.createElement("div");
+            grid.className = "grid";
+            stage.appendChild(grid);
+            items.forEach(function (it) { grid.appendChild(imageCard(it)); });
+          }
+        }
+
+        function renderUploads() {
+          var list = document.getElementById("up-list");
+          list.innerHTML = "";
+          if (uploads.length === 0) {
+            list.innerHTML = '<p class="empty">nothing shared yet — your uploads will gather here.</p>';
+            return;
+          }
+          uploads.forEach(function (u) {
+            var row = document.createElement("div");
+            row.className = "up-row";
+            var href = API + "/portalFile?token=" + encodeURIComponent(token) + "&id=" + encodeURIComponent(u.id);
+            var isImg = String(u.kind || "").indexOf("image/") === 0;
+            row.innerHTML =
+              (isImg
+                ? '<img class="up-thumb" src="' + esc(href) + '" alt="' + esc(u.filename) + '" loading="lazy">'
+                : '<div class="up-thumb doc">📄</div>') +
+              '<p class="meta" style="flex:1;margin:0;">' + esc(u.filename) + '<br><span style="opacity:0.6;">' + fmtBytes(u.size) + '</span></p>';
+            var a = document.createElement("a");
+            a.className = "open-link"; a.href = href; a.setAttribute("download", ""); a.textContent = "download ↗";
+            row.appendChild(a);
+            list.appendChild(row);
+          });
+        }
+
+        function setUploading(state) {
+          var btn = document.getElementById("up-choose");
+          btn.disabled = state;
+          btn.textContent = state ? "uploading…" : "choose files";
+        }
+        function upMsg(text) {
+          var m = document.getElementById("up-msg");
+          m.textContent = text;
+          m.style.display = "block";
+          setTimeout(function () { m.style.display = "none"; }, 5000);
         }
 
         post("portalGet", { token: token }).then(function (d) {
@@ -1727,18 +1956,33 @@ function clientPortalPage() {
           document.getElementById("app").style.display = "block";
           document.getElementById("brand").textContent = d.brand_name || "your brandscape";
           document.getElementById("greet").textContent = "welcome, " + (d.client_name || "friend") + " — everything lives here, all in one place, always yours.";
-          document.getElementById("logout").addEventListener("click", function (e) {
-            e.preventDefault();
-            try { sessionStorage.removeItem("rjl_portal_token"); } catch (err) {}
-            location.href = "/client/";
-          });
 
-          var byType = {};
           (d.content || []).forEach(function (item) {
-            if (item.type === "client_note") return;
             (byType[item.type] = byType[item.type] || []).push(item);
           });
-          var noteItem = (d.content || []).filter(function (item) { return item.type === "client_note"; })[0];
+          uploads = d.uploads || [];
+
+          // footnote with the 30-day window
+          var foot = "private to you · <a href=\\"https://studiorjl.com\\">studiorjl.com</a>";
+          if (d.expires_at) foot = "your portal is open until " + fmtDate(d.expires_at) + " · " + foot;
+          document.getElementById("footnote").innerHTML = foot;
+
+          // logo variants — open on the first version with content
+          var firstWith = null;
+          logoVariants.forEach(function (v) { if (!firstWith && (byType[v[0]] || []).length > 0) firstWith = v[0]; });
+          currentVariant = firstWith || "logo";
+          renderLogo();
+
+          fillGrid("profile-grid", byType.profile_logo);
+          fillGrid("library-grid", []
+            .concat(byType.logo || [])
+            .concat(byType.monogram || [])
+            .concat(byType.brandmark || [])
+            .concat(byType.wordmark || [])
+            .concat(byType.profile_logo || [])
+            .concat(byType.image || [])
+            .concat(byType.texture || [])
+            .concat(byType.lockup || []));
 
           // colours
           var cg = document.getElementById("colours-grid");
@@ -1773,19 +2017,9 @@ function clientPortalPage() {
             });
           }
 
-          // imagery + textures + lock-ups (image grids)
+          // imagery + textures + lock-ups
           [["image", "images-grid"], ["texture", "textures-grid"], ["lockup", "lockups-grid"]].forEach(function (pair) {
-            var grid = document.getElementById(pair[1]);
-            var items = byType[pair[0]] || [];
-            if (items.length === 0) { empty(pair[1]); return; }
-            items.forEach(function (it) {
-              var card = document.createElement("div");
-              card.className = "card";
-              card.innerHTML = (it.url ? '<img class="asset" src="' + esc(it.url) + '" alt="' + esc(it.title || "brand asset") + '" loading="lazy">' : "") +
-                '<p class="card-title">' + esc(it.title) + '</p>' +
-                (it.meta ? '<p class="meta">' + esc(it.meta) + '</p>' : "");
-              grid.appendChild(card);
-            });
+            fillGrid(pair[1], byType[pair[0]] || []);
           });
 
           // templates
@@ -1819,7 +2053,45 @@ function clientPortalPage() {
             });
           }
 
+          // google drive link (per-client, curated by Rebekah)
+          var driveItem = (byType.drive_link || [])[0];
+          if (driveItem && driveItem.url) {
+            document.getElementById("drive-box").style.display = "block";
+            document.getElementById("drive-link").href = driveItem.url;
+          }
+
+          // uploads
+          renderUploads();
+          var upInput = document.getElementById("up-input");
+          document.getElementById("up-choose").addEventListener("click", function () { upInput.click(); });
+          upInput.addEventListener("change", function () {
+            var files = Array.prototype.slice.call(upInput.files || []);
+            upInput.value = "";
+            if (files.length === 0) return;
+            var fd = new FormData();
+            fd.append("token", token);
+            files.forEach(function (f) { fd.append("files", f); });
+            setUploading(true);
+            fetch(API + "/portalUpload", { method: "POST", body: fd }).then(function (r) { return r.json(); }).then(function (res) {
+              setUploading(false);
+              if (res.ok) {
+                (res.uploaded || []).forEach(function (u) { uploads.unshift(u); });
+                renderUploads();
+                var n = (res.uploaded || []).length;
+                var note = n + " file" + (n === 1 ? "" : "s") + " received — thank you ✨";
+                (res.skipped || []).forEach(function (s) { note += " · " + s.filename + " skipped: " + s.reason; });
+                upMsg(note);
+              } else {
+                upMsg(res.error || "something went wrong — please try again.");
+              }
+            }).catch(function () {
+              setUploading(false);
+              upMsg("the connection dropped — please try again.");
+            });
+          });
+
           // notes
+          var noteItem = (byType.client_note || [])[0];
           if (noteItem && noteItem.meta) document.getElementById("note").value = noteItem.meta;
           document.getElementById("note-save").addEventListener("click", function () {
             var btn = document.getElementById("note-save");
