@@ -50,7 +50,6 @@ export const footerLinks = [
 ];
 
 export const socialLinks = [
-  { label: "email", href: "mailto:hello@studiorjl.com", icon: "mail" },
   { label: "instagram", href: "https://www.instagram.com/studio.rjl/", icon: "instagram" },
   { label: "pinterest", href: "https://au.pinterest.com/studiorjl/", icon: "pinterest" },
   { label: "linkedin", href: "https://www.linkedin.com/company/studio-rjl", icon: "linkedin" }
