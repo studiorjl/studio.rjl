@@ -1231,11 +1231,6 @@ footer {
   animation-delay: 0.08s;
 }
 
-.footer-block:nth-child(4).visible,
-.footer-block:nth-child(5).visible {
-  animation-delay: 0.16s;
-}
-
 .footer-title {
   color: #d6c299;
   font-family: "Cormorant Infant", Georgia, serif;
