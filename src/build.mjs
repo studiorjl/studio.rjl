@@ -356,7 +356,7 @@ function head({
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=4">
+    <link rel="stylesheet" href="/styles.css?v=5">
     ${site.googleAnalyticsId ? analytics() : ""}
     ${jsonLd(organizationSchema())}
     ${jsonLd(websiteSchema())}
@@ -463,11 +463,11 @@ function footer() {
             <a href="/booking/" aria-label="book a complimentary brand strategy call with studio rjl"><span class="social-icon">${icon("phone")}</span>book a call</a>
             <button class="footer-enquiry" type="button" data-enquiry-toggle data-enquiry-bloom aria-label="inquire to work with studio rjl"><span class="social-icon">${icon("bloom")}</span>inquire to work with us</button>
           </div>
-        </div>
-        <div class="footer-block reveal" aria-label="connect">
-          <div class="footer-title">connect</div>
-          <div class="social-links" aria-label="studio rjl socials">
-            ${socialLinks.map((link) => `<a href="${link.href}" aria-label="follow studio rjl on ${escapeHtml(link.label)}"><span class="social-icon">${icon(link.icon)}</span>${escapeHtml(link.label)}</a>`).join("")}
+          <div class="footer-subsection">
+            <div class="footer-title">connect</div>
+            <div class="social-links" aria-label="studio rjl socials">
+              ${socialLinks.map((link) => `<a href="${link.href}" aria-label="follow studio rjl on ${escapeHtml(link.label)}"><span class="social-icon">${icon(link.icon)}</span>${escapeHtml(link.label)}</a>`).join("")}
+            </div>
           </div>
           <div class="footer-subsection">
             <div class="footer-title">design partners</div>
@@ -479,11 +479,11 @@ function footer() {
         <div class="footer-block reveal" aria-label="client portal">
           <div class="footer-title">client portal</div>
           <a class="client-login" href="/client/"><span class="social-icon">${icon("person")}</span>client log in</a>
-        </div>
-        <div class="footer-block reveal">
-          <div class="footer-title">studio notes</div>
-          <div class="footer-links">
-            ${footerLinks.map((link) => `<a href="${link.href}">${escapeHtml(link.label)}</a>`).join("")}
+          <div class="footer-subsection">
+            <div class="footer-title">studio notes</div>
+            <div class="footer-links">
+              ${footerLinks.map((link) => `<a href="${link.href}">${escapeHtml(link.label)}</a>`).join("")}
+            </div>
           </div>
         </div>
       </div>
@@ -1600,7 +1600,7 @@ function clientLoginPage() {
       * { box-sizing: border-box; }
       body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
       .mark { position: fixed; top: 28px; left: 32px; font-family: "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; color: var(--green); }
-      .wrap { width: 100%; max-width: 420px; text-align: center; }
+      .wrap { width: 100%; max-width: 500px; text-align: center; }
       .presents { font-family: "Cormorant Infant", Georgia, serif; font-size: 15px; letter-spacing: 0.28em; color: var(--deep-green); margin: 0 0 26px; }
       h1 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-style: italic; font-size: 44px; letter-spacing: 0.02em; margin: 0 0 18px; color: var(--deep-green); }
       .intro { font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; line-height: 1.8; margin: 0 0 34px; }
@@ -1619,7 +1619,7 @@ function clientLoginPage() {
     <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
     <div class="wrap">
       <h1>client portal</h1>
-      <p class="intro">everything lives in your own private client portal — sign in to step inside.</p>
+      <p class="intro">welcome back to your brandscape portal, sign in to step inside.</p>
       <form id="login" autocomplete="on">
         <div class="field">
           <label class="label" for="email">username</label>
@@ -1632,7 +1632,7 @@ function clientLoginPage() {
         <button class="enter" id="enter" type="submit">enter</button>
         <p id="err">hmm — that username or password isn't recognised. try again, or email <a href="mailto:hello@studiorjl.com" style="color:#7a2d2d;">hello@studiorjl.com</a>.</p>
       </form>
-      <p class="footnote">private to you · <a href="https://studiorjl.com">studiorjl.com</a></p>
+      <p class="footnote"><a href="https://studiorjl.com">studio rjl</a></p>
     </div>
     <script>
       (function () {
@@ -2093,7 +2093,7 @@ function clientPortalPage() {
           uploads = d.uploads || [];
 
           // footnote with the 30-day window
-          var foot = "private to you · <a href=\\"https://studiorjl.com\\">studiorjl.com</a>";
+          var foot = "<a href=\\"https://studiorjl.com\\">studio rjl</a>";
           if (d.expires_at) foot = "your portal is open until " + fmtDate(d.expires_at) + " · " + foot;
           document.getElementById("footnote").innerHTML = foot;
 
