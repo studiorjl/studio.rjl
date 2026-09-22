@@ -70,7 +70,7 @@ function organizationSchema() {
       name: site.founder
     },
     foundingLocation: site.foundingPlace,
-    areaServed: site.region,
+    areaServed: ["Bangalow", "Byron Bay", "Northern Rivers", "Ballina", "Lismore", site.region],
     address: {
       "@type": "PostalAddress",
       addressLocality: "Bangalow",
@@ -356,7 +356,7 @@ function head({
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=3">
+    <link rel="stylesheet" href="/styles.css?v=4">
     ${site.googleAnalyticsId ? analytics() : ""}
     ${jsonLd(organizationSchema())}
     ${jsonLd(websiteSchema())}
@@ -722,6 +722,7 @@ function editorialArticlePage(post) {
       <section class="article-body">
         ${paragraphs}
         <button class="button article-enquiry-button" type="button" data-enquiry-toggle>let's collaborate</button>
+        <div class="article-enquiry-subline"><button class="article-enquiry-link" type="button" data-enquiry-toggle>Let's build something with real atmosphere.</button></div>
       </section>
       ${gallery}
     </article>
@@ -760,7 +761,7 @@ function homePage() {
           src="${asset("studiorjl-tile-hero-640.png")}"
           srcset="${asset("studiorjl-tile-hero-640.png")} 640w, ${asset("studiorjl-tile-hero-960.png")} 960w"
           sizes="(max-width: 720px) 58vw, 293px"
-          alt="studio rjl metallic monogram tile"
+          alt="studio rjl metallic monogram tile — Bangalow & Byron Bay branding and spatial design studio"
           width="640"
           height="898"
           loading="eager"
@@ -799,7 +800,7 @@ function homePage() {
         <p>studio rjl is a multidisciplinary design studio crafting bespoke brands <em>and</em> making places.</p>
         <p>based in the northern rivers of nsw - collaborating worldwide.</p>
         <div class="about-image">
-          <img class="reveal" src="${asset("studiorjl-about.png")}" alt="Rebekah Jane, founder of studio rjl" loading="lazy">
+          <img class="reveal" src="${asset("studiorjl-about.png")}" alt="Rebekah Jane, founder of studio rjl, a Bangalow and Byron Bay area branding and spatial design studio" loading="lazy">
         </div>
         <p>Rebekah has worked across architecture, landscapes & interiors, brands, objects & visual identities.</p>
         <p>Her work is guided by a deep love for nature, and is shaped by her reverence for the magic alive in sensory experience; tone, texture & gesture.</p>
@@ -922,8 +923,8 @@ function portfolioPage(category) {
   return layout({
     title: category ? `recent works — ${category.label}` : "recent works",
     description: category
-      ? `selected studio rjl ${category.label} work — a focused collection from an unfolding body of projects.`
-      : "selected studio rjl work across brand identity, graphic design, interiors, print, packaging, campaign content and spatial concept design.",
+      ? `selected studio rjl ${category.label} work — a focused collection from an unfolding body of projects, crafted by a Bangalow & Byron Bay area branding studio.`
+      : "selected studio rjl work across brand identity, graphic design, interiors, print, packaging, campaign content and spatial concept design — from a Bangalow branding studio in the Northern Rivers near Byron Bay.",
     pathname: category ? `/portfolio/${category.slug}/` : "/portfolio/",
     body,
     extraSchema: [
@@ -2375,7 +2376,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "llms.txt"),
-    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- contact: ${canonical("/contact/")}\n- client portal: ${canonical("/client/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n- collaborations: collaborations@studiorjl.com\n\n## location\n\n${site.locationSignal}\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
+    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- contact: ${canonical("/contact/")}\n- client portal: ${canonical("/client/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n- collaborations: collaborations@studiorjl.com\n\n## location\n\n${site.locationSignal}\n\nstudio rjl is a Bangalow branding studio serving Byron Bay, the Northern Rivers and clients worldwide — best suited to hospitality brands, lifestyle brands, interiors-led projects, property developers and placemakers seeking bespoke brand identity, graphic design, print & packaging, spatial and interior design.\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
   );
   await writeFile(path.join(dist, "CNAME"), "studiorjl.com\n");
 }

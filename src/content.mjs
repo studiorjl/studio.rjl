@@ -195,14 +195,14 @@ export const editorialPosts = [
     imageWidth: 1500,
     imageHeight: 2055,
     imageAlt:
-      "Rogue cover artwork with an illustrated heroine riding a leopard-spotted horse above a refined wordmark on a dark textured field",
+      "Rogue cover artwork with an illustrated heroine riding a leopard-spotted horse above a refined wordmark on a dark textured field, created by studio rjl, a Bangalow branding studio",
     author: "Rebekah Jane",
     datePublished: "2026-08-22",
     section: "case study",
     tags: ["branding", "visual identity", "editorial", "print design"],
     pinTitle: "Rogue brand identity and print case study by studio rjl",
     pinDescription:
-      "A studio rjl editorial case study for Rogue, exploring a heroine emblem, leopard-spotted horse, gold embossing, letterpress cards and cinematic agency brand world design.",
+      "A studio rjl editorial case study for Rogue, exploring a heroine emblem, leopard-spotted horse, gold embossing, letterpress cards and cinematic agency brand world design, from a Bangalow branding studio in the Northern Rivers.",
     body: [
       "Rogue began as an instinctual case study, a visual identity based on going rogue.",
       "A bold courageous danger in this posture, balanced by discipline and elegant curation.",
@@ -217,42 +217,42 @@ export const editorialPosts = [
         width: 1500,
         height: 2055,
         alt:
-          "Rogue letterpress business cards with gold heroine emblem artwork, blind embossed reverse and leopard textured campaign backdrop"
+          "Rogue letterpress business cards with gold heroine emblem artwork, blind embossed reverse and leopard textured campaign backdrop, Bangalow print design by studio rjl"
       },
       {
         image: "rogue-emblem-catprint.jpg",
         width: 1400,
         height: 1919,
         alt:
-          "Rogue heroine emblem and elegant serif wordmark set over a pale leopard print inspired texture"
+          "Rogue heroine emblem and elegant serif wordmark set over a pale leopard print inspired texture, by studio rjl, a Bangalow branding studio"
       },
       {
         image: "rogue-car-ad.jpg",
         width: 687,
         height: 1024,
         alt:
-          "Rogue campaign artwork of a woman in sunglasses, leopard print headscarf and lace gloves driving a vintage car with cinematic advertising styling"
+          "Rogue campaign artwork of a woman in sunglasses, leopard print headscarf and lace gloves driving a vintage car with cinematic advertising styling, Northern NSW brand design by studio rjl"
       },
       {
         image: "rogue-cards-horizontal-gold-studiorjl.jpg",
         width: 1500,
         height: 2055,
         alt:
-          "Rogue horizontal card suite with gold embossed wordmark, unbleached paper stock and blind letterpress reverse"
+          "Rogue horizontal card suite with gold embossed wordmark, unbleached paper stock and blind letterpress reverse, by studio rjl, Bangalow print designers"
       },
       {
         image: "rogue-card-model.jpg",
         width: 1400,
         height: 1949,
         alt:
-          "Rogue brand card held over the eyes by a model in black lace gloves, gold hoops and red lip styling"
+          "Rogue brand card held over the eyes by a model in black lace gloves, gold hoops and red lip styling, campaign styling by studio rjl, a Byron Bay area branding studio"
       },
       {
         image: "rogue-marketing-cards.jpg",
         width: 1500,
         height: 2121,
         alt:
-          "Two vertical Rogue embossed cards on a dark marble textured surface, showing the elegant curation of the print system"
+          "Two vertical Rogue embossed cards on a dark marble textured surface, showing the elegant curation of the print system, by studio rjl, a Bangalow branding studio near Byron Bay"
       }
     ]
   },
@@ -265,7 +265,7 @@ export const editorialPosts = [
     imageWidth: 1500,
     imageHeight: 2000,
     imageAlt:
-      "Florah floral design studio brand artwork with botanical texture and a moody Studio RJL visual identity treatment",
+      "Florah floral design studio brand artwork with botanical texture and a moody Studio RJL visual identity treatment, created in Bangalow for a Byron Bay hinterland florist",
     author: "Rebekah Jane",
     datePublished: "2026-08-23",
     section: "case study",
@@ -282,42 +282,42 @@ export const editorialPosts = [
         width: 1400,
         height: 1815,
         alt:
-          "Florah portrait brand artwork with a dark floral studio identity treatment, antique botanical mood and Studio RJL styling"
+          "Florah portrait brand artwork with a dark floral studio identity treatment, antique botanical mood and Studio RJL styling from Bangalow, Northern NSW"
       },
       {
         image: "florah-floral-studio-branding-studiorjl-portrait.jpg",
         width: 1400,
         height: 2026,
         alt:
-          "Florah floral studio branding portrait with bespoke wordmark, romantic botanical arrangement and seasonal floral identity"
+          "Florah floral studio branding portrait with bespoke wordmark, romantic botanical arrangement and seasonal floral identity by studio rjl, a Bangalow branding studio"
       },
       {
         image: "florah-bouquet-2.jpg",
         width: 1500,
         height: 2000,
         alt:
-          "Florah seasonal bouquet artwork with moody floral textures and romantic print-inspired composition"
+          "Florah seasonal bouquet artwork with moody floral textures and romantic print-inspired composition, Byron Bay hinterland branding by studio rjl"
       },
       {
         image: "florah-floral-studio-branding-studiorjl-portrait-dark.jpg",
         width: 1400,
         height: 1815,
         alt:
-          "Florah dark portrait brand composition with rich plum tones, floral emblem and atmospheric studio identity styling"
+          "Florah dark portrait brand composition with rich plum tones, floral emblem and atmospheric studio identity styling by studio rjl, Northern Rivers brand designers"
       },
       {
         image: "florah-floral-design-studio-bouquet.jpg",
         width: 1500,
         height: 1991,
         alt:
-          "Florah floral design studio bouquet artwork with vintage packaging texture and moody botanical art direction"
+          "Florah floral design studio bouquet artwork with vintage packaging texture and moody botanical art direction by studio rjl, a Bangalow print and packaging studio"
       },
       {
         image: "florah-floral-studio-branding-studiorjl-portrait-antique-plum-mono.jpg",
         width: 1400,
         height: 1815,
         alt:
-          "Florah antique plum monochrome brand portrait with bespoke floral studio identity and heritage print mood"
+          "Florah antique plum monochrome brand portrait with bespoke floral studio identity and heritage print mood, Northern NSW floral branding by studio rjl"
       }
     ]
   },
@@ -328,7 +328,7 @@ export const editorialPosts = [
       "a studio rjl case study in visual identity, campaign atmosphere and digital brand world development for Alegienne.",
     image: "alegienne-fall26campaign.jpg",
     imageAlt:
-      "Alegienne campaign image featuring gold jewellery and an emerald green car, art directed for a studio rjl case study",
+      "Alegienne campaign image featuring gold jewellery and an emerald green car, art directed for a studio rjl case study from Bangalow, Northern NSW",
     author: "Rebekah Jane",
     datePublished: "2026-08-16",
     section: "case study",
@@ -379,22 +379,22 @@ export const budgets = [
 export const featuredProjects = [
   {
     image: "interior-brandscape-design-warm-light.jpg",
-    alt: "Warm interior brandscape concept with soft light and layered textures"
+    alt: "Warm interior brandscape concept with soft light and layered textures by studio rjl, a Bangalow interior and branding studio"
   },
   {
     image: "floral-monogram-brandmark.jpg",
-    alt: "Floral monogram brandmark design by studio rjl"
+    alt: "Floral monogram brandmark design by studio rjl, a Bangalow branding studio near Byron Bay"
   },
   {
     image: "interior-brandscape-design-warm.jpg",
-    alt: "Warm spatial brand concept with interior styling and custom atmosphere"
+    alt: "Warm spatial brand concept with interior styling and custom atmosphere by studio rjl, a Northern Rivers design studio"
   }
 ];
 
 export const portfolio = [
   {
     image: "rogue-cover.jpg",
-    alt: "Rogue marketing agency visual identity case study with heroine emblem and bespoke wordmark by studio rjl",
+    alt: "Rogue marketing agency visual identity case study with heroine emblem and bespoke wordmark by studio rjl, a Bangalow branding studio",
     categories: [
       "brand design",
       "visual identity",
@@ -406,7 +406,7 @@ export const portfolio = [
   },
   {
     image: "rogue-car-ad.jpg",
-    alt: "Rogue campaign artwork of a woman in sunglasses, leopard print headscarf and lace gloves driving a vintage car",
+    alt: "Rogue campaign artwork of a woman in sunglasses, leopard print headscarf and lace gloves driving a vintage car, by studio rjl, brand designers in Bangalow, Northern NSW",
     categories: [
       "campaign art direction",
       "branding",
@@ -419,7 +419,7 @@ export const portfolio = [
   },
   {
     image: "rogue-cards-emblem-gold-leopard.jpg",
-    alt: "Rogue gold embossed business card and leopard print brand collateral by studio rjl",
+    alt: "Rogue gold embossed business card and leopard print brand collateral by studio rjl, a Northern Rivers branding studio near Byron Bay",
     categories: [
       "brand identity design",
       "business card design",
@@ -432,7 +432,7 @@ export const portfolio = [
   },
   {
     image: "florah-floral-design-studio.jpg",
-    alt: "Florah floral design studio visual identity and botanical brandscape by studio rjl",
+    alt: "Florah floral design studio visual identity and botanical brandscape for a Byron Bay hinterland florist, by studio rjl, a Bangalow branding studio",
     categories: [
       "brand design - Byron Bay",
       "floral studio branding",
@@ -445,7 +445,7 @@ export const portfolio = [
   },
   {
     image: "florah-bouquet-2.jpg",
-    alt: "Florah seasonal bouquet brand artwork with moody floral art direction by studio rjl",
+    alt: "Florah seasonal bouquet brand artwork with moody floral art direction by studio rjl, Northern Rivers brand designers",
     categories: [
       "floral design studio",
       "campaign imagery",
@@ -458,7 +458,7 @@ export const portfolio = [
   },
   {
     image: "florah-floral-studio-branding-studiorjl-portrait.jpg",
-    alt: "Florah floral studio branding portrait with bespoke wordmark and romantic botanical identity",
+    alt: "Florah floral studio branding portrait with bespoke wordmark and romantic botanical identity by studio rjl, a Bangalow and Byron Bay area branding studio",
     categories: [
       "florist branding",
       "bespoke wordmark",
@@ -471,19 +471,19 @@ export const portfolio = [
   },
   {
     image: "interior-brandscape-design-warm-light.jpg",
-    alt: "Interior brandscape design with warm light, textiles and atmospheric styling",
+    alt: "Interior brandscape design with warm light, textiles and atmospheric styling by studio rjl, a Bangalow interior and spatial design studio",
     categories: ["interior design", "fabric design", "lighting concept design"],
     tags: ["interiors"]
   },
   {
     image: "flora-h-brandmark.jpg",
-    alt: "Florah brandmark and visual identity design",
+    alt: "Florah brandmark and visual identity design by studio rjl, a Bangalow branding studio",
     categories: ["branding", "visual identity", "bespoke printing"],
     tags: ["branding", "print"]
   },
   {
     image: "interior-brandscape-design-warm.jpg",
-    alt: "Interior architecture concept with furniture, lighting and pattern design",
+    alt: "Interior architecture concept with furniture, lighting and pattern design by studio rjl, a Northern Rivers interior design studio",
     categories: [
       "interior architecture",
       "interior spatial and concept design",
@@ -494,91 +494,91 @@ export const portfolio = [
   },
   {
     image: "elodie-brandmark.jpg",
-    alt: "Elodie brandmark and bespoke visual identity system",
+    alt: "Elodie brandmark and bespoke visual identity system by studio rjl, a Byron Bay area branding studio in Bangalow",
     categories: ["branding", "visual identity", "bespoke printing"],
     tags: ["graphic", "branding", "print"]
   },
   {
     image: "elodie-champagne-campaign.jpg",
-    alt: "Elodie champagne campaign creative direction and branded content",
+    alt: "Elodie champagne campaign creative direction and branded content by studio rjl, a Bangalow branding studio",
     categories: ["branding", "visual identity", "campaigns and content"],
     tags: ["branding", "graphic"]
   },
   {
     image: "elodie-champagne-breakfast.jpg",
-    alt: "Elodie champagne breakfast campaign imagery and art direction",
+    alt: "Elodie champagne breakfast campaign imagery and art direction by studio rjl, brand designers in Bangalow, Northern NSW",
     categories: ["branding", "visual identity", "campaigns and content"],
     tags: ["branding", "graphic"]
   },
   {
     image: "circadia-card-brandmark.png.jpg",
-    alt: "Circadia card brandmark, logo and visual identity design",
+    alt: "Circadia card brandmark, logo and visual identity design by studio rjl, a Bangalow and Byron Bay branding studio",
     categories: ["branding", "visual identity", "logo and brandmark"],
     tags: ["branding", "graphic", "print"]
   },
   {
     image: "studiorjl-florals.jpg",
-    alt: "studio rjl floral campaign content and visual identity styling",
+    alt: "studio rjl floral campaign content and visual identity styling from a Bangalow branding studio",
     categories: ["branding", "visual identity", "campaigns and content"],
     tags: ["branding", "graphic"]
   },
   {
     image: "alegienne-fall26campaign.jpg",
-    alt: "Alegienne Emerald Collection fall campaign creative direction",
+    alt: "Alegienne Emerald Collection fall campaign creative direction by studio rjl, a Bangalow branding studio in the Northern Rivers",
     categories: ["branding", "visual identity", "campaigns and content"],
     tags: ["branding", "graphic"]
   },
   {
     image: "florah-sigil.jpg",
-    alt: "Florah floral studio sigil and campaign visual identity",
+    alt: "Florah floral studio sigil and campaign visual identity by studio rjl, a Byron Bay area branding studio",
     categories: ["branding", "visual identity", "campaigns and content"],
     tags: ["branding", "graphic"]
   },
   {
     image: "plume-packaging.jpg",
-    alt: "Plume packaging design with print and label system",
+    alt: "Plume packaging design with print and label system by studio rjl, a Bangalow print and packaging design studio",
     categories: ["branding", "visual identity", "print and packaging design"],
     tags: ["branding", "graphic", "print"]
   },
   {
     image: "alegienne-card-signaure.jpg",
-    alt: "Alegienne Spring 26 silk collection brand card and campaign asset",
+    alt: "Alegienne Spring 26 silk collection brand card and campaign asset by studio rjl, a Bangalow branding studio",
     categories: ["branding", "visual identity", "campaigns and content"],
     tags: ["branding", "graphic"]
   },
   {
     image: "alegienne-spring-campaign1.jpg",
-    alt: "Alegienne spring campaign art direction and fashion visuals",
+    alt: "Alegienne spring campaign art direction and fashion visuals by studio rjl, brand designers in Bangalow, Northern NSW",
     categories: ["branding", "art direction", "campaign design"],
     tags: ["branding"]
   },
   {
     image: "alegienne-brandmark-card.jpg",
-    alt: "Alegienne brandmark card with logo and visual identity treatment",
+    alt: "Alegienne brandmark card with logo and visual identity treatment by studio rjl, a Bangalow branding studio near Byron Bay",
     categories: ["branding", "visual identity", "brandmark", "logo design"],
     tags: ["branding"]
   },
   {
     image: "alegienne-spring-campaign2.jpg",
-    alt: "Alegienne spring fashion campaign visuals and creative direction",
+    alt: "Alegienne spring fashion campaign visuals and creative direction by studio rjl, a Northern Rivers branding studio",
     categories: ["fashion design", "campaign visuals", "creative direction"],
     tags: ["branding"]
   },
   {
     image: "UC-Logo.jpg",
-    alt: "UC logo design and visual identity system",
+    alt: "UC logo design and visual identity system by studio rjl, a Bangalow and Byron Bay branding studio",
     categories: ["branding", "visual identity", "campaigns and content"],
     tags: ["branding", "graphic"]
   },
   {
     image: "UC-Hero.jpg",
-    alt: "UC hero campaign artwork for brand identity and content",
+    alt: "UC hero campaign artwork for brand identity and content by studio rjl, a Bangalow branding studio",
     categories: ["branding", "visual identity", "campaigns and content"],
     tags: ["branding", "graphic"]
   },
   {
     image: "UC-Brandmark.jpg",
-    alt: "UC brandmark design for visual identity and campaign use",
+    alt: "UC brandmark design for visual identity and campaign use by studio rjl, brand designers in Bangalow, Northern NSW",
     categories: ["branding", "visual identity", "campaigns and content"],
     tags: ["branding", "graphic"]
   }
