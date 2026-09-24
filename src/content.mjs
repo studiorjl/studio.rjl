@@ -32,7 +32,7 @@ export const site = {
 
 export const navItems = [
   { label: "about", href: "/#about" },
-  { label: "recent work", href: "/portfolio/" },
+  { label: "recent work", href: "/recent-work/" },
   { label: "editorial", href: "/editorial/" },
   { label: "book a call", href: "/booking/" }
 ];

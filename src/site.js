@@ -122,6 +122,13 @@ function track(name, params) {
 let enquiryOpenedAt = null;
 let budgetTracked = false;
 
+// private portfolio copy (studiorjl.com/portfolio/) — the link Rebekah sends to
+// employers. every view fires employer_portfolio_view so she can see when it is
+// opened; /portfolio/property/ stays excluded (property pitch clients, not employers).
+if (/^\/portfolio(\/|$)/.test(location.pathname) && !/^\/portfolio\/property(\/|$)/.test(location.pathname)) {
+  track("employer_portfolio_view", { entry_referrer: document.referrer || "(direct)" });
+}
+
 function enquirySeconds() {
   return enquiryOpenedAt ? Math.round((Date.now() - enquiryOpenedAt) / 1000) : 0;
 }

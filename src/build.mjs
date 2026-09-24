@@ -127,17 +127,17 @@ function serviceSchema() {
   };
 }
 
-function portfolioSchema() {
+function portfolioSchema(base = "/portfolio") {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "recent works",
-    url: canonical("/portfolio/"),
+    url: canonical(`${base}/`),
     about: "studio rjl portfolio across branding, visual identity, interiors, print, packaging, graphic design and creative direction",
     hasPart: portfolio.map((project) => ({
       "@type": "ImageObject",
       contentUrl: canonical(asset(project.image)),
-      url: project.href ? canonical(project.href) : canonical("/portfolio/"),
+      url: project.href ? canonical(project.href) : canonical(`${base}/`),
       caption: project.alt,
       description: project.categories.join(", "),
       keywords: [...(project.categories || []), ...(project.tags || [])],
@@ -627,7 +627,7 @@ function layout({
     ${type === "article" ? articleRichPinMarkup({ title, description, url, author: author || site.founder }) : ""}
     ${footer()}
     ${enquiryPanel()}
-    <script src="/site.js?v=4" type="module"></script>
+    <script src="/site.js?v=5" type="module"></script>
   </body>
 </html>`;
 }
@@ -780,7 +780,7 @@ function homePage() {
       <div class="intro">
         <h2 id="recently-heading">recently in the studio</h2>
         <p>a collection of recent works and collaborations across branding, visual identity, spatial concept design and atmospheric creative direction.</p>
-        <a class="studio-link" href="/portfolio/">explore more...</a>
+        <a class="studio-link" href="/recent-work/">explore more...</a>
       </div>
       <div class="project-grid">
         ${featuredProjects
@@ -870,7 +870,9 @@ export const portfolioCategories = [
   { slug: "interiordesign", tag: "interiors", label: "interior design and architecture" }
 ];
 
-function portfolioPage(category) {
+function portfolioPage(category, opts = {}) {
+  const base = opts.base || "/portfolio";
+  const robots = opts.robots;
   const projects = category ? portfolio.filter((project) => project.tags.includes(category.tag)) : portfolio;
   const subline = category
     ? `filed under — ${category.label}`
@@ -925,20 +927,21 @@ function portfolioPage(category) {
     description: category
       ? `selected studio rjl ${category.label} work — a focused collection from an unfolding body of projects, crafted by a Bangalow & Byron Bay area branding studio.`
       : "selected studio rjl work across brand identity, graphic design, interiors, print, packaging, campaign content and spatial concept design — from a Bangalow branding studio in the Northern Rivers near Byron Bay.",
-    pathname: category ? `/portfolio/${category.slug}/` : "/portfolio/",
+    pathname: category ? `${base}/${category.slug}/` : `${base}/`,
+    robots,
     body,
     extraSchema: [
-      portfolioSchema(),
+      portfolioSchema(base),
       breadcrumbSchema(
         category
           ? [
               { name: "home", href: "/" },
-              { name: "recent works", href: "/portfolio/" },
-              { name: category.label, href: `/portfolio/${category.slug}/` }
+              { name: "recent works", href: `${base}/` },
+              { name: category.label, href: `${base}/${category.slug}/` }
             ]
           : [
               { name: "home", href: "/" },
-              { name: "recent works", href: "/portfolio/" }
+              { name: "recent works", href: `${base}/` }
             ]
       )
     ]
@@ -2263,7 +2266,7 @@ function clientPortalPage() {
 function sitemapPage() {
   const links = [
     { label: "home", href: "/" },
-    { label: "recent work", href: "/portfolio/" },
+    { label: "recent work", href: "/recent-work/" },
     { label: "editorial", href: "/editorial/" },
     { label: "creative services", href: "/services/" },
     { label: "shop", href: "/shop/" },
@@ -2288,8 +2291,11 @@ const pages = [
   ["questionnaire/index.html", questionnairePage()],
   ["client/index.html", clientLoginPage()],
   ["client/portal/index.html", clientPortalPage()],
-  ["portfolio/index.html", portfolioPage()],
-  ...portfolioCategories.map((category) => [`portfolio/${category.slug}/index.html`, portfolioPage(category)]),
+  ["recent-work/index.html", portfolioPage(null, { base: "/recent-work" })],
+  ...portfolioCategories.map((category) => [`recent-work/${category.slug}/index.html`, portfolioPage(category, { base: "/recent-work" })]),
+  // private, employer-facing copy of the portfolio — unlinked, noindex, tracked via employer_portfolio_view
+  ["portfolio/index.html", portfolioPage(null, { base: "/portfolio", robots: "noindex, follow" })],
+  ...portfolioCategories.map((category) => [`portfolio/${category.slug}/index.html`, portfolioPage(category, { base: "/portfolio", robots: "noindex, follow" })]),
   ["portfolio/property/index.html", propertyPortfolioPage()],
   ["editorial/index.html", editorialPage()],
   ...editorialPosts.map((post) => [`editorial/${post.slug}/index.html`, editorialArticlePage(post)]),
@@ -2352,7 +2358,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/portfolio/", ...portfolioCategories.map((category) => `/portfolio/${category.slug}/`), "/editorial/", "/services/", "/shop/", "/faq/", "/booking/", "/contact/", "/client/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["/", "/recent-work/", ...portfolioCategories.map((category) => `/recent-work/${category.slug}/`), "/editorial/", "/services/", "/shop/", "/faq/", "/booking/", "/contact/", "/client/", "/blog/", "/project-archive/", "/sitemap/", "/privacy/", "/terms/", "/accessibility/"]
       .concat(editorialPosts.map((post) => `/editorial/${post.slug}/`))
       .concat(articlePosts.map((post) => `/blog/${post.slug}/`))
       .map((url) => `  <url><loc>${canonical(url)}</loc></url>`)
@@ -2376,7 +2382,7 @@ async function writeStaticFiles() {
   );
   await writeFile(
     path.join(dist, "llms.txt"),
-    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/portfolio/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- contact: ${canonical("/contact/")}\n- client portal: ${canonical("/client/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n- collaborations: collaborations@studiorjl.com\n\n## location\n\n${site.locationSignal}\n\nstudio rjl is a Bangalow branding studio serving Byron Bay, the Northern Rivers and clients worldwide — best suited to hospitality brands, lifestyle brands, interiors-led projects, property developers and placemakers seeking bespoke brand identity, graphic design, print & packaging, spatial and interior design.\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
+    `# ${site.name}\n\n${site.description}\n\n## key pages\n\n- home: ${canonical("/")}\n- recent works: ${canonical("/recent-work/")}\n- editorial: ${canonical("/editorial/")}\n- creative services: ${canonical("/services/")}\n- shop: ${canonical("/shop/")}\n- faq: ${canonical("/faq/")}\n- bookings: ${canonical("/booking/")}\n- contact: ${canonical("/contact/")}\n- client portal: ${canonical("/client/")}\n- blog: ${canonical("/blog/")}\n- project archive: ${canonical("/project-archive/")}\n- sitemap: ${canonical("/sitemap/")}\n\n## contact\n\n- email: ${site.contact.email}\n- collaborations: collaborations@studiorjl.com\n\n## location\n\n${site.locationSignal}\n\nstudio rjl is a Bangalow branding studio serving Byron Bay, the Northern Rivers and clients worldwide — best suited to hospitality brands, lifestyle brands, interiors-led projects, property developers and placemakers seeking bespoke brand identity, graphic design, print & packaging, spatial and interior design.\n\n## services\n\n${services.map((service) => `- ${service}`).join("\n")}\n`
   );
   await writeFile(path.join(dist, "CNAME"), "studiorjl.com\n");
 }
