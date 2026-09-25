@@ -370,6 +370,7 @@ export const templateProducts = [
 ];
 
 export const budgets = [
+  "< $5,000",
   "$5,000 - $10,000",
   "$10,000 - $20,000",
   "$20,000 - $30,000",
