@@ -327,29 +327,27 @@ export const editorialPosts = [
       }
     ]
   },
-  // temporarily removed from editorial (7 October 2026) — restore by un-commenting this entry.
-  // cover image swapped from alegienne-fall26campaign.jpg (green car) to the gold and pink wordmark brandmark card.
-  // {
-  //   title: "Alegienne",
-  //   slug: "alegienne",
-  //   description:
-  //     "a studio rjl case study in visual identity, campaign atmosphere and digital brand world development for Alegienne.",
-  //   image: "alegienne-brandmark-card.jpg",
-  //   imageWidth: 1024,
-  //   imageHeight: 1536,
-  //   imageAlt:
-  //     "Alegienne gold and pink brandmark card with bespoke wordmark and visual identity treatment, by studio rjl, a Bangalow branding studio near Byron Bay",
-  //   author: "Rebekah Jane",
-  //   datePublished: "2026-08-16",
-  //   section: "case study",
-  //   tags: ["branding", "visual identity", "creative direction", "campaign", "Alegienne"],
-  //   pinTitle: "Alegienne brand identity and campaign case study by studio rjl",
-  //   pinDescription:
-  //     "A studio rjl editorial case study exploring visual identity, campaign atmosphere and digital brand world creation for Alegienne.",
-  //   body: [
-  //     "Alegienne; moods, blooms & tea."
-  //   ]
-  // }
+  {
+    title: "Alegienne",
+    slug: "alegienne",
+    description:
+      "a studio rjl case study in visual identity, campaign atmosphere and digital brand world development for Alegienne.",
+    image: "alegienne-brandmark-card.jpg",
+    imageWidth: 1024,
+    imageHeight: 1536,
+    imageAlt:
+      "Alegienne gold and pink brandmark card with bespoke wordmark and visual identity treatment, by studio rjl, a Bangalow branding studio near Byron Bay",
+    author: "Rebekah Jane",
+    datePublished: "2026-08-16",
+    section: "case study",
+    tags: ["branding", "visual identity", "creative direction", "campaign", "Alegienne"],
+    pinTitle: "Alegienne brand identity and campaign case study by studio rjl",
+    pinDescription:
+      "A studio rjl editorial case study exploring visual identity, campaign atmosphere and digital brand world creation for Alegienne.",
+    body: [
+      "Alegienne; moods, blooms & tea."
+    ]
+  }
 ];
 
 export const templateProducts = [
