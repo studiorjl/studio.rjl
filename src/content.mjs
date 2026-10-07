@@ -253,6 +253,12 @@ export const editorialPosts = [
         height: 2121,
         alt:
           "Two vertical Rogue embossed cards on a dark marble textured surface, showing the elegant curation of the print system, by studio rjl, a Bangalow branding studio near Byron Bay"
+      },
+      {
+        video: "rogue-campaign-video.mp4",
+        width: 720,
+        height: 1280,
+        alt: "Rogue brand campaign motion piece by studio rjl, published silent. All rights reserved."
       }
     ]
   },

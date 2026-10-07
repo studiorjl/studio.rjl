@@ -961,6 +961,14 @@ select {
   box-shadow: 0 18px 42px rgba(38, 30, 16, 0.07);
 }
 
+.article-gallery-item video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--green);
+  box-shadow: 0 18px 42px rgba(38, 30, 16, 0.07);
+}
+
 .article-gallery-item:nth-child(4) {
   width: min(760px, 100%);
   margin-left: auto;

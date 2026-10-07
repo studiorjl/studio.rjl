@@ -356,7 +356,7 @@ function head({
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=7">
+    <link rel="stylesheet" href="/styles.css?v=8">
     ${site.googleAnalyticsId ? analytics() : ""}
     ${jsonLd(organizationSchema())}
     ${jsonLd(websiteSchema())}
@@ -642,7 +642,9 @@ function articlePage(post) {
           .map(
             (item) => `
               <figure class="article-gallery-item">
-                <img src="${asset(item.image)}" alt="${escapeHtml(item.alt)}"${imageDimensionAttrs(item)} loading="lazy" decoding="async">
+                ${item.video
+                  ? `<video src="${asset(item.video)}" alt="${escapeHtml(item.alt)}" width="${item.width || ""}" height="${item.height || ""}" autoplay muted loop playsinline preload="metadata"></video>`
+                  : `<img src="${asset(item.image)}" alt="${escapeHtml(item.alt)}"${imageDimensionAttrs(item)} loading="lazy" decoding="async">`}
               </figure>
             `
           )
@@ -706,7 +708,9 @@ function editorialArticlePage(post) {
           .map(
             (item) => `
               <figure class="article-gallery-item">
-                <img src="${asset(item.image)}" alt="${escapeHtml(item.alt)}"${imageDimensionAttrs(item)} loading="lazy" decoding="async">
+                ${item.video
+                  ? `<video src="${asset(item.video)}" alt="${escapeHtml(item.alt)}" width="${item.width || ""}" height="${item.height || ""}" autoplay muted loop playsinline preload="metadata"></video>`
+                  : `<img src="${asset(item.image)}" alt="${escapeHtml(item.alt)}"${imageDimensionAttrs(item)} loading="lazy" decoding="async">`}
               </figure>
             `
           )
