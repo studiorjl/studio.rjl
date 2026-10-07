@@ -356,7 +356,7 @@ function head({
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=6">
+    <link rel="stylesheet" href="/styles.css?v=7">
     ${site.googleAnalyticsId ? analytics() : ""}
     ${jsonLd(organizationSchema())}
     ${jsonLd(websiteSchema())}
@@ -656,6 +656,7 @@ function articlePage(post) {
         <p class="eyebrow">${escapeHtml(post.section || "studio notes")}</p>
         <h1>${escapeHtml(post.title)}</h1>
         <p class="subline">${escapeHtml(post.description)}</p>
+        <p class="article-publish-date">published ${formatPublishDate(post.datePublished)}</p>
         <img class="article-hero reveal" src="${asset(post.image)}" alt="${escapeHtml(post.imageAlt)}"${imageDimensionAttrs({ width: post.imageWidth, height: post.imageHeight })} loading="eager" decoding="async" fetchpriority="high">
       </header>
       <section class="article-body">
@@ -689,6 +690,12 @@ function articlePage(post) {
   });
 }
 
+function formatPublishDate(iso) {
+  if (!iso) return "";
+  const date = new Date(`${iso}T00:00:00Z`);
+  return date.toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+}
+
 function editorialArticlePage(post) {
   const paragraphs = post.body?.length
     ? post.body.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")
@@ -717,6 +724,7 @@ function editorialArticlePage(post) {
         <p class="eyebrow">${escapeHtml(post.section || "case study")}</p>
         <h1>${escapeHtml(post.title)}</h1>
         <p class="subline">${escapeHtml(post.description)}</p>
+        <p class="article-publish-date">published ${formatPublishDate(post.datePublished)}</p>
         <img class="article-hero reveal" src="${asset(post.image)}" alt="${escapeHtml(post.imageAlt)}"${imageDimensionAttrs({ width: post.imageWidth, height: post.imageHeight })} loading="eager" decoding="async" fetchpriority="high">
       </header>
       <section class="article-body">
@@ -725,6 +733,7 @@ function editorialArticlePage(post) {
         <div class="article-enquiry-subline"><button class="article-enquiry-link" type="button" data-enquiry-toggle>Let's build something with real atmosphere.</button></div>
       </section>
       ${gallery}
+      <p class="article-copyright">all imagery in this editorial is the original work of studio rjl and protected by copyright. any use of these images, in whole or in part, without written permission is strictly prohibited.</p>
     </article>
   `;
 

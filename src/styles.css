@@ -915,6 +915,27 @@ select {
   padding: 12px 10% 72px;
 }
 
+.article-publish-date {
+  margin: 14px 0 0;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.66;
+  color: var(--gold);
+}
+
+.article-copyright {
+  max-width: 68ch;
+  margin: 0 auto;
+  padding: 0 10% 90px;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  line-height: 1.85;
+  letter-spacing: 0.06em;
+  text-align: center;
+  opacity: 0.62;
+}
+
 .article-body p {
   max-width: 68ch;
   margin: 0 auto 22px;
