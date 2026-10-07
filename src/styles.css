@@ -925,14 +925,14 @@ select {
 }
 
 .article-copyright {
-  max-width: 68ch;
+  max-width: 110ch;
   margin: 0 auto;
   padding: 0 10% 90px;
   font-family: "Courier New", monospace;
   font-size: 9px;
   line-height: 1.85;
   letter-spacing: 0.06em;
-  text-align: center;
+  text-align: left;
   opacity: 0.62;
 }
 
