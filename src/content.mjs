@@ -383,12 +383,12 @@ export const featuredProjects = [
     alt: "Warm interior brandscape concept with soft light and layered textures by studio rjl, a Bangalow interior and branding studio"
   },
   {
-    image: "floral-monogram-brandmark.jpg",
-    alt: "Floral monogram brandmark design by studio rjl, a Bangalow branding studio near Byron Bay"
+    image: "briar-rose-brandmark-illustration.jpg",
+    alt: "bespoke brandmark illustration for studio rjl."
   },
   {
-    image: "interior-brandscape-design-warm.jpg",
-    alt: "Warm spatial brand concept with interior styling and custom atmosphere by studio rjl, a Northern Rivers design studio"
+    image: "studiorjl-branding-case.jpg",
+    alt: "Gold travel card case holding monogrammed stationery, a studio rjl branding case for a Bangalow and Byron Bay design studio"
   }
 ];
 
