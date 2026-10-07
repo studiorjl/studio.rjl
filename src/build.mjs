@@ -1763,6 +1763,28 @@ function clientPortalPage() {
       .drive-box { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 22px 26px; margin-bottom: 22px; text-align: center; }
       .drive-btn { display: inline-block; margin-top: 12px; background: var(--deep-green); color: var(--ivory); padding: 12px 26px; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; text-decoration: none; }
       .drive-btn:hover { opacity: 0.85; }
+      .inv-card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 22px 26px; margin-bottom: 18px; }
+      .inv-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
+      .inv-num { font-size: 12px; letter-spacing: 0.08em; opacity: 0.7; margin: 0 0 2px; }
+      .inv-title { font-family: "Cormorant Infant", Georgia, serif; font-size: 22px; color: var(--deep-green); margin: 0; }
+      .inv-status { font-size: 12px; letter-spacing: 0.06em; white-space: nowrap; font-style: italic; }
+      .inv-status.paid { font-style: normal; font-weight: bold; color: var(--deep-green); }
+      .inv-items { width: 100%; border-collapse: collapse; margin: 14px 0 8px; }
+      .inv-items td { padding: 7px 0; font-size: 13px; border-bottom: 1px dotted rgba(76,59,21,0.25); vertical-align: top; }
+      .inv-items td.amt { text-align: right; white-space: nowrap; padding-left: 18px; }
+      .inv-totals { font-size: 13px; }
+      .inv-totals .row-line { display: flex; justify-content: space-between; max-width: 320px; margin-left: auto; padding: 3px 0; opacity: 0.8; }
+      .inv-totals .row-line.total { font-weight: bold; opacity: 1; font-size: 15px; color: var(--deep-green); border-top: 1px solid rgba(76,59,21,0.3); margin-top: 4px; padding-top: 7px; }
+      .inv-due { font-size: 12px; opacity: 0.7; margin: 12px 0 0; }
+      .inv-pay { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+      .pay-btn { display: inline-block; background: var(--deep-green); color: var(--ivory); border: 0; padding: 12px 26px; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; text-decoration: none; }
+      .pay-btn:hover { opacity: 0.85; }
+      .pay-btn.alt { background: transparent; color: var(--deep-green); border: 1px solid rgba(76,59,21,0.4); }
+      .bank-box { display: none; margin-top: 14px; background: var(--ivory); border: 1px solid rgba(76,59,21,0.3); padding: 18px 22px; font-size: 13px; }
+      .bank-box.open { display: block; }
+      .bank-line { display: flex; justify-content: space-between; gap: 14px; padding: 4px 0; }
+      .bank-line .k { opacity: 0.7; }
+      .bank-line .v { font-weight: bold; }
       #note-saved { display: none; margin-left: 12px; font-style: italic; opacity: 0.7; }
       #q-done { display: none; text-align: center; padding: 20px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 21px; }
       #up-msg { display: none; text-align: center; font-size: 13px; margin: 14px 0 0; font-style: italic; }
@@ -1897,7 +1919,7 @@ function clientPortalPage() {
           <section style="margin-top:0;">
             <h2>invoices &amp; payments</h2>
             <p class="section-line">your project account — clear and kept current.</p>
-            <p class="empty">invoices and progress payments will be tracked here — downloadable invoices, and a clear picture of where your project stands.</p>
+            <div id="inv-list"></div>
           </section>
         </div>
         <div class="view" id="view-library">
@@ -1983,6 +2005,83 @@ function clientPortalPage() {
         function fmtDate(ms) {
           var d = new Date(Number(ms));
           return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear();
+        }
+        function fmtMoney(n) {
+          return "$" + Number(n || 0).toLocaleString("en-AU", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+        function fmtIso(iso) {
+          var d = new Date(String(iso || "") + "T00:00:00");
+          if (isNaN(d)) return "";
+          return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear();
+        }
+        function invStatus(inv) {
+          if (inv.status === "paid") return '<span class="inv-status paid">paid ✓</span>';
+          if (inv.status === "partial") return '<span class="inv-status">part payment received ✨</span>';
+          return '<span class="inv-status">awaiting payment</span>';
+        }
+        function renderInvoices(invoices, bank) {
+          var list = document.getElementById("inv-list");
+          if (!list) return;
+          if (!invoices || invoices.length === 0) {
+            list.innerHTML = '<p class="empty">invoices and progress payments will be tracked here — a clear picture of where your project stands.</p>';
+            return;
+          }
+          invoices.forEach(function (inv) {
+            var card = document.createElement("div");
+            card.className = "inv-card";
+            var rows = (inv.items || []).map(function (it) {
+              return '<tr><td>' + esc(it.description) + '</td><td class="amt">' + fmtMoney(it.amount) + '</td></tr>';
+            }).join("");
+            var totals = '<div class="inv-totals">' +
+              '<div class="row-line"><span>subtotal</span><span>' + fmtMoney(inv.subtotal) + '</span></div>' +
+              '<div class="row-line"><span>gst</span><span>' + fmtMoney(inv.gst) + '</span></div>' +
+              '<div class="row-line total"><span>total</span><span>' + fmtMoney(inv.total) + '</span></div></div>';
+            var dueTxt = fmtIso(inv.due_date);
+            var dueLine;
+            if (inv.status === "paid") {
+              dueLine = "paid in full — thank you ✨" + (inv.paid_at ? "" : "");
+            } else if (inv.status === "partial") {
+              dueLine = fmtMoney(inv.amount_paid) + " received — " + fmtMoney(inv.balance) + " remaining" + (dueTxt ? ", due " + dueTxt : "");
+            } else {
+              dueLine = dueTxt ? "due " + dueTxt : "";
+            }
+            var pay = "";
+            if (inv.balance > 0 && inv.status !== "paid") {
+              var methods = String(inv.payment_methods || "square,bank");
+              var btns = [];
+              if (methods.indexOf("square") >= 0 && inv.square_url) {
+                btns.push('<a class="pay-btn" href="' + esc(inv.square_url) + '" target="_blank" rel="noopener">pay by card ↗</a>');
+              }
+              if (methods.indexOf("bank") >= 0 && bank) {
+                btns.push('<button class="pay-btn alt" type="button">pay by bank transfer ▾</button>');
+              }
+              if (btns.length) pay = '<div class="inv-pay">' + btns.join("") + '</div>';
+              if (methods.indexOf("bank") >= 0 && bank) {
+                pay += '<div class="bank-box">' +
+                  '<p style="margin:0 0 10px;opacity:0.8;">pay direct from your bank and keep the card fees out of it —</p>' +
+                  '<div class="bank-line"><span class="k">account name</span><span class="v">' + esc(bank.account_name) + '</span></div>' +
+                  '<div class="bank-line"><span class="k">bsb</span><span class="v">' + esc(bank.bsb) + '</span></div>' +
+                  '<div class="bank-line"><span class="k">account number</span><span class="v">' + esc(bank.account_number) + '</span></div>' +
+                  '<div class="bank-line"><span class="k">reference</span><span class="v">' + esc(inv.invoice_number) + '</span></div>' +
+                  '<p style="margin:12px 0 0;font-size:12px;opacity:0.65;">please use ' + esc(inv.invoice_number) + ' as the reference so your payment lands softly in the right place.</p>' +
+                  '</div>';
+              }
+            }
+            card.innerHTML =
+              '<div class="inv-head"><div><p class="inv-num">' + esc(inv.invoice_number) + (fmtIso(inv.issue_date) ? ' · issued ' + fmtIso(inv.issue_date) : '') + '</p>' +
+              '<p class="inv-title">' + esc(inv.title) + '</p></div>' + invStatus(inv) + '</div>' +
+              '<table class="inv-items"><tbody>' + rows + '</tbody></table>' + totals +
+              (dueLine ? '<p class="inv-due">' + dueLine + '</p>' : '') + pay;
+            list.appendChild(card);
+            var bankBtn = card.querySelector(".pay-btn.alt");
+            var bankBox = card.querySelector(".bank-box");
+            if (bankBtn && bankBox) {
+              bankBtn.addEventListener("click", function () {
+                var open = bankBox.classList.toggle("open");
+                bankBtn.textContent = open ? "hide bank details ▴" : "pay by bank transfer ▾";
+              });
+            }
+          });
         }
 
         // ---- side panel menu
@@ -2250,6 +2349,11 @@ function clientPortalPage() {
               }
             });
           });
+
+          // invoices
+          post("portalGetInvoices", { token: token }).then(function (r) {
+            renderInvoices(r && r.ok ? r.invoices || [] : [], r && r.bank);
+          }).catch(function () { renderInvoices([], null); });
 
           // questionnaire
           document.getElementById("qform").addEventListener("submit", function (e) {
