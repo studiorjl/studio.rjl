@@ -2228,7 +2228,7 @@ function clientPortalPage() {
           document.getElementById("loading").style.display = "none";
           document.getElementById("app").style.display = "block";
           document.getElementById("brand").textContent = d.brand_name || "your brandscape";
-          document.getElementById("greet").textContent = "welcome, " + (d.client_name || "friend") + " — everything lives here, all in one place, always yours.";
+          document.getElementById("greet").textContent = "welcome, " + (d.client_name || "friend") + "all in one place, for you.";
           if (d.brand_name) {
             var ctag = document.getElementById("client-tag");
             ctag.textContent = "the " + d.brand_name + " project";
@@ -2414,7 +2414,7 @@ function clientPortalPage() {
                 (res.uploaded || []).forEach(function (u) { uploads.unshift(u); });
                 renderUploads();
                 var n = (res.uploaded || []).length;
-                var note = n + " file" + (n === 1 ? "" : "s") + " received — thank you ✨";
+                var note = n + " file" + (n === 1 ? "" : "s") + " received, thank you ✨";
                 (res.skipped || []).forEach(function (s) { note += " · " + s.filename + " skipped: " + s.reason; });
                 upMsg(note);
               } else {
