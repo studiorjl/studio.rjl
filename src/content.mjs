@@ -116,17 +116,11 @@ export const offers = [
 
 export const services = [
   "branding & visual identity suite design",
-  "strategic product release, launch or campaign",
-  "digital audit; curation & creation",
-  "art direction, photography & styling",
+  "art direction, visuals; photography & styling",
   "graphic design",
   "print & packaging design",
-  "social content creation & elevation",
   "web design & development",
-  "UI / UX design for web / app",
-  "spatial concept design & planning",
-  "interior design & styling",
-  "landscape concept design"
+  "spatial concept & interior design",
 ];
 
 export const primaryServices = services;
