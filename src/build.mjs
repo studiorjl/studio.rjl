@@ -1713,7 +1713,12 @@ function clientPortalPage() {
       .menu-btn:hover { opacity: 0.85; }
       .menu-panel { position: fixed; top: 66px; right: 32px; z-index: 29; width: 248px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); box-shadow: 0 10px 30px rgba(76,59,21,0.18); padding: 10px 0 6px; display: none; }
       .menu-panel.open { display: block; }
-      .menu-item { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 10px 22px; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--green); cursor: pointer; }
+      .home-box { max-width: 640px; margin: 6px auto 80px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.22); padding: 34px 40px 26px; }
+.home-label { margin: 0 0 16px; font-size: 11px; letter-spacing: 0.22em; color: #806829; }
+.home-note { margin: 0; font-family: "Courier New", monospace; font-size: 15px; line-height: 2.1; }
+.home-sign { margin: 24px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; }
+.inv-card.inv-upcoming { opacity: 0.6; }
+.menu-item { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 10px 22px; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--green); cursor: pointer; }
       .menu-item:hover { background: var(--deep-green); color: var(--ivory); }
       .menu-item.active { font-weight: bold; }
       .menu-divider { height: 1px; background: rgba(76,59,21,0.2); margin: 8px 22px; }
@@ -1800,6 +1805,7 @@ function clientPortalPage() {
     <div class="client-tag" id="client-tag" style="display:none;"></div>
     <button class="menu-btn" id="menu-btn" aria-haspopup="true" aria-expanded="false">menu ▾</button>
     <nav class="menu-panel" id="menu-panel" aria-label="portal sections">
+      <button class="menu-item" data-view="home" id="menu-home" style="display:none;">home</button>
       <button class="menu-item active" data-view="brandscape" id="menu-main">brandscape</button>
       <button class="menu-item" data-view="questionnaire">questionnaire</button>
       <button class="menu-item" data-view="uploads">client upload portal</button>
@@ -1813,6 +1819,19 @@ function clientPortalPage() {
     <div class="wrap">
       <div id="loading">opening your brandscape…</div>
       <div id="app" style="display:none;">
+        <div class="view" id="view-home">
+          <div class="hero">
+            <h1 class="brand" id="home-welcome">welcome</h1>
+            <p class="hero-line">a note from Rebekah</p>
+          </div>
+          <section style="margin:0;">
+            <div class="home-box">
+              <p class="home-label">status</p>
+              <div id="home-stage"></div>
+              <p class="home-sign">with love, Rebekah</p>
+            </div>
+          </section>
+        </div>
         <div class="view on" id="view-brandscape">
           <div class="hero">
             <h1 class="brand" id="brand"></h1>
@@ -1823,7 +1842,7 @@ function clientPortalPage() {
           </nav>
           <section id="logo" class="brand-only">
             <h2>logo</h2>
-            <p class="section-line">your mark in all its versions — yours to take, right-click freely.</p>
+            <p class="section-line">your mark in all its versions: yours to take, right-click freely.</p>
             <div class="variants" id="logo-toggle"></div>
             <div id="logo-stage"></div>
           </section>
@@ -1834,7 +1853,7 @@ function clientPortalPage() {
           </section>
           <section id="colours" class="brand-only">
             <h2>colours</h2>
-            <p class="section-line">the palette of your brandscape — click to copy any code.</p>
+            <p class="section-line">the palette of your brandscape: click to copy any code.</p>
             <div class="grid" id="colours-grid"></div>
           </section>
           <section id="typography" class="brand-only">
@@ -1844,7 +1863,7 @@ function clientPortalPage() {
           </section>
           <section id="imagery">
             <h2>imagery</h2>
-            <p class="section-line">curated imagery for your brand — yours to take, right-click freely.</p>
+            <p class="section-line">curated imagery for your brand: yours to take, right-click freely.</p>
             <div class="grid" id="images-grid"></div>
           </section>
           <section id="textures" class="brand-only">
@@ -1859,50 +1878,50 @@ function clientPortalPage() {
           </section>
           <section id="lockups" class="brand-only">
             <h2>brand lock-ups</h2>
-            <p class="section-line">examples of your mark at work — signatures, pairings and compositions.</p>
+            <p class="section-line">examples of your mark at work: signatures, pairings and compositions.</p>
             <div class="grid" id="lockups-grid"></div>
           </section>
           <section id="prompts">
             <h2>prompt library</h2>
-            <p class="section-line">words to conjure your brand with — copy any prompt and make it yours.</p>
+            <p class="section-line">words to conjure your brand with: copy any prompt and make it yours.</p>
             <div id="prompts-list"></div>
           </section>
           <section id="structure" class="web-only" style="display:none;">
             <h2>structure</h2>
-            <p class="section-line">the skeleton of your site — pages, flow and sitemap.</p>
+            <p class="section-line">the skeleton of your site: pages, flow and sitemap.</p>
             <div class="row-list" id="structure-list"></div>
           </section>
           <section id="copy" class="web-only" style="display:none;">
             <h2>copy &amp; content</h2>
-            <p class="section-line">the words — headlines, page copy and bios, ready to place.</p>
+            <p class="section-line">the words: headlines, page copy and bios, ready to place.</p>
             <div id="copy-list"></div>
           </section>
           <section id="links" class="web-only" style="display:none;">
             <h2>links &amp; connections</h2>
-            <p class="section-line">the connections — redirects, backlinks and profiles.</p>
+            <p class="section-line">the connections: redirects, backlinks and profiles.</p>
             <div class="row-list" id="links-list"></div>
           </section>
           <section id="hosting" class="web-only" style="display:none;">
             <h2>hosting &amp; domains</h2>
-            <p class="section-line">where your sovereign site lives — domain and settings, owned outright.</p>
+            <p class="section-line">where your sovereign site lives: domain and settings, owned outright.</p>
             <div class="row-list" id="hosting-list"></div>
           </section>
         </div>
         <div class="view" id="view-questionnaire">
           <section style="margin-top:0;">
-            <h2 id="q-head">questionnaire — brand information</h2>
-            <p class="section-line" id="q-sub">a few questions so Rebekah can see your work through your eyes — rambling welcome.</p>
+            <h2 id="q-head">questionnaire: brand information</h2>
+            <p class="section-line" id="q-sub">a few questions so Rebekah can see your work through your eyes: rambling welcome.</p>
             <div id="q-wrap">
               <form id="qform">
-                <label class="q-label" for="q1">tell me about your work — what are you making, and for whom?</label>
+                <label class="q-label" for="q1">tell me about your work: what are you making, and for whom?</label>
                 <textarea class="q-input" id="q1" rows="4"></textarea>
                 <label class="q-label" for="q2">your brand as it stands: what do you love about it, and what's quietly not working?</label>
                 <textarea class="q-input" id="q2" rows="4"></textarea>
                 <label class="q-label" for="q3">three words for the feeling your brand should carry.</label>
                 <textarea class="q-input" id="q3" rows="2"></textarea>
-                <label class="q-label" for="q4">whose world do you admire? (brands, places, makers — links welcome.)</label>
+                <label class="q-label" for="q4">whose world do you admire? (brands, places, makers: links welcome.)</label>
                 <textarea class="q-input" id="q4" rows="4"></textarea>
-                <label class="q-label" for="q5">any must-keeps — an existing logo, fonts, colours you're attached to?</label>
+                <label class="q-label" for="q5">any must-keeps: an existing logo, fonts, colours you're attached to?</label>
                 <textarea class="q-input" id="q5" rows="4"></textarea>
                 <label class="q-label" for="q6">where will the brandscape live first? (web, print, packaging, socials.)</label>
                 <textarea class="q-input" id="q6" rows="4"></textarea>
@@ -1911,13 +1930,13 @@ function clientPortalPage() {
                 <button class="save" id="q-send" type="submit">send my answers</button>
               </form>
             </div>
-            <p id="q-done">thank you — your answers are with Rebekah. ✨</p>
+            <p id="q-done">thank you: your answers are with Rebekah. ✨</p>
           </section>
         </div>
         <div class="view" id="view-uploads">
           <section style="margin-top:0;">
             <h2>client upload portal</h2>
-            <p class="section-line">share your inspiration — images, briefs, brand files. everything you add here is kept for your project.</p>
+            <p class="section-line">share your inspiration: images, briefs, brand files. everything you add here is kept for your project.</p>
             <div class="drive-box" id="drive-box" style="display:none;">
               <p style="margin:0;">bigger files? drop them straight into the studio's google drive —</p>
               <a class="drive-btn" id="drive-link" href="#" target="_blank" rel="noopener">upload to google drive ↗</a>
@@ -1925,7 +1944,7 @@ function clientPortalPage() {
             <div class="up-zone">
               <input type="file" id="up-input" multiple style="display:none;">
               <button class="copy" style="margin-top:0; padding: 12px 30px; font-size: 13px;" id="up-choose" type="button">choose files</button>
-              <p class="up-note">up to 10 MB each — images and documents.</p>
+              <p class="up-note">up to 10 MB each: images and documents.</p>
             </div>
             <p id="up-msg"></p>
             <div id="up-list" style="margin-top:26px;"></div>
@@ -1934,7 +1953,7 @@ function clientPortalPage() {
         <div class="view" id="view-contract">
           <section style="margin-top:0;">
             <h2>contract</h2>
-            <p class="section-line">your agreement lives here — ready to read and sign when the time comes.</p>
+            <p class="section-line">your agreement lives here: ready to read and sign when the time comes.</p>
             <p class="empty">your contract will appear here when it's ready. Rebekah will walk you through it personally.</p>
           </section>
         </div>
@@ -1955,7 +1974,7 @@ function clientPortalPage() {
         <div class="view" id="view-notes">
           <section style="margin-top:0;">
             <h2>notes</h2>
-            <p class="section-line">a quiet page for your thoughts — anything saved here is kept for your project.</p>
+            <p class="section-line">a quiet page for your thoughts: anything saved here is kept for your project.</p>
             <textarea class="q-input" id="note" rows="8" placeholder="scribbles, sparks, things not to forget…"></textarea>
             <div>
               <button class="save" id="note-save" type="button">save note</button>
@@ -2002,7 +2021,7 @@ function clientPortalPage() {
         }
         function empty(id) {
           var el = document.getElementById(id);
-          if (el) el.innerHTML = '<p class="empty">still in the studio — being made for you with love. this will appear here soon.</p>';
+          if (el) el.innerHTML = '<p class="empty">still in the studio: being made for you with love. this will appear here soon.</p>';
         }
         function imageCard(it) {
           var card = document.createElement("div");
@@ -2047,14 +2066,20 @@ function clientPortalPage() {
           var list = document.getElementById("inv-list");
           if (!list) return;
           if (!invoices || invoices.length === 0) {
-            list.innerHTML = '<p class="empty">invoices and progress payments will be tracked here — a clear picture of where your project stands.</p>';
+            list.innerHTML = '<p class="empty">invoices and progress payments will be tracked here: a clear picture of where your project stands.</p>';
             return;
           }
-          invoices.forEach(function (inv) {
+          invoices.slice().sort(function (a, b) {
+            var au = a.status === "upcoming" ? 1 : 0;
+            var bu = b.status === "upcoming" ? 1 : 0;
+            if (au !== bu) return au - bu;
+            return String(b.invoice_number || "").localeCompare(String(a.invoice_number || ""));
+          }).forEach(function (inv) {
             var card = document.createElement("div");
-            card.className = "inv-card";
+            card.className = "inv-card" + (inv.status === "upcoming" ? " inv-upcoming" : "");
             var rows = (inv.items || []).map(function (it) {
-              return '<tr><td>' + esc(it.description) + '</td><td class="amt">' + fmtMoney(it.amount) + '</td></tr>';
+              var desc = esc(it.description).replace(/^(.*?)\s*\((project[^)]*)\)\s*$/, "$1<br>($2)");
+              return '<tr><td>' + desc + '</td><td class="amt">' + fmtMoney(it.amount) + '</td></tr>';
             }).join("");
             var totals = '<div class="inv-totals">' +
               '<div class="row-line"><span>subtotal</span><span>' + fmtMoney(inv.subtotal) + '</span></div>' +
@@ -2063,11 +2088,11 @@ function clientPortalPage() {
             var dueTxt = fmtIso(inv.due_date);
             var dueLine;
             if (inv.status === "paid") {
-              dueLine = "paid in full — thank you ✨";
+              dueLine = "paid in full: thank you ✨";
             } else if (inv.status === "upcoming") {
-              dueLine = "scheduled — invoiced on delivery of your new site";
+              dueLine = "scheduled: invoiced on delivery of your new site";
             } else if (inv.status === "partial") {
-              dueLine = fmtMoney(inv.amount_paid) + " received — " + fmtMoney(inv.balance) + " remaining" + (dueTxt ? ", due " + dueTxt : "");
+              dueLine = fmtMoney(inv.amount_paid) + " received: " + fmtMoney(inv.balance) + " remaining" + (dueTxt ? ", due " + dueTxt : "");
             } else {
               dueLine = dueTxt ? "due " + dueTxt : "";
             }
@@ -2165,7 +2190,7 @@ function clientPortalPage() {
           stage.innerHTML = "";
           var items = byType[currentVariant] || [];
           if (items.length === 0) {
-            stage.innerHTML = '<p class="empty">still in the studio — being made for you with love. this will appear here soon.</p>';
+            stage.innerHTML = '<p class="empty">still in the studio: being made for you with love. this will appear here soon.</p>';
             return;
           }
           if (items.length === 1) {
@@ -2191,7 +2216,7 @@ function clientPortalPage() {
           var list = document.getElementById("up-list");
           list.innerHTML = "";
           if (uploads.length === 0) {
-            list.innerHTML = '<p class="empty">nothing shared yet — your uploads will gather here.</p>';
+            list.innerHTML = '<p class="empty">nothing shared yet: your uploads will gather here.</p>';
             return;
           }
           uploads.forEach(function (u) {
@@ -2229,23 +2254,22 @@ function clientPortalPage() {
           document.getElementById("app").style.display = "block";
           document.getElementById("brand").textContent = d.brand_name || "your brandscape";
           document.getElementById("greet").textContent = "welcome, " + (d.client_name || "friend") + " your project all in one place.";
+          var isWeb = d.project_type === "web";
           if (d.brand_name) {
             var ctag = document.getElementById("client-tag");
-            ctag.textContent = "the " + d.brand_name + " project";
+            ctag.textContent = isWeb ? d.brand_name + " web redesign" : "the " + d.brand_name + " project";
             ctag.style.display = "block";
           }
-          var isWeb = d.project_type === "web";
           if (isWeb) {
-            var mainBtn = document.getElementById("menu-main");
-            if (mainBtn) mainBtn.textContent = "website & development";
-            document.getElementById("q-head").textContent = "questionnaire — website + development";
-            document.getElementById("q-sub").textContent = "a few questions so Rebekah can see the site through your eyes — rambling welcome.";
+            // menu stays "brandscape": it is the brandscape tab
+            document.getElementById("q-head").textContent = "questionnaire: website + development";
+            document.getElementById("q-sub").textContent = "a few questions so Rebekah can see the site through your eyes: rambling welcome.";
             var webQ = [
-              "tell me about the business this site is for — what does it do, and for whom?",
+              "tell me about the business this site is for: what does it do, and for whom?",
               "what must the new site achieve? (a clear profile to point people to, enquiries, credibility, portfolio...)",
               "what pages or content need to exist? (about, projects, CV, contact...)",
-              "whose world do you admire? (sites, brands, makers — links welcome.)",
-              "any must-keeps — existing logo, copy, imagery, domain or hosting logins?",
+              "whose world do you admire? (sites, brands, makers: links welcome.)",
+              "any must-keeps: existing logo, copy, imagery, domain or hosting logins?",
               "where should enquiries land? (email, LinkedIn, a form...)",
               "anything else at all."
             ];
@@ -2262,12 +2286,21 @@ function clientPortalPage() {
           });
           uploads = d.uploads || [];
 
+          // home page: status note from Rebekah (shown when one exists)
+          var hNotes = (byType.status_note || []).slice().sort(function (a, b) { return (b.sort_order || 0) - (a.sort_order || 0); });
+          if (hNotes.length) {
+            document.getElementById("menu-home").style.display = "";
+            document.getElementById("home-welcome").textContent = "welcome, " + (d.client_name || "friend");
+            document.getElementById("home-stage").innerHTML = '<p class="home-note">' + esc(hNotes[0].meta || "").replace(/\n/g, "<br>") + '</p>';
+            showView("home");
+          }
+
           // footnote with the 30-day window
           var foot = "<a href=\\"https://studiorjl.com\\">studio rjl</a>";
           if (d.expires_at) foot = "your portal is open until " + fmtDate(d.expires_at) + " · " + foot;
           document.getElementById("footnote").innerHTML = foot;
 
-          // logo variants — open on the first version with content
+          // logo variants: open on the first version with content
           var firstWith = null;
           logoVariants.forEach(function (v) { if (!firstWith && (byType[v[0]] || []).length > 0) firstWith = v[0]; });
           currentVariant = firstWith || "logo";
@@ -2418,11 +2451,11 @@ function clientPortalPage() {
                 (res.skipped || []).forEach(function (s) { note += " · " + s.filename + " skipped: " + s.reason; });
                 upMsg(note);
               } else {
-                upMsg(res.error || "something went wrong — please try again.");
+                upMsg(res.error || "something went wrong: please try again.");
               }
             }).catch(function () {
               setUploading(false);
-              upMsg("the connection dropped — please try again.");
+              upMsg("the connection dropped: please try again.");
             });
           });
 
