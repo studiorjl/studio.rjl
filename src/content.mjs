@@ -61,16 +61,16 @@ export const designPartners = [
 
 export const offers = [
   {
-    title: "tailored brandscape starter kit",
+    title: "tailored brandscape, brand starter kit",
     slug: "brandscape-starter-kit",
-    eyebrow: "a studio rjl offer",
-    priceLine: "$550.00 (AUD)",
+    eyebrow: "studio rjl",
+    priceLine: "Investment from $550.00 (AUD)",
     tagline: "a tailored brandscape ready to load across digital and print.",
     image: "interior-brandscape-design-warm.jpg",
-    imageAlt: "warm interior brandscape concept by studio rjl with layered textures and soft light",
+    imageAlt: "tailored design package; delivered in a week. A small tailored brand kit for brands and labels starting out. Intended to get you started.",
     summary: [
-      "a brandscape includes a comprehensive palette of elements which make up your brand tone, look and feel.",
-      "this offer delivers a thoughtfully curated, tailored brandscape that empowers you to keep building your brand with exquisite direction, positioning and visual foundations that will bring elevation and cohesion to your digital and physical presence when implemented following our recommendations."
+      "tailored brandscapes includes a comprehensive palette of elements which make up your brand tone, look and feel.",
+      "this is a small package of branding elements you can use across, socials, even plug into ai image creation, we offer a thoughtfully curated, set of texture, tone and imagery that can help you in the establishment phase of your brand. The tailored brandscape empowers you to keep building your brand with exquisite direction, positioning and visual foundations that will bring elevation and cohesion to your digital and physical presence when implemented following our recommendations."
     ],
     steps: [],
     includes: [
@@ -97,17 +97,17 @@ export const offers = [
     title: "bespoke brandscape",
     slug: "bespoke-brandscape",
     eyebrow: "a studio rjl offer",
-    priceLine: "from $5,500 (AUD)",
-    tagline: "a complete, bespoke brandscape — crafted for brands and places with soul.",
+    priceLine: "Investment from $5,500 (AUD)",
+    tagline: "a complete, bespoke brandscape; crafted for brands & places with unique soul.",
     image: "interior-brandscape-design-warm-light.jpg",
     imageAlt: "warm interior brandscape concept by studio rjl with layered textures and soft light",
     summary: [
-      "a bespoke and uniquely tailored brandscape that truly elevates you — shaping the tone, texture and gesture of your brand across identity, print, packaging, digital and place. every element designed and curated for you, from strategy through to launch."
+      "a bespoke and uniquely tailored brandscape that truly elevates you; shaping the tone, texture and gesture of your brand across identity, print, packaging, digital and place. every element designed and curated for you, from strategy through to launch."
     ],
     steps: [],
     includes: [],
     notes: [
-      "each bespoke brandscape is scoped individually — timeline, deliverables and investment are confirmed in your proposal after a discovery call."
+      "each bespoke brandscape is scoped individually; timeline, deliverables and investment are confirmed in your proposal after a discovery call."
     ],
     ctaLabel: "enquire about a bespoke brandscape",
     ctaHref: "mailto:hello@studiorjl.com?subject=bespoke%20brandscape"
