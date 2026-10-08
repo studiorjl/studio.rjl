@@ -1785,6 +1785,7 @@ function clientPortalPage() {
       .bank-line { display: flex; justify-content: space-between; gap: 14px; padding: 4px 0; }
       .bank-line .k { opacity: 0.7; }
       .bank-line .v { font-weight: bold; }
+      .inv-abn { margin: 18px 0 0; font-size: 11px; letter-spacing: 0.06em; opacity: 0.55; }
       #note-saved { display: none; margin-left: 12px; font-style: italic; opacity: 0.7; }
       #q-done { display: none; text-align: center; padding: 20px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 21px; }
       #up-msg { display: none; text-align: center; font-size: 13px; margin: 14px 0 0; font-style: italic; }
@@ -2019,7 +2020,7 @@ function clientPortalPage() {
           if (inv.status === "partial") return '<span class="inv-status">part payment received ✨</span>';
           return '<span class="inv-status">awaiting payment</span>';
         }
-        function renderInvoices(invoices, bank) {
+        function renderInvoices(invoices, bank, abn) {
           var list = document.getElementById("inv-list");
           if (!list) return;
           if (!invoices || invoices.length === 0) {
@@ -2071,7 +2072,8 @@ function clientPortalPage() {
               '<div class="inv-head"><div><p class="inv-num">' + esc(inv.invoice_number) + (fmtIso(inv.issue_date) ? ' · issued ' + fmtIso(inv.issue_date) : '') + '</p>' +
               '<p class="inv-title">' + esc(inv.title) + '</p></div>' + invStatus(inv) + '</div>' +
               '<table class="inv-items"><tbody>' + rows + '</tbody></table>' + totals +
-              (dueLine ? '<p class="inv-due">' + dueLine + '</p>' : '') + pay;
+              (dueLine ? '<p class="inv-due">' + dueLine + '</p>' : '') + pay +
+              (abn ? '<p class="inv-abn">studio rjl · Rebekah Jane Lamb · abn ' + esc(abn) + '</p>' : '');
             list.appendChild(card);
             var bankBtn = card.querySelector(".pay-btn.alt");
             var bankBox = card.querySelector(".bank-box");
@@ -2352,8 +2354,8 @@ function clientPortalPage() {
 
           // invoices
           post("portalGetInvoices", { token: token }).then(function (r) {
-            renderInvoices(r && r.ok ? r.invoices || [] : [], r && r.bank);
-          }).catch(function () { renderInvoices([], null); });
+            renderInvoices(r && r.ok ? r.invoices || [] : [], r && r.bank, r && r.abn);
+          }).catch(function () { renderInvoices([], null, ""); });
 
           // questionnaire
           document.getElementById("qform").addEventListener("submit", function (e) {
