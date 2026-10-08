@@ -2228,7 +2228,7 @@ function clientPortalPage() {
           document.getElementById("loading").style.display = "none";
           document.getElementById("app").style.display = "block";
           document.getElementById("brand").textContent = d.brand_name || "your brandscape";
-          document.getElementById("greet").textContent = "welcome, " + (d.client_name || "friend") + "all in one place, for you.";
+          document.getElementById("greet").textContent = "welcome, " + (d.client_name || "friend") + " your project all in one place.";
           if (d.brand_name) {
             var ctag = document.getElementById("client-tag");
             ctag.textContent = "the " + d.brand_name + " project";
