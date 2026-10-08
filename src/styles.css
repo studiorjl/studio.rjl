@@ -546,6 +546,19 @@ main section.image-section {
   transform: scale(1.03);
 }
 
+@media (min-width: 781px) {
+  /* desktop: equal-height editorial cards. the rogue cover sets the row height;
+     every image keeps its own aspect ratio and the card width follows the image. */
+  .editorial-card {
+    flex: 0 0 auto;
+  }
+
+  .editorial-frame img {
+    width: auto;
+    height: clamp(340px, 34vw, 500px);
+  }
+}
+
 .editorial-card h2 {
   margin: 16px 0 0;
   color: var(--green);
