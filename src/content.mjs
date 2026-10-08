@@ -338,7 +338,7 @@ export const editorialPosts = [
     imageAlt:
       "Alegienne gold and pink brandmark card with bespoke wordmark and visual identity treatment, by studio rjl, a Bangalow branding studio near Byron Bay",
     author: "Rebekah Jane",
-    datePublished: "2026-08-16",
+    datePublished: "2026-06-08",
     section: "case study",
     tags: ["branding", "visual identity", "creative direction", "campaign", "Alegienne"],
     pinTitle: "Alegienne brand identity and campaign case study by studio rjl",
@@ -346,6 +346,14 @@ export const editorialPosts = [
       "A studio rjl editorial case study exploring visual identity, campaign atmosphere and digital brand world creation for Alegienne.",
     body: [
       "Alegienne; moods, blooms & tea."
+    ],
+    gallery: [
+      {
+        image: "alegienne-fall26campaign.jpg",
+        width: 768,
+        height: 1152,
+        alt: "Alegienne Emerald Collection campaign artwork with gold jewellery and an emerald green car, art directed and photographed for Alegienne by studio rjl, a Bangalow branding studio in the Northern Rivers. All rights reserved."
+      }
     ]
   }
 ];
