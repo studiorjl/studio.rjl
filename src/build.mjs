@@ -1708,6 +1708,7 @@ function clientPortalPage() {
       body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
       a { color: var(--green); }
       .mark { position: fixed; top: 28px; left: 32px; font-family: "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; z-index: 30; }
+      .client-tag { position: fixed; top: 52px; left: 32px; z-index: 30; font-family: "Courier New", monospace; font-size: 11px; letter-spacing: 0.14em; color: #806829; }
       .menu-btn { position: fixed; top: 24px; right: 32px; z-index: 30; background: var(--deep-green); color: var(--ivory); border: 0; padding: 10px 22px; font-family: "Courier New", monospace; font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
       .menu-btn:hover { opacity: 0.85; }
       .menu-panel { position: fixed; top: 66px; right: 32px; z-index: 29; width: 248px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); box-shadow: 0 10px 30px rgba(76,59,21,0.18); padding: 10px 0 6px; display: none; }
@@ -1765,7 +1766,7 @@ function clientPortalPage() {
       .drive-btn:hover { opacity: 0.85; }
       .inv-card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 22px 26px; margin-bottom: 18px; }
       .inv-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
-      .inv-num { font-size: 12px; letter-spacing: 0.08em; opacity: 0.7; margin: 0 0 2px; }
+      .inv-num { font-size: 12px; letter-spacing: 0.08em; opacity: 0.95; margin: 0 0 2px; }
       .inv-title { font-family: "Cormorant Infant", Georgia, serif; font-size: 22px; color: var(--deep-green); margin: 0; }
       .inv-status { font-size: 12px; letter-spacing: 0.06em; white-space: nowrap; font-style: italic; }
       .inv-status.paid { font-style: normal; font-weight: bold; color: var(--deep-green); }
@@ -1773,9 +1774,9 @@ function clientPortalPage() {
       .inv-items td { padding: 7px 0; font-size: 13px; border-bottom: 1px dotted rgba(76,59,21,0.25); vertical-align: top; }
       .inv-items td.amt { text-align: right; white-space: nowrap; padding-left: 18px; }
       .inv-totals { font-size: 13px; }
-      .inv-totals .row-line { display: flex; justify-content: space-between; max-width: 320px; margin-left: auto; padding: 3px 0; opacity: 0.8; }
+      .inv-totals .row-line { display: flex; justify-content: space-between; max-width: 320px; margin-left: auto; padding: 3px 0; opacity: 1; }
       .inv-totals .row-line.total { font-weight: bold; opacity: 1; font-size: 15px; color: var(--deep-green); border-top: 1px solid rgba(76,59,21,0.3); margin-top: 4px; padding-top: 7px; }
-      .inv-due { font-size: 12px; opacity: 0.7; margin: 12px 0 0; }
+      .inv-due { font-size: 13px; opacity: 1; margin: 12px 0 0; }
       .inv-pay { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
       .pay-btn { display: inline-block; background: var(--deep-green); color: var(--ivory); border: 0; padding: 12px 26px; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; text-decoration: none; }
       .pay-btn:hover { opacity: 0.85; }
@@ -1783,22 +1784,23 @@ function clientPortalPage() {
       .bank-box { display: none; margin-top: 14px; background: var(--ivory); border: 1px solid rgba(76,59,21,0.3); padding: 18px 22px; font-size: 13px; }
       .bank-box.open { display: block; }
       .bank-line { display: flex; justify-content: space-between; gap: 14px; padding: 4px 0; }
-      .bank-line .k { opacity: 0.7; }
+      .bank-line .k { opacity: 1; }
       .bank-line .v { font-weight: bold; }
-      .inv-abn { margin: 18px 0 0; font-size: 11px; letter-spacing: 0.06em; opacity: 0.55; }
+      .inv-abn { margin: 18px 0 0; font-size: 11px; letter-spacing: 0.06em; opacity: 0.8; }
       #note-saved { display: none; margin-left: 12px; font-style: italic; opacity: 0.7; }
       #q-done { display: none; text-align: center; padding: 20px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 21px; }
       #up-msg { display: none; text-align: center; font-size: 13px; margin: 14px 0 0; font-style: italic; }
       .footnote { margin-top: 72px; text-align: center; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
       .footnote a { color: var(--green); }
-      @media (max-width: 640px) { .menu-btn { right: 16px; } .menu-panel { right: 16px; } .mark { left: 16px; } }
+      @media (max-width: 640px) { .menu-btn { right: 16px; } .menu-panel { right: 16px; } .mark { left: 16px; } .client-tag { left: 16px; } }
     </style>
   </head>
   <body>
     <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
+    <div class="client-tag" id="client-tag" style="display:none;"></div>
     <button class="menu-btn" id="menu-btn" aria-haspopup="true" aria-expanded="false">menu ▾</button>
     <nav class="menu-panel" id="menu-panel" aria-label="portal sections">
-      <button class="menu-item active" data-view="brandscape">brandscape</button>
+      <button class="menu-item active" data-view="brandscape" id="menu-main">brandscape</button>
       <button class="menu-item" data-view="questionnaire">questionnaire</button>
       <button class="menu-item" data-view="uploads">client upload portal</button>
       <button class="menu-item" data-view="contract">contract</button>
@@ -1816,26 +1818,26 @@ function clientPortalPage() {
             <h1 class="brand" id="brand"></h1>
             <p class="hero-line" id="greet"></p>
           </div>
-          <nav class="chips" aria-label="brandscape sections">
-            <a href="#logo">logo</a><a href="#profile-logos">profile logos</a><a href="#colours">colours</a><a href="#typography">typography</a><a href="#imagery">imagery</a><a href="#textures">textures</a><a href="#templates">templates</a><a href="#lockups">lock-ups</a><a href="#prompts">prompt library</a>
+          <nav class="chips" aria-label="project sections">
+            <a href="#logo" class="brand-only">logo</a><a href="#profile-logos" class="brand-only">profile logos</a><a href="#colours" class="brand-only">colours</a><a href="#typography" class="brand-only">typography</a><a href="#imagery">imagery</a><a href="#textures" class="brand-only">textures</a><a href="#templates" class="brand-only">templates</a><a href="#lockups" class="brand-only">lock-ups</a><a href="#prompts" class="brand-only">prompt library</a><a href="#structure" class="web-only" style="display:none;">structure</a><a href="#copy" class="web-only" style="display:none;">copy &amp; content</a><a href="#links" class="web-only" style="display:none;">links</a><a href="#hosting" class="web-only" style="display:none;">hosting</a>
           </nav>
-          <section id="logo">
+          <section id="logo" class="brand-only">
             <h2>logo</h2>
             <p class="section-line">your mark in all its versions — yours to take, right-click freely.</p>
             <div class="variants" id="logo-toggle"></div>
             <div id="logo-stage"></div>
           </section>
-          <section id="profile-logos">
+          <section id="profile-logos" class="brand-only">
             <h2>profile logos</h2>
             <p class="section-line">squared-up marks for profile pictures and socials.</p>
             <div class="grid" id="profile-grid"></div>
           </section>
-          <section id="colours">
+          <section id="colours" class="brand-only">
             <h2>colours</h2>
             <p class="section-line">the palette of your brandscape — click to copy any code.</p>
             <div class="grid" id="colours-grid"></div>
           </section>
-          <section id="typography">
+          <section id="typography" class="brand-only">
             <h2>typography</h2>
             <p class="section-line">your typefaces and pairings.</p>
             <div class="row-list" id="type-list"></div>
@@ -1845,17 +1847,17 @@ function clientPortalPage() {
             <p class="section-line">curated imagery for your brand — yours to take, right-click freely.</p>
             <div class="grid" id="images-grid"></div>
           </section>
-          <section id="textures">
+          <section id="textures" class="brand-only">
             <h2>textures</h2>
             <p class="section-line">the tactile layer of your brandscape.</p>
             <div class="grid" id="textures-grid"></div>
           </section>
-          <section id="templates">
+          <section id="templates" class="brand-only">
             <h2>templates</h2>
             <p class="section-line">ready-made layouts carrying your brand into the world.</p>
             <div class="row-list" id="templates-list"></div>
           </section>
-          <section id="lockups">
+          <section id="lockups" class="brand-only">
             <h2>brand lock-ups</h2>
             <p class="section-line">examples of your mark at work — signatures, pairings and compositions.</p>
             <div class="grid" id="lockups-grid"></div>
@@ -1865,11 +1867,31 @@ function clientPortalPage() {
             <p class="section-line">words to conjure your brand with — copy any prompt and make it yours.</p>
             <div id="prompts-list"></div>
           </section>
+          <section id="structure" class="web-only" style="display:none;">
+            <h2>structure</h2>
+            <p class="section-line">the skeleton of your site — pages, flow and sitemap.</p>
+            <div class="row-list" id="structure-list"></div>
+          </section>
+          <section id="copy" class="web-only" style="display:none;">
+            <h2>copy &amp; content</h2>
+            <p class="section-line">the words — headlines, page copy and bios, ready to place.</p>
+            <div id="copy-list"></div>
+          </section>
+          <section id="links" class="web-only" style="display:none;">
+            <h2>links &amp; connections</h2>
+            <p class="section-line">the connections — redirects, backlinks and profiles.</p>
+            <div class="row-list" id="links-list"></div>
+          </section>
+          <section id="hosting" class="web-only" style="display:none;">
+            <h2>hosting &amp; domains</h2>
+            <p class="section-line">where your sovereign site lives — domain and settings, owned outright.</p>
+            <div class="row-list" id="hosting-list"></div>
+          </section>
         </div>
         <div class="view" id="view-questionnaire">
           <section style="margin-top:0;">
-            <h2>questionnaire — brand information</h2>
-            <p class="section-line">a few questions so Rebekah can see your work through your eyes — rambling welcome.</p>
+            <h2 id="q-head">questionnaire — brand information</h2>
+            <p class="section-line" id="q-sub">a few questions so Rebekah can see your work through your eyes — rambling welcome.</p>
             <div id="q-wrap">
               <form id="qform">
                 <label class="q-label" for="q1">tell me about your work — what are you making, and for whom?</label>
@@ -1919,7 +1941,7 @@ function clientPortalPage() {
         <div class="view" id="view-invoices">
           <section style="margin-top:0;">
             <h2>invoices &amp; payments</h2>
-            <p class="section-line">your project account — clear and kept current.</p>
+            <p class="section-line">your project account</p>
             <div id="inv-list"></div>
           </section>
         </div>
@@ -2018,6 +2040,7 @@ function clientPortalPage() {
         function invStatus(inv) {
           if (inv.status === "paid") return '<span class="inv-status paid">paid ✓</span>';
           if (inv.status === "partial") return '<span class="inv-status">part payment received ✨</span>';
+          if (inv.status === "upcoming") return '<span class="inv-status">due on delivery</span>';
           return '<span class="inv-status">awaiting payment</span>';
         }
         function renderInvoices(invoices, bank, abn) {
@@ -2040,33 +2063,36 @@ function clientPortalPage() {
             var dueTxt = fmtIso(inv.due_date);
             var dueLine;
             if (inv.status === "paid") {
-              dueLine = "paid in full — thank you ✨" + (inv.paid_at ? "" : "");
+              dueLine = "paid in full — thank you ✨";
+            } else if (inv.status === "upcoming") {
+              dueLine = "scheduled — invoiced on delivery of your new site";
             } else if (inv.status === "partial") {
               dueLine = fmtMoney(inv.amount_paid) + " received — " + fmtMoney(inv.balance) + " remaining" + (dueTxt ? ", due " + dueTxt : "");
             } else {
               dueLine = dueTxt ? "due " + dueTxt : "";
             }
             var pay = "";
-            if (inv.balance > 0 && inv.status !== "paid") {
-              var methods = String(inv.payment_methods || "square,bank");
-              var btns = [];
+            var methods = String(inv.payment_methods || "square,bank");
+            var btns = [];
+            if (inv.balance > 0 && inv.status !== "paid" && inv.status !== "upcoming") {
               if (methods.indexOf("square") >= 0 && inv.square_url) {
                 btns.push('<a class="pay-btn" href="' + esc(inv.square_url) + '" target="_blank" rel="noopener">pay by card ↗</a>');
               }
               if (methods.indexOf("bank") >= 0 && bank) {
                 btns.push('<button class="pay-btn alt" type="button">pay by bank transfer ▾</button>');
               }
-              if (btns.length) pay = '<div class="inv-pay">' + btns.join("") + '</div>';
-              if (methods.indexOf("bank") >= 0 && bank) {
-                pay += '<div class="bank-box">' +
-                  '<p style="margin:0 0 10px;opacity:0.8;">pay direct from your bank and keep the card fees out of it —</p>' +
-                  '<div class="bank-line"><span class="k">account name</span><span class="v">' + esc(bank.account_name) + '</span></div>' +
-                  '<div class="bank-line"><span class="k">bsb</span><span class="v">' + esc(bank.bsb) + '</span></div>' +
-                  '<div class="bank-line"><span class="k">account number</span><span class="v">' + esc(bank.account_number) + '</span></div>' +
-                  '<div class="bank-line"><span class="k">reference</span><span class="v">' + esc(inv.invoice_number) + '</span></div>' +
-                  '<p style="margin:12px 0 0;font-size:12px;opacity:0.65;">please use ' + esc(inv.invoice_number) + ' as the reference so your payment lands softly in the right place.</p>' +
-                  '</div>';
-              }
+            }
+            btns.push('<a class="open-link" href="' + API + '/portalInvoicePdf?token=' + encodeURIComponent(token) + '&invoice=' + encodeURIComponent(inv.invoice_number) + '">download invoice pdf ↗</a>');
+            pay = '<div class="inv-pay">' + btns.join("") + '</div>';
+            if (inv.balance > 0 && inv.status !== "paid" && inv.status !== "upcoming" && methods.indexOf("bank") >= 0 && bank) {
+              pay += '<div class="bank-box">' +
+                '<p style="margin:0 0 10px;">pay direct from your bank</p>' +
+                '<div class="bank-line"><span class="k">account name</span><span class="v">' + esc(bank.account_name) + '</span></div>' +
+                '<div class="bank-line"><span class="k">bsb</span><span class="v">' + esc(bank.bsb) + '</span></div>' +
+                '<div class="bank-line"><span class="k">account number</span><span class="v">' + esc(bank.account_number) + '</span></div>' +
+                '<div class="bank-line"><span class="k">reference</span><span class="v">' + esc(inv.reference || inv.invoice_number) + '</span></div>' +
+                '<p style="margin:12px 0 0;font-size:12px;opacity:0.95;">please use ' + esc(inv.reference || inv.invoice_number) + ' as the reference so your payment lands in the right place.</p>' +
+                '</div>';
             }
             card.innerHTML =
               '<div class="inv-head"><div><p class="inv-num">' + esc(inv.invoice_number) + (fmtIso(inv.issue_date) ? ' · issued ' + fmtIso(inv.issue_date) : '') + '</p>' +
@@ -2203,6 +2229,33 @@ function clientPortalPage() {
           document.getElementById("app").style.display = "block";
           document.getElementById("brand").textContent = d.brand_name || "your brandscape";
           document.getElementById("greet").textContent = "welcome, " + (d.client_name || "friend") + " — everything lives here, all in one place, always yours.";
+          if (d.brand_name) {
+            var ctag = document.getElementById("client-tag");
+            ctag.textContent = "the " + d.brand_name + " project";
+            ctag.style.display = "block";
+          }
+          var isWeb = d.project_type === "web";
+          if (isWeb) {
+            var mainBtn = document.getElementById("menu-main");
+            if (mainBtn) mainBtn.textContent = "website & development";
+            document.getElementById("q-head").textContent = "questionnaire — website + development";
+            document.getElementById("q-sub").textContent = "a few questions so Rebekah can see the site through your eyes — rambling welcome.";
+            var webQ = [
+              "tell me about the business this site is for — what does it do, and for whom?",
+              "what must the new site achieve? (a clear profile to point people to, enquiries, credibility, portfolio...)",
+              "what pages or content need to exist? (about, projects, CV, contact...)",
+              "whose world do you admire? (sites, brands, makers — links welcome.)",
+              "any must-keeps — existing logo, copy, imagery, domain or hosting logins?",
+              "where should enquiries land? (email, LinkedIn, a form...)",
+              "anything else at all."
+            ];
+            var qLabels = document.querySelectorAll("#qform .q-label");
+            for (var qi = 0; qi < qLabels.length && qi < webQ.length; qi++) qLabels[qi].textContent = webQ[qi];
+            var brandOnly = document.querySelectorAll(".brand-only");
+            for (var bo = 0; bo < brandOnly.length; bo++) brandOnly[bo].style.display = "none";
+            var webOnly = document.querySelectorAll(".web-only");
+            for (var wo = 0; wo < webOnly.length; wo++) webOnly[wo].style.display = "";
+          }
 
           (d.content || []).forEach(function (item) {
             (byType[item.type] = byType[item.type] || []).push(item);
@@ -2298,6 +2351,42 @@ function clientPortalPage() {
               card.appendChild(btn);
               pl.appendChild(card);
             });
+          }
+
+          // web project sections
+          if (isWeb) {
+            var renderRows = function (listId, rows) {
+              var el = document.getElementById(listId);
+              if (!el) return;
+              if (!rows || rows.length === 0) { empty(listId); return; }
+              rows.forEach(function (t) {
+                var row = document.createElement("div");
+                row.className = "row";
+                row.innerHTML = '<div><p class="card-title" style="margin:0;">' + esc(t.title) + '</p><p class="meta">' + esc(t.meta) + '</p></div>';
+                if (t.url) {
+                  var a = document.createElement("a");
+                  a.className = "open-link"; a.href = t.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "open ↗";
+                  row.appendChild(a);
+                }
+                el.appendChild(row);
+              });
+            };
+            renderRows("structure-list", byType.structure);
+            renderRows("links-list", byType.links);
+            renderRows("hosting-list", byType.hosting);
+            var cl = document.getElementById("copy-list");
+            if (!byType.copy || byType.copy.length === 0) { empty("copy-list"); } else {
+              byType.copy.forEach(function (t) {
+                var card = document.createElement("div");
+                card.className = "prompt-card";
+                card.innerHTML = '<p class="card-title" style="margin:0 0 8px;">' + esc(t.title) + '</p><p class="prompt-text">' + esc(t.meta) + '</p>';
+                var btn = document.createElement("button");
+                btn.className = "copy"; btn.type = "button"; btn.textContent = "copy text";
+                btn.addEventListener("click", function () { copyText(btn, t.meta || t.title); });
+                card.appendChild(btn);
+                cl.appendChild(card);
+              });
+            }
           }
 
           // google drive link (per-client, curated by Rebekah)
