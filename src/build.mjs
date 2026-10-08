@@ -2078,7 +2078,7 @@ function clientPortalPage() {
             var card = document.createElement("div");
             card.className = "inv-card" + (inv.status === "upcoming" ? " inv-upcoming" : "");
             var rows = (inv.items || []).map(function (it) {
-              var desc = esc(it.description).replace(/^(.*?)\s*\((project[^)]*)\)\s*$/, "$1<br>($2)");
+              var desc = esc(it.description).replace(/^(.*?)\\s*\\((project[^)]*)\\)\\s*$/, "$1<br>($2)");
               return '<tr><td>' + desc + '</td><td class="amt">' + fmtMoney(it.amount) + '</td></tr>';
             }).join("");
             var totals = '<div class="inv-totals">' +
@@ -2291,7 +2291,7 @@ function clientPortalPage() {
           if (hNotes.length) {
             document.getElementById("menu-home").style.display = "";
             document.getElementById("home-welcome").textContent = "welcome, " + (d.client_name || "friend");
-            document.getElementById("home-stage").innerHTML = '<p class="home-note">' + esc(hNotes[0].meta || "").replace(/\n/g, "<br>") + '</p>';
+            document.getElementById("home-stage").innerHTML = '<p class="home-note">' + esc(hNotes[0].meta || "").replace(/\\n/g, "<br>") + '</p>';
             showView("home");
           }
 
