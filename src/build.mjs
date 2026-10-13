@@ -2135,7 +2135,7 @@ function clientPortalPage() {
                 btns.push('<button class="pay-btn alt" type="button">pay by bank transfer ▾</button>');
               }
             }
-            btns.push('<a class="open-link" href="' + API + '/portalInvoicePdf?token=' + encodeURIComponent(token) + '&invoice=' + encodeURIComponent(inv.invoice_number) + '">download invoice pdf ↗</a>');
+            btns.push('<a class="open-link" download="studiorjl-invoice-' + esc(String(inv.invoice_number || "").toLowerCase()) + '.pdf" href="' + API + '/portalInvoicePdf?token=' + encodeURIComponent(token) + '&invoice=' + encodeURIComponent(inv.invoice_number) + '">download invoice pdf ↗</a>');
             pay = '<div class="inv-pay">' + btns.join("") + '</div>';
             if (inv.balance > 0 && inv.status !== "paid" && inv.status !== "upcoming" && methods.indexOf("bank") >= 0 && bank) {
               pay += '<div class="bank-box">' +
