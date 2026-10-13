@@ -2082,7 +2082,7 @@ function clientPortalPage() {
             var card = document.createElement("div");
             card.className = "inv-card" + (inv.status === "upcoming" ? " inv-upcoming" : "");
             var rows = (inv.items || []).map(function (it) {
-              var desc = esc(it.description).replace(/^(.*?)\\s*\\((project[^)]*)\\)\\s*$/, "$1<br>($2)");
+              var desc = esc(it.description).replace(/\\n/g, "<br>").replace(/^(.*?)\\s*\\((project[^)]*)\\)\\s*$/, "$1<br>($2)");
               return '<tr><td>' + desc + '</td><td class="amt">' + fmtMoney(it.amount) + '</td></tr>';
             }).join("");
             var totals = '<div class="inv-totals">' +
@@ -2124,7 +2124,7 @@ function clientPortalPage() {
                 '</div>';
             }
             card.innerHTML =
-              '<div class="inv-head"><div><p class="inv-num">' + esc(inv.invoice_number) + (fmtIso(inv.issue_date) ? ' · issued ' + fmtIso(inv.issue_date) : '') + '</p>' +
+              '<div class="inv-head"><div><p class="inv-num">' + esc(inv.invoice_number) + (inv.status === "upcoming" ? ' · to be issued' : (fmtIso(inv.issue_date) ? ' · issued ' + fmtIso(inv.issue_date) : '')) + '</p>' +
               '<p class="inv-title">' + esc(inv.title) + '</p></div>' + invStatus(inv) + '</div>' +
               '<table class="inv-items"><tbody>' + rows + '</tbody></table>' + totals +
               (dueLine ? '<p class="inv-due">' + dueLine + '</p>' : '') + pay +
