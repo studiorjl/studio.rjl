@@ -1726,6 +1726,10 @@ function clientPortalPage() {
 .allowance-labels b { color: #3f3112; font-weight: bold; }
 .allowance-track { height: 12px; background: var(--pale-ivory); border: 1px solid rgba(76, 59, 21, 0.35); padding: 2px; margin-bottom: 34px; }
 .allowance-fill { height: 100%; background: var(--deep-green); max-width: 100%; transition: width 1.2s ease; }
+      .tech-card { background: var(--pale-ivory); border: 1px solid var(--line); padding: 20px 24px; margin-bottom: 16px; }
+      .tech-card h3 { font-family: "Cormorant Infant", serif; font-weight: 500; font-size: 18px; color: var(--deep-green); margin: 0 0 10px; }
+      .tech-card p { font-size: 12px; line-height: 2; margin: 0 0 8px; color: var(--green); }
+      .tech-card a { font-size: 11px; }
 .menu-item { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 10px 22px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--green); cursor: pointer; }
       .menu-item:hover { background: var(--deep-green); color: var(--ivory); }
       .menu-item.active { font-weight: bold; }
@@ -1821,6 +1825,7 @@ function clientPortalPage() {
       <button class="menu-item" data-view="invoices">invoices &amp; payments</button>
       <button class="menu-item" data-view="library">library</button>
       <button class="menu-item" data-view="notes">notes</button>
+      <button class="menu-item" data-view="technical">technical notes</button>
       <div class="menu-divider"></div>
       <button class="menu-item" id="menu-signout">sign out</button>
     </nav>
@@ -1963,6 +1968,13 @@ function clientPortalPage() {
             <h2>contract</h2>
             <p class="section-line">your agreement lives here: ready to read and sign when the time comes.</p>
             <p class="empty">your contract will appear here when it's ready. Rebekah will walk you through it personally.</p>
+          </section>
+        </div>
+        <div class="view" id="view-technical">
+          <section style="margin-top:0;">
+            <h2>technical notes</h2>
+            <p class="section-line">the behind-the-scenes record of your project: hosting, domain, connections and handover notes, kept so you can always retrace steps or pass this project on.</p>
+            <div id="tech-list"><p class="empty">technical notes will appear here as your project develops.</p></div>
           </section>
         </div>
         <div class="view" id="view-invoices">
@@ -2501,6 +2513,16 @@ function clientPortalPage() {
               }
             });
           });
+
+          // technical notes (web projects: hosting, domain, connections, handover)
+          var techList = document.getElementById("tech-list");
+          var techItems = (byType.technical_note || []).slice().sort(function (a, b) { return (a.sort_order || 0) - (b.sort_order || 0); });
+          if (techItems.length && techList) {
+            techList.innerHTML = techItems.map(function (it) {
+              return '<div class="tech-card"><h3>' + esc(it.title || "") + '</h3><p>' + esc(it.meta || "").replace(/\\n/g, "<br>") + '</p>' +
+                (it.url ? '<a class="open-link" href="' + esc(it.url) + '" target="_blank" rel="noopener">open ↗</a>' : '') + '</div>';
+            }).join("");
+          }
 
           // invoices
           post("portalGetInvoices", { token: token }).then(function (r) {
