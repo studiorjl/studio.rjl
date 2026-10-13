@@ -1722,6 +1722,10 @@ function clientPortalPage() {
 .home-note { margin: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 15px; line-height: 2.1; }
 .home-sign { margin: 24px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; }
 .inv-card.inv-upcoming { opacity: 0.6; }
+.allowance-labels { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.06em; color: #7a6a3f; margin-bottom: 8px; }
+.allowance-labels b { color: #3f3112; font-weight: bold; }
+.allowance-track { height: 12px; background: var(--pale-ivory); border: 1px solid rgba(76, 59, 21, 0.35); padding: 2px; margin-bottom: 34px; }
+.allowance-fill { height: 100%; background: var(--deep-green); max-width: 100%; transition: width 1.2s ease; }
 .menu-item { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 10px 22px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--green); cursor: pointer; }
       .menu-item:hover { background: var(--deep-green); color: var(--ivory); }
       .menu-item.active { font-weight: bold; }
@@ -1965,6 +1969,13 @@ function clientPortalPage() {
           <section style="margin-top:0;">
             <h2>invoices &amp; payments</h2>
             <p class="section-line">your project account</p>
+            <div id="inv-allowance" style="display:none;">
+              <div class="allowance-labels">
+                <span id="allowance-total"></span>
+                <span id="allowance-billed"></span>
+              </div>
+              <div class="allowance-track"><div class="allowance-fill" id="allowance-fill"></div></div>
+            </div>
             <div id="inv-list"></div>
           </section>
         </div>
@@ -2072,6 +2083,19 @@ function clientPortalPage() {
           if (!invoices || invoices.length === 0) {
             list.innerHTML = '<p class="empty">invoices and progress payments will be tracked here: a clear picture of where your project stands.</p>';
             return;
+          }
+          var allowance = 0, billed = 0;
+          (invoices || []).forEach(function (inv) {
+            allowance += Number(inv.total || 0);
+            if (inv.status !== "upcoming") billed += Number(inv.total || 0);
+          });
+          var bar = document.getElementById("inv-allowance");
+          if (bar && allowance > 0) {
+            var pct = Math.min(100, Math.round((billed / allowance) * 100));
+            document.getElementById("allowance-total").innerHTML = "total project allowance <b>" + fmtMoney(allowance) + "</b>";
+            document.getElementById("allowance-billed").innerHTML = "billed to date <b>" + fmtMoney(billed) + "</b> · " + pct + "% of works";
+            document.getElementById("allowance-fill").style.width = pct + "%";
+            bar.style.display = "block";
           }
           invoices.slice().sort(function (a, b) {
             var au = a.status === "upcoming" ? 1 : 0;
