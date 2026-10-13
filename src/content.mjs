@@ -534,10 +534,10 @@ export const portfolio = [
     tags: ["branding", "graphic"]
   },
   {
-    image: "alegienne-brandmark-card.jpg",
-    alt: "Alegienne gold and pink brandmark card with bespoke wordmark and visual identity treatment by studio rjl, a Bangalow branding studio near Byron Bay",
-    categories: ["branding", "visual identity", "brandmark", "logo design"],
-    tags: ["branding"]
+    image: "florah-gold-card-case-marble-brandmark.jpg",
+    alt: "Florah brandmark letterpress business card in a vintage gold shell card case on dark marble, brand identity and print design by studio rjl, a Bangalow branding studio near Byron Bay",
+    categories: ["branding", "visual identity", "brandmark", "print and packaging design"],
+    tags: ["branding", "graphic", "print"]
   },
   {
     image: "florah-sigil.jpg",
@@ -561,6 +561,12 @@ export const portfolio = [
     image: "alegienne-spring-campaign1.jpg",
     alt: "Alegienne spring campaign art direction and fashion visuals by studio rjl, brand designers in Bangalow, Northern NSW",
     categories: ["branding", "art direction", "campaign design"],
+    tags: ["branding"]
+  },
+  {
+    image: "alegienne-brandmark-card.jpg",
+    alt: "Alegienne gold and pink brandmark card with bespoke wordmark and visual identity treatment by studio rjl, a Bangalow branding studio near Byron Bay",
+    categories: ["branding", "visual identity", "brandmark", "logo design"],
     tags: ["branding"]
   },
   {
