@@ -198,7 +198,7 @@ export const editorialPosts = [
     pinDescription:
       "A studio rjl editorial case study for Rogue, exploring a heroine emblem, leopard-spotted horse, gold embossing, letterpress cards and cinematic agency brand world design, from a Bangalow branding studio in the Northern Rivers.",
     body: [
-      "Rogue began as an instinctual case study, a visual identity based on going rogue.",
+      "Rogue began as an instinctual case study, a visual identity for rogue.",
       "A bold courageous danger in this posture, balanced by discipline and elegant curation.",
       "We created this visual identity centered on a heroine in motion, riding a leopard-spotted horse, drawing a rose arrow through her archer's bow. The style we curated is truly a nod to the enduring quality of heritage labels, the brands that have carved a legacy in fashion & accessories. Every great thing established has to go a little rogue to shoot your shot, especially if that is more flowers. And especially if your horse has leopard spots.",
       "We absolutely loved creating the visual identity for this agency; a perfect mix of mythology and for a whimsical unorthodox approach to marketing and advertising.",
