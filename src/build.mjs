@@ -1608,23 +1608,25 @@ function clientLoginPage() {
     <title>client portal - studio rjl</title>
     <meta name="description" content="the studio rjl client portal — sign in to your private brand home.">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="stylesheet" href="https://use.typekit.net/sns3ynz.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <style>
       :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
       * { box-sizing: border-box; }
-      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
-      .mark { position: fixed; top: 28px; left: 32px; font-family: "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; color: var(--green); }
+      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.75; }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; color: var(--green); }
       .wrap { width: 100%; max-width: 500px; text-align: center; }
       .presents { font-family: "Cormorant Infant", Georgia, serif; font-size: 15px; letter-spacing: 0.28em; color: var(--deep-green); margin: 0 0 26px; }
       h1 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-style: italic; font-size: 44px; letter-spacing: 0.02em; margin: 0 0 18px; color: var(--deep-green); }
       .intro { font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; line-height: 1.8; margin: 0 0 34px; }
       .field { text-align: left; margin-bottom: 24px; }
       .label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; margin: 0 0 6px; color: var(--deep-green); }
-      .input { display: block; width: 100%; padding: 12px 14px; font-family: "Courier New", monospace; font-size: 14px; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; }
+      .input { display: block; width: 100%; padding: 12px 14px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; }
       .input:focus { outline: 1px solid var(--deep-green); }
-      .enter { margin: 40px 0 0; width: 100%; background: var(--deep-green); color: var(--ivory); padding: 15px 34px; border: 0; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
+      .enter { margin: 40px 0 0; width: 100%; background: var(--deep-green); color: var(--ivory); padding: 15px 34px; border: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
       .enter:disabled { opacity: 0.5; cursor: wait; }
       #err { display: none; margin: 18px 0 0; font-size: 13px; color: #7a2d2d; }
       .footnote { margin-top: 44px; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
@@ -1699,26 +1701,28 @@ function clientPortalPage() {
     <title>your brandscape - studio rjl client portal</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="stylesheet" href="https://use.typekit.net/sns3ynz.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <style>
       :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
       * { box-sizing: border-box; }
-      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
+      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.75; }
       a { color: var(--green); }
-      .mark { position: fixed; top: 28px; left: 32px; font-family: "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; z-index: 30; }
-      .client-tag { position: fixed; top: 52px; left: 32px; z-index: 30; font-family: "Courier New", monospace; font-size: 11px; letter-spacing: 0.14em; color: #806829; }
-      .menu-btn { position: fixed; top: 24px; right: 32px; z-index: 30; background: var(--deep-green); color: var(--ivory); border: 0; padding: 10px 22px; font-family: "Courier New", monospace; font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; z-index: 30; }
+      .client-tag { position: fixed; top: 52px; left: 32px; z-index: 30; font-family: "antarctican-mono", "Courier New", monospace; font-size: 11px; letter-spacing: 0.14em; color: #806829; }
+      .menu-btn { position: fixed; top: 24px; right: 32px; z-index: 30; background: var(--deep-green); color: var(--ivory); border: 0; padding: 10px 22px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
       .menu-btn:hover { opacity: 0.85; }
       .menu-panel { position: fixed; top: 66px; right: 32px; z-index: 29; width: 248px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); box-shadow: 0 10px 30px rgba(76,59,21,0.18); padding: 10px 0 6px; display: none; }
       .menu-panel.open { display: block; }
       .home-box { max-width: 640px; margin: 6px auto 80px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.22); padding: 34px 40px 26px; }
 .home-label { margin: 0 0 16px; font-size: 11px; letter-spacing: 0.22em; color: #806829; }
-.home-note { margin: 0; font-family: "Courier New", monospace; font-size: 15px; line-height: 2.1; }
+.home-note { margin: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 15px; line-height: 2.1; }
 .home-sign { margin: 24px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; }
 .inv-card.inv-upcoming { opacity: 0.6; }
-.menu-item { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 10px 22px; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--green); cursor: pointer; }
+.menu-item { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 10px 22px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--green); cursor: pointer; }
       .menu-item:hover { background: var(--deep-green); color: var(--ivory); }
       .menu-item.active { font-weight: bold; }
       .menu-divider { height: 1px; background: rgba(76,59,21,0.2); margin: 8px 22px; }
@@ -1745,10 +1749,10 @@ function clientPortalPage() {
       .logo-hero { background: #fff; border: 1px solid rgba(76,59,21,0.25); padding: 34px; text-align: center; margin-bottom: 14px; }
       .logo-hero img { max-width: 100%; max-height: 220px; display: block; margin: 0 auto; }
       .variants { text-align: center; margin: 0 0 18px; line-height: 2.2; }
-      .variant { display: inline-block; font-family: "Courier New", monospace; font-size: 12px; letter-spacing: 0.05em; padding: 4px 16px; margin: 0 3px; border: 1px solid rgba(76,59,21,0.3); border-radius: 999px; background: var(--pale-ivory); color: var(--green); cursor: pointer; }
+      .variant { display: inline-block; font-family: "antarctican-mono", "Courier New", monospace; font-size: 12px; letter-spacing: 0.05em; padding: 4px 16px; margin: 0 3px; border: 1px solid rgba(76,59,21,0.3); border-radius: 999px; background: var(--pale-ivory); color: var(--green); cursor: pointer; }
       .variant:hover { background: var(--deep-green); color: var(--ivory); }
       .variant.active { background: var(--deep-green); color: var(--ivory); }
-      .copy { margin-top: 10px; background: var(--deep-green); color: var(--ivory); border: 0; padding: 6px 16px; font-family: "Courier New", monospace; font-size: 11px; letter-spacing: 0.08em; cursor: pointer; }
+      .copy { margin-top: 10px; background: var(--deep-green); color: var(--ivory); border: 0; padding: 6px 16px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 11px; letter-spacing: 0.08em; cursor: pointer; }
       .copy:hover { opacity: 0.85; }
       .row-list { display: flex; flex-direction: column; gap: 12px; }
       .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 14px 18px; }
@@ -1757,9 +1761,9 @@ function clientPortalPage() {
       .prompt-card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 18px; margin-bottom: 14px; }
       .prompt-text { white-space: pre-wrap; font-size: 13px; margin: 8px 0 12px; }
       .q-label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; margin: 28px 0 8px; color: var(--deep-green); }
-      .q-input { display: block; width: 100%; padding: 12px 14px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.7; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; resize: vertical; }
+      .q-input { display: block; width: 100%; padding: 12px 14px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.7; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; resize: vertical; }
       .q-input:focus { outline: 1px solid var(--deep-green); }
-      .save { margin-top: 34px; background: var(--deep-green); color: var(--ivory); padding: 13px 30px; border: 0; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
+      .save { margin-top: 34px; background: var(--deep-green); color: var(--ivory); padding: 13px 30px; border: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
       .save:disabled { opacity: 0.5; cursor: wait; }
       .up-zone { background: var(--pale-ivory); border: 1px dashed rgba(76,59,21,0.35); padding: 34px 24px; text-align: center; }
       .up-note { font-size: 12px; opacity: 0.7; margin: 8px 0 0; }
@@ -1767,7 +1771,7 @@ function clientPortalPage() {
       .up-thumb { width: 54px; height: 54px; object-fit: cover; border: 1px solid rgba(76,59,21,0.25); background: #fff; flex: none; }
       .up-thumb.doc { display: flex; align-items: center; justify-content: center; font-size: 18px; background: #fff; }
       .drive-box { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 22px 26px; margin-bottom: 22px; text-align: center; }
-      .drive-btn { display: inline-block; margin-top: 12px; background: var(--deep-green); color: var(--ivory); padding: 12px 26px; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; text-decoration: none; }
+      .drive-btn { display: inline-block; margin-top: 12px; background: var(--deep-green); color: var(--ivory); padding: 12px 26px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; text-decoration: none; }
       .drive-btn:hover { opacity: 0.85; }
       .inv-card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 22px 26px; margin-bottom: 18px; }
       .inv-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
@@ -1783,7 +1787,7 @@ function clientPortalPage() {
       .inv-totals .row-line.total { font-weight: bold; opacity: 1; font-size: 15px; color: var(--deep-green); border-top: 1px solid rgba(76,59,21,0.3); margin-top: 4px; padding-top: 7px; }
       .inv-due { font-size: 13px; opacity: 1; margin: 12px 0 0; }
       .inv-pay { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-      .pay-btn { display: inline-block; background: var(--deep-green); color: var(--ivory); border: 0; padding: 12px 26px; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; text-decoration: none; }
+      .pay-btn { display: inline-block; background: var(--deep-green); color: var(--ivory); border: 0; padding: 12px 26px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; text-decoration: none; }
       .pay-btn:hover { opacity: 0.85; }
       .pay-btn.alt { background: transparent; color: var(--deep-green); border: 1px solid rgba(76,59,21,0.4); }
       .bank-box { display: none; margin-top: 14px; background: var(--ivory); border: 1px solid rgba(76,59,21,0.3); padding: 18px 22px; font-size: 13px; }
