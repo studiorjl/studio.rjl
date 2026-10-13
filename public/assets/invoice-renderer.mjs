@@ -1,7 +1,7 @@
 // studio rjl invoice renderer (public asset, no secrets here).
 // called by the deployed invoicePdfGenerate bootstrap after it validates the
-// shared secret. the bootstrap evals this file and passes the parsed body.
-(async (body) => {
+// shared secret. the bootstrap imports this module and passes the parsed body.
+export default (async (body) => {
   const { PDFDocument, StandardFonts, rgb, PDFString } = await import("npm:pdf-lib@1.17.1");
   const fontkit = (await import("npm:@pdf-lib/fontkit@1.1.1")).default;
   const inv = body.invoice || {}, acc = body.account || {};
