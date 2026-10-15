@@ -1711,6 +1711,7 @@ function clientPortalPage() {
       * { box-sizing: border-box; }
       body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.75; }
       a { color: var(--green); }
+      .top-bar { position: fixed; top: 0; left: 0; right: 0; height: 88px; z-index: 28; background: rgba(234,228,218,0.82); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(76,59,21,0.12); }
       .mark { position: fixed; top: 28px; left: 32px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; z-index: 30; }
       .client-tag { position: fixed; top: 52px; left: 32px; z-index: 30; font-family: "antarctican-mono", "Courier New", monospace; font-size: 11px; letter-spacing: 0.14em; color: #806829; }
       .menu-btn { position: fixed; top: 24px; right: 32px; z-index: 30; background: var(--deep-green); color: var(--ivory); border: 0; padding: 10px 22px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
@@ -1813,6 +1814,7 @@ function clientPortalPage() {
     </style>
   </head>
   <body>
+    <div class="top-bar" aria-hidden="true"></div>
     <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
     <div class="client-tag" id="client-tag" style="display:none;"></div>
     <button class="menu-btn" id="menu-btn" aria-haspopup="true" aria-expanded="false">menu ▾</button>
@@ -2084,6 +2086,7 @@ function clientPortalPage() {
           return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear();
         }
         function invStatus(inv) {
+          if (inv.kind === "quote") return '<span class="inv-status">quote · for your review</span>';
           if (inv.status === "paid") return '<span class="inv-status paid">paid ✓</span>';
           if (inv.status === "partial") return '<span class="inv-status">part payment received ✨</span>';
           if (inv.status === "upcoming") return '<span class="inv-status">due on delivery</span>';
@@ -2116,7 +2119,7 @@ function clientPortalPage() {
             return String(b.invoice_number || "").localeCompare(String(a.invoice_number || ""));
           }).forEach(function (inv) {
             var card = document.createElement("div");
-            card.className = "inv-card" + (inv.status === "upcoming" ? " inv-upcoming" : "");
+            card.className = "inv-card" + ((inv.status === "upcoming" && inv.kind !== "quote") ? " inv-upcoming" : "");
             var rows = (inv.items || []).map(function (it) {
               var desc = esc(it.description).replace(/\\n/g, "<br>").replace(/^(.*?)\\s*\\((project[^)]*)\\)\\s*$/, "$1<br>($2)");
               return '<tr><td>' + desc + '</td><td class="amt">' + fmtMoney(it.amount) + '</td></tr>';
@@ -2127,7 +2130,9 @@ function clientPortalPage() {
               '<div class="row-line total"><span>total</span><span>' + fmtMoney(inv.total) + '</span></div></div>';
             var dueTxt = fmtIso(inv.due_date);
             var dueLine;
-            if (inv.status === "paid") {
+            if (inv.kind === "quote") {
+              dueLine = "a quote for your review — no payment due yet";
+            } else if (inv.status === "paid") {
               dueLine = "paid in full: thank you ✨";
             } else if (inv.status === "upcoming") {
               dueLine = "scheduled: invoiced on delivery of your new site";
@@ -2139,7 +2144,7 @@ function clientPortalPage() {
             var pay = "";
             var methods = String(inv.payment_methods || "square,bank");
             var btns = [];
-            if (inv.balance > 0 && inv.status !== "paid" && inv.status !== "upcoming") {
+            if (inv.balance > 0 && inv.status !== "paid" && inv.status !== "upcoming" && inv.kind !== "quote") {
               if (methods.indexOf("square") >= 0 && inv.square_url) {
                 btns.push('<a class="pay-btn" href="' + esc(inv.square_url) + '" target="_blank" rel="noopener">pay by card ↗</a>');
               }
@@ -2147,9 +2152,9 @@ function clientPortalPage() {
                 btns.push('<button class="pay-btn alt" type="button">pay by bank transfer ▾</button>');
               }
             }
-            btns.push('<a class="open-link" download="studiorjl-invoice-' + esc(String(inv.invoice_number || "").toLowerCase()) + '.pdf" href="' + API + '/portalInvoicePdf?token=' + encodeURIComponent(token) + '&invoice=' + encodeURIComponent(inv.invoice_number) + '">download invoice pdf ↗</a>');
+            btns.push('<a class="open-link" download="studiorjl-' + (inv.kind === "quote" ? "quote" : "invoice") + '-' + esc(String(inv.invoice_number || "").toLowerCase()) + '.pdf" href="' + API + '/portalInvoicePdf?token=' + encodeURIComponent(token) + '&invoice=' + encodeURIComponent(inv.invoice_number) + '">download ' + (inv.kind === "quote" ? "quote" : "invoice") + ' pdf ↗</a>');
             pay = '<div class="inv-pay">' + btns.join("") + '</div>';
-            if (inv.balance > 0 && inv.status !== "paid" && inv.status !== "upcoming" && methods.indexOf("bank") >= 0 && bank) {
+            if (inv.balance > 0 && inv.status !== "paid" && inv.status !== "upcoming" && inv.kind !== "quote" && methods.indexOf("bank") >= 0 && bank) {
               pay += '<div class="bank-box">' +
                 '<p style="margin:0 0 10px;">pay direct from your bank</p>' +
                 '<div class="bank-line"><span class="k">account name</span><span class="v">' + esc(bank.account_name) + '</span></div>' +
@@ -2160,7 +2165,7 @@ function clientPortalPage() {
                 '</div>';
             }
             card.innerHTML =
-              '<div class="inv-head"><div><p class="inv-num">' + esc(inv.invoice_number) + (inv.status === "upcoming" ? ' · to be issued' : (fmtIso(inv.issue_date) ? ' · issued ' + fmtIso(inv.issue_date) : '')) + '</p>' +
+              '<div class="inv-head"><div><p class="inv-num">' + esc(inv.invoice_number) + (inv.kind === "quote" ? ' · quote' : (inv.status === "upcoming" ? ' · to be issued' : (fmtIso(inv.issue_date) ? ' · issued ' + fmtIso(inv.issue_date) : ''))) + '</p>' +
               '<p class="inv-title">' + esc(inv.title) + '</p></div>' + invStatus(inv) + '</div>' +
               '<table class="inv-items"><tbody>' + rows + '</tbody></table>' + totals +
               (dueLine ? '<p class="inv-due">' + dueLine + '</p>' : '') + pay +
@@ -2297,7 +2302,7 @@ function clientPortalPage() {
           var isWeb = d.project_type === "web";
           if (d.brand_name) {
             var ctag = document.getElementById("client-tag");
-            ctag.textContent = isWeb ? d.brand_name + " web redesign" : "the " + d.brand_name + " project";
+            ctag.textContent = d.brand_name;
             ctag.style.display = "block";
           }
           if (isWeb) {
