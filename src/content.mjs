@@ -3,7 +3,7 @@ export const site = {
   legalName: "studio rjl",
   domain: "https://studiorjl.com",
   description:
-    "Studio RJL is a multidisciplinary design studio specialising in creating bespoke branding & visual identity, spatial & interior design.",
+    "Studio RJL is a multidisciplinary design studio for brands & places. we create bespoke branding & visual identity, brandscapes both digital & spatial.",
   shortDescription: "Bespoke brands, visual identities and atmospheric places.",
   locale: "en_AU",
   pinterestVerification: "2c6a823a3df926847a29a4ec463d549c",
