@@ -124,7 +124,7 @@ img {
   align-items: center;
   gap: 24px;
   font-family: "PT Sans Mono", "Courier New", monospace;
-  font-size: 19px;
+  font-size: 15px;
   font-weight: 400;
   color: var(--green);
 }
@@ -248,7 +248,7 @@ h3,
 
 h1 {
   margin: 0 0 18px;
-  font-size: clamp(32px, 5vw, 56px);
+  font-size: clamp(30px, 5vw, 52px);
   line-height: 1.05;
   text-wrap: balance;
   text-transform: uppercase;
@@ -456,7 +456,7 @@ main section.image-section {
   margin-bottom: 22px;
   color: var(--green);
   font-family: "PT Sans Mono", "Courier New", monospace;
-  font-size: clamp(34px, 5vw, 56px);
+  font-size: clamp(32px, 5vw, 52px);
   font-weight: 400;
   line-height: 1;
   text-transform: uppercase;

@@ -358,7 +358,7 @@ function head({
     <link rel="preconnect" href="https://use.typekit.net">
     <link rel="stylesheet" href="https://use.typekit.net/sns3ynz.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=12">
+    <link rel="stylesheet" href="/styles.css?v=13">
     ${site.googleAnalyticsId ? analytics() : ""}
     ${jsonLd(organizationSchema())}
     ${jsonLd(websiteSchema())}
@@ -1444,7 +1444,7 @@ function confirmPage() {
       a { color: var(--green); text-decoration: none; }
       .mark { position: fixed; top: 28px; left: 32px; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 20px; letter-spacing: 0.08em; }
       .wrap { max-width: 560px; text-align: center; }
-      h1 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 34px; letter-spacing: 0.02em; margin: 0 0 26px; text-transform: uppercase; }
+      h1 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 30px; letter-spacing: 0.02em; margin: 0 0 26px; text-transform: uppercase; }
       #message { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; line-height: 1.9; }
       #message p { margin: 0 0 16px; }
       #message a { text-decoration: underline; text-underline-offset: 3px; }
@@ -1528,7 +1528,7 @@ function questionnairePage() {
       a { color: var(--green); }
       .mark { position: fixed; top: 28px; left: 32px; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 20px; letter-spacing: 0.08em; text-decoration: none; }
       .wrap { max-width: 620px; margin: 0 auto; }
-      h1 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 36px; letter-spacing: 0.02em; margin: 0 0 18px; text-transform: uppercase; }
+      h1 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 32px; letter-spacing: 0.02em; margin: 0 0 18px; text-transform: uppercase; }
       .intro { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 18px; line-height: 1.8; margin: 0 0 36px; }
       .q-label { display: block; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; margin: 30px 0 8px; color: var(--deep-green); }
       .q-input { display: block; width: 100%; padding: 12px 14px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.7; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; resize: vertical; }
@@ -1626,7 +1626,7 @@ function clientLoginPage() {
       .mark { position: fixed; top: 28px; left: 32px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; color: var(--green); }
       .wrap { width: 100%; max-width: 500px; text-align: center; }
       .presents { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 15px; letter-spacing: 0.28em; color: var(--deep-green); margin: 0 0 26px; }
-      h1 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 44px; letter-spacing: 0.02em; margin: 0 0 18px; color: var(--deep-green); text-transform: uppercase; }
+      h1 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 40px; letter-spacing: 0.02em; margin: 0 0 18px; color: var(--deep-green); text-transform: uppercase; }
       .intro { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 18px; line-height: 1.8; margin: 0 0 34px; }
       .field { text-align: left; margin-bottom: 24px; }
       .label { display: block; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 18px; margin: 0 0 6px; color: var(--deep-green); }
@@ -1744,7 +1744,7 @@ function clientPortalPage() {
       .wrap { max-width: 880px; margin: 0 auto; padding: 96px 24px 96px; }
       #loading { text-align: center; padding: 120px 0; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 20px; }
       .hero { text-align: center; margin-bottom: 10px; }
-      .brand { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 54px; letter-spacing: 0.02em; margin: 0 0 10px; color: var(--deep-green); line-height: 1.1; text-transform: uppercase; }
+      .brand { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 50px; letter-spacing: 0.02em; margin: 0 0 10px; color: var(--deep-green); line-height: 1.1; text-transform: uppercase; }
       .hero-line { font-size: 13px; opacity: 0.7; margin: 0; }
       .chips { text-align: center; margin: 30px 0 8px; line-height: 2.4; }
       .chips a { display: inline-block; font-size: 12px; letter-spacing: 0.05em; text-decoration: none; padding: 3px 12px; margin: 0 3px; border: 1px solid rgba(76,59,21,0.3); border-radius: 999px; background: var(--pale-ivory); }
