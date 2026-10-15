@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>your brandscape - studio rjl client portal</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="stylesheet" href="https://use.typekit.net/sns3ynz.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.75; }
+      a { color: var(--green); }
+      .top-bar { position: fixed; top: 0; left: 0; right: 0; height: 88px; z-index: 28; background: rgba(234,228,218,0.82); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(76,59,21,0.12); }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; z-index: 30; }
+      .client-tag { position: fixed; top: 52px; left: 32px; z-index: 30; font-family: "antarctican-mono", "Courier New", monospace; font-size: 11px; letter-spacing: 0.14em; color: #806829; }
+      .menu-btn { position: fixed; top: 24px; right: 32px; z-index: 30; background: var(--deep-green); color: var(--ivory); border: 0; padding: 10px 22px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
+      .menu-btn:hover { opacity: 0.85; }
+      .menu-panel { position: fixed; top: 66px; right: 32px; z-index: 29; width: 248px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); box-shadow: 0 10px 30px rgba(76,59,21,0.18); padding: 10px 0 6px; display: none; }
+      .menu-panel.open { display: block; }
+      .home-box { max-width: 640px; margin: 6px auto 80px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.22); padding: 34px 40px 26px; }
+.home-label { margin: 0 0 16px; font-size: 11px; letter-spacing: 0.22em; color: #806829; }
+.home-note { margin: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 15px; line-height: 2.1; }
+.home-sign { margin: 24px 0 0; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; }
+.inv-card.inv-upcoming { opacity: 0.6; }
+.allowance-labels { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.06em; color: #7a6a3f; margin-bottom: 8px; }
+.allowance-labels b { color: #3f3112; font-weight: bold; }
+.allowance-track { height: 12px; background: var(--pale-ivory); border: 1px solid rgba(76, 59, 21, 0.35); padding: 2px; margin-bottom: 34px; }
+.allowance-fill { height: 100%; background: var(--deep-green); max-width: 100%; transition: width 1.2s ease; }
+      .tech-card { background: var(--pale-ivory); border: 1px solid var(--line); padding: 20px 24px; margin-bottom: 16px; }
+      .tech-card h3 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 18px; color: var(--deep-green); margin: 0 0 10px; }
+      .tech-card p { font-size: 12px; line-height: 2; margin: 0 0 8px; color: var(--green); }
+      .tech-card a { font-size: 11px; }
+.menu-item { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 10px 22px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--green); cursor: pointer; }
+      .menu-item:hover { background: var(--deep-green); color: var(--ivory); }
+      .menu-item.active { font-weight: bold; }
+      .menu-divider { height: 1px; background: rgba(76,59,21,0.2); margin: 8px 22px; }
+      .wrap { max-width: 880px; margin: 0 auto; padding: 96px 24px 96px; }
+      #loading { text-align: center; padding: 120px 0; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 20px; }
+      .hero { text-align: center; margin-bottom: 10px; }
+      .brand { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 54px; letter-spacing: 0.02em; margin: 0 0 10px; color: var(--deep-green); line-height: 1.1; text-transform: uppercase; }
+      .hero-line { font-size: 13px; opacity: 0.7; margin: 0; }
+      .chips { text-align: center; margin: 30px 0 8px; line-height: 2.4; }
+      .chips a { display: inline-block; font-size: 12px; letter-spacing: 0.05em; text-decoration: none; padding: 3px 12px; margin: 0 3px; border: 1px solid rgba(76,59,21,0.3); border-radius: 999px; background: var(--pale-ivory); }
+      .chips a:hover { background: var(--deep-green); color: var(--ivory); }
+      .view { display: none; }
+      .view.on { display: block; }
+      section { margin-top: 56px; scroll-margin-top: 24px; }
+      h2 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 30px; color: var(--deep-green); margin: 0 0 6px; }
+      .section-line { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 17px; margin: 0 0 22px; opacity: 0.8; }
+      .empty { font-style: italic; opacity: 0.55; font-size: 13px; padding: 26px 22px; text-align: center; background: var(--pale-ivory); border: 1px dashed rgba(76,59,21,0.3); }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 18px; }
+      .card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 14px; }
+      .swatch { height: 96px; margin: -14px -14px 12px; border-bottom: 1px solid rgba(76,59,21,0.25); }
+      .card-title { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; color: var(--deep-green); margin: 0 0 4px; }
+      .meta { font-size: 12px; opacity: 0.75; word-break: break-word; white-space: pre-wrap; }
+      .asset { width: 100%; display: block; background: #fff; }
+      .logo-hero { background: #fff; border: 1px solid rgba(76,59,21,0.25); padding: 34px; text-align: center; margin-bottom: 14px; }
+      .logo-hero img { max-width: 100%; max-height: 220px; display: block; margin: 0 auto; }
+      .variants { text-align: center; margin: 0 0 18px; line-height: 2.2; }
+      .variant { display: inline-block; font-family: "antarctican-mono", "Courier New", monospace; font-size: 12px; letter-spacing: 0.05em; padding: 4px 16px; margin: 0 3px; border: 1px solid rgba(76,59,21,0.3); border-radius: 999px; background: var(--pale-ivory); color: var(--green); cursor: pointer; }
+      .variant:hover { background: var(--deep-green); color: var(--ivory); }
+      .variant.active { background: var(--deep-green); color: var(--ivory); }
+      .copy { margin-top: 10px; background: var(--deep-green); color: var(--ivory); border: 0; padding: 6px 16px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 11px; letter-spacing: 0.08em; cursor: pointer; }
+      .copy:hover { opacity: 0.85; }
+      .row-list { display: flex; flex-direction: column; gap: 12px; }
+      .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 14px 18px; }
+      .row .meta { flex: 1; }
+      .open-link { font-size: 13px; text-decoration: underline; white-space: nowrap; }
+      .prompt-card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 18px; margin-bottom: 14px; }
+      .prompt-text { white-space: pre-wrap; font-size: 13px; margin: 8px 0 12px; }
+      .q-label { display: block; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; margin: 28px 0 8px; color: var(--deep-green); }
+      .q-input { display: block; width: 100%; padding: 12px 14px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.7; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; resize: vertical; }
+      .q-input:focus { outline: 1px solid var(--deep-green); }
+      .save { margin-top: 34px; background: var(--deep-green); color: var(--ivory); padding: 13px 30px; border: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
+      .save:disabled { opacity: 0.5; cursor: wait; }
+      .up-zone { background: var(--pale-ivory); border: 1px dashed rgba(76,59,21,0.35); padding: 34px 24px; text-align: center; }
+      .up-note { font-size: 12px; opacity: 0.7; margin: 8px 0 0; }
+      .up-row { display: flex; align-items: center; gap: 16px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 12px 16px; margin-bottom: 10px; }
+      .up-thumb { width: 54px; height: 54px; object-fit: cover; border: 1px solid rgba(76,59,21,0.25); background: #fff; flex: none; }
+      .up-thumb.doc { display: flex; align-items: center; justify-content: center; font-size: 18px; background: #fff; }
+      .drive-box { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 22px 26px; margin-bottom: 22px; text-align: center; }
+      .drive-btn { display: inline-block; margin-top: 12px; background: var(--deep-green); color: var(--ivory); padding: 12px 26px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; text-decoration: none; }
+      .drive-btn:hover { opacity: 0.85; }
+      .inv-card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 22px 26px; margin-bottom: 18px; }
+      .inv-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
+      .inv-num { font-size: 12px; letter-spacing: 0.08em; opacity: 0.95; margin: 0 0 2px; }
+      .inv-title { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 22px; color: var(--deep-green); margin: 0; }
+      .inv-status { font-size: 12px; letter-spacing: 0.06em; white-space: nowrap; font-style: italic; }
+      .inv-status.paid { font-style: normal; font-weight: bold; color: var(--deep-green); }
+      .inv-items { width: 100%; border-collapse: collapse; margin: 14px 0 8px; }
+      .inv-items td { padding: 7px 0; font-size: 13px; border-bottom: 1px dotted rgba(76,59,21,0.25); vertical-align: top; }
+      .inv-items td.amt { text-align: right; white-space: nowrap; padding-left: 18px; }
+      .inv-totals { font-size: 13px; }
+      .inv-totals .row-line { display: flex; justify-content: space-between; max-width: 320px; margin-left: auto; padding: 3px 0; opacity: 1; }
+      .inv-totals .row-line.total { font-weight: bold; opacity: 1; font-size: 15px; color: var(--deep-green); border-top: 1px solid rgba(76,59,21,0.3); margin-top: 4px; padding-top: 7px; }
+      .inv-due { font-size: 13px; opacity: 1; margin: 12px 0 0; }
+      .inv-pay { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+      .pay-btn { display: inline-block; background: var(--deep-green); color: var(--ivory); border: 0; padding: 12px 26px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; text-decoration: none; }
+      .pay-btn:hover { opacity: 0.85; }
+      .pay-btn.alt { background: transparent; color: var(--deep-green); border: 1px solid rgba(76,59,21,0.4); }
+      .bank-box { display: none; margin-top: 14px; background: var(--ivory); border: 1px solid rgba(76,59,21,0.3); padding: 18px 22px; font-size: 13px; }
+      .bank-box.open { display: block; }
+      .bank-line { display: flex; justify-content: space-between; gap: 14px; padding: 4px 0; }
+      .bank-line .k { opacity: 1; }
+      .bank-line .v { font-weight: bold; }
+      .inv-abn { margin: 18px 0 0; font-size: 11px; letter-spacing: 0.06em; opacity: 0.8; }
+      #note-saved { display: none; margin-left: 12px; font-style: italic; opacity: 0.7; }
+      #q-done { display: none; text-align: center; padding: 20px 0 0; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 21px; }
+      #up-msg { display: none; text-align: center; font-size: 13px; margin: 14px 0 0; font-style: italic; }
+      .footnote { margin-top: 72px; text-align: center; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
+      .footnote a { color: var(--green); }
+      @media (max-width: 640px) { .menu-btn { right: 16px; } .menu-panel { right: 16px; } .mark { left: 16px; } .client-tag { left: 16px; } }
+    </style>
+  </head>
+  <body>
+    <div class="top-bar" aria-hidden="true"></div>
+    <a class="mark" href="/" aria-label="studio rjl home">studio rjl</a>
+    <div class="client-tag" id="client-tag" style="display:none;"></div>
+    <button class="menu-btn" id="menu-btn" aria-haspopup="true" aria-expanded="false">menu ▾</button>
+    <nav class="menu-panel" id="menu-panel" aria-label="portal sections">
+      <button class="menu-item" data-view="home" id="menu-home" style="display:none;">home</button>
+      <button class="menu-item active" data-view="brandscape" id="menu-main">brandscape</button>
+      <button class="menu-item" data-view="questionnaire">questionnaire</button>
+      <button class="menu-item" data-view="uploads">client upload portal</button>
+      <button class="menu-item" data-view="contract">contract</button>
+      <button class="menu-item" data-view="invoices">invoices &amp; payments</button>
+      <button class="menu-item" data-view="library">library</button>
+      <button class="menu-item" data-view="notes">notes</button>
+      <button class="menu-item" data-view="technical">technical notes</button>
+      <div class="menu-divider"></div>
+      <button class="menu-item" id="menu-signout">sign out</button>
+    </nav>
+    <div class="wrap">
+      <div id="loading">opening your brandscape…</div>
+      <div id="app" style="display:none;">
+        <div class="view" id="view-home">
+          <div class="hero">
+            <h1 class="brand" id="home-welcome">welcome</h1>
+            <p class="hero-line">a note from Rebekah</p>
+          </div>
+          <section style="margin:0;">
+            <div class="home-box">
+              <p class="home-label">status</p>
+              <div id="home-stage"></div>
+              <p class="home-sign">with love, Rebekah</p>
+            </div>
+          </section>
+        </div>
+        <div class="view on" id="view-brandscape">
+          <div class="hero">
+            <h1 class="brand" id="brand"></h1>
+            <p class="hero-line" id="greet"></p>
+          </div>
+          <nav class="chips" aria-label="project sections">
+            <a href="#logo" class="brand-only">logo</a><a href="#profile-logos" class="brand-only">profile logos</a><a href="#colours" class="brand-only">colours</a><a href="#typography" class="brand-only">typography</a><a href="#imagery">imagery</a><a href="#textures" class="brand-only">textures</a><a href="#templates" class="brand-only">templates</a><a href="#lockups" class="brand-only">lock-ups</a><a href="#prompts" class="brand-only">prompt library</a><a href="#structure" class="web-only" style="display:none;">structure</a><a href="#copy" class="web-only" style="display:none;">copy &amp; content</a><a href="#links" class="web-only" style="display:none;">links</a><a href="#hosting" class="web-only" style="display:none;">hosting</a>
+          </nav>
+          <section id="logo" class="brand-only">
+            <h2>logo</h2>
+            <p class="section-line">your mark in all its versions: yours to take, right-click freely.</p>
+            <div class="variants" id="logo-toggle"></div>
+            <div id="logo-stage"></div>
+          </section>
+          <section id="profile-logos" class="brand-only">
+            <h2>profile logos</h2>
+            <p class="section-line">squared-up marks for profile pictures and socials.</p>
+            <div class="grid" id="profile-grid"></div>
+          </section>
+          <section id="colours" class="brand-only">
+            <h2>colours</h2>
+            <p class="section-line">the palette of your brandscape: click to copy any code.</p>
+            <div class="grid" id="colours-grid"></div>
+          </section>
+          <section id="typography" class="brand-only">
+            <h2>typography</h2>
+            <p class="section-line">your typefaces and pairings.</p>
+            <div class="row-list" id="type-list"></div>
+          </section>
+          <section id="imagery">
+            <h2>imagery</h2>
+            <p class="section-line">curated imagery for your brand: yours to take, right-click freely.</p>
+            <div class="grid" id="images-grid"></div>
+          </section>
+          <section id="textures" class="brand-only">
+            <h2>textures</h2>
+            <p class="section-line">the tactile layer of your brandscape.</p>
+            <div class="grid" id="textures-grid"></div>
+          </section>
+          <section id="templates" class="brand-only">
+            <h2>templates</h2>
+            <p class="section-line">ready-made layouts carrying your brand into the world.</p>
+            <div class="row-list" id="templates-list"></div>
+          </section>
+          <section id="lockups" class="brand-only">
+            <h2>brand lock-ups</h2>
+            <p class="section-line">examples of your mark at work: signatures, pairings and compositions.</p>
+            <div class="grid" id="lockups-grid"></div>
+          </section>
+          <section id="prompts">
+            <h2>prompt library</h2>
+            <p class="section-line">words to conjure your brand with: copy any prompt and make it yours.</p>
+            <div id="prompts-list"></div>
+          </section>
+          <section id="structure" class="web-only" style="display:none;">
+            <h2>structure</h2>
+            <p class="section-line">the skeleton of your site: pages, flow and sitemap.</p>
+            <div class="row-list" id="structure-list"></div>
+          </section>
+          <section id="copy" class="web-only" style="display:none;">
+            <h2>copy &amp; content</h2>
+            <p class="section-line">the words: headlines, page copy and bios, ready to place.</p>
+            <div id="copy-list"></div>
+          </section>
+          <section id="links" class="web-only" style="display:none;">
+            <h2>links &amp; connections</h2>
+            <p class="section-line">the connections: redirects, backlinks and profiles.</p>
+            <div class="row-list" id="links-list"></div>
+          </section>
+          <section id="hosting" class="web-only" style="display:none;">
+            <h2>hosting &amp; domains</h2>
+            <p class="section-line">where your sovereign site lives: domain and settings, owned outright.</p>
+            <div class="row-list" id="hosting-list"></div>
+          </section>
+        </div>
+        <div class="view" id="view-questionnaire">
+          <section style="margin-top:0;">
+            <h2 id="q-head">questionnaire: brand information</h2>
+            <p class="section-line" id="q-sub">a few questions so Rebekah can see your work through your eyes: rambling welcome.</p>
+            <div id="q-wrap">
+              <form id="qform">
+                <label class="q-label" for="q1">tell me about your work: what are you making, and for whom?</label>
+                <textarea class="q-input" id="q1" rows="4"></textarea>
+                <label class="q-label" for="q2">your brand as it stands: what do you love about it, and what's quietly not working?</label>
+                <textarea class="q-input" id="q2" rows="4"></textarea>
+                <label class="q-label" for="q3">three words for the feeling your brand should carry.</label>
+                <textarea class="q-input" id="q3" rows="2"></textarea>
+                <label class="q-label" for="q4">whose world do you admire? (brands, places, makers: links welcome.)</label>
+                <textarea class="q-input" id="q4" rows="4"></textarea>
+                <label class="q-label" for="q5">any must-keeps: an existing logo, fonts, colours you're attached to?</label>
+                <textarea class="q-input" id="q5" rows="4"></textarea>
+                <label class="q-label" for="q6">where will the brandscape live first? (web, print, packaging, socials.)</label>
+                <textarea class="q-input" id="q6" rows="4"></textarea>
+                <label class="q-label" for="q7">anything else at all.</label>
+                <textarea class="q-input" id="q7" rows="4"></textarea>
+                <button class="save" id="q-send" type="submit">send my answers</button>
+              </form>
+            </div>
+            <p id="q-done">thank you: your answers are with Rebekah. ✨</p>
+          </section>
+        </div>
+        <div class="view" id="view-uploads">
+          <section style="margin-top:0;">
+            <h2>client upload portal</h2>
+            <p class="section-line">share your inspiration: images, briefs, brand files. everything you add here is kept for your project.</p>
+            <div class="drive-box" id="drive-box" style="display:none;">
+              <p style="margin:0;">bigger files? drop them straight into the studio's google drive —</p>
+              <a class="drive-btn" id="drive-link" href="#" target="_blank" rel="noopener">upload to google drive ↗</a>
+            </div>
+            <div class="up-zone">
+              <input type="file" id="up-input" multiple style="display:none;">
+              <button class="copy" style="margin-top:0; padding: 12px 30px; font-size: 13px;" id="up-choose" type="button">choose files</button>
+              <p class="up-note">up to 10 MB each: images and documents.</p>
+            </div>
+            <p id="up-msg"></p>
+            <div id="up-list" style="margin-top:26px;"></div>
+          </section>
+        </div>
+        <div class="view" id="view-contract">
+          <section style="margin-top:0;">
+            <h2>contract</h2>
+            <p class="section-line">your agreement lives here: ready to read and sign when the time comes.</p>
+            <p class="empty">your contract will appear here when it's ready. Rebekah will walk you through it personally.</p>
+          </section>
+        </div>
+        <div class="view" id="view-technical">
+          <section style="margin-top:0;">
+            <h2>technical notes</h2>
+            <p class="section-line">the behind-the-scenes record of your project: hosting, domain, connections and handover notes, kept so you can always retrace steps or pass this project on.</p>
+            <div id="tech-list"><p class="empty">technical notes will appear here as your project develops.</p></div>
+          </section>
+        </div>
+        <div class="view" id="view-invoices">
+          <section style="margin-top:0;">
+            <h2>invoices &amp; payments</h2>
+            <p class="section-line">your project account</p>
+            <div id="inv-allowance" style="display:none;">
+              <div class="allowance-labels">
+                <span id="allowance-total"></span>
+                <span id="allowance-billed"></span>
+              </div>
+              <div class="allowance-track"><div class="allowance-fill" id="allowance-fill"></div></div>
+            </div>
+            <div id="inv-list"></div>
+          </section>
+        </div>
+        <div class="view" id="view-library">
+          <section style="margin-top:0;">
+            <h2>library</h2>
+            <p class="section-line">every image of your brandscape, gathered in one place.</p>
+            <div class="grid" id="library-grid"></div>
+          </section>
+        </div>
+        <div class="view" id="view-notes">
+          <section style="margin-top:0;">
+            <h2>notes</h2>
+            <p class="section-line">a quiet page for your thoughts: anything saved here is kept for your project.</p>
+            <textarea class="q-input" id="note" rows="8" placeholder="scribbles, sparks, things not to forget…"></textarea>
+            <div>
+              <button class="save" id="note-save" type="button">save note</button>
+              <span id="note-saved">saved ✓</span>
+            </div>
+          </section>
+        </div>
+        <p class="footnote" id="footnote"></p>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var API = "https://rjl-publisher-insights-agent-a07f3048.base44.app/functions";
+        var token = "";
+        try { token = sessionStorage.getItem("rjl_portal_token") || ""; } catch (err) {}
+        if (!token) { location.replace("/client/"); return; }
+
+        function esc(s) {
+          return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        }
+        function post(path, payload) {
+          return fetch(API + "/" + path, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          }).then(function (r) { return r.json(); });
+        }
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text; document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); } catch (e) {}
+          document.body.removeChild(ta);
+        }
+        function copyText(btn, text) {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () {
+              btn.textContent = "copied ✨";
+              setTimeout(function () { btn.textContent = "copy"; }, 1800);
+            }).catch(function () { fallbackCopy(text); btn.textContent = "copied ✨"; setTimeout(function () { btn.textContent = "copy"; }, 1800); });
+          } else {
+            fallbackCopy(text); btn.textContent = "copied ✨";
+            setTimeout(function () { btn.textContent = "copy"; }, 1800);
+          }
+        }
+        function empty(id) {
+          var el = document.getElementById(id);
+          if (el) el.innerHTML = '<p class="empty">still in the studio: being made for you with love. this will appear here soon.</p>';
+        }
+        function imageCard(it) {
+          var card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = (it.url ? '<img class="asset" src="' + esc(it.url) + '" alt="' + esc(it.title || "brand asset") + '" loading="lazy">' : "") +
+            '<p class="card-title">' + esc(it.title) + '</p>' +
+            (it.meta ? '<p class="meta">' + esc(it.meta) + '</p>' : "");
+          return card;
+        }
+        function fillGrid(gridId, items) {
+          var grid = document.getElementById(gridId);
+          if (!grid) return;
+          if (!items || items.length === 0) { empty(gridId); return; }
+          items.forEach(function (it) { grid.appendChild(imageCard(it)); });
+        }
+        function fmtBytes(n) {
+          n = Number(n || 0);
+          if (n >= 1048576) return (n / 1048576).toFixed(1) + " MB";
+          if (n >= 1024) return Math.round(n / 1024) + " KB";
+          return n + " B";
+        }
+        var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        function fmtDate(ms) {
+          var d = new Date(Number(ms));
+          return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear();
+        }
+        function fmtMoney(n) {
+          return "$" + Number(n || 0).toLocaleString("en-AU", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+        function fmtIso(iso) {
+          var d = new Date(String(iso || "") + "T00:00:00");
+          if (isNaN(d)) return "";
+          return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear();
+        }
+        function invStatus(inv) {
+          if (inv.kind === "quote") return '<span class="inv-status">quote · for your review</span>';
+          if (inv.status === "paid") return '<span class="inv-status paid">paid ✓</span>';
+          if (inv.status === "partial") return '<span class="inv-status">part payment received ✨</span>';
+          if (inv.status === "upcoming") return '<span class="inv-status">due on delivery</span>';
+          return '<span class="inv-status">awaiting payment</span>';
+        }
+        function renderInvoices(invoices, bank, abn) {
+          var list = document.getElementById("inv-list");
+          if (!list) return;
+          if (!invoices || invoices.length === 0) {
+            list.innerHTML = '<p class="empty">invoices and progress payments will be tracked here: a clear picture of where your project stands.</p>';
+            return;
+          }
+          var allowance = 0, billed = 0;
+          (invoices || []).forEach(function (inv) {
+            allowance += Number(inv.total || 0);
+            if (inv.status !== "upcoming") billed += Number(inv.total || 0);
+          });
+          var bar = document.getElementById("inv-allowance");
+          if (bar && allowance > 0) {
+            var pct = Math.min(100, Math.round((billed / allowance) * 100));
+            document.getElementById("allowance-total").innerHTML = "total project allowance <b>" + fmtMoney(allowance) + "</b>";
+            document.getElementById("allowance-billed").innerHTML = "billed to date <b>" + fmtMoney(billed) + "</b> · " + pct + "% of works";
+            document.getElementById("allowance-fill").style.width = pct + "%";
+            bar.style.display = "block";
+          }
+          invoices.slice().sort(function (a, b) {
+            var au = a.status === "upcoming" ? 1 : 0;
+            var bu = b.status === "upcoming" ? 1 : 0;
+            if (au !== bu) return au - bu;
+            return String(b.invoice_number || "").localeCompare(String(a.invoice_number || ""));
+          }).forEach(function (inv) {
+            var card = document.createElement("div");
+            card.className = "inv-card" + ((inv.status === "upcoming" && inv.kind !== "quote") ? " inv-upcoming" : "");
+            var rows = (inv.items || []).map(function (it) {
+              var desc = esc(it.description).replace(/\n/g, "<br>").replace(/^(.*?)\s*\((project[^)]*)\)\s*$/, "$1<br>($2)");
+              return '<tr><td>' + desc + '</td><td class="amt">' + fmtMoney(it.amount) + '</td></tr>';
+            }).join("");
+            var totals = '<div class="inv-totals">' +
+              '<div class="row-line"><span>subtotal</span><span>' + fmtMoney(inv.subtotal) + '</span></div>' +
+              '<div class="row-line"><span>gst</span><span>' + fmtMoney(inv.gst) + '</span></div>' +
+              '<div class="row-line total"><span>total</span><span>' + fmtMoney(inv.total) + '</span></div></div>';
+            var dueTxt = fmtIso(inv.due_date);
+            var dueLine;
+            if (inv.kind === "quote") {
+              dueLine = "a quote for your review — no payment due yet";
+            } else if (inv.status === "paid") {
+              dueLine = "paid in full: thank you ✨";
+            } else if (inv.status === "upcoming") {
+              dueLine = "scheduled: invoiced on delivery of your new site";
+            } else if (inv.status === "partial") {
+              dueLine = fmtMoney(inv.amount_paid) + " received: " + fmtMoney(inv.balance) + " remaining" + (dueTxt ? ", due " + dueTxt : "");
+            } else {
+              dueLine = dueTxt ? "due " + dueTxt : "";
+            }
+            var pay = "";
+            var methods = String(inv.payment_methods || "square,bank");
+            var btns = [];
+            if (inv.balance > 0 && inv.status !== "paid" && inv.status !== "upcoming" && inv.kind !== "quote") {
+              if (methods.indexOf("square") >= 0 && inv.square_url) {
+                btns.push('<a class="pay-btn" href="' + esc(inv.square_url) + '" target="_blank" rel="noopener">pay by card ↗</a>');
+              }
+              if (methods.indexOf("bank") >= 0 && bank) {
+                btns.push('<button class="pay-btn alt" type="button">pay by bank transfer ▾</button>');
+              }
+            }
+            btns.push('<a class="open-link" download="studiorjl-' + (inv.kind === "quote" ? "quote" : "invoice") + '-' + esc(String(inv.invoice_number || "").toLowerCase()) + '.pdf" href="' + API + '/portalInvoicePdf?token=' + encodeURIComponent(token) + '&invoice=' + encodeURIComponent(inv.invoice_number) + '">download ' + (inv.kind === "quote" ? "quote" : "invoice") + ' pdf ↗</a>');
+            pay = '<div class="inv-pay">' + btns.join("") + '</div>';
+            if (inv.balance > 0 && inv.status !== "paid" && inv.status !== "upcoming" && inv.kind !== "quote" && methods.indexOf("bank") >= 0 && bank) {
+              pay += '<div class="bank-box">' +
+                '<p style="margin:0 0 10px;">pay direct from your bank</p>' +
+                '<div class="bank-line"><span class="k">account name</span><span class="v">' + esc(bank.account_name) + '</span></div>' +
+                '<div class="bank-line"><span class="k">bsb</span><span class="v">' + esc(bank.bsb) + '</span></div>' +
+                '<div class="bank-line"><span class="k">account number</span><span class="v">' + esc(bank.account_number) + '</span></div>' +
+                '<div class="bank-line"><span class="k">reference</span><span class="v">' + esc(inv.reference || inv.invoice_number) + '</span></div>' +
+                '<p style="margin:12px 0 0;font-size:12px;opacity:0.95;">please use ' + esc(inv.reference || inv.invoice_number) + ' as the reference so your payment lands in the right place.</p>' +
+                '</div>';
+            }
+            card.innerHTML =
+              '<div class="inv-head"><div><p class="inv-num">' + esc(inv.invoice_number) + (inv.kind === "quote" ? ' · quote' : (inv.status === "upcoming" ? ' · to be issued' : (fmtIso(inv.issue_date) ? ' · issued ' + fmtIso(inv.issue_date) : ''))) + '</p>' +
+              '<p class="inv-title">' + esc(inv.title) + '</p></div>' + invStatus(inv) + '</div>' +
+              '<table class="inv-items"><tbody>' + rows + '</tbody></table>' + totals +
+              (dueLine ? '<p class="inv-due">' + dueLine + '</p>' : '') + pay +
+              (abn ? '<p class="inv-abn">studio rjl · Rebekah Jane Lamb · abn ' + esc(abn) + '</p>' : '');
+            list.appendChild(card);
+            var bankBtn = card.querySelector(".pay-btn.alt");
+            var bankBox = card.querySelector(".bank-box");
+            if (bankBtn && bankBox) {
+              bankBtn.addEventListener("click", function () {
+                var open = bankBox.classList.toggle("open");
+                bankBtn.textContent = open ? "hide bank details ▴" : "pay by bank transfer ▾";
+              });
+            }
+          });
+        }
+
+        // ---- side panel menu
+        var panel = document.getElementById("menu-panel");
+        var menuBtn = document.getElementById("menu-btn");
+        function closeMenu() {
+          panel.classList.remove("open");
+          menuBtn.setAttribute("aria-expanded", "false");
+        }
+        menuBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var open = panel.classList.toggle("open");
+          menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        document.addEventListener("click", function (e) {
+          if (!panel.contains(e.target)) closeMenu();
+        });
+        function showView(name) {
+          var views = document.querySelectorAll(".view");
+          for (var i = 0; i < views.length; i++) views[i].classList.remove("on");
+          var el = document.getElementById("view-" + name);
+          if (el) el.classList.add("on");
+          var btns = document.querySelectorAll(".menu-item[data-view]");
+          for (var j = 0; j < btns.length; j++) btns[j].classList.toggle("active", btns[j].getAttribute("data-view") === name);
+          closeMenu();
+          window.scrollTo(0, 0);
+        }
+        var menuItems = document.querySelectorAll(".menu-item[data-view]");
+        for (var k = 0; k < menuItems.length; k++) {
+          menuItems[k].addEventListener("click", function () { showView(this.getAttribute("data-view")); });
+        }
+        document.getElementById("menu-signout").addEventListener("click", function () {
+          try { sessionStorage.removeItem("rjl_portal_token"); } catch (err) {}
+          location.href = "/client/";
+        });
+
+        var byType = {};
+        var uploads = [];
+        var logoVariants = [["logo", "logo"], ["monogram", "monogram"], ["brandmark", "brand mark"], ["wordmark", "word mark"]];
+        var currentVariant = "logo";
+
+        function renderLogo() {
+          var stage = document.getElementById("logo-stage");
+          var toggle = document.getElementById("logo-toggle");
+          toggle.innerHTML = "";
+          logoVariants.forEach(function (v) {
+            var b = document.createElement("button");
+            b.className = "variant" + (v[0] === currentVariant ? " active" : "");
+            b.type = "button"; b.textContent = v[1];
+            b.addEventListener("click", function () { currentVariant = v[0]; renderLogo(); });
+            toggle.appendChild(b);
+          });
+          stage.innerHTML = "";
+          var items = byType[currentVariant] || [];
+          if (items.length === 0) {
+            stage.innerHTML = '<p class="empty">still in the studio: being made for you with love. this will appear here soon.</p>';
+            return;
+          }
+          if (items.length === 1) {
+            var hero = document.createElement("div");
+            hero.className = "logo-hero";
+            hero.innerHTML = (items[0].url ? '<img src="' + esc(items[0].url) + '" alt="' + esc(items[0].title || "logo") + '">' : "") +
+              (items[0].title ? '<p class="card-title" style="margin:10px 0 0;">' + esc(items[0].title) + '</p>' : "") +
+              (items[0].meta ? '<p class="meta">' + esc(items[0].meta) + '</p>' : "");
+            var dl = document.createElement("a");
+            dl.className = "copy"; dl.style.display = "inline-block"; dl.style.textDecoration = "none";
+            dl.href = items[0].url || "#"; dl.setAttribute("download", ""); dl.textContent = "download";
+            hero.appendChild(dl);
+            stage.appendChild(hero);
+          } else {
+            var grid = document.createElement("div");
+            grid.className = "grid";
+            stage.appendChild(grid);
+            items.forEach(function (it) { grid.appendChild(imageCard(it)); });
+          }
+        }
+
+        function renderUploads() {
+          var list = document.getElementById("up-list");
+          list.innerHTML = "";
+          if (uploads.length === 0) {
+            list.innerHTML = '<p class="empty">nothing shared yet: your uploads will gather here.</p>';
+            return;
+          }
+          uploads.forEach(function (u) {
+            var row = document.createElement("div");
+            row.className = "up-row";
+            var href = API + "/portalFile?token=" + encodeURIComponent(token) + "&id=" + encodeURIComponent(u.id);
+            var isImg = String(u.kind || "").indexOf("image/") === 0;
+            row.innerHTML =
+              (isImg
+                ? '<img class="up-thumb" src="' + esc(href) + '" alt="' + esc(u.filename) + '" loading="lazy">'
+                : '<div class="up-thumb doc">📄</div>') +
+              '<p class="meta" style="flex:1;margin:0;">' + esc(u.filename) + '<br><span style="opacity:0.6;">' + fmtBytes(u.size) + '</span></p>';
+            var a = document.createElement("a");
+            a.className = "open-link"; a.href = href; a.setAttribute("download", ""); a.textContent = "download ↗";
+            row.appendChild(a);
+            list.appendChild(row);
+          });
+        }
+
+        function setUploading(state) {
+          var btn = document.getElementById("up-choose");
+          btn.disabled = state;
+          btn.textContent = state ? "uploading…" : "choose files";
+        }
+        function upMsg(text) {
+          var m = document.getElementById("up-msg");
+          m.textContent = text;
+          m.style.display = "block";
+          setTimeout(function () { m.style.display = "none"; }, 5000);
+        }
+
+        post("portalGet", { token: token }).then(function (d) {
+          if (!d.ok) { location.replace("/client/"); return; }
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("app").style.display = "block";
+          document.getElementById("brand").textContent = d.brand_name || "your brandscape";
+          document.getElementById("greet").textContent = "welcome, " + (d.client_name || "friend") + " your project all in one place.";
+          var isWeb = d.project_type === "web";
+          if (d.brand_name) {
+            var ctag = document.getElementById("client-tag");
+            ctag.textContent = d.brand_name;
+            ctag.style.display = "block";
+          }
+          if (isWeb) {
+            // menu stays "brandscape": it is the brandscape tab
+            document.getElementById("q-head").textContent = "questionnaire: website + development";
+            document.getElementById("q-sub").textContent = "a few questions so Rebekah can see the site through your eyes: rambling welcome.";
+            var webQ = [
+              "tell me about the business this site is for: what does it do, and for whom?",
+              "what must the new site achieve? (a clear profile to point people to, enquiries, credibility, portfolio...)",
+              "what pages or content need to exist? (about, projects, CV, contact...)",
+              "whose world do you admire? (sites, brands, makers: links welcome.)",
+              "any must-keeps: existing logo, copy, imagery, domain or hosting logins?",
+              "where should enquiries land? (email, LinkedIn, a form...)",
+              "anything else at all."
+            ];
+            var qLabels = document.querySelectorAll("#qform .q-label");
+            for (var qi = 0; qi < qLabels.length && qi < webQ.length; qi++) qLabels[qi].textContent = webQ[qi];
+            var brandOnly = document.querySelectorAll(".brand-only");
+            for (var bo = 0; bo < brandOnly.length; bo++) brandOnly[bo].style.display = "none";
+            var webOnly = document.querySelectorAll(".web-only");
+            for (var wo = 0; wo < webOnly.length; wo++) webOnly[wo].style.display = "";
+          }
+
+          (d.content || []).forEach(function (item) {
+            (byType[item.type] = byType[item.type] || []).push(item);
+          });
+          uploads = d.uploads || [];
+
+          // home page: status note from Rebekah (shown when one exists)
+          var hNotes = (byType.status_note || []).slice().sort(function (a, b) { return (b.sort_order || 0) - (a.sort_order || 0); });
+          if (hNotes.length) {
+            document.getElementById("menu-home").style.display = "";
+            document.getElementById("home-welcome").textContent = "welcome, " + (d.client_name || "friend");
+            document.getElementById("home-stage").innerHTML = '<p class="home-note">' + esc(hNotes[0].meta || "").replace(/\n/g, "<br>") + '</p>';
+            showView("home");
+          }
+
+          // footnote with the 30-day window
+          var foot = "<a href=\"https://studiorjl.com\">studio rjl</a>";
+          if (d.expires_at) foot = "your portal is open until " + fmtDate(d.expires_at) + " · " + foot;
+          document.getElementById("footnote").innerHTML = foot;
+
+          // logo variants: open on the first version with content
+          var firstWith = null;
+          logoVariants.forEach(function (v) { if (!firstWith && (byType[v[0]] || []).length > 0) firstWith = v[0]; });
+          currentVariant = firstWith || "logo";
+          renderLogo();
+
+          fillGrid("profile-grid", byType.profile_logo);
+          fillGrid("library-grid", []
+            .concat(byType.logo || [])
+            .concat(byType.monogram || [])
+            .concat(byType.brandmark || [])
+            .concat(byType.wordmark || [])
+            .concat(byType.profile_logo || [])
+            .concat(byType.image || [])
+            .concat(byType.texture || [])
+            .concat(byType.lockup || []));
+
+          // colours
+          var cg = document.getElementById("colours-grid");
+          if ((byType.colour || []).length === 0) { empty("colours-grid"); } else {
+            byType.colour.forEach(function (c) {
+              var card = document.createElement("div");
+              card.className = "card";
+              var hex = (c.meta || "").trim();
+              card.innerHTML = '<div class="swatch" style="background:' + esc(hex) + '"></div>' +
+                '<p class="card-title">' + esc(c.title || hex) + '</p>' +
+                '<p class="meta">' + esc(hex) + '</p>';
+              var btn = document.createElement("button");
+              btn.className = "copy"; btn.type = "button"; btn.textContent = "copy";
+              btn.addEventListener("click", function () { copyText(btn, hex); });
+              card.appendChild(btn);
+              cg.appendChild(card);
+            });
+          }
+
+          // typography
+          var tl = document.getElementById("type-list");
+          if ((byType.typography || []).length === 0) { empty("type-list"); } else {
+            byType.typography.forEach(function (t) {
+              var row = document.createElement("div");
+              row.className = "row";
+              row.innerHTML = '<div><p class="card-title" style="margin:0;">' + esc(t.title) + '</p><p class="meta">' + esc(t.meta) + '</p></div>';
+              var btn = document.createElement("button");
+              btn.className = "copy"; btn.type = "button"; btn.textContent = "copy";
+              btn.addEventListener("click", function () { copyText(btn, t.meta || t.title); });
+              row.appendChild(btn);
+              tl.appendChild(row);
+            });
+          }
+
+          // imagery + textures + lock-ups
+          [["image", "images-grid"], ["texture", "textures-grid"], ["lockup", "lockups-grid"]].forEach(function (pair) {
+            fillGrid(pair[1], byType[pair[0]] || []);
+          });
+
+          // templates
+          var tpl = document.getElementById("templates-list");
+          if ((byType.template || []).length === 0) { empty("templates-list"); } else {
+            byType.template.forEach(function (t) {
+              var row = document.createElement("div");
+              row.className = "row";
+              row.innerHTML = '<div><p class="card-title" style="margin:0;">' + esc(t.title) + '</p><p class="meta">' + esc(t.meta) + '</p></div>';
+              if (t.url) {
+                var a = document.createElement("a");
+                a.className = "open-link"; a.href = t.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "open ↗";
+                row.appendChild(a);
+              }
+              tpl.appendChild(row);
+            });
+          }
+
+          // prompts
+          var pl = document.getElementById("prompts-list");
+          if ((byType.prompt || []).length === 0) { empty("prompts-list"); } else {
+            byType.prompt.forEach(function (p) {
+              var card = document.createElement("div");
+              card.className = "prompt-card";
+              card.innerHTML = '<p class="card-title" style="margin:0 0 8px;">' + esc(p.title) + '</p><p class="prompt-text">' + esc(p.meta) + '</p>';
+              var btn = document.createElement("button");
+              btn.className = "copy"; btn.type = "button"; btn.textContent = "copy prompt";
+              btn.addEventListener("click", function () { copyText(btn, p.meta || p.title); });
+              card.appendChild(btn);
+              pl.appendChild(card);
+            });
+          }
+
+          // web project sections
+          if (isWeb) {
+            var renderRows = function (listId, rows) {
+              var el = document.getElementById(listId);
+              if (!el) return;
+              if (!rows || rows.length === 0) { empty(listId); return; }
+              rows.forEach(function (t) {
+                var row = document.createElement("div");
+                row.className = "row";
+                row.innerHTML = '<div><p class="card-title" style="margin:0;">' + esc(t.title) + '</p><p class="meta">' + esc(t.meta) + '</p></div>';
+                if (t.url) {
+                  var a = document.createElement("a");
+                  a.className = "open-link"; a.href = t.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "open ↗";
+                  row.appendChild(a);
+                }
+                el.appendChild(row);
+              });
+            };
+            renderRows("structure-list", byType.structure);
+            renderRows("links-list", byType.links);
+            renderRows("hosting-list", byType.hosting);
+            var cl = document.getElementById("copy-list");
+            if (!byType.copy || byType.copy.length === 0) { empty("copy-list"); } else {
+              byType.copy.forEach(function (t) {
+                var card = document.createElement("div");
+                card.className = "prompt-card";
+                card.innerHTML = '<p class="card-title" style="margin:0 0 8px;">' + esc(t.title) + '</p><p class="prompt-text">' + esc(t.meta) + '</p>';
+                var btn = document.createElement("button");
+                btn.className = "copy"; btn.type = "button"; btn.textContent = "copy text";
+                btn.addEventListener("click", function () { copyText(btn, t.meta || t.title); });
+                card.appendChild(btn);
+                cl.appendChild(card);
+              });
+            }
+          }
+
+          // google drive link (per-client, curated by Rebekah)
+          var driveItem = (byType.drive_link || [])[0];
+          if (driveItem && driveItem.url) {
+            document.getElementById("drive-box").style.display = "block";
+            document.getElementById("drive-link").href = driveItem.url;
+          }
+
+          // uploads
+          renderUploads();
+          var upInput = document.getElementById("up-input");
+          document.getElementById("up-choose").addEventListener("click", function () { upInput.click(); });
+          upInput.addEventListener("change", function () {
+            var files = Array.prototype.slice.call(upInput.files || []);
+            upInput.value = "";
+            if (files.length === 0) return;
+            var fd = new FormData();
+            fd.append("token", token);
+            files.forEach(function (f) { fd.append("files", f); });
+            setUploading(true);
+            fetch(API + "/portalUpload", { method: "POST", body: fd }).then(function (r) { return r.json(); }).then(function (res) {
+              setUploading(false);
+              if (res.ok) {
+                (res.uploaded || []).forEach(function (u) { uploads.unshift(u); });
+                renderUploads();
+                var n = (res.uploaded || []).length;
+                var note = n + " file" + (n === 1 ? "" : "s") + " received, thank you ✨";
+                (res.skipped || []).forEach(function (s) { note += " · " + s.filename + " skipped: " + s.reason; });
+                upMsg(note);
+              } else {
+                upMsg(res.error || "something went wrong: please try again.");
+              }
+            }).catch(function () {
+              setUploading(false);
+              upMsg("the connection dropped: please try again.");
+            });
+          });
+
+          // notes
+          var noteItem = (byType.client_note || [])[0];
+          if (noteItem && noteItem.meta) document.getElementById("note").value = noteItem.meta;
+          document.getElementById("note-save").addEventListener("click", function () {
+            var btn = document.getElementById("note-save");
+            btn.disabled = true; btn.textContent = "saving…";
+            post("portalSaveNote", { token: token, text: document.getElementById("note").value }).then(function (r) {
+              btn.disabled = false; btn.textContent = "save note";
+              if (r.ok) {
+                document.getElementById("note-saved").style.display = "inline";
+                setTimeout(function () { document.getElementById("note-saved").style.display = "none"; }, 2200);
+              }
+            });
+          });
+
+          // technical notes (web projects: hosting, domain, connections, handover)
+          var techList = document.getElementById("tech-list");
+          var techItems = (byType.technical_note || []).slice().sort(function (a, b) { return (a.sort_order || 0) - (b.sort_order || 0); });
+          if (techItems.length && techList) {
+            techList.innerHTML = techItems.map(function (it) {
+              return '<div class="tech-card"><h3>' + esc(it.title || "") + '</h3><p>' + esc(it.meta || "").replace(/\n/g, "<br>") + '</p>' +
+                (it.url ? '<a class="open-link" href="' + esc(it.url) + '" target="_blank" rel="noopener">open ↗</a>' : '') + '</div>';
+            }).join("");
+          }
+
+          // invoices
+          post("portalGetInvoices", { token: token }).then(function (r) {
+            renderInvoices(r && r.ok ? r.invoices || [] : [], r && r.bank, r && r.abn);
+          }).catch(function () { renderInvoices([], null, ""); });
+
+          // questionnaire
+          document.getElementById("qform").addEventListener("submit", function (e) {
+            e.preventDefault();
+            var btn = document.getElementById("q-send");
+            btn.disabled = true; btn.textContent = "sending…";
+            var answers = {};
+            ["q1", "q2", "q3", "q4", "q5", "q6", "q7"].forEach(function (id) {
+              answers[id] = document.getElementById(id).value.trim();
+            });
+            post("submitClientQuestionnaire", { token: token, answers: answers }).then(function (r) {
+              if (r.ok) {
+                document.getElementById("q-wrap").style.display = "none";
+                document.getElementById("q-done").style.display = "block";
+              } else {
+                btn.disabled = false; btn.textContent = "send my answers";
+              }
+            });
+          });
+        }).catch(function () { location.replace("/client/"); });
+      })();
+    </script>
+  </body>
+</html>
