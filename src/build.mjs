@@ -1723,6 +1723,12 @@ function clientPortalPage() {
 .home-note { margin: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 15px; line-height: 2.1; }
 .home-sign { margin: 24px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; }
 .inv-card.inv-upcoming { opacity: 0.6; }
+.works-head { font-family: "Cormorant Infant", Georgia, serif; font-weight: 400; font-size: 22px; color: var(--deep-green); margin: 6px 0 12px; }
+.work-row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 12px 16px; margin-bottom: 8px; font-size: 13px; }
+.work-row .w-date { font-size: 11px; letter-spacing: 0.06em; color: #7a6a3f; display: block; }
+.work-row .w-val { white-space: nowrap; }
+.work-row .w-tag { font-size: 11px; letter-spacing: 0.06em; color: #7a6a3f; margin-left: 8px; }
+#works-panel { margin-bottom: 26px; }
 .allowance-labels { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.06em; color: #7a6a3f; margin-bottom: 8px; }
 .allowance-labels b { color: #3f3112; font-weight: bold; }
 .allowance-track { height: 12px; background: var(--pale-ivory); border: 1px solid rgba(76, 59, 21, 0.35); padding: 2px; margin-bottom: 34px; }
@@ -1990,6 +1996,10 @@ function clientPortalPage() {
               </div>
               <div class="allowance-track"><div class="allowance-fill" id="allowance-fill"></div></div>
             </div>
+            <div id="works-panel" style="display:none;">
+              <h3 class="works-head">works done</h3>
+              <div id="works-list"></div>
+            </div>
             <div id="inv-list"></div>
           </section>
         </div>
@@ -2100,15 +2110,22 @@ function clientPortalPage() {
             return;
           }
           var allowance = 0, billed = 0;
+          var projTotal = 0;
           (invoices || []).forEach(function (inv) {
+            if (Number(inv.project_total || 0) > projTotal) projTotal = Number(inv.project_total);
             allowance += Number(inv.total || 0);
             if (inv.status !== "upcoming") billed += Number(inv.total || 0);
           });
+          if (projTotal > 0) {
+            // explicit project total (e.g. quote that includes work already paid): billed = paid so far
+            allowance = projTotal;
+            billed = (invoices || []).reduce(function (sum, inv) { return sum + Number(inv.amount_paid || 0); }, 0);
+          }
           var bar = document.getElementById("inv-allowance");
           if (bar && allowance > 0) {
             var pct = Math.min(100, Math.round((billed / allowance) * 100));
             document.getElementById("allowance-total").innerHTML = "total project allowance <b>" + fmtMoney(allowance) + "</b>";
-            document.getElementById("allowance-billed").innerHTML = "billed to date <b>" + fmtMoney(billed) + "</b> · " + pct + "% of works";
+            document.getElementById("allowance-billed").innerHTML = (projTotal > 0 ? "paid to date <b>" : "billed to date <b>") + fmtMoney(billed) + "</b> · " + pct + "% of works";
             document.getElementById("allowance-fill").style.width = pct + "%";
             bar.style.display = "block";
           }
@@ -2533,6 +2550,16 @@ function clientPortalPage() {
           post("portalGetInvoices", { token: token }).then(function (r) {
             renderInvoices(r && r.ok ? r.invoices || [] : [], r && r.bank, r && r.abn);
           }).catch(function () { renderInvoices([], null, ""); });
+          post("portalGetWorkLog", { token: token }).then(function (r) {
+            if (!r || !r.ok || !r.works || !r.works.length) return;
+            var wl = document.getElementById("works-list");
+            wl.innerHTML = r.works.map(function (w) {
+              var tag = w.status === "complete" ? "complete ✓" : (w.status === "in_progress" ? "in progress" : "planned");
+              return '<div class="work-row"><div>' + (w.work_date ? '<span class="w-date">' + esc(fmtIso(w.work_date)) + '</span>' : '') + esc(w.description) + '<span class="w-tag">' + tag + '</span></div>' +
+                (w.value > 0 ? '<div class="w-val">' + fmtMoney(w.value) + '</div>' : '') + '</div>';
+            }).join("");
+            document.getElementById("works-panel").style.display = "block";
+          }).catch(function () {});
 
           // questionnaire
           document.getElementById("qform").addEventListener("submit", function (e) {
