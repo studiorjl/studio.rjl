@@ -355,10 +355,8 @@ function head({
     <link rel="preload" as="image" href="${preloadImage}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://use.typekit.net">
-    <link rel="stylesheet" href="https://use.typekit.net/sns3ynz.css">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=13">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=11">
     ${site.googleAnalyticsId ? analytics() : ""}
     ${jsonLd(organizationSchema())}
     ${jsonLd(websiteSchema())}
@@ -1434,21 +1432,19 @@ function confirmPage() {
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://use.typekit.net">
-    <link rel="stylesheet" href="https://use.typekit.net/sns3ynz.css">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
       :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
       * { box-sizing: border-box; }
-      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); display: grid; place-items: center; padding: 48px 24px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.75; }
+      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); display: grid; place-items: center; padding: 48px 24px; }
       a { color: var(--green); text-decoration: none; }
-      .mark { position: fixed; top: 28px; left: 32px; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 20px; letter-spacing: 0.08em; }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "Cormorant Infant", Georgia, serif; font-size: 20px; letter-spacing: 0.08em; }
       .wrap { max-width: 560px; text-align: center; }
-      h1 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 30px; letter-spacing: 0.02em; margin: 0 0 26px; text-transform: uppercase; }
-      #message { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; line-height: 1.9; }
+      h1 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-size: 34px; letter-spacing: 0.02em; margin: 0 0 26px; }
+      #message { font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; line-height: 1.9; }
       #message p { margin: 0 0 16px; }
       #message a { text-decoration: underline; text-underline-offset: 3px; }
-      .footnote { margin-top: 40px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
+      .footnote { margin-top: 40px; font-family: "Courier New", monospace; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
     </style>
   </head>
   <body>
@@ -1518,24 +1514,22 @@ function questionnairePage() {
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://use.typekit.net">
-    <link rel="stylesheet" href="https://use.typekit.net/sns3ynz.css">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
       :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
       * { box-sizing: border-box; }
-      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); padding: 64px 24px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.75; }
+      body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); padding: 64px 24px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.75; }
       a { color: var(--green); }
-      .mark { position: fixed; top: 28px; left: 32px; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 20px; letter-spacing: 0.08em; text-decoration: none; }
+      .mark { position: fixed; top: 28px; left: 32px; font-family: "Cormorant Infant", Georgia, serif; font-size: 20px; letter-spacing: 0.08em; text-decoration: none; }
       .wrap { max-width: 620px; margin: 0 auto; }
-      h1 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 32px; letter-spacing: 0.02em; margin: 0 0 18px; text-transform: uppercase; }
-      .intro { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 18px; line-height: 1.8; margin: 0 0 36px; }
-      .q-label { display: block; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; margin: 30px 0 8px; color: var(--deep-green); }
-      .q-input { display: block; width: 100%; padding: 12px 14px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.7; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; resize: vertical; }
+      h1 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-size: 36px; letter-spacing: 0.02em; margin: 0 0 18px; }
+      .intro { font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; line-height: 1.8; margin: 0 0 36px; }
+      .q-label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; margin: 30px 0 8px; color: var(--deep-green); }
+      .q-input { display: block; width: 100%; padding: 12px 14px; font-family: "Courier New", monospace; font-size: 14px; line-height: 1.7; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; resize: vertical; }
       .q-input:focus { outline: 1px solid var(--deep-green); }
       .meta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
-      .meta-label { display: block; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; margin: 0 0 8px; color: var(--deep-green); }
-      .send { margin: 38px 0 0; background: var(--deep-green); color: var(--ivory); padding: 15px 34px; border: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
+      .meta-label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; margin: 0 0 8px; color: var(--deep-green); }
+      .send { margin: 38px 0 0; background: var(--deep-green); color: var(--ivory); padding: 15px 34px; border: 0; font-family: "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
       .send:disabled { opacity: 0.5; cursor: wait; }
       .footnote { margin-top: 40px; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
       #done { display: none; text-align: center; padding: 32px 0 8px; }
@@ -1618,18 +1612,18 @@ function clientLoginPage() {
     <link rel="stylesheet" href="https://use.typekit.net/sns3ynz.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <style>
       :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
       * { box-sizing: border-box; }
       body { margin: 0; min-height: 100vh; background: var(--ivory); color: var(--green); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.75; }
       .mark { position: fixed; top: 28px; left: 32px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 16px; letter-spacing: 0.12em; text-decoration: none; color: var(--green); }
       .wrap { width: 100%; max-width: 500px; text-align: center; }
-      .presents { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 15px; letter-spacing: 0.28em; color: var(--deep-green); margin: 0 0 26px; }
-      h1 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 40px; letter-spacing: 0.02em; margin: 0 0 18px; color: var(--deep-green); text-transform: uppercase; }
-      .intro { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 18px; line-height: 1.8; margin: 0 0 34px; }
+      .presents { font-family: "Cormorant Infant", Georgia, serif; font-size: 15px; letter-spacing: 0.28em; color: var(--deep-green); margin: 0 0 26px; }
+      h1 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-style: italic; font-size: 44px; letter-spacing: 0.02em; margin: 0 0 18px; color: var(--deep-green); }
+      .intro { font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; line-height: 1.8; margin: 0 0 34px; }
       .field { text-align: left; margin-bottom: 24px; }
-      .label { display: block; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 18px; margin: 0 0 6px; color: var(--deep-green); }
+      .label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 18px; margin: 0 0 6px; color: var(--deep-green); }
       .input { display: block; width: 100%; padding: 12px 14px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; }
       .input:focus { outline: 1px solid var(--deep-green); }
       .enter { margin: 40px 0 0; width: 100%; background: var(--deep-green); color: var(--ivory); padding: 15px 34px; border: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
@@ -1711,7 +1705,7 @@ function clientPortalPage() {
     <link rel="stylesheet" href="https://use.typekit.net/sns3ynz.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <style>
       :root { --green: #4c3b15; --deep-green: #3f3112; --ivory: #eae4da; --pale-ivory: #f8f4ec; }
       * { box-sizing: border-box; }
@@ -1727,14 +1721,14 @@ function clientPortalPage() {
       .home-box { max-width: 640px; margin: 6px auto 80px; background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.22); padding: 34px 40px 26px; }
 .home-label { margin: 0 0 16px; font-size: 11px; letter-spacing: 0.22em; color: #806829; }
 .home-note { margin: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 15px; line-height: 2.1; }
-.home-sign { margin: 24px 0 0; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; }
+.home-sign { margin: 24px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; }
 .inv-card.inv-upcoming { opacity: 0.6; }
 .allowance-labels { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.06em; color: #7a6a3f; margin-bottom: 8px; }
 .allowance-labels b { color: #3f3112; font-weight: bold; }
 .allowance-track { height: 12px; background: var(--pale-ivory); border: 1px solid rgba(76, 59, 21, 0.35); padding: 2px; margin-bottom: 34px; }
 .allowance-fill { height: 100%; background: var(--deep-green); max-width: 100%; transition: width 1.2s ease; }
       .tech-card { background: var(--pale-ivory); border: 1px solid var(--line); padding: 20px 24px; margin-bottom: 16px; }
-      .tech-card h3 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 18px; color: var(--deep-green); margin: 0 0 10px; }
+      .tech-card h3 { font-family: "Cormorant Infant", serif; font-weight: 500; font-size: 18px; color: var(--deep-green); margin: 0 0 10px; }
       .tech-card p { font-size: 12px; line-height: 2; margin: 0 0 8px; color: var(--green); }
       .tech-card a { font-size: 11px; }
 .menu-item { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 10px 22px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.05em; color: var(--green); cursor: pointer; }
@@ -1742,9 +1736,9 @@ function clientPortalPage() {
       .menu-item.active { font-weight: bold; }
       .menu-divider { height: 1px; background: rgba(76,59,21,0.2); margin: 8px 22px; }
       .wrap { max-width: 880px; margin: 0 auto; padding: 96px 24px 96px; }
-      #loading { text-align: center; padding: 120px 0; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 20px; }
+      #loading { text-align: center; padding: 120px 0; font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 20px; }
       .hero { text-align: center; margin-bottom: 10px; }
-      .brand { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 50px; letter-spacing: 0.02em; margin: 0 0 10px; color: var(--deep-green); line-height: 1.1; text-transform: uppercase; }
+      .brand { font-family: "Cormorant Infant", Georgia, serif; font-weight: 300; font-size: 54px; letter-spacing: 0.02em; margin: 0 0 10px; color: var(--deep-green); line-height: 1.1; }
       .hero-line { font-size: 13px; opacity: 0.7; margin: 0; }
       .chips { text-align: center; margin: 30px 0 8px; line-height: 2.4; }
       .chips a { display: inline-block; font-size: 12px; letter-spacing: 0.05em; text-decoration: none; padding: 3px 12px; margin: 0 3px; border: 1px solid rgba(76,59,21,0.3); border-radius: 999px; background: var(--pale-ivory); }
@@ -1752,13 +1746,13 @@ function clientPortalPage() {
       .view { display: none; }
       .view.on { display: block; }
       section { margin-top: 56px; scroll-margin-top: 24px; }
-      h2 { font-family: "PT Sans Mono", "Courier New", monospace; font-weight: 400; font-size: 30px; color: var(--deep-green); margin: 0 0 6px; }
-      .section-line { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 17px; margin: 0 0 22px; opacity: 0.8; }
+      h2 { font-family: "Cormorant Infant", Georgia, serif; font-weight: 400; font-size: 30px; color: var(--deep-green); margin: 0 0 6px; }
+      .section-line { font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 17px; margin: 0 0 22px; opacity: 0.8; }
       .empty { font-style: italic; opacity: 0.55; font-size: 13px; padding: 26px 22px; text-align: center; background: var(--pale-ivory); border: 1px dashed rgba(76,59,21,0.3); }
       .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 18px; }
       .card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 14px; }
       .swatch { height: 96px; margin: -14px -14px 12px; border-bottom: 1px solid rgba(76,59,21,0.25); }
-      .card-title { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; color: var(--deep-green); margin: 0 0 4px; }
+      .card-title { font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; color: var(--deep-green); margin: 0 0 4px; }
       .meta { font-size: 12px; opacity: 0.75; word-break: break-word; white-space: pre-wrap; }
       .asset { width: 100%; display: block; background: #fff; }
       .logo-hero { background: #fff; border: 1px solid rgba(76,59,21,0.25); padding: 34px; text-align: center; margin-bottom: 14px; }
@@ -1775,7 +1769,7 @@ function clientPortalPage() {
       .open-link { font-size: 13px; text-decoration: underline; white-space: nowrap; }
       .prompt-card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 18px; margin-bottom: 14px; }
       .prompt-text { white-space: pre-wrap; font-size: 13px; margin: 8px 0 12px; }
-      .q-label { display: block; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 19px; margin: 28px 0 8px; color: var(--deep-green); }
+      .q-label { display: block; font-family: "Cormorant Infant", Georgia, serif; font-size: 19px; margin: 28px 0 8px; color: var(--deep-green); }
       .q-input { display: block; width: 100%; padding: 12px 14px; font-family: "antarctican-mono", "Courier New", monospace; font-size: 14px; line-height: 1.7; color: var(--green); background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.35); border-radius: 2px; resize: vertical; }
       .q-input:focus { outline: 1px solid var(--deep-green); }
       .save { margin-top: 34px; background: var(--deep-green); color: var(--ivory); padding: 13px 30px; border: 0; font-family: "antarctican-mono", "Courier New", monospace; font-size: 13px; letter-spacing: 0.08em; cursor: pointer; }
@@ -1791,7 +1785,7 @@ function clientPortalPage() {
       .inv-card { background: var(--pale-ivory); border: 1px solid rgba(76,59,21,0.25); padding: 22px 26px; margin-bottom: 18px; }
       .inv-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
       .inv-num { font-size: 12px; letter-spacing: 0.08em; opacity: 0.95; margin: 0 0 2px; }
-      .inv-title { font-family: "PT Sans Mono", "Courier New", monospace; font-size: 22px; color: var(--deep-green); margin: 0; }
+      .inv-title { font-family: "Cormorant Infant", Georgia, serif; font-size: 22px; color: var(--deep-green); margin: 0; }
       .inv-status { font-size: 12px; letter-spacing: 0.06em; white-space: nowrap; font-style: italic; }
       .inv-status.paid { font-style: normal; font-weight: bold; color: var(--deep-green); }
       .inv-items { width: 100%; border-collapse: collapse; margin: 14px 0 8px; }
@@ -1812,7 +1806,7 @@ function clientPortalPage() {
       .bank-line .v { font-weight: bold; }
       .inv-abn { margin: 18px 0 0; font-size: 11px; letter-spacing: 0.06em; opacity: 0.8; }
       #note-saved { display: none; margin-left: 12px; font-style: italic; opacity: 0.7; }
-      #q-done { display: none; text-align: center; padding: 20px 0 0; font-family: "PT Sans Mono", "Courier New", monospace; font-size: 21px; }
+      #q-done { display: none; text-align: center; padding: 20px 0 0; font-family: "Cormorant Infant", Georgia, serif; font-style: italic; font-size: 21px; }
       #up-msg { display: none; text-align: center; font-size: 13px; margin: 14px 0 0; font-style: italic; }
       .footnote { margin-top: 72px; text-align: center; font-size: 12px; letter-spacing: 0.06em; opacity: 0.6; }
       .footnote a { color: var(--green); }

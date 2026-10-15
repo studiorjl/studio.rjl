@@ -25,7 +25,7 @@ body {
   background: var(--ivory);
   color: var(--green);
   cursor: none;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   overflow-x: hidden;
 }
 
@@ -123,9 +123,9 @@ img {
   display: flex;
   align-items: center;
   gap: 24px;
-  font-family: "PT Sans Mono", "Courier New", monospace;
-  font-size: 15px;
-  font-weight: 400;
+  font-family: "Cormorant Infant", Georgia, serif;
+  font-size: 19px;
+  font-weight: 300;
   color: var(--green);
 }
 
@@ -154,7 +154,7 @@ img {
 
 .nav-dropdown summary::after {
   content: " +";
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 12px;
 }
 
@@ -186,9 +186,9 @@ img {
   border: 0;
   background: transparent;
   color: var(--gold);
-  font-family: "PT Sans Mono", "Courier New", monospace;
+  font-family: "Cormorant Infant", Georgia, serif;
   font-size: 26px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1;
 }
 
@@ -204,9 +204,9 @@ img {
 }
 
 .enquiry-button {
-  font-family: "PT Sans Mono", "Courier New", monospace;
+  font-family: "Cormorant Infant", Georgia, serif;
   font-size: 19px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .enquiry-button:hover {
@@ -241,17 +241,16 @@ h2,
 h3,
 .category {
   color: var(--gold);
-  font-family: "PT Sans Mono", "Courier New", monospace;
-  font-weight: 400;
+  font-family: "Cormorant Infant", Georgia, serif;
+  font-weight: 300;
   text-transform: lowercase;
 }
 
 h1 {
   margin: 0 0 18px;
-  font-size: clamp(30px, 5vw, 52px);
+  font-size: clamp(32px, 5vw, 56px);
   line-height: 1.05;
   text-wrap: balance;
-  text-transform: uppercase;
 }
 
 .faq-heading {
@@ -360,13 +359,13 @@ p {
 
 .services-intro {
   max-width: 84ch;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   line-height: 1.85;
   text-align: center;
 }
 
 .coming-soon {
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
 }
 
 main section,
@@ -455,9 +454,9 @@ main section.image-section {
   min-height: 1.05em;
   margin-bottom: 22px;
   color: var(--green);
-  font-family: "PT Sans Mono", "Courier New", monospace;
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 400;
+  font-family: "Cormorant Infant", Georgia, serif;
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 300;
   line-height: 1;
   text-transform: uppercase;
 }
@@ -563,7 +562,7 @@ main section.image-section {
 .editorial-card h2 {
   margin: 16px 0 0;
   color: var(--green);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 12px;
   line-height: 1.4;
   text-transform: none;
@@ -572,7 +571,7 @@ main section.image-section {
 
 .offer-card-price {
   margin: 6px 0 14px;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
   opacity: 0.7;
@@ -617,7 +616,7 @@ main section.image-section {
 
 .offer-price-line {
   margin: 26px 0 18px;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 13px;
   letter-spacing: 0.04em;
 }
@@ -654,7 +653,7 @@ main section.image-section {
 
 .portfolio-filter summary .filter-placeholder {
   color: rgba(76, 59, 21, 0.44);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-style: italic;
   font-size: 12px;
 }
@@ -680,7 +679,7 @@ main section.image-section {
   border-radius: 50%;
   background: rgba(234, 228, 218, 0.76);
   color: var(--green);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 18px;
   transform: translateY(-50%);
 }
@@ -741,7 +740,7 @@ main section.image-section {
 .shop-card h2 {
   margin: 18px 0 10px;
   color: var(--green);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 12px;
   line-height: 1.6;
 }
@@ -756,7 +755,7 @@ main section.image-section {
   display: inline-block;
   margin-top: 14px;
   color: var(--gold);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 11px;
   font-style: italic;
 }
@@ -884,7 +883,7 @@ select {
   margin-top: 12px;
   text-align: right;
   color: var(--green);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 11px;
   font-style: italic;
   text-decoration: none;
@@ -902,7 +901,7 @@ select {
   display: inline-block;
   margin-top: 18px;
   color: var(--green);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 11px;
   font-style: italic;
   text-decoration: none;
@@ -931,7 +930,7 @@ select {
 
 .article-publish-date {
   margin: 14px 0 0;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
   opacity: 0.66;
@@ -942,7 +941,7 @@ select {
   max-width: 110ch;
   margin: 0 auto;
   padding: 0 10% 90px;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 9px;
   line-height: 1.85;
   letter-spacing: 0.06em;
@@ -1045,9 +1044,9 @@ main section.faq-list {
   list-style: none;
   padding: 22px 56px 22px 24px;
   color: var(--gold);
-  font-family: "PT Sans Mono", "Courier New", monospace;
+  font-family: "Cormorant Infant", Georgia, serif;
   font-size: clamp(22px, 3vw, 30px);
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -1061,7 +1060,7 @@ main section.faq-list {
   right: 24px;
   transform: translateY(-50%);
   color: var(--green);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 18px;
 }
 
@@ -1108,7 +1107,7 @@ main section.faq-list {
 .article-enquiry-button {
   display: inline-block;
   margin: 54px auto 0;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   text-transform: lowercase;
 }
 
@@ -1121,7 +1120,7 @@ main section.faq-list {
   background: none;
   border: none;
   padding: 0;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 12px;
   color: var(--green);
   text-decoration: underline;
@@ -1161,9 +1160,9 @@ main section.faq-list {
   list-style: none;
   padding: 24px 28px;
   color: var(--gold);
-  font-family: "PT Sans Mono", "Courier New", monospace;
+  font-family: "Cormorant Infant", Georgia, serif;
   font-size: clamp(23px, 3vw, 32px);
-  font-weight: 400;
+  font-weight: 300;
   cursor: pointer;
 }
 
@@ -1174,7 +1173,7 @@ main section.faq-list {
 .home-panel summary::after {
   content: "+";
   color: var(--green);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 16px;
 }
 
@@ -1185,7 +1184,7 @@ main section.faq-list {
 .home-panel summary em {
   margin-left: auto;
   color: var(--green);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 11px;
   opacity: 0;
   transition: opacity 0.22s ease;
@@ -1212,7 +1211,7 @@ main section.faq-list {
 .home-panel ul {
   columns: 2;
   padding-left: 18px;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 11px;
   line-height: 1.8;
 }
@@ -1289,9 +1288,9 @@ footer {
 
 .footer-title {
   color: #d6c299;
-  font-family: "PT Sans Mono", "Courier New", monospace;
+  font-family: "Cormorant Infant", Georgia, serif;
   font-size: 22px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .footer-links,
@@ -1312,7 +1311,7 @@ footer {
   padding-top: 20px;
   border-top: 1px solid rgba(247, 241, 225, 0.42);
   color: var(--ivory);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 10px;
   line-height: 1.5;
   text-align: center;
@@ -1406,7 +1405,7 @@ footer {
   border: 0;
   background: transparent;
   color: var(--green);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 24px;
 }
 
@@ -1416,7 +1415,7 @@ footer {
 }
 
 .enquiry-inner h2 {
-  font-family: "PT Sans Mono", "Courier New", monospace;
+  font-family: "Cormorant Infant", Georgia, serif;
   font-weight: 400;
   font-size: 22px;
   color: var(--green);
@@ -1459,7 +1458,7 @@ footer {
 .enquiry-inner input::placeholder,
 .enquiry-inner textarea::placeholder {
   color: rgba(76, 59, 21, 0.44);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-style: italic;
 }
 
@@ -1546,7 +1545,7 @@ footer {
 
 .enquiry-inner .button {
   margin-top: 28px;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
 }
 
 .thank-you {
@@ -1732,7 +1731,7 @@ footer {
   z-index: 5;
   background: var(--deep-green);
   color: var(--ivory);
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 11px;
   letter-spacing: 0.02em;
   padding: 9px 12px 9px 33px;
@@ -1865,7 +1864,7 @@ footer {
 
 .contact-option-title {
   display: block;
-  font-family: "PT Sans Mono", "Courier New", monospace;
+  font-family: "Cormorant Infant", Georgia, serif;
   font-size: 25px;
   font-weight: 400;
   line-height: 1.2;
@@ -1874,7 +1873,7 @@ footer {
 .contact-option-sub {
   display: block;
   margin-top: 5px;
-  font-family: "antarctican-mono", "Courier New", monospace;
+  font-family: "Courier New", monospace;
   font-size: 12.5px;
   letter-spacing: 0.04em;
   opacity: 0.78;
