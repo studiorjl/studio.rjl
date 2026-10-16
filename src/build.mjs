@@ -313,7 +313,7 @@ function head({
   modifiedTime = "",
   section = "",
   tags = [],
-  robots = "index, follow, max-image-preview:large",
+  robots = "index, follow, max-image-preview:large, noai, noimageai",
   extraSchema = []
 }) {
   const pageTitle = title === site.name ? site.name : `${title} - ${site.name}`;
@@ -2675,9 +2675,33 @@ async function copyAssets() {
 async function writeStaticFiles() {
   await writeFile(path.join(dist, "styles.css"), await readFile(path.join(root, "src", "styles.css"), "utf8"));
   await writeFile(path.join(dist, "site.js"), await readFile(path.join(root, "src", "site.js"), "utf8"));
+  // AI crawler policy: search + AI discovery stay open, training crawlers are disallowed.
+  // Allowed implicitly: Googlebot, Bingbot, Applebot, OAI-SearchBot, Perplexity-User,
+  // Claude-SearchBot, Claude-User, meta-webindexer, meta-externalfetcher,
+  // meta-externalads, facebookexternalhit.
+  const trainingBots = [
+    "meta-externalagent",  // Meta AI training
+    "GPTBot",              // OpenAI training (OAI-SearchBot stays allowed)
+    "ClaudeBot",           // Anthropic training (search/user agents stay allowed)
+    "Google-Extended",     // Gemini training, does not affect Google Search
+    "CCBot",               // Common Crawl datasets
+    "Bytespider",          // ByteDance / TikTok training
+    "Amazonbot",           // Amazon AI training
+    "PerplexityBot",       // Perplexity training (Perplexity-User stays allowed)
+    "Applebot-Extended",   // Apple Intelligence training (Applebot/Siri stays allowed)
+    "Diffbot",
+    "ImagesiftBot",
+    "omgilibot",
+    "YouBot"
+  ];
   await writeFile(
     path.join(dist, "robots.txt"),
-    `User-agent: *\nAllow: /\n\nSitemap: ${canonical("/sitemap.xml")}\n`
+    `# studio rjl crawler policy\n` +
+    `# search + AI discovery welcome, AI training is not authorised\n` +
+    `# enquiries: hello@studiorjl.com\n\n` +
+    `User-agent: *\nAllow: /\n\n` +
+    trainingBots.map((bot) => `User-agent: ${bot}\nDisallow: /\n\n`).join("") +
+    `Sitemap: ${canonical("/sitemap.xml")}\n`
   );
   await writeFile(
     path.join(dist, "sitemap.xml"),
