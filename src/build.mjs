@@ -2920,7 +2920,7 @@ function clientPortalPage() {
           var techItems = (byType.technical_note || []).slice().sort(function (a, b) { return (a.sort_order || 0) - (b.sort_order || 0); });
           if (techItems.length && techList) {
             techList.innerHTML = techItems.map(function (it) {
-              return '<div class="tech-card"><h3>' + esc(it.title || "") + '</h3><p>' + esc(it.meta || "").replace(/\n/g, "<br>") + '</p>' +
+              return '<div class="tech-card"><h3>' + esc(it.title || "") + '</h3><p>' + esc(it.meta || "").replace(/\\n/g, "<br>") + '</p>' +
                 (it.url ? '<a class="open-link" href="' + esc(it.url) + '" target="_blank" rel="noopener">open ↗</a>' : '') + '</div>';
             }).join("");
           }
@@ -2979,15 +2979,15 @@ function clientPortalPage() {
               var html = '<p style="font-size:12px;letter-spacing:0.06em;color:#806829;margin:0 0 20px;">submitted on ' + esc(dateStr) + '</p>';
               ["q1", "q2", "q3", "q4", "q5", "q6", "q7"].forEach(function (qKey, idx) {
                 var qText = questions[idx] || qKey;
-                var aText = answers[qKey] ? esc(answers[qKey]).replace(/\n/g, "<br>") : "<em>(left blank)</em>";
+                var aText = answers[qKey] ? esc(answers[qKey]).replace(/\\n/g, "<br>") : "<em>(left blank)</em>";
                 html += '<div style="margin-bottom:20px;background:var(--pale-ivory);border:1px solid rgba(76,59,21,0.25);padding:16px 20px;">' +
-                  '<p style="font-family:'Cormorant Infant',Georgia,serif;font-size:18px;color:var(--deep-green);margin:0 0 8px;">' + esc(qText) + '</p>' +
+                  '<p style="font-family: Cormorant Infant, Georgia, serif; font-size: 18px; color: var(--deep-green); margin: 0 0 8px;">' + esc(qText) + '</p>' +
                   '<p style="margin:0;font-size:13px;line-height:1.8;color:var(--green);">' + aText + '</p>' +
                   '</div>';
               });
 
               html += '<div style="margin-top:34px;padding-top:24px;border-top:1px solid rgba(76,59,21,0.2);">' +
-                '<h3 style="font-family:'Cormorant Infant',Georgia,serif;font-size:22px;font-weight:400;color:var(--deep-green);margin:0 0 6px;">additional notes</h3>' +
+                '<h3 style="font-family: Cormorant Infant, Georgia, serif; font-size: 22px; font-weight: 400; color: var(--deep-green); margin: 0 0 6px;">additional notes</h3>' +
                 '<p style="font-size:12px;opacity:0.75;margin:0 0 12px;">add any extra thoughts, updates or links for Rebekah anytime.</p>' +
                 '<textarea class="q-input" id="q-note" rows="5" placeholder="extra notes, updates, links…"></textarea>' +
                 '<div style="margin-top:8px;"><span id="q-note-saved" style="display:none;font-size:12px;color:#806829;">saved ✓</span></div>' +
