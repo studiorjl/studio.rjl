@@ -1832,7 +1832,7 @@ function clientPortalPage() {
       <button class="menu-item" data-view="contract">contract</button>
       <button class="menu-item" data-view="invoices">invoices &amp; payments</button>
       <button class="menu-item" data-view="library">library</button>
-      <button class="menu-item" data-view="notes">notes</button>
+      <button class="menu-item" data-view="notes">project notes</button>
       <button class="menu-item" data-view="technical">technical notes</button>
       <div class="menu-divider"></div>
       <button class="menu-item" id="menu-signout">sign out</button>
@@ -1932,6 +1932,7 @@ function clientPortalPage() {
           <section style="margin-top:0;">
             <h2 id="q-head">questionnaire: brand information</h2>
             <p class="section-line" id="q-sub">a few questions so Rebekah can see your work through your eyes: rambling welcome.</p>
+            <div id="q-answers-view" style="display:none;"></div>
             <div id="q-wrap">
               <form id="qform">
                 <label class="q-label" for="q1">tell me about your work: what are you making, and for whom?</label>
@@ -2012,12 +2013,43 @@ function clientPortalPage() {
         </div>
         <div class="view" id="view-notes">
           <section style="margin-top:0;">
-            <h2>notes</h2>
-            <p class="section-line">a quiet page for your thoughts: anything saved here is kept for your project.</p>
-            <textarea class="q-input" id="note" rows="8" placeholder="scribbles, sparks, things not to forget…"></textarea>
-            <div>
-              <button class="save" id="note-save" type="button">save note</button>
-              <span id="note-saved">saved ✓</span>
+            <h2>project notes</h2>
+            <div class="prompt-card" style="margin-bottom:28px;">
+              <h3 style="font-family:'Cormorant Infant',Georgia,serif;font-size:22px;font-weight:400;color:var(--deep-green);margin:0 0 14px;">time tracking</h3>
+              <div style="display:flex;gap:10px;margin-bottom:14px;align-items:center;flex-wrap:wrap;">
+                <button type="button" class="variant active" id="tt-mode-stopwatch">stopwatch</button>
+                <button type="button" class="variant" id="tt-mode-timer">time-block countdown</button>
+              </div>
+              <div id="tt-timer-presets" style="display:none;margin-bottom:14px;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="font-size:12px;opacity:0.75;">presets:</span>
+                <button type="button" class="variant tt-preset-btn" data-mins="25">25 min</button>
+                <button type="button" class="variant tt-preset-btn" data-mins="50">50 min</button>
+                <button type="button" class="variant tt-preset-btn" data-mins="90">90 min</button>
+                <span style="font-size:12px;opacity:0.75;margin-left:8px;">custom mins:</span>
+                <input type="number" id="tt-custom-mins" value="25" min="1" max="480" style="width:65px;padding:4px 8px;font-family:'antarctican-mono',monospace;font-size:13px;border:1px solid rgba(76,59,21,0.35);background:var(--pale-ivory);color:var(--green);">
+              </div>
+              <div style="margin-bottom:14px;">
+                <label for="tt-note" style="display:block;font-size:12px;letter-spacing:0.06em;color:#806829;margin-bottom:6px;">what I'm working on</label>
+                <input type="text" id="tt-note" class="q-input" placeholder="working on logo concepts, drafting copy, site layout…" style="padding:10px 14px;">
+              </div>
+              <div id="tt-display" style="font-family:'antarctican-mono','Courier New',monospace;font-size:44px;font-weight:bold;color:var(--deep-green);letter-spacing:0.06em;text-align:center;margin:18px 0 14px;padding:12px;background:var(--ivory);border:1px solid rgba(76,59,21,0.2);">00:00:00</div>
+              <div id="tt-cue" style="display:none;text-align:center;font-size:14px;color:var(--deep-green);font-weight:bold;margin-bottom:12px;">time block complete ✨</div>
+              <div style="display:flex;gap:12px;justify-content:center;">
+                <button class="save" id="tt-toggle" type="button" style="margin-top:0;">start</button>
+                <button class="copy" id="tt-reset" type="button" style="margin-top:0;padding:12px 24px;font-size:13px;background:transparent;border:1px solid rgba(76,59,21,0.35);color:var(--green);">reset</button>
+              </div>
+            </div>
+            <div style="margin-bottom:28px;">
+              <h3 style="font-family:'Cormorant Infant',Georgia,serif;font-size:22px;font-weight:400;color:var(--deep-green);margin:0 0 12px;">recorded sessions</h3>
+              <div id="time-entries-list"><p class="empty">no time entries recorded yet.</p></div>
+            </div>
+            <div style="margin-top:28px;">
+              <h3 style="font-family:'Cormorant Infant',Georgia,serif;font-size:22px;font-weight:400;color:var(--deep-green);margin:0 0 12px;">freeform notes</h3>
+              <textarea class="q-input" id="note" rows="8" placeholder="scribbles, sparks, things not to forget…"></textarea>
+              <div style="margin-top:10px;">
+                <button class="save" id="note-save" type="button" style="margin-top:0;">save note</button>
+                <span id="note-saved" style="display:none;margin-left:10px;font-size:12px;color:#806829;">saved ✓</span>
+              </div>
             </div>
           </section>
         </div>
@@ -2521,27 +2553,374 @@ function clientPortalPage() {
             });
           });
 
-          // notes
-          var noteItem = (byType.client_note || [])[0];
-          if (noteItem && noteItem.meta) document.getElementById("note").value = noteItem.meta;
-          document.getElementById("note-save").addEventListener("click", function () {
-            var btn = document.getElementById("note-save");
-            btn.disabled = true; btn.textContent = "saving…";
-            post("portalSaveNote", { token: token, text: document.getElementById("note").value }).then(function (r) {
-              btn.disabled = false; btn.textContent = "save note";
-              if (r.ok) {
-                document.getElementById("note-saved").style.display = "inline";
-                setTimeout(function () { document.getElementById("note-saved").style.display = "none"; }, 2200);
+          // time tracking & chime
+          function playChime() {
+            try {
+              var AudioCtx = window.AudioContext || window.webkitAudioContext;
+              if (!AudioCtx) return;
+              var ctx = new AudioCtx();
+              var freqs = [523.25, 659.25, 783.99, 1046.50];
+              freqs.forEach(function (f, i) {
+                var osc = ctx.createOscillator();
+                var gain = ctx.createGain();
+                osc.type = "sine";
+                osc.frequency.value = f;
+                var startAt = ctx.currentTime + i * 0.12;
+                gain.gain.setValueAtTime(0.15, startAt);
+                gain.gain.exponentialRampToValueAtTime(0.0001, startAt + 1.2);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(startAt);
+                osc.stop(startAt + 1.25);
+              });
+            } catch (e) {}
+          }
+
+          function fmtSeconds(totalSecs) {
+            totalSecs = Math.max(0, Math.floor(totalSecs || 0));
+            var h = Math.floor(totalSecs / 3600);
+            var m = Math.floor((totalSecs % 3600) / 60);
+            var s = totalSecs % 60;
+            var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+            if (h > 0) return pad(h) + ":" + pad(m) + ":" + pad(s);
+            return pad(m) + ":" + pad(s);
+          }
+
+          function fmtDurationText(totalSecs) {
+            totalSecs = Math.max(0, Math.floor(totalSecs || 0));
+            var h = Math.floor(totalSecs / 3600);
+            var m = Math.floor((totalSecs % 3600) / 60);
+            var s = totalSecs % 60;
+            if (h > 0) return h + "h " + m + "m " + s + "s";
+            if (m > 0) return m + "m " + s + "s";
+            return s + "s";
+          }
+
+          var ttMode = "stopwatch";
+          var ttRunning = false;
+          var ttStartTime = 0;
+          var ttElapsedSecs = 0;
+          var ttTargetMins = 25;
+          var ttInterval = null;
+
+          function getTTState() {
+            try {
+              var s = localStorage.getItem("rjl_tt_state");
+              return s ? JSON.parse(s) : null;
+            } catch (e) { return null; }
+          }
+
+          function saveTTState() {
+            try {
+              localStorage.setItem("rjl_tt_state", JSON.stringify({
+                mode: ttMode,
+                running: ttRunning,
+                startTime: ttStartTime,
+                elapsedSecs: ttElapsedSecs,
+                targetMins: ttTargetMins,
+                note: document.getElementById("tt-note") ? document.getElementById("tt-note").value : ""
+              }));
+            } catch (e) {}
+          }
+
+          function renderTimeEntries() {
+            var list = document.getElementById("time-entries-list");
+            if (!list) return;
+            var entries = (byType.time_entry || []).slice().sort(function (a, b) {
+              return (b.sort_order || 0) - (a.sort_order || 0) || new Date(b.created_date || 0) - new Date(a.created_date || 0);
+            });
+            if (entries.length === 0) {
+              list.innerHTML = '<p class="empty">no time entries recorded yet.</p>';
+              return;
+            }
+            list.innerHTML = entries.map(function (it) {
+              var metaObj = {};
+              try { metaObj = typeof it.meta === "string" ? JSON.parse(it.meta) : (it.meta || {}); } catch (e) { metaObj = { note: it.meta }; }
+              var noteText = esc(metaObj.note || "timing session");
+              var durText = fmtDurationText(metaObj.seconds || 0);
+              var modeTag = esc(metaObj.mode || "stopwatch");
+              var dateStr = metaObj.finished_at ? fmtDate(new Date(metaObj.finished_at).getTime()) : "";
+              return '<div class="row"><div><p class="card-title" style="margin:0;">' + noteText + '</p>' +
+                '<p class="meta">' + durText + ' · ' + modeTag + (dateStr ? ' · ' + dateStr : '') + '</p></div></div>';
+            }).join("");
+          }
+
+          function updateTTDisplay() {
+            var disp = document.getElementById("tt-display");
+            if (!disp) return;
+            if (ttMode === "stopwatch") {
+              var curSecs = ttElapsedSecs;
+              if (ttRunning) {
+                curSecs += Math.floor((Date.now() - ttStartTime) / 1000);
+              }
+              disp.textContent = fmtSeconds(curSecs);
+            } else {
+              var targetSecs = ttTargetMins * 60;
+              var elapsed = ttElapsedSecs;
+              if (ttRunning) {
+                elapsed += Math.floor((Date.now() - ttStartTime) / 1000);
+              }
+              var remaining = Math.max(0, targetSecs - elapsed);
+              disp.textContent = fmtSeconds(remaining);
+            }
+          }
+
+          function finishTimerSession(secondsRecorded) {
+            ttRunning = false;
+            if (ttInterval) { clearInterval(ttInterval); ttInterval = null; }
+            var noteVal = document.getElementById("tt-note") ? document.getElementById("tt-note").value.trim() : "";
+            var cue = document.getElementById("tt-cue");
+            if (cue) cue.style.display = "block";
+            playChime();
+            var toggleBtn = document.getElementById("tt-toggle");
+            if (toggleBtn) toggleBtn.textContent = "start";
+            ttElapsedSecs = 0;
+            saveTTState();
+            updateTTDisplay();
+
+            post("portalSaveTimeEntry", {
+              token: token,
+              seconds: secondsRecorded,
+              note: noteVal,
+              mode: "timer"
+            }).then(function (r) {
+              if (r && r.ok) {
+                byType.time_entry = byType.time_entry || [];
+                byType.time_entry.unshift({
+                  type: "time_entry",
+                  meta: JSON.stringify({ seconds: secondsRecorded, note: noteVal, mode: "timer", finished_at: new Date().toISOString() })
+                });
+                renderTimeEntries();
               }
             });
-          });
+          }
 
-          // technical notes (web projects: hosting, domain, connections, handover)
+          function startTT() {
+            ttRunning = true;
+            ttStartTime = Date.now();
+            var toggleBtn = document.getElementById("tt-toggle");
+            if (toggleBtn) toggleBtn.textContent = "stop";
+            var cue = document.getElementById("tt-cue");
+            if (cue) cue.style.display = "none";
+            saveTTState();
+
+            if (ttInterval) clearInterval(ttInterval);
+            ttInterval = setInterval(function () {
+              updateTTDisplay();
+              if (ttMode === "timer") {
+                var targetSecs = ttTargetMins * 60;
+                var totalElapsed = ttElapsedSecs + Math.floor((Date.now() - ttStartTime) / 1000);
+                if (totalElapsed >= targetSecs) {
+                  finishTimerSession(targetSecs);
+                }
+              }
+              saveTTState();
+            }, 500);
+          }
+
+          function stopTT() {
+            if (!ttRunning) return;
+            ttRunning = false;
+            if (ttInterval) { clearInterval(ttInterval); ttInterval = null; }
+            var addSecs = Math.floor((Date.now() - ttStartTime) / 1000);
+            ttElapsedSecs += addSecs;
+            var toggleBtn = document.getElementById("tt-toggle");
+            if (toggleBtn) toggleBtn.textContent = "start";
+
+            var sessionSecs = ttElapsedSecs;
+            var noteVal = document.getElementById("tt-note") ? document.getElementById("tt-note").value.trim() : "";
+            saveTTState();
+            updateTTDisplay();
+
+            if (sessionSecs > 0) {
+              post("portalSaveTimeEntry", {
+                token: token,
+                seconds: sessionSecs,
+                note: noteVal,
+                mode: ttMode
+              }).then(function (r) {
+                if (r && r.ok) {
+                  byType.time_entry = byType.time_entry || [];
+                  byType.time_entry.unshift({
+                    type: "time_entry",
+                    meta: JSON.stringify({ seconds: sessionSecs, note: noteVal, mode: ttMode, finished_at: new Date().toISOString() })
+                  });
+                  renderTimeEntries();
+                }
+              });
+            }
+            ttElapsedSecs = 0;
+            saveTTState();
+            updateTTDisplay();
+          }
+
+          var savedTT = getTTState();
+          if (savedTT) {
+            ttMode = savedTT.mode || "stopwatch";
+            ttTargetMins = savedTT.targetMins || 25;
+            ttElapsedSecs = savedTT.elapsedSecs || 0;
+            if (document.getElementById("tt-note") && savedTT.note) {
+              document.getElementById("tt-note").value = savedTT.note;
+            }
+            if (document.getElementById("tt-custom-mins")) {
+              document.getElementById("tt-custom-mins").value = ttTargetMins;
+            }
+            if (savedTT.running && savedTT.startTime) {
+              var nowElapsed = Math.floor((Date.now() - savedTT.startTime) / 1000);
+              if (ttMode === "timer") {
+                var targetSecs = ttTargetMins * 60;
+                var totalEl = ttElapsedSecs + nowElapsed;
+                if (totalEl >= targetSecs) {
+                  post("portalSaveTimeEntry", {
+                    token: token,
+                    seconds: targetSecs,
+                    note: savedTT.note || "",
+                    mode: "timer"
+                  }).then(function (r) {
+                    if (r && r.ok) {
+                      byType.time_entry = byType.time_entry || [];
+                      byType.time_entry.unshift({
+                        type: "time_entry",
+                        meta: JSON.stringify({ seconds: targetSecs, note: savedTT.note || "", mode: "timer", finished_at: new Date().toISOString() })
+                      });
+                      renderTimeEntries();
+                    }
+                  });
+                  ttElapsedSecs = 0;
+                  ttRunning = false;
+                } else {
+                  ttElapsedSecs = totalEl;
+                  startTT();
+                }
+              } else {
+                ttElapsedSecs += nowElapsed;
+                startTT();
+              }
+            }
+          }
+
+          var btnStopwatch = document.getElementById("tt-mode-stopwatch");
+          var btnTimer = document.getElementById("tt-mode-timer");
+          var presetsDiv = document.getElementById("tt-timer-presets");
+
+          function setTTMode(m) {
+            if (ttRunning) stopTT();
+            ttMode = m;
+            ttElapsedSecs = 0;
+            if (btnStopwatch && btnTimer) {
+              btnStopwatch.classList.toggle("active", m === "stopwatch");
+              btnTimer.classList.toggle("active", m === "timer");
+            }
+            if (presetsDiv) presetsDiv.style.display = m === "timer" ? "flex" : "none";
+            updateTTDisplay();
+            saveTTState();
+          }
+
+          if (btnStopwatch) btnStopwatch.addEventListener("click", function () { setTTMode("stopwatch"); });
+          if (btnTimer) btnTimer.addEventListener("click", function () { setTTMode("timer"); });
+
+          var presetBtns = document.querySelectorAll(".tt-preset-btn");
+          for (var p = 0; p < presetBtns.length; p++) {
+            presetBtns[p].addEventListener("click", function () {
+              var mins = Number(this.getAttribute("data-mins") || 25);
+              ttTargetMins = mins;
+              var customInp = document.getElementById("tt-custom-mins");
+              if (customInp) customInp.value = mins;
+              setTTMode("timer");
+            });
+          }
+
+          var customMinsInp = document.getElementById("tt-custom-mins");
+          if (customMinsInp) {
+            customMinsInp.addEventListener("change", function () {
+              var m = Math.max(1, Math.min(480, Number(this.value || 25)));
+              ttTargetMins = m;
+              if (ttMode === "timer") updateTTDisplay();
+              saveTTState();
+            });
+          }
+
+          var ttNoteInp = document.getElementById("tt-note");
+          if (ttNoteInp) {
+            ttNoteInp.addEventListener("input", function () { saveTTState(); });
+          }
+
+          var ttToggleBtn = document.getElementById("tt-toggle");
+          if (ttToggleBtn) {
+            ttToggleBtn.addEventListener("click", function () {
+              if (ttRunning) stopTT(); else startTT();
+            });
+          }
+
+          var ttResetBtn = document.getElementById("tt-reset");
+          if (ttResetBtn) {
+            ttResetBtn.addEventListener("click", function () {
+              if (ttRunning) {
+                ttRunning = false;
+                if (ttInterval) { clearInterval(ttInterval); ttInterval = null; }
+                if (ttToggleBtn) ttToggleBtn.textContent = "start";
+              }
+              ttElapsedSecs = 0;
+              var cue = document.getElementById("tt-cue");
+              if (cue) cue.style.display = "none";
+              updateTTDisplay();
+              saveTTState();
+            });
+          }
+
+          setTTMode(ttMode);
+          renderTimeEntries();
+
+          // freeform note debounced auto-save
+          var noteItem = (byType.client_note || [])[0];
+          var noteTa = document.getElementById("note");
+          if (noteItem && noteItem.meta && noteTa) noteTa.value = noteItem.meta;
+
+          var noteDebounceTimer = null;
+          function saveNoteDebounced() {
+            var savedInd = document.getElementById("note-saved");
+            if (savedInd) { savedInd.textContent = "saving…"; savedInd.style.display = "inline"; }
+            if (noteDebounceTimer) clearTimeout(noteDebounceTimer);
+            noteDebounceTimer = setTimeout(function () {
+              post("portalSaveNote", { token: token, text: noteTa.value }).then(function (r) {
+                if (r.ok && savedInd) {
+                  savedInd.textContent = "saved ✓";
+                  setTimeout(function () { savedInd.style.display = "none"; }, 2200);
+                }
+              });
+            }, 1200);
+          }
+
+          if (noteTa) {
+            noteTa.addEventListener("input", saveNoteDebounced);
+          }
+
+          var noteSaveBtn = document.getElementById("note-save");
+          if (noteSaveBtn) {
+            noteSaveBtn.addEventListener("click", function () {
+              if (noteDebounceTimer) clearTimeout(noteDebounceTimer);
+              var btn = noteSaveBtn;
+              btn.disabled = true; btn.textContent = "saving…";
+              post("portalSaveNote", { token: token, text: noteTa.value }).then(function (r) {
+                btn.disabled = false; btn.textContent = "save note";
+                if (r.ok) {
+                  var savedInd = document.getElementById("note-saved");
+                  if (savedInd) {
+                    savedInd.textContent = "saved ✓";
+                    savedInd.style.display = "inline";
+                    setTimeout(function () { savedInd.style.display = "none"; }, 2200);
+                  }
+                }
+              });
+            });
+          }
+
+          // technical notes
           var techList = document.getElementById("tech-list");
           var techItems = (byType.technical_note || []).slice().sort(function (a, b) { return (a.sort_order || 0) - (b.sort_order || 0); });
           if (techItems.length && techList) {
             techList.innerHTML = techItems.map(function (it) {
-              return '<div class="tech-card"><h3>' + esc(it.title || "") + '</h3><p>' + esc(it.meta || "").replace(/\\n/g, "<br>") + '</p>' +
+              return '<div class="tech-card"><h3>' + esc(it.title || "") + '</h3><p>' + esc(it.meta || "").replace(/\n/g, "<br>") + '</p>' +
                 (it.url ? '<a class="open-link" href="' + esc(it.url) + '" target="_blank" rel="noopener">open ↗</a>' : '') + '</div>';
             }).join("");
           }
@@ -2561,7 +2940,92 @@ function clientPortalPage() {
             document.getElementById("works-panel").style.display = "block";
           }).catch(function () {});
 
-          // questionnaire
+          // questionnaire answers & auto-save note
+          var QUESTIONS_BRAND = [
+            "tell me about your work: what are you making, and for whom?",
+            "your brand as it stands: what do you love about it, and what's quietly not working?",
+            "three words for the feeling your brand should carry.",
+            "whose world do you admire? (brands, places, makers: links welcome.)",
+            "any must-keeps: an existing logo, fonts, colours you're attached to?",
+            "where will the brandscape live first? (web, print, packaging, socials.)",
+            "anything else at all."
+          ];
+
+          var QUESTIONS_WEB = [
+            "tell me about the business this site is for: what does it do, and for whom?",
+            "what must the new site achieve? (a clear profile to point people to, enquiries, credibility, portfolio...)",
+            "what pages or content need to exist? (about, projects, CV, contact...)",
+            "whose world do you admire? (sites, brands, makers: links welcome.)",
+            "any must-keeps: existing logo, copy, imagery, domain or hosting logins?",
+            "where should enquiries land? (email, LinkedIn, a form...)",
+            "anything else at all."
+          ];
+
+          function renderQuestionnaireAnswers(qRes, isWeb) {
+            var qWrap = document.getElementById("q-wrap");
+            var qDone = document.getElementById("q-done");
+            var qAnsView = document.getElementById("q-answers-view");
+            if (!qAnsView) return;
+
+            if (qRes && qRes.ok && qRes.submitted) {
+              if (qWrap) qWrap.style.display = "none";
+              if (qDone) qDone.style.display = "none";
+              qAnsView.style.display = "block";
+
+              var questions = isWeb ? QUESTIONS_WEB : QUESTIONS_BRAND;
+              var answers = qRes.answers || {};
+              var dateStr = qRes.submitted_date ? fmtDate(new Date(qRes.submitted_date).getTime()) : "";
+
+              var html = '<p style="font-size:12px;letter-spacing:0.06em;color:#806829;margin:0 0 20px;">submitted on ' + esc(dateStr) + '</p>';
+              ["q1", "q2", "q3", "q4", "q5", "q6", "q7"].forEach(function (qKey, idx) {
+                var qText = questions[idx] || qKey;
+                var aText = answers[qKey] ? esc(answers[qKey]).replace(/\n/g, "<br>") : "<em>(left blank)</em>";
+                html += '<div style="margin-bottom:20px;background:var(--pale-ivory);border:1px solid rgba(76,59,21,0.25);padding:16px 20px;">' +
+                  '<p style="font-family:'Cormorant Infant',Georgia,serif;font-size:18px;color:var(--deep-green);margin:0 0 8px;">' + esc(qText) + '</p>' +
+                  '<p style="margin:0;font-size:13px;line-height:1.8;color:var(--green);">' + aText + '</p>' +
+                  '</div>';
+              });
+
+              html += '<div style="margin-top:34px;padding-top:24px;border-top:1px solid rgba(76,59,21,0.2);">' +
+                '<h3 style="font-family:'Cormorant Infant',Georgia,serif;font-size:22px;font-weight:400;color:var(--deep-green);margin:0 0 6px;">additional notes</h3>' +
+                '<p style="font-size:12px;opacity:0.75;margin:0 0 12px;">add any extra thoughts, updates or links for Rebekah anytime.</p>' +
+                '<textarea class="q-input" id="q-note" rows="5" placeholder="extra notes, updates, links…"></textarea>' +
+                '<div style="margin-top:8px;"><span id="q-note-saved" style="display:none;font-size:12px;color:#806829;">saved ✓</span></div>' +
+                '</div>';
+
+              qAnsView.innerHTML = html;
+
+              var qNoteItem = (byType.questionnaire_note || [])[0];
+              var qNoteTa = document.getElementById("q-note");
+              if (qNoteItem && qNoteItem.meta && qNoteTa) qNoteTa.value = qNoteItem.meta;
+
+              var qNoteDebounce = null;
+              if (qNoteTa) {
+                qNoteTa.addEventListener("input", function () {
+                  var savedInd = document.getElementById("q-note-saved");
+                  if (savedInd) { savedInd.textContent = "saving…"; savedInd.style.display = "inline"; }
+                  if (qNoteDebounce) clearTimeout(qNoteDebounce);
+                  qNoteDebounce = setTimeout(function () {
+                    post("portalSaveQuestionnaireNote", { token: token, text: qNoteTa.value }).then(function (r) {
+                      if (r.ok && savedInd) {
+                        savedInd.textContent = "saved ✓";
+                        setTimeout(function () { savedInd.style.display = "none"; }, 2200);
+                      }
+                    });
+                  }, 1200);
+                });
+              }
+            } else {
+              if (qWrap) qWrap.style.display = "block";
+              if (qDone) qDone.style.display = "none";
+              qAnsView.style.display = "none";
+            }
+          }
+
+          post("portalGetQuestionnaire", { token: token }).then(function (qRes) {
+            renderQuestionnaireAnswers(qRes, isWeb);
+          }).catch(function () {});
+
           document.getElementById("qform").addEventListener("submit", function (e) {
             e.preventDefault();
             var btn = document.getElementById("q-send");
@@ -2572,14 +3036,17 @@ function clientPortalPage() {
             });
             post("submitClientQuestionnaire", { token: token, answers: answers }).then(function (r) {
               if (r.ok) {
-                document.getElementById("q-wrap").style.display = "none";
-                document.getElementById("q-done").style.display = "block";
+                renderQuestionnaireAnswers({
+                  ok: true,
+                  submitted: true,
+                  answers: answers,
+                  submitted_date: new Date().toISOString()
+                }, isWeb);
               } else {
                 btn.disabled = false; btn.textContent = "send my answers";
               }
             });
-          });
-        }).catch(function () { location.replace("/client/"); });
+          });}).catch(function () { location.replace("/client/"); });
       })();
     </script>
   </body>
