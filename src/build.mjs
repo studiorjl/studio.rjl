@@ -461,7 +461,6 @@ function footer() {
           <div class="social-links" aria-label="contact studio rjl">
             <a href="mailto:${site.contact.email}" aria-label="email studio rjl at ${escapeHtml(site.contact.email)}"><span class="social-icon">${icon("mail")}</span>${escapeHtml(site.contact.email)}</a>
             <a href="/booking/" aria-label="book a complimentary brand strategy call with studio rjl"><span class="social-icon">${icon("phone")}</span>book a call</a>
-            <button class="footer-enquiry" type="button" data-enquiry-toggle data-enquiry-bloom aria-label="inquire to work with studio rjl"><span class="social-icon">${icon("bloom")}</span>inquire to work with us</button>
           </div>
           <div class="footer-subsection">
             <div class="footer-title">connect</div>
@@ -733,8 +732,6 @@ function editorialArticlePage(post) {
       </header>
       <section class="article-body">
         ${paragraphs}
-        <button class="button article-enquiry-button" type="button" data-enquiry-toggle>let's collaborate</button>
-        <div class="article-enquiry-subline"><button class="article-enquiry-link" type="button" data-enquiry-toggle>Let's build something with real atmosphere.</button></div>
       </section>
       ${gallery}
       <p class="article-copyright">all imagery in this editorial is the original work of studio rjl and protected by copyright. any use of these images, in whole or in part, without written permission is strictly prohibited.</p>
@@ -792,7 +789,7 @@ function homePage() {
     <section class="image-section" aria-labelledby="recently-heading">
       <div class="intro">
         <h2 id="recently-heading">recently in the studio</h2>
-        <p>a collection of recent works and collaborations across branding, visual identity, spatial concept design and atmospheric creative direction.</p>
+        <p>a collection of recent projects across branding, visual identity, spatial concept design and atmospheric creative direction.</p>
         <a class="studio-link" href="/recent-work/">explore more...</a>
       </div>
       <div class="project-grid">
@@ -811,7 +808,7 @@ function homePage() {
       <div class="about-wrap">
         <h2 id="about-heading">about studio rjl</h2>
         <p>studio rjl is a multidisciplinary design studio crafting bespoke brands <em>and</em> making places.</p>
-        <p>based in the northern rivers of nsw - collaborating worldwide.</p>
+        <p>based in the northern rivers of nsw - working with clients to deliver branding & spatial design worldwide.</p>
         <div class="about-image">
           <img class="reveal" src="${asset("studiorjl-about.png")}" alt="Rebekah Jane, founder of studio rjl, a Bangalow and Byron Bay area branding and spatial design studio" loading="lazy">
         </div>
