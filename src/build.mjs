@@ -2193,7 +2193,14 @@ function clientPortalPage() {
             var btns = [];
             if (inv.balance > 0 && inv.status !== "paid" && inv.status !== "upcoming" && inv.kind !== "quote") {
               if (methods.indexOf("square") >= 0 && inv.square_url) {
-                btns.push('<a class="pay-btn" href="' + esc(inv.square_url) + '" target="_blank" rel="noopener">pay by card ↗</a>');
+                // square_url holds one link, or several as "label|url" lines (e.g. pay in full / pay an instalment)
+                var sqLines = String(inv.square_url).split(/\\n/).map(function (x) { return x.trim(); }).filter(Boolean);
+                sqLines.forEach(function (ln) {
+                  var bar = ln.indexOf("|");
+                  var lbl = bar > 0 ? ln.slice(0, bar).trim() : "pay by card";
+                  var href = bar > 0 ? ln.slice(bar + 1).trim() : ln;
+                  btns.push('<a class="pay-btn" href="' + esc(href) + '" target="_blank" rel="noopener">' + esc(lbl) + ' ↗</a>');
+                });
               }
               if (methods.indexOf("bank") >= 0 && bank) {
                 btns.push('<button class="pay-btn alt" type="button">pay by bank transfer ▾</button>');
