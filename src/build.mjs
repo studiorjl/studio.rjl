@@ -2004,8 +2004,9 @@ function clientPortalPage() {
         <div class="view" id="view-library">
           <section style="margin-top:0;">
             <h2>library</h2>
-            <p class="section-line">every image of your brandscape, gathered in one place.</p>
+            <p class="section-line" id="library-line">every image of your brandscape, gathered in one place.</p>
             <div class="grid" id="library-grid"></div>
+            <div id="library-cats"></div>
           </section>
         </div>
         <div class="view" id="view-notes">
@@ -2377,6 +2378,28 @@ function clientPortalPage() {
           });
           uploads = d.uploads || [];
 
+          // apparel projects: a lighter, tailored portal (no questionnaire, uploads or contract)
+          var isApparel = d.project_type === "apparel";
+          if (isApparel) {
+            ["questionnaire", "uploads", "contract"].forEach(function (v) {
+              var mi = document.querySelector('.menu-item[data-view="' + v + '"]');
+              if (mi) mi.style.display = "none";
+            });
+            var chipNav = document.querySelector("nav.chips");
+            if (chipNav) chipNav.style.display = "none";
+            var bsAll = document.querySelectorAll("#view-brandscape section");
+            for (var bs = 0; bs < bsAll.length; bs++) bsAll[bs].style.display = "none";
+            var bsHero = document.querySelector("#view-brandscape .hero");
+            if (bsHero) {
+              var note = document.createElement("section");
+              note.style.marginTop = "0";
+              note.innerHTML = '<p class="section-line">your apparel designs live in the library. open it from the menu to see every design and download the full set.</p>' +
+                '<p style="text-align:center;margin-top:18px;"><button type="button" class="pay-btn" id="apparel-open-lib">open the library</button></p>';
+              bsHero.parentNode.insertBefore(note, bsHero.nextSibling);
+              document.getElementById("apparel-open-lib").addEventListener("click", function () { showView("library"); });
+            }
+          }
+
           // home page: status note from Rebekah (shown when one exists)
           var hNotes = (byType.status_note || []).slice().sort(function (a, b) { return (b.sort_order || 0) - (a.sort_order || 0); });
           if (hNotes.length) {
@@ -2398,7 +2421,55 @@ function clientPortalPage() {
           renderLogo();
 
           fillGrid("profile-grid", byType.profile_logo);
-          fillGrid("library-grid", []
+          var libItems = byType.library_item || [];
+          var libLinks = byType.library_link || [];
+          if (isApparel || libItems.length || libLinks.length) {
+            // categorised library: meta of each library_item is its category name
+            document.getElementById("library-grid").style.display = "none";
+            if (isApparel) document.getElementById("library-line").textContent = "every design for your apparel, gathered in one place: yours to take, right-click freely.";
+            var catsEl = document.getElementById("library-cats");
+            var order = [], groups = {};
+            libItems.concat(libLinks).forEach(function (it) {
+              var c = String(it.type === "library_link" ? it.meta : it.meta || "").trim() || "more";
+              if (!groups[c]) { groups[c] = { items: [], links: [] }; order.push(c); }
+              (it.type === "library_link" ? groups[c].links : groups[c].items).push(it);
+            });
+            if (order.length === 0) {
+              catsEl.innerHTML = '<p class="empty">still in the studio: being made for you with love. this will appear here soon.</p>';
+            }
+            order.forEach(function (c) {
+              var g = groups[c];
+              var wrap = document.createElement("div");
+              wrap.style.marginTop = "34px";
+              var h = document.createElement("h3");
+              h.textContent = c;
+              h.style.cssText = "font-family:'Cormorant Infant',Georgia,serif;font-size:26px;font-weight:400;color:var(--deep-green);margin:0 0 16px;";
+              wrap.appendChild(h);
+              if (g.items.length) {
+                var gr = document.createElement("div");
+                gr.className = "grid";
+                g.items.forEach(function (it) { gr.appendChild(imageCard({ url: it.url, title: it.title, meta: "" })); });
+                wrap.appendChild(gr);
+              } else {
+                var em = document.createElement("p");
+                em.className = "empty";
+                em.textContent = "designs are being added here as they are finalised.";
+                wrap.appendChild(em);
+              }
+              g.links.forEach(function (ln) {
+                var row = document.createElement("p");
+                row.style.margin = "22px 0 0";
+                var a = document.createElement("a");
+                a.className = "pay-btn alt";
+                a.href = ln.url; a.target = "_blank"; a.rel = "noopener";
+                a.textContent = (ln.title || "download as google drive") + " ↗";
+                row.appendChild(a);
+                wrap.appendChild(row);
+              });
+              catsEl.appendChild(wrap);
+            });
+          }
+          if (!isApparel && !libItems.length && !libLinks.length) fillGrid("library-grid", []
             .concat(byType.logo || [])
             .concat(byType.monogram || [])
             .concat(byType.brandmark || [])
