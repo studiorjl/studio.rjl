@@ -2089,8 +2089,9 @@ function clientPortalPage() {
           }
         }
         function empty(id) {
+          // no filler copy: an empty section simply stays quiet
           var el = document.getElementById(id);
-          if (el) el.innerHTML = '<p class="empty">still in the studio: being made for you with love. this will appear here soon.</p>';
+          if (el) el.innerHTML = "";
         }
         function imageCard(it) {
           var card = document.createElement("div");
@@ -2136,7 +2137,7 @@ function clientPortalPage() {
           var list = document.getElementById("inv-list");
           if (!list) return;
           if (!invoices || invoices.length === 0) {
-            list.innerHTML = '<p class="empty">invoices and progress payments will be tracked here: a clear picture of where your project stands.</p>';
+            list.innerHTML = "";
             return;
           }
           var allowance = 0, billed = 0;
@@ -2272,6 +2273,7 @@ function clientPortalPage() {
 
         var byType = {};
         var uploads = [];
+        var ttKey = "rjl_tt_state";
         var logoVariants = [["logo", "logo"], ["monogram", "monogram"], ["brandmark", "brand mark"], ["wordmark", "word mark"]];
         var currentVariant = "logo";
 
@@ -2289,7 +2291,7 @@ function clientPortalPage() {
           stage.innerHTML = "";
           var items = byType[currentVariant] || [];
           if (items.length === 0) {
-            stage.innerHTML = '<p class="empty">still in the studio: being made for you with love. this will appear here soon.</p>';
+            stage.innerHTML = "";
             return;
           }
           if (items.length === 1) {
@@ -2315,7 +2317,7 @@ function clientPortalPage() {
           var list = document.getElementById("up-list");
           list.innerHTML = "";
           if (uploads.length === 0) {
-            list.innerHTML = '<p class="empty">nothing shared yet: your uploads will gather here.</p>';
+            list.innerHTML = "";
             return;
           }
           uploads.forEach(function (u) {
@@ -2354,6 +2356,10 @@ function clientPortalPage() {
           document.getElementById("brand").textContent = d.brand_name || "your brandscape";
           document.getElementById("greet").textContent = "welcome, " + (d.client_name || "friend") + " your project all in one place.";
           var isWeb = d.project_type === "web";
+          // keep saved time-tracker state per client, so one client's notes never
+          // appear in another client's portal on the same browser
+          ttKey = "rjl_tt_state_" + String(d.email || d.brand_name || "").toLowerCase();
+          try { localStorage.removeItem("rjl_tt_state"); } catch (err) {}
           if (d.brand_name) {
             var ctag = document.getElementById("client-tag");
             ctag.textContent = d.brand_name;
@@ -2442,7 +2448,7 @@ function clientPortalPage() {
               (it.type === "library_link" ? groups[c].links : groups[c].items).push(it);
             });
             if (order.length === 0) {
-              catsEl.innerHTML = '<p class="empty">still in the studio: being made for you with love. this will appear here soon.</p>';
+              catsEl.innerHTML = "";
             }
             order.forEach(function (c) {
               var g = groups[c];
@@ -2460,7 +2466,7 @@ function clientPortalPage() {
               } else {
                 var em = document.createElement("p");
                 em.className = "empty";
-                em.textContent = "designs are being added here as they are finalised.";
+                em.textContent = "";
                 wrap.appendChild(em);
               }
               g.links.forEach(function (ln) {
@@ -2680,14 +2686,14 @@ function clientPortalPage() {
 
           function getTTState() {
             try {
-              var s = localStorage.getItem("rjl_tt_state");
+              var s = localStorage.getItem(ttKey);
               return s ? JSON.parse(s) : null;
             } catch (e) { return null; }
           }
 
           function saveTTState() {
             try {
-              localStorage.setItem("rjl_tt_state", JSON.stringify({
+              localStorage.setItem(ttKey, JSON.stringify({
                 mode: ttMode,
                 running: ttRunning,
                 startTime: ttStartTime,
