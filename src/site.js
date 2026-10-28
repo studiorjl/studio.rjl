@@ -198,6 +198,20 @@ if (form && thankYou) {
       message: data.get("message")
     };
 
+    // human check: honeypot filled, or form submitted suspiciously fast, or the
+    // challenge answer wrong — show the thank you and send nothing at all.
+    const honeypotValue = String(data.get("website") || "").trim();
+    const humanValue = String(data.get("human_check") || "").trim();
+    const expectedAnswer = String(form.dataset.humanAnswer || "7");
+    const secondsOnForm = enquiryOpenedAt ? (Date.now() - enquiryOpenedAt) / 1000 : 0;
+    const tooFast = enquiryOpenedAt ? secondsOnForm < 3 : false;
+    if (honeypotValue !== "" || tooFast || humanValue !== expectedAnswer) {
+      track("enquiry_form_blocked", { reason: honeypotValue !== "" ? "honeypot" : tooFast ? "too_fast" : "challenge_failed" });
+      form.hidden = true;
+      thankYou.classList.add("visible");
+      return;
+    }
+
     try {
       const response = await fetch(
         "https://rjl-publisher-insights-agent-a07f3048.base44.app/functions/submitEnquiry",
