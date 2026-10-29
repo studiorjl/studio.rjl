@@ -53,6 +53,27 @@ const mimeTypeFor = (filename = "") => {
   return "image/jpeg";
 };
 
+function imageRightsSchema(pageUrl, images = []) {
+  return images.map((image) => ({
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    contentUrl: absoluteAsset(image.src),
+    url: pageUrl,
+    name: image.title,
+    description: image.caption,
+    creator: { "@type": "Organization", name: "studio rjl", url: site.domain },
+    copyrightHolder: { "@type": "Organization", name: "studio rjl", url: site.domain },
+    creditText: "studio rjl",
+    copyrightNotice: "© studio rjl. all rights reserved.",
+    acquireLicensePage: canonical("/contact/")
+  }));
+}
+
+function shortTitle(text = "", fallback = "studio rjl") {
+  const first = String(text).split(",")[0].trim();
+  return first.length > 4 && first.length <= 110 ? first : fallback;
+}
+
 function jsonLd(data) {
   return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
 }
@@ -753,6 +774,10 @@ function editorialArticlePage(post) {
     tags: post.tags || [],
     body,
     extraSchema: [
+      ...imageRightsSchema(canonical(`/editorial/${post.slug}/`), [
+        { src: post.image, title: shortTitle(post.imageAlt, post.title), caption: post.imageAlt },
+        ...(post.gallery || []).map((item) => ({ src: item.image, title: shortTitle(item.alt, post.title), caption: item.alt }))
+      ]),
       articleSchema(post, `/editorial/${post.slug}/`),
       breadcrumbSchema([
         { name: "home", href: "/" },
@@ -3250,7 +3275,8 @@ async function writeStaticFiles() {
     `# enquiries: hello@studiorjl.com\n\n` +
     `User-agent: *\nAllow: /\n\n` +
     trainingBots.map((bot) => `User-agent: ${bot}\nDisallow: /\n\n`).join("") +
-    `Sitemap: ${canonical("/sitemap.xml")}\n`
+    `Sitemap: ${canonical("/sitemap.xml")}\n` +
+    `Sitemap: ${canonical("/image-sitemap.xml")}\n`
   );
   await writeFile(
     path.join(dist, "sitemap.xml"),
@@ -3260,6 +3286,53 @@ async function writeStaticFiles() {
       .map((url) => `  <url><loc>${canonical(url)}</loc></url>`)
       .join("\n")}\n</urlset>\n`
   );
+  // image sitemap: tells Google Images which page each photograph belongs to,
+  // with title and caption, so image searches attribute the work to studio rjl.
+  const portfolioImages = (list) =>
+    list.map((project) => ({
+      src: project.image,
+      title: shortTitle(project.alt, "studio rjl photography"),
+      caption: project.alt
+    }));
+  const imagePages = [
+    { page: "/recent-work/", images: portfolioImages(portfolio) },
+    ...portfolioCategories
+      .map((category) => ({
+        page: `/recent-work/${category.slug}/`,
+        images: portfolioImages(portfolio.filter((project) => project.tags.includes(category.tag)))
+      }))
+      .filter((entry) => entry.images.length),
+    ...editorialPosts.map((post) => ({
+      page: `/editorial/${post.slug}/`,
+      images: [
+        { src: post.image, title: shortTitle(post.imageAlt, post.title), caption: post.imageAlt },
+        ...(post.gallery || []).map((item) => ({ src: item.image, title: shortTitle(item.alt, post.title), caption: item.alt }))
+      ]
+    })),
+    ...articlePosts.map((post) => ({
+      page: `/blog/${post.slug}/`,
+      images: [{ src: post.image, title: shortTitle(post.imageAlt, post.title), caption: post.imageAlt }]
+    }))
+  ];
+  await writeFile(
+    path.join(dist, "image-sitemap.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n` +
+      imagePages
+        .map(
+          (entry) =>
+            `  <url>\n    <loc>${canonical(entry.page)}</loc>\n` +
+            entry.images
+              .map(
+                (image) =>
+                  `    <image:image>\n      <image:loc>${escapeXml(absoluteAsset(image.src))}</image:loc>\n      <image:title>${escapeXml(image.title)}</image:title>\n      <image:caption>${escapeXml(String(image.caption || "").slice(0, 1500))}</image:caption>\n    </image:image>\n`
+              )
+              .join("") +
+            `  </url>\n`
+        )
+        .join("") +
+      `</urlset>\n`
+  );
+
   const feedPosts = [
     ...editorialPosts.map((post) => ({ ...post, feedPath: `/editorial/${post.slug}/` })),
     ...articlePosts.map((post) => ({ ...post, feedPath: `/blog/${post.slug}/` }))
