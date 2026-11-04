@@ -519,7 +519,7 @@ function enquiryPanel() {
       <div class="enquiry-inner">
         <h2>ENQUIRIES</h2>
         <p>for all creative enquiries, complete the form below and we will be in touch!</p>
-        <form data-enquiry-form data-human-answer="7">
+        <form data-enquiry-form>
           <label>name*<input type="text" name="name" required></label>
           <label>brand / business / company*<input type="text" name="company" required></label>
           <label>email*<input type="email" name="email" required></label>
@@ -557,7 +557,6 @@ function enquiryPanel() {
             <label>website<input type="text" name="website" autocomplete="off" tabindex="-1"></label>
           </div>
           <label>message<textarea name="message" rows="4" placeholder="tell us a little bit about your project..."></textarea></label>
-          <label>quick check*<input type="text" inputmode="numeric" autocomplete="off" name="human_check" required placeholder="what is 2 + 5?"></label>
           <button class="button" type="submit">send</button>
         </form>
         <div class="thank-you" data-thank-you>
@@ -648,7 +647,7 @@ function layout({
     ${type === "article" ? articleRichPinMarkup({ title, description, url, author: author || site.founder }) : ""}
     ${footer()}
     ${enquiryPanel()}
-    <script src="/site.js?v=6" type="module"></script>
+    <script src="/site.js?v=7" type="module"></script>
   </body>
 </html>`;
 }

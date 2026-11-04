@@ -198,15 +198,13 @@ if (form && thankYou) {
       message: data.get("message")
     };
 
-    // human check: honeypot filled, or form submitted suspiciously fast, or the
-    // challenge answer wrong — show the thank you and send nothing at all.
+    // spam guard: honeypot filled, or the form submitted suspiciously fast.
+    // no visible challenge on the form any more.
     const honeypotValue = String(data.get("website") || "").trim();
-    const humanValue = String(data.get("human_check") || "").trim();
-    const expectedAnswer = String(form.dataset.humanAnswer || "7");
     const secondsOnForm = enquiryOpenedAt ? (Date.now() - enquiryOpenedAt) / 1000 : 0;
     const tooFast = enquiryOpenedAt ? secondsOnForm < 3 : false;
-    if (honeypotValue !== "" || tooFast || humanValue !== expectedAnswer) {
-      track("enquiry_form_blocked", { reason: honeypotValue !== "" ? "honeypot" : tooFast ? "too_fast" : "challenge_failed" });
+    if (honeypotValue !== "" || tooFast) {
+      track("enquiry_form_blocked", { reason: honeypotValue !== "" ? "honeypot" : "too_fast" });
       form.hidden = true;
       thankYou.classList.add("visible");
       return;
