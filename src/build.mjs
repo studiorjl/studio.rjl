@@ -521,25 +521,9 @@ function enquiryPanel() {
         <p>for all creative enquiries, complete the form below and we will be in touch!</p>
         <form data-enquiry-form>
           <label>name*<input type="text" name="name" required></label>
-          <label>brand / business / company*<input type="text" name="company" required></label>
           <label>email*<input type="email" name="email" required></label>
-          <label>phone<input type="tel" name="phone"></label>
-          <label>location<input type="text" name="location"></label>
-          <label>creative services</label>
-          <details class="home-panel enquiry-services">
-            <summary>
-              <span class="enquiry-placeholder" data-placeholder="select all that apply">select all that apply</span>
-            </summary>
-            <div class="service-options">
-              ${enquiryServices
-                .map(
-                  (service) =>
-                    `<label><input type="checkbox" name="service[]" value="${escapeHtml(service)}"> ${escapeHtml(service)}</label>`
-                )
-                .join("")}
-            </div>
-          </details>
-          <label>range</label>
+          <label>message<textarea name="message" rows="4" placeholder="tell us a little bit about your project..."></textarea></label>
+          <label>budget range</label>
           <details class="home-panel enquiry-services enquiry-range">
             <summary>
               <span class="enquiry-placeholder" data-placeholder="select a range">select a range</span>
@@ -556,7 +540,6 @@ function enquiryPanel() {
           <div hidden>
             <label>website<input type="text" name="website" autocomplete="off" tabindex="-1"></label>
           </div>
-          <label>message<textarea name="message" rows="4" placeholder="tell us a little bit about your project..."></textarea></label>
           <button class="button" type="submit">send</button>
         </form>
         <div class="thank-you" data-thank-you>
