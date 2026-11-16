@@ -523,7 +523,7 @@ function enquiryPanel() {
           <label>name*<input type="text" name="name" required></label>
           <label>email*<input type="email" name="email" required></label>
           <label>message<textarea name="message" rows="4" placeholder="tell us a little bit about your project..."></textarea></label>
-          <label>budget range</label>
+          <label>budget range (optional)</label>
           <details class="home-panel enquiry-services enquiry-range">
             <summary>
               <span class="enquiry-placeholder" data-placeholder="select a range">select a range</span>
